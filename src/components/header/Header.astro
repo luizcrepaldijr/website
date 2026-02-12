@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import LogoImg from "../../images/logo.webp";
+import Menu from "./Menu.astro";
+import Language from "./Language.astro";
+import Button from "./Button.astro";
+---
+
+<header class="container">
+  <a href="/">
+    <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
+  </a>
+  <span>
+    <Menu />
+    <Language />
+    <div>
+      <Button />
+    </div>
+  </span>
+</header>
+
+<style>
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 6.75px 7.5px 18.75px 0 rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+  }
+
+  a {
+    padding: 0 60px 0 0;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #ffffff40;
+  }
+
+  .logo {
+    width: 100%;
+    padding: 20px 0;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 0 38.5px;
+    width: 23.53%;
+  }
+
+  span {
+    width: 85%;
+    padding: 0;
+    display: flex;
+  }
+
+  @media only screen and (max-width: 800px) {
+    span {
+      position: fixed;
+      left: 0;
+      width: 40%;
+      top: 0;
+      bottom: 0;
+      flex-direction: column;
+      background-color: black;
+    }
+  }
+</style>

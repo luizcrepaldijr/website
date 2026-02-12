@@ -1,0 +1,17 @@
+:root {
+    --neutral-white: #FCFCFD;
+    --neutral-light-gray: #B6BECD;
+    --neutral-background: #0C111D;
+
+    --gradient: linear-gradient(
+        180deg,
+        rgba(0, 51, 113, 0) 0%,
+        rgba(0, 51, 113, 0.20) 100%
+    );
+
+    --font-main: "Raleway", system-ui, sans-serif;
+
+    --transition-fast: 120ms ease;
+    --transition-normal: 240ms ease;
+    --transition-slow: 420ms ease;
+}

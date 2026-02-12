@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background: var(--neutral-background);
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    color: var(--neutral-white);
+}
+
+h3, p {
+    color: var(--neutral-light-gray);
+}
+
+a, button {
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+    color: var(--neutral-white);
+    text-decoration: none;
+    font-family: var(--font-main);
+}
+
+.container {
+    width: max(100%, 1420px);
+    padding-inline: clamp(15px, 4vw, 40px);
+}

@@ -36,26 +36,54 @@ import ButtonArrow from "../components/ButtonArrow.astro";
       display: flex;
       gap: 32px;
       flex-direction: column;
-      max-width: clamp(40%, 650px, 50%);
+      width: 50%;
+      max-width: 900px;
 
       h1 {
         font-weight: 400;
-        font-size: clamp(2vw, 3.8vw, 76px);
+        font-size: clamp(28px, 4vw, 80px);
+        line-height: 1.2;
       }
 
       h3 {
         font-weight: 400;
-        line-height: 140%;
+        font-size: clamp(16px, 2.5vw, 24px);
+        line-height: 1.4;
       }
 
       span {
-        width: 220px;
+        width: max-content;
       }
     }
 
     .cuboImg {
       width: 38%;
-      height: 30%;
+      max-width: 1000px;
+      height: auto;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .hero {
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 15px;
+    }
+
+    .hero .content {
+      max-width: 100%;
+      text-align: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero .cuboImg {
+      width: 80%;
+      height: auto;
+    }
+
+    span {
+      width: 80% !important;
     }
   }
 </style>

@@ -32,6 +32,13 @@ a, button {
 }
 
 .container {
-    width: max(100%, 1420px);
+    width: 100%;
+    margin-inline: auto;
     padding-inline: clamp(15px, 4vw, 40px);
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        padding: 40px 15px;
+    }
 }

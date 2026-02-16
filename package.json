@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/raleway": "^5.2.8",
-    "astro": "^5.17.1"
+    "astro": "^5.17.1",
+    "phosphor-astro": "^2.1.0"
   }
 }

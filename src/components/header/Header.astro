@@ -4,13 +4,15 @@ import LogoImg from "../../images/logo.webp";
 import Menu from "./Menu.astro";
 import Language from "./Language.astro";
 import Button from "./Button.astro";
+import List from "phosphor-astro/List.astro";
 ---
 
 <header class="container">
   <a href="/">
     <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
   </a>
-  <span>
+  <List color="white" id="menuToggle" />
+  <span id="menuContainer">
     <Menu />
     <Language />
     <div>
@@ -18,6 +20,7 @@ import Button from "./Button.astro";
     </div>
   </span>
 </header>
+<div class="overlay"></div>
 
 <style>
   header {
@@ -49,7 +52,7 @@ import Button from "./Button.astro";
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 0 0 38.5px;
+    padding: 0 0 0 60px;
     width: 23.53%;
   }
 
@@ -59,15 +62,90 @@ import Button from "./Button.astro";
     display: flex;
   }
 
+  .overlay {
+    display: none;
+  }
+
+  #menuToggle {
+    display: none;
+  }
+
   @media only screen and (max-width: 800px) {
     span {
       position: fixed;
-      left: 0;
+      left: -50%;
       width: 40%;
+      height: 100vh;
       top: 0;
       bottom: 0;
       flex-direction: column;
       background-color: black;
+      transition: left 0.3s ease;
+      z-index: 1000;
+
+      padding: 50px 20px;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    .overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0%;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    span.active {
+      left: 0;
+    }
+
+    #menuToggle {
+      display: block;
+      cursor: pointer;
+      width: 30px;
+    }
+
+    a {
+      border: none;
+      width: 220px;
+    }
+
+    header {
+      justify-content: space-between;
+    }
+
+    div {
+      padding: 0;
+      width: 100%;
     }
   }
 </style>
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const menuContainer = document.getElementById("menuContainer");
+  const overlay = document.getElementById("overlay");
+
+  menuToggle?.addEventListener("click", () => {
+    menuContainer?.classList.toggle("active");
+    overlay?.classList.toggle("active");
+  });
+
+  overlay?.addEventListener("click", () => {
+    menuContainer?.classList.remove("active");
+    overlay?.classList.remove("active");
+  });
+</script>

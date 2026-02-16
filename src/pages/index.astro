@@ -1,7 +1,61 @@
 ---
+import Button from "../components/header/Button.astro";
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import CuboImg from "../images/cubo.webp";
+import ButtonArrow from "../components/ButtonArrow.astro";
 ---
 
 <Layout>
-  <h1>TESTE</h1>
+  <div class="hero container">
+    <div class="content">
+      <h1>Tecnologia para <b>impulsionar</b> sua transformação digital</h1>
+      <h3>
+        Desenvolvemos soluções digitais sob medida para integrar sistemas,
+        otimizar processos e apoiar decisões estratégicas.
+      </h3>
+      <span class="button">
+        <ButtonArrow text="Quero começar" />
+      </span>
+    </div>
+
+    <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
+  </div>
 </Layout>
+
+<style>
+  .hero {
+    min-height: 80vh;
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    .content {
+      display: flex;
+      gap: 32px;
+      flex-direction: column;
+      max-width: clamp(40%, 650px, 50%);
+
+      h1 {
+        font-weight: 400;
+        font-size: clamp(2vw, 3.8vw, 76px);
+      }
+
+      h3 {
+        font-weight: 400;
+        line-height: 140%;
+      }
+
+      span {
+        width: 220px;
+      }
+    }
+
+    .cuboImg {
+      width: 38%;
+      height: 30%;
+    }
+  }
+</style>

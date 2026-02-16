@@ -1,8 +1,10 @@
 ---
-import Button from "../components/header/Button.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import CuboImg from "../images/cubo.webp";
+import Unilever from "../images/unilever.webp";
+import Evera from "../images/evera.webp";
+import LivingProof from "../images/living-proof.webp";
 import ButtonArrow from "../components/ButtonArrow.astro";
 ---
 
@@ -21,9 +23,30 @@ import ButtonArrow from "../components/ButtonArrow.astro";
 
     <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
   </div>
+
+  <div class="parceiros container">
+      <h2>Parceiros globais que confiam na Transformatech</h2>
+      <div>
+        <Image src={Unilever} class="img" alt="Unilever" />
+        <Image src={Evera} class="img" alt="Evera" />
+        <Image src={LivingProof} class="img" alt="Living Proof"/>
+      </div>
+  </div>
 </Layout>
 
 <style>
+  h3 {
+    font-weight: 400;
+    font-size: clamp(16px, 2.5vw, 24px);
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: clamp(18px, 3vw, 28px);
+    line-height: 1.4;
+  }
+
   .hero {
     min-height: 80vh;
     padding: 40px 0;
@@ -45,12 +68,6 @@ import ButtonArrow from "../components/ButtonArrow.astro";
         line-height: 1.2;
       }
 
-      h3 {
-        font-weight: 400;
-        font-size: clamp(16px, 2.5vw, 24px);
-        line-height: 1.4;
-      }
-
       span {
         width: max-content;
       }
@@ -60,6 +77,27 @@ import ButtonArrow from "../components/ButtonArrow.astro";
       width: 38%;
       max-width: 1000px;
       height: auto;
+    }
+  }
+
+  .parceiros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 30px;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 200px;
+
+      .img {
+        flex: 1;
+        max-width: 100%;    
+      }
     }
   }
 

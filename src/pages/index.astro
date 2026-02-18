@@ -20,33 +20,69 @@ import Caroussel from "../components/Caroussel.astro";
         otimizar processos e apoiar decisões estratégicas.
       </h3>
       <span class="button">
-        <ButtonArrow text="Quero começar" />
+        <ButtonArrowAnimation text="Quero começar" />
       </span>
     </div>
 
     <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
   </div>
 
-  <div class="parceiros container">
-      <h2>Parceiros globais que confiam na Transformatech</h2>
+  <!-- PARCEIROS GLOBAIS -->
+  <div class="parceiros container-boxed">
+      <h4><b>Parceiros globais</b> que confiam na Transformatech</h4>
       <div>
         <Image src={Unilever} class="img" alt="Unilever" />
         <Image src={Evera} class="img" alt="Evera" />
         <Image src={LivingProof} class="img" alt="Living Proof"/>
       </div>
   </div>
+
+  <!-- SERVIÇOS -->
+  <div class="servicos container">
+    <div class="container-boxed">
+      <div class="servicos-title">
+        <span class="text-container">
+          <h2>Soluções integradas, de ponta a ponta, para elevar sua competitividade</h2>
+          <h3>Atuamos do planejamento à execução, conectando tecnologia, processos e dados.</h3>
+        </span>
+
+        <span class="button-container">
+          <ButtonArrow text="Conhecer todos serviços" />
+        </span>
+      </div>
+      <Caroussel>
+        <div class="embla__slide solucoes-card">
+          <h4>transformação digital</h4>
+          <p>Capacitamos o seu negócio por meio de soluções inteligentes, conectadas e orientadas por dados.</p>
+        </div>
+      </Caroussel>
+    </div>
+  </div>
 </Layout>
 
 <style>
+  h2 {
+    font-weight: 400;
+    font-size: clamp(24px, 3vw, 60px);
+    line-height: 1.2;
+  }
+  
   h3 {
     font-weight: 400;
-    font-size: clamp(16px, 2.5vw, 24px);
+    font-size: clamp(16px, 1.5vw + 10px, 22px);    
     line-height: 1.4;
   }
 
-  h2 {
+  /* NOTEBOOK */
+  @media (max-width: 1600px) and (min-width: 1024px) {
+    h3 {
+      font-size: clamp(16px, 1.1vw + 8px, 18px) !important;
+    }
+  }
+
+  h4 {
     font-weight: 400;
-    font-size: clamp(18px, 3vw, 28px);
+    font-size: clamp(18px, 3vw, 28px) !important;
     line-height: 1.4;
   }
 
@@ -55,14 +91,14 @@ import Caroussel from "../components/Caroussel.astro";
     padding: 40px 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 40px;
 
     .content {
       display: flex;
       gap: 32px;
       flex-direction: column;
-      width: 50%;
+      width: 55%;
       max-width: 900px;
 
       h1 {
@@ -86,46 +122,131 @@ import Caroussel from "../components/Caroussel.astro";
   .parceiros {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 40px;
+    justify-content: space-between;
+    padding: 53px 0;
     gap: 30px;
 
     div {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 20px;
-      width: 100%;
-      max-width: 200px;
 
       .img {
         flex: 1;
-        max-width: 100%;    
+        max-width: 120px;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
       }
     }
   }
 
+  .servicos {
+    padding: 93px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+    .container-boxed {
+      padding: 0 !important;
+      
+      .servicos-title {
+        display: flex;
+        gap: 120px;
+        align-items: end;
+        .text-container {
+          width: 70%;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+        }
+
+        .button-container {
+          width: 30%;
+        }
+    }
+  }
+
+  .solucoes-card {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    text-align: center;
+    padding: 20px !important;
+    background-image: url('../images/transformacao-digital.webp');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px !important;
+    background-repeat: no-repeat;
+  }
+
+  /* CELULARES */
   @media only screen and (max-width: 800px) {
     .hero {
       flex-direction: column;
       align-items: center;
       padding: 40px 15px;
-    }
 
-    .hero .content {
+     .content {
       max-width: 100%;
       width: 100%;
       text-align: center;
       align-items: center;
       gap: 24px;
+      }
+      .cuboImg {
+        width: 80%;
+        height: auto;
+      }
+
+      span {
+        width: 80% !important;
+      }
     }
 
-    .hero .cuboImg {
-      width: 80%;
-      height: auto;
-    }
+    .parceiros {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 15px;
 
-    span {
-      width: 80% !important;
+      div {
+        .img {
+          max-width: 30%;
+          max-height: auto;
+        }
+      }
+    }
+  }
+
+  
+
+  /* TELAS MAIORES (SEM CONTROLE ESPECIFICO) */
+  @media only screen and (min-width: 1500px) {
+    .parceiros {
+      div {
+    gap: 40px;
+    
+    .img {
+      max-width: 180px;
+      max-height: 110px;
+    }
+  }
+    }
+  }
+
+  @media only screen and (min-width: 1700px) {
+    .parceiros {
+      div {
+    gap: 60px;
+    
+    .img {
+      max-width: 220px;
+      max-height: 130px;
+    }
+  }
     }
   }
 </style>

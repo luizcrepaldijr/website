@@ -1,0 +1,77 @@
+<div class="embla">
+    <div class="embla__viewport">
+        <div class="embla__container">
+            <slot />
+        </div>
+    </div>
+
+    <div class="embla__controls">
+        <button class="embla__prev">Anterior</button>
+        <button class="embla__next">Próximo</button>
+    </div>
+</div>  
+
+<style is:global>
+    .embla__viewport {
+        overflow: hidden;
+    }
+
+    .embla__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+        margin-left: -30px;
+    }
+
+    .embla__slide {
+        flex: 0 0 33.33%;
+        min-width: 0;
+        padding-left: 30px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .embla__slide {
+            flex: 0 0 100%;
+        }
+    }
+
+    .embla__controls {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+</style>
+
+<script>
+    import EmblaCarousel from 'embla-carousel';
+    import Autoplay from 'embla-carousel-autoplay';
+
+    // Selecionamos todos para evitar erros se houver mais de um na página
+    const nodes = document.querySelectorAll<HTMLElement>('.embla');
+
+    nodes.forEach((wrapperNode) => {
+        const viewportNode = wrapperNode.querySelector<HTMLElement>('.embla__viewport');
+        const prevBtn = wrapperNode.querySelector<HTMLElement>('.embla__prev');
+        const nextBtn = wrapperNode.querySelector<HTMLElement>('.embla__next');
+
+        // A verificação 'if (viewportNode)' resolve o erro de "null" do TypeScript
+        if (viewportNode) {
+
+            const autoplayOptions = {
+                delay: 5000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: true
+            };
+
+            const emblaApi = EmblaCarousel(
+                viewportNode, 
+                { 
+                    loop: true,
+                    align: 'start'
+                }, 
+                [Autoplay(autoplayOptions)]);
+
+            prevBtn?.addEventListener('click', () => emblaApi.scrollPrev());
+            nextBtn?.addEventListener('click', () => emblaApi.scrollNext());
+        }
+    });
+</script>

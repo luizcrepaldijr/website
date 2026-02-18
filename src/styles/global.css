@@ -11,7 +11,7 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2 {
+h1, h2, h4 {
     color: var(--neutral-white);
     margin: 0;
 }
@@ -37,8 +37,15 @@ a, button {
     padding-inline: clamp(15px, 4vw, 40px);
 }
 
+.container-boxed {
+    width: clamp(1100px, 90%, 1620px);
+    margin-inline: auto;
+    padding-inline: clamp(15px, 4vw, 40px);
+}
+
 @media only screen and (max-width: 800px) {
-    .container {
+    .container, .container-boxed {
         padding: 40px 15px;
+        max-width: 100%;
     }
 }

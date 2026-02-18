@@ -3,12 +3,12 @@ import { Image } from "astro:assets";
 import LogoImg from "../../images/logo.webp";
 import Menu from "./Menu.astro";
 import Language from "./Language.astro";
-import Button from "./Button.astro";
+import Button from "../buttons/Button.astro";
 import List from "phosphor-astro/List.astro";
 ---
 
 <header class="container">
-  <a href="/">
+    <a href="/">
     <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
   </a>
   <List color="white" id="menuToggle" />

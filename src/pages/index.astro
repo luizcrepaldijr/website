@@ -1,13 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import CuboImg from "../images/cubo.webp";
-import Unilever from "../images/unilever.webp";
-import Evera from "../images/evera.webp";
-import LivingProof from "../images/living-proof.webp";
+import CuboImg from "../images/home/hero/cubo.webp";
+import Unilever from "../images/home/parceirosglobais/unilever.webp";
+import Evera from "../images/home/parceirosglobais/evera.webp";
+import LivingProof from "../images/home/parceirosglobais/living-proof.webp";
+import SobreNosArk from "../images/home/sobrenos/sobre-nos-ark.webp";
+import TecnologiaAvancada from "../images/home/sobrenos/tecnologia-avancada.webp";
+import Logo from "../images/logo-2.webp";
 import ButtonArrowAnimation from "../components/buttons/ButtonArrowAnimation.astro";
 import ButtonArrow from "../components/buttons/ButtonArrow.astro";
+import ButtonArrowWhite from "../components/buttons/ButtonArrowWhite.astro";
 import Caroussel from "../components/Caroussel.astro";
+import Badge from "../components/Badge.astro";
+import Counter from "../components/Counter.astro";
 ---
 
 <Layout>
@@ -24,17 +30,19 @@ import Caroussel from "../components/Caroussel.astro";
       </span>
     </div>
 
-    <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
+    <div class="cubo-img-wrapper">
+      <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
+    </div>
   </div>
 
   <!-- PARCEIROS GLOBAIS -->
   <div class="parceiros container-boxed">
-      <h4><b>Parceiros globais</b> que confiam na Transformatech</h4>
-      <div>
-        <Image src={Unilever} class="img" alt="Unilever" />
-        <Image src={Evera} class="img" alt="Evera" />
-        <Image src={LivingProof} class="img" alt="Living Proof"/>
-      </div>
+    <h4><b>Parceiros globais</b> que confiam na Transformatech</h4>
+    <div>
+      <Image src={Unilever} class="img" alt="Unilever" />
+      <Image src={Evera} class="img" alt="Evera" />
+      <Image src={LivingProof} class="img" alt="Living Proof" />
+    </div>
   </div>
 
   <!-- SERVIÇOS -->
@@ -42,8 +50,14 @@ import Caroussel from "../components/Caroussel.astro";
     <div class="container-boxed">
       <div class="servicos-title">
         <span class="text-container">
-          <h2>Soluções integradas, de ponta a ponta, para elevar sua competitividade</h2>
-          <h3>Atuamos do planejamento à execução, conectando tecnologia, processos e dados.</h3>
+          <h2>
+            Soluções integradas, de ponta a ponta, para elevar sua
+            competitividade
+          </h2>
+          <h3>
+            Atuamos do planejamento à execução, conectando tecnologia, processos
+            e dados.
+          </h3>
         </span>
 
         <span class="button-container">
@@ -52,10 +66,182 @@ import Caroussel from "../components/Caroussel.astro";
       </div>
       <Caroussel>
         <div class="embla__slide solucoes-card">
-          <h4>transformação digital</h4>
-          <p>Capacitamos o seu negócio por meio de soluções inteligentes, conectadas e orientadas por dados.</p>
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
+        </div>
+
+        <div class="embla__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
+        </div>
+
+        <div class="embla__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
+        </div>
+
+        <div class="embla__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
+        </div>
+
+        <div class="embla__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
+        </div>
+
+        <div class="embla__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
+        </div>
+
+        <div class="embla__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Transformação Digital</h4>
+          <p>
+            Capacitamos o seu negócio por meio de soluções inteligentes,
+            conectadas e orientadas por dados.
+          </p>
         </div>
       </Caroussel>
+    </div>
+  </div>
+
+  <!-- SOBRE NÓS -->
+  <div class="sobre-nos container-boxed">
+    <Image class="ark" src={SobreNosArk} alt="" />
+    <Badge text="Sobre nós" />
+    <h2>
+      Somos uma consultoria especializada em digitalizar <b
+        >operações complexas</b
+      >
+    </h2>
+    <div class="sobrenos-content">
+      <Image src={TecnologiaAvancada} alt="" class="tecnologia-avancada" />
+      <div>
+        <h4>
+          Usamos tecnologia avançada para transformar dados em direção
+          estratégica.
+        </h4>
+
+        <h3>
+          Conectamos engenharia, automação e análise inteligente de forma
+          precisa. Com atuação no Brasil e nos Estados Unidos, trabalhamos
+          próximos à operação para entender desafios reais e antecipar
+          necessidades com soluções aplicadas e eficientes.
+          <br /><br />
+          Nossa cultura é prática e orientada a resultado: cada entrega precisa gerar
+          impacto mensurável, reduzir riscos e elevar competitividade. Mais do que
+          implementar sistemas, atuamos como parceiros de longo prazo, combinando
+          visão técnica e estratégia digital para evoluir a sua operação de ponta
+          a ponta.
+        </h3>
+
+        <ButtonArrow text="Saiba mais" />
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMEROS -->
+  <div class="numeros container-boxed">
+    <h2>Números que refletem nosso impacto</h2>
+    <div>
+      <Counter prenumber="+" number="400" description="Projetos entregues" />
+      <Counter prenumber="+" number="10" description="Fábricas conectadas" />
+      <Counter
+        prenumber="+"
+        number="200"
+        description="Fontes de dados conectadas"
+      />
+      <Counter prenumber="+" number="10" description="Cidades atendidas" />
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <div class="cases container-boxed">
+    <Badge text="Cases" />
+    <h2>Resultados que <b>transformam</b></h2>
+    <h3>
+      Casos reais que demonstram como nossas soluções geram impactos nos
+      negócios
+    </h3>
+
+    <ButtonArrow text="Conhecer cases" />
+  </div>
+
+  <!-- CURVA -->
+  <div class="curva container-boxed">
+    <h2>
+      Tecnologia avançada integrando dados, pessoas e processos de ponta a ponta
+      para negócios mais competitivos.
+    </h2>
+    <ButtonArrowWhite text="Falar com um especialista" />
+  </div>
+
+  <!-- DEPOIMENTOS -->
+  <div class="depoimentos container-boxed">
+    <Badge text="Depoimentos" />
+    <h2>O que dizem nossos clientes</h2>
+    <h3>
+      Feedbacks reais de quem já acelerou sua transformação digital com a gente.
+    </h3>
+  </div>
+
+  <!-- FALE COM O TIME -->
+  <div class="falecomtime container">
+    <div class="container-boxed">
+      <Image src={Logo} alt="Logo Transformatech" />
+      <h2>Pronto para digitalizar seu negócio?</h2>
+      <h3>
+        Fale com nosso time e descubra como a tecnologia pode trabalhar a favor
+        do seu negócio.
+      </h3>
+      <ButtonArrowAnimation text="Falar com um especialista" />
     </div>
   </div>
 </Layout>
@@ -66,10 +252,10 @@ import Caroussel from "../components/Caroussel.astro";
     font-size: clamp(24px, 3vw, 60px);
     line-height: 1.2;
   }
-  
+
   h3 {
     font-weight: 400;
-    font-size: clamp(16px, 1.5vw + 10px, 22px);    
+    font-size: clamp(16px, 1.5vw + 10px, 22px);
     line-height: 1.4;
   }
 
@@ -77,6 +263,10 @@ import Caroussel from "../components/Caroussel.astro";
   @media (max-width: 1600px) and (min-width: 1024px) {
     h3 {
       font-size: clamp(16px, 1.1vw + 8px, 18px) !important;
+    }
+
+    .solucoes-card p {
+      font-size: 16px !important;
     }
   }
 
@@ -88,7 +278,7 @@ import Caroussel from "../components/Caroussel.astro";
 
   .hero {
     min-height: 80vh;
-    padding: 40px 0;
+    padding: 40px 0 200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -112,11 +302,40 @@ import Caroussel from "../components/Caroussel.astro";
       }
     }
 
-    .cuboImg {
+    .cubo-img-wrapper {
       width: 38%;
       max-width: 1000px;
-      height: auto;
+      position: relative;
+      display: inline-block;
     }
+
+    .cuboImg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .cubo-img-wrapper::after {
+    content: "";
+    position: absolute;
+    display: block;
+    z-index: 1;
+
+    /* Estilos Desktop */
+    width: 2095.767px;
+    height: 116.358px;
+    border-radius: 1095.767px;
+    background: radial-gradient(
+      34.92% 51.47% at 67.73% 50%,
+      #0359bf 0%,
+      #0c2152 50%,
+      #0c111d 100%
+    );
+
+    /* Posicionamento Desktop */
+    bottom: -150px;
+    right: -400px;
   }
 
   .parceiros {
@@ -151,7 +370,10 @@ import Caroussel from "../components/Caroussel.astro";
 
     .container-boxed {
       padding: 0 !important;
-      
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+
       .servicos-title {
         display: flex;
         gap: 120px;
@@ -166,51 +388,213 @@ import Caroussel from "../components/Caroussel.astro";
         .button-container {
           width: 30%;
         }
+      }
     }
   }
 
   .solucoes-card {
-    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+
+    min-height: 520px;
+    margin-right: 16px;
+
     display: flex;
     flex-direction: column;
     justify-content: end;
-    text-align: center;
+    gap: 11px;
+
     padding: 20px !important;
-    background-image: url('../images/transformacao-digital.webp');
-    background-size: cover;
-    background-position: center;
     border-radius: 20px !important;
+
+    video {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      z-index: 0;
+    }
+
+    h4 {
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px) !important;
+    }
+
+    p {
+      font-size: clamp(16px, 1.2vw, 20px);
+      opacity: 0;
+      transform: translateY(10px);
+      max-height: 0;
+      overflow: hidden;
+
+      transition: all 1s ease;
+    }
+  }
+
+  .solucoes-card > :not(.bg-video) {
+    position: relative;
+    z-index: 2;
+  }
+
+  .solucoes-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      rgba(0, 51, 113, 0) 0%,
+      rgba(0, 51, 113, 0.7) 75%,
+      rgba(0, 51, 113, 0.9) 80%,
+      rgba(0, 51, 113, 1) 85%
+    );
+
+    transition: 1s ease;
+    z-index: 1;
+  }
+
+  .solucoes-card:hover::before {
+    background: linear-gradient(180deg, rgba(0, 51, 113, 0) 0%, #003371 78.63%);
+  }
+
+  .solucoes-card:hover p {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 200px;
+  }
+
+  .sobre-nos {
+    display: flex;
+    padding: 0 0 96px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .ark {
+      width: 749px !important;
+      height: auto;
+      mix-blend-mode: lighten;
+      margin-bottom: -40px;
+    }
+
+    h2 {
+      max-width: 1037px;
+      text-align: center;
+      margin: 32px 0 64px 0;
+    }
+
+    .sobrenos-content {
+      display: flex;
+      justify-content: space-between;
+
+      .tecnologia-avancada {
+        max-width: 45% !important;
+        height: auto;
+      }
+
+      div {
+        max-width: 50%;
+      }
+    }
+  }
+
+  .numeros {
+    display: flex;
+    padding: 96px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+
+    div {
+      display: flex;
+    }
+  }
+
+  .cases {
+    display: flex;
+    padding: 96px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .curva {
+    display: flex;
+    padding: 144px 0 !important;
+    flex-direction: column;
+    background-image: url(../images/home/curva/tecnologia-avancada-lines.webp);
+    background-position: center right;
+    background-size: contain;
     background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .depoimentos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 96px 0;
+  }
+
+  .falecomtime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 227px 0 133px;
   }
 
   /* CELULARES */
   @media only screen and (max-width: 800px) {
     .hero {
-      flex-direction: column;
+      flex-direction: column-reverse;
       align-items: center;
-      padding: 40px 15px;
+      padding: 40px 20px;
 
-     .content {
-      max-width: 100%;
-      width: 100%;
-      text-align: center;
-      align-items: center;
-      gap: 24px;
+      .content {
+        max-width: 100%;
+        width: 100%;
+        align-items: center;
+        gap: 24px;
       }
+
+      .cubo-img-wrapper {
+        width: 60%;
+      }
+
       .cuboImg {
-        width: 80%;
         height: auto;
       }
 
       span {
         width: 80% !important;
       }
+
+      .cubo-img-wrapper::after {
+        width: 300px;
+        height: 31.856px;
+        border-radius: 300px;
+        right: 70%;
+        transform: translateX(50%);
+        bottom: -40px;
+        background: radial-gradient(
+          34.92% 51.47% at 67.73% 50%,
+          #0359bf 0%,
+          #0c2152 50%,
+          #0c111d 100%
+        );
+      }
     }
 
     .parceiros {
       flex-direction: column;
       text-align: center;
-      padding: 40px 15px;
+      padding: 40px 20px;
 
       div {
         .img {
@@ -219,34 +603,72 @@ import Caroussel from "../components/Caroussel.astro";
         }
       }
     }
-  }
 
-  
+    .servicos {
+      padding: 40px 20px;
+
+      .container-boxed {
+        .servicos-title {
+          flex-direction: column;
+          align-items: start;
+          gap: 32px;
+
+          .text-container {
+            width: 95%;
+          }
+
+          .button-container {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .solucoes-card {
+      min-height: 420px;
+      padding: 10px;
+      margin-right: 8px;
+
+      p {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 200px;
+      }
+    }
+
+    .solucoes-card::before {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 51, 113, 0) 0%,
+        #003371 78.63%
+      );
+    }
+  }
 
   /* TELAS MAIORES (SEM CONTROLE ESPECIFICO) */
   @media only screen and (min-width: 1500px) {
     .parceiros {
       div {
-    gap: 40px;
-    
-    .img {
-      max-width: 180px;
-      max-height: 110px;
-    }
-  }
+        gap: 40px;
+
+        .img {
+          max-width: 180px;
+          max-height: 110px;
+        }
+      }
     }
   }
 
   @media only screen and (min-width: 1700px) {
     .parceiros {
       div {
-    gap: 60px;
-    
-    .img {
-      max-width: 220px;
-      max-height: 130px;
-    }
-  }
+        gap: 60px;
+
+        .img {
+          max-width: 220px;
+          max-height: 130px;
+        }
+      }
     }
   }
 </style>

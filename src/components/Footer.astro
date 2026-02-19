@@ -1,11 +1,54 @@
 ---
 import { Image } from "astro:assets";
 import LogoImg from "../images/logo.webp";
-import Microsoft from "../images/microsoft-solutions-partner.webp";
+import Microsoft from "../images/microsoft.webp";
 ---
 
 <footer class="container">
-  <a href="/">
-    <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
-  </a>
+  <div class="container-boxed">
+    <div class="items-menu">
+      <div class="item-1">
+        <a href="/">
+          <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
+        </a>
+
+        <h3>Integração digital que transforma desafios em evolução.</h3>
+        <Image
+          src={Microsoft}
+          class="microsoft"
+          alt="Microsoft Solutions Partner"
+        />
+      </div>
+      <div class="item-2">
+        <div class="link-1"></div>
+        <div class="link-2"></div>
+      </div>
+    </div>
+    <div class="copy"></div>
+  </div>
 </footer>
+
+<style>
+  footer {
+    padding: 74px 0 42px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 51, 113, 0) 0%,
+        rgba(0, 51, 113, 0.2) 100%
+      ),
+      var(--neutral-background, #0c111d);
+
+    .item-1 {
+      display: flex;
+      flex-direction: column;
+      max-width: 262px;
+
+      .logo,
+      .microsoft {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+</style>

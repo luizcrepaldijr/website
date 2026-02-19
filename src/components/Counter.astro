@@ -1,0 +1,81 @@
+---
+interface Props {
+  prenumber: string;
+  number: string;
+  description: string;
+}
+
+const { prenumber = "", number, description } = Astro.props;
+---
+
+<div class="contador">
+  <div class="number-container">
+    <span>{prenumber}</span><span class="counter-value" data-target={number}>
+      0
+    </span>
+  </div>
+  <p class="description">
+    {description}
+  </p>
+</div>
+
+<style>
+  .contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza conforme a imagem */
+    gap: 18px;
+    color: white; /* Ajuste conforme seu tema */
+    padding: 0 62px;
+  }
+
+  .number-container {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.8;
+  }
+</style>
+
+<script>
+  const observers = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const endValue = parseInt(target.getAttribute("data-target") || "0");
+          animateValue(target, 0, endValue, 2000); // 2000ms = 2 segundos de duração
+          observers.unobserve(target); // Para de observar após animar uma vez
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  function animateValue(
+    obj: HTMLElement,
+    start: number,
+    end: number,
+    duration: number,
+  ) {
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start).toString();
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Inicializa todos os contadores da página
+  document
+    .querySelectorAll(".counter-value")
+    .forEach((el) => observers.observe(el));
+</script>

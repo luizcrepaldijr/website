@@ -1,5 +1,8 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import icon from 'astro-icon'; // Make sure this is imported
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [
+    icon(), // Ensure this is called here
+  ],
+});

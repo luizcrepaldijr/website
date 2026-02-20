@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import "../../styles/pages/home/home.css";
+import "../../styles/pages/home.css";
+import FaleConosco from "../../components/FaleConosco.astro";
 import { Image } from "astro:assets";
 import CuboImg from "../../images/home/hero/cubo.webp";
 import Unilever from "../../images/home/parceirosglobais/unilever.webp";
@@ -397,15 +398,9 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
   </div>
 
   <!-- FALE COM O TIME -->
-  <div class="falecomtime container">
-    <div class="container-boxed">
-      <Image src={Logo} alt="Logo Transformatech" class="logo-falecomtime" />
-      <h2>¿Listo para digitalizar tu negocio?</h2>
-      <h3>
-        Hable con nuestro equipo y descubra cómo la tecnología puede trabajar a
-        favor de tu negocio.
-      </h3>
-      <ButtonArrowAnimation text="Hablar con un especialista" />
-    </div>
-  </div>
+  <FaleConosco
+    title="¿Listo para digitalizar tu negocio?"
+    subtitle="Hable con nuestro equipo y descubra cómo la tecnología puede trabajar a favor de tu negocio."
+    buttonText="Hablar con un especialista"
+  />
 </Layout>

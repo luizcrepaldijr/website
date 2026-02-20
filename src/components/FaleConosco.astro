@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../images/logo-2.webp";
+import ButtonArrowAnimation from "./buttons/ButtonArrowAnimation.astro";
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    buttonText?: string;
+}
+
+const {
+    title = "Pronto para digitalizar seu negócio?",
+    subtitle = "Fale com nosso time e descubra como a tecnologia pode trabalhar a favor do seu negócio.",
+    buttonText = "Falar com um especialista",
+} = Astro.props;
+---
+
+<div class="falecomtime container">
+    <div class="container-boxed">
+        <Image src={Logo} alt="Logo Transformatech" class="logo-falecomtime" />
+        <h2>{title}</h2>
+        <h3>{subtitle}</h3>
+        <ButtonArrowAnimation text={buttonText} />
+    </div>
+</div>

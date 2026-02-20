@@ -1,8 +1,15 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <a href="#">
   <div class="border-mask">
     <div class="border-glow"></div>
   </div>
-  Entrar em contato
+  {t("btn.contact")}
 </a>
 
 <style>

@@ -1,18 +1,40 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const pathname = Astro.url.pathname;
+
+const localizePath = (path: string) => {
+  return lang === "pt" ? path : `/${lang}${path}`;
+};
 ---
 
 <div class="menulink">
-  <a href="/" class={pathname === "/" ? "active" : ""}>Início</a>
-  <a href="/solucoes" class={pathname.startsWith("/solucoes") ? "active" : ""}
-    >Soluções</a
+  <a
+    href={localizePath("/")}
+    class={pathname === localizePath("/") ? "active" : ""}
   >
-  <a href="/sobre-nos" class={pathname.startsWith("/sobre-nos") ? "active" : ""}
-    >Sobre nós</a
+    {t("nav.home")}
+  </a>
+  <a
+    href={localizePath("/solucoes")}
+    class={pathname.startsWith(localizePath("/solucoes")) ? "active" : ""}
   >
-  <a href="/cases" class={pathname.startsWith("/cases") ? "active" : ""}
-    >Cases</a
+    {t("nav.solutions")}
+  </a>
+  <a
+    href={localizePath("/sobre-nos")}
+    class={pathname.startsWith(localizePath("/sobre-nos")) ? "active" : ""}
   >
+    {t("nav.about")}
+  </a>
+  <a
+    href={localizePath("/cases")}
+    class={pathname.startsWith(localizePath("/cases")) ? "active" : ""}
+  >
+    {t("nav.cases")}
+  </a>
 </div>
 
 <style>

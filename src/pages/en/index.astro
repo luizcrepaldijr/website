@@ -1,0 +1,383 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/pages/home/home.css";
+import { Image } from "astro:assets";
+import CuboImg from "../../images/home/hero/cubo.webp";
+import Unilever from "../../images/home/parceirosglobais/unilever.webp";
+import Evera from "../../images/home/parceirosglobais/evera.webp";
+import LivingProof from "../../images/home/parceirosglobais/living-proof.webp";
+import SobreNosArk from "../../images/home/sobrenos/sobre-nos-ark.webp";
+import TecnologiaAvancada from "../../images/home/sobrenos/tecnologia-avancada.webp";
+import Logo from "../../images/logo-2.webp";
+import OperacaoUnilever from "../../images/home/cases/operacao-unilever.webp";
+import PowerBI from "../../images/home/cases/power-bi.webp";
+import Python from "../../images/home/cases/python.webp";
+import Meta from "../../images/home/cases/meta.webp";
+import Azure from "../../images/home/cases/azure.webp";
+import ReactAdmin from "../../images/home/cases/react-admin.webp";
+import CurvaImg from "../../images/home/curva/curva.webp";
+import ButtonArrowAnimation from "../../components/buttons/ButtonArrowAnimation.astro";
+import ButtonArrow from "../../components/buttons/ButtonArrow.astro";
+import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
+import CarousselSolutions from "../../components/carroussel/CarousselSolutions.astro";
+import CarousselCases from "../../components/carroussel/CarousselCases.astro";
+import Badge from "../../components/Badge.astro";
+import Badge2 from "../../components/Badge2.astro";
+import Counter from "../../components/Counter.astro";
+import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
+---
+
+<Layout>
+  <!-- HERO -->
+  <div class="hero container-boxed">
+    <div class="content">
+      <h1>Technology to <b>drive</b> your digital transformation</h1>
+      <h3>
+        We develop custom digital solutions to integrate systems, optimize
+        processes, and support strategic decisions.
+      </h3>
+      <span class="button">
+        <ButtonArrowAnimation text="Get started" />
+      </span>
+    </div>
+
+    <div class="cubo-img-wrapper">
+      <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
+    </div>
+  </div>
+
+  <!-- PARCEIROS GLOBAIS -->
+  <div class="parceiros container-boxed">
+    <h4><b>Global partners</b> who trust Transformatech</h4>
+    <div>
+      <Image src={Unilever} class="img" alt="Unilever" />
+      <Image src={Evera} class="img" alt="Evera" />
+      <Image src={LivingProof} class="img" alt="Living Proof" />
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <div class="servicos container">
+    <div class="container-boxed">
+      <div class="servicos-title">
+        <span class="text-container">
+          <h2>
+            End-to-end integrated solutions to elevate your competitiveness
+          </h2>
+          <h3>
+            We act from planning to execution, connecting technology, processes,
+            and data.
+          </h3>
+        </span>
+
+        <span class="button-container">
+          <ButtonArrow text="See all services" />
+        </span>
+      </div>
+      <CarousselSolutions>
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+          </video>
+
+          <h4>Digital Transformation</h4>
+          <p>
+            We empower your business through intelligent, connected, and
+            data-driven solutions.
+          </p>
+        </div>
+      </CarousselSolutions>
+    </div>
+  </div>
+
+  <!-- SOBRE NÓS -->
+  <div class="sobre-nos container-boxed">
+    <Image class="ark" src={SobreNosArk} alt="" />
+    <Badge text="About us" />
+    <h2>
+      We are a consultancy specialized in digitizing <b>complex operations</b>
+    </h2>
+    <div class="sobrenos-content">
+      <Image src={TecnologiaAvancada} alt="" class="tecnologia-avancada" />
+      <div>
+        <h4>
+          We use advanced technology to transform data into strategic direction.
+        </h4>
+
+        <h3>
+          We connect engineering, automation, and intelligent analysis
+          precisely. Operating in Brazil and the US, we work closely with
+          operations to understand real challenges and anticipate needs with
+          applied and efficient solutions.
+          <br /><br />
+          Our culture is practical and results-oriented: every delivery must generate
+          measurable impact, reduce risks, and elevate competitiveness. More than
+          implementing systems, we act as long-term partners, combining technical
+          vision and digital strategy to evolve your operation from end to end.
+        </h3>
+
+        <ButtonArrow text="Learn more" />
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMEROS -->
+  <div class="numeros container-boxed">
+    <h2>Numbers that reflect our impact</h2>
+    <div class="counter-wrapper">
+      <Counter prenumber="+" number="400" description="Delivered projects" />
+      <Counter prenumber="+" number="10" description="Connected factories" />
+      <Counter
+        prenumber="+"
+        number="200"
+        description="Connected data sources"
+      />
+      <Counter prenumber="+" number="10" description="Cities served" />
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <div class="cases container-boxed">
+    <Badge text="Cases" />
+    <h2>Results that <b>transform</b></h2>
+    <h3>Real cases demonstrating how our solutions generate business impact</h3>
+    <CarousselCases>
+      <div class="embla__cases__slide">
+        <div class="cases-card">
+          <Image
+            src={OperacaoUnilever}
+            alt="Operação Unilever"
+            class="unilever"
+          />
+          <div class="cases-card-content">
+            <div class="badges">
+              <Badge2 text="Digital Transformation" />
+              <Badge2 text="Industry" />
+            </div>
+            <h2>How we helped reduce rework by 42% in Unilever's operations</h2>
+            <p>
+              We digitized critical flows and activated intelligent alerts on a
+              Unilever production line, eliminating manual failures and
+              increasing efficiency in weeks.
+            </p>
+            <div class="tecnologias">
+              <h4>Technologies used</h4>
+              <div class="tecnologias-images">
+                <Image
+                  src={PowerBI}
+                  alt="Power BI"
+                  class="powerbi tecnologia-img"
+                />
+                <Image
+                  src={Python}
+                  alt="Python"
+                  class="python tecnologia-img"
+                />
+                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                <Image
+                  src={ReactAdmin}
+                  alt="React Admin"
+                  class="react-admin tecnologia-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="embla__cases__slide">
+        <div class="cases-card">
+          <Image
+            src={OperacaoUnilever}
+            alt="Operação Unilever"
+            class="unilever"
+          />
+          <div class="cases-card-content">
+            <div class="badges">
+              <Badge2 text="Digital Transformation" />
+              <Badge2 text="Industry" />
+            </div>
+            <h2>How we helped reduce rework by 42% in Unilever's operations</h2>
+            <p>
+              We digitized critical flows and activated intelligent alerts on a
+              Unilever production line, eliminating manual failures and
+              increasing efficiency in weeks.
+            </p>
+            <div class="tecnologias">
+              <h4>Technologies used</h4>
+              <div class="tecnologias-images">
+                <Image
+                  src={PowerBI}
+                  alt="Power BI"
+                  class="powerbi tecnologia-img"
+                />
+                <Image
+                  src={Python}
+                  alt="Python"
+                  class="python tecnologia-img"
+                />
+                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                <Image
+                  src={ReactAdmin}
+                  alt="React Admin"
+                  class="react-admin tecnologia-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="embla__cases__slide">
+        <div class="cases-card">
+          <Image
+            src={OperacaoUnilever}
+            alt="Operação Unilever"
+            class="unilever"
+          />
+          <div class="cases-card-content">
+            <div class="badges">
+              <Badge2 text="Digital Transformation" />
+              <Badge2 text="Industry" />
+            </div>
+            <h2>How we helped reduce rework by 42% in Unilever's operations</h2>
+            <p>
+              We digitized critical flows and activated intelligent alerts on a
+              Unilever production line, eliminating manual failures and
+              increasing efficiency in weeks.
+            </p>
+            <div class="tecnologias">
+              <h4>Technologies used</h4>
+              <div class="tecnologias-images">
+                <Image
+                  src={PowerBI}
+                  alt="Power BI"
+                  class="powerbi tecnologia-img"
+                />
+                <Image
+                  src={Python}
+                  alt="Python"
+                  class="python tecnologia-img"
+                />
+                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                <Image
+                  src={ReactAdmin}
+                  alt="React Admin"
+                  class="react-admin tecnologia-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </CarousselCases>
+    <ButtonArrow text="See our cases" />
+  </div>
+
+  <!-- CURVA -->
+  <div class="curva container-boxed">
+    <h2>
+      Advanced technology integrating data, people, and processes from end to
+      end for more competitive businesses.
+    </h2>
+    <ButtonArrowWhite text="Talk to an expert" />
+    <Image src={CurvaImg} alt="Curva" class="curva-img" />
+  </div>
+
+  <!-- DEPOIMENTOS -->
+  <div class="depoimentos container-boxed">
+    <Badge text="Testimonials" />
+    <h2>What our clients say</h2>
+    <h3>
+      Real feedback from those who have accelerated their digital transformation
+      with us.
+    </h3>
+
+    <TestimonialsMarquee />
+  </div>
+
+  <!-- FALE COM O TIME -->
+  <div class="falecomtime container">
+    <div class="container-boxed">
+      <Image src={Logo} alt="Logo Transformatech" class="logo-falecomtime" />
+      <h2>Ready to digitize your business?</h2>
+      <h3>
+        Talk to our team and discover how technology can work for your business.
+      </h3>
+      <ButtonArrowAnimation text="Talk to an expert" />
+    </div>
+  </div>
+</Layout>

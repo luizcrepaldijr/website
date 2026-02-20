@@ -3,13 +3,22 @@ import { Image } from "astro:assets";
 import LogoImg from "../images/logo.webp";
 import Microsoft from "../images/microsoft.webp";
 import { Icon } from "astro-icon/components";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <footer class="container">
   <div class="container-boxed">
     <div class="items-menu">
       <div class="item-1">
-        <a href="/">
+        <a href={translatePath("/")}>
           <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
         </a>
 
@@ -22,16 +31,18 @@ import { Icon } from "astro-icon/components";
       </div>
       <div class="item-2">
         <div class="link-1">
-          <h4>Links úteis</h4>
+          <h4>{t("footer.useful_links")}</h4>
           <ul>
-            <li>Início</li>
-            <li>Soluções</li>
-            <li>Sobre nós</li>
-            <li>Cases</li>
+            <li><a href={translatePath("/")}>{t("nav.home")}</a></li>
+            <li>
+              <a href={translatePath("/solucoes")}>{t("nav.solutions")}</a>
+            </li>
+            <li><a href={translatePath("/sobre-nos")}>{t("nav.about")}</a></li>
+            <li><a href={translatePath("/cases")}>{t("nav.cases")}</a></li>
           </ul>
         </div>
         <div class="link-2">
-          <h4>Contato</h4>
+          <h4>{t("footer.contact")}</h4>
           <ul>
             <li>
               <Icon name="whatsapp" class="logo-icon whatsapp" /> +55 (11) 98765-4321
@@ -53,13 +64,14 @@ import { Icon } from "astro-icon/components";
     </div>
     <div class="copy">
       <p>
-        © Copyright TransformaTech. Todos os direitos reservados. | Designed by
-        <b>Lab Culture</b>
+        {t("footer.copyright")}
       </p>
-      <a href="#">Política de Privacidade</a>
+      <a href="#">{t("footer.privacy")}</a>
     </div>
   </div>
 </footer>
+
+
 
 <style>
   footer {

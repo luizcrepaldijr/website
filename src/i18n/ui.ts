@@ -54,7 +54,7 @@ export const ui = {
     "btn.all_services": "Ver todos los servicios",
     "btn.cases": "Ver nuestros casos",
     "btn.more": "Saber más",
-    "btn.contact": "Entrar en contacto",
+    "btn.contact": "Contactar",
 
     "footer.useful_links": "Enlaces útiles",
     "footer.contact": "Contacto",

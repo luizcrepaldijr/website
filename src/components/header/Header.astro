@@ -5,34 +5,45 @@ import Menu from "./Menu.astro";
 import Language from "./Language.astro";
 import Button from "../buttons/Button.astro";
 import List from "phosphor-astro/List.astro";
+import Close from "phosphor-astro/X.astro";
 ---
 
-<header class="container">
+<header>
+  <div class="container-boxed header-inner">
     <a href="/">
-    <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
-  </a>
-  <List color="white" id="menuToggle" />
-  <span id="menuContainer">
-    <Menu />
-    <Language />
-    <div>
-      <Button />
-    </div>
-  </span>
+      <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
+    </a>
+    <List color="white" id="menuToggle" />
+    <Close color="white" id="menuClose" />
+    <span id="menuContainer">
+      <Menu />
+      <Language />
+      <div class="button-wrapper">
+        <Button />
+      </div>
+    </span>
+  </div>
 </header>
 <div class="overlay"></div>
 
 <style>
   header {
-    display: flex;
     width: 100%;
     height: 14vh;
     max-height: 150px;
-    justify-content: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     border-top: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 6.75px 7.5px 18.75px 0 rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 99999;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: center;
+    padding: 0 !important;
+    height: 100%;
   }
 
   a {
@@ -52,7 +63,7 @@ import List from "phosphor-astro/List.astro";
     object-fit: contain;
   }
 
-  div {
+  .button-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +81,8 @@ import List from "phosphor-astro/List.astro";
     display: none;
   }
 
-  #menuToggle {
+  #menuToggle,
+  #menuClose {
     display: none;
   }
 
@@ -78,22 +90,26 @@ import List from "phosphor-astro/List.astro";
     header {
       height: 14vh;
     }
-    
+
+    .header-inner {
+      padding: 0 20px !important;
+    }
+
     .logo {
       max-width: 100%;
     }
 
     span {
       position: fixed;
-      left: -50%;
-      width: 40%;
+      left: -60%;
+      width: 60%;
       height: 100vh;
       top: 0;
       bottom: 0;
       flex-direction: column;
       background-color: black;
       transition: left 0.3s ease;
-      z-index: 1000;
+      z-index: 99999;
 
       padding: 50px 20px;
       justify-content: flex-start;
@@ -112,7 +128,7 @@ import List from "phosphor-astro/List.astro";
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
-      z-index: 999;
+      z-index: 99998;
     }
 
     .overlay.active {
@@ -130,42 +146,66 @@ import List from "phosphor-astro/List.astro";
       width: 30px;
     }
 
+    #menuToggle.hidden {
+      display: none;
+    }
+
+    #menuClose {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+    }
+
+    #menuClose.active {
+      display: block;
+    }
+
     a {
       border: none;
       width: 220px;
     }
 
-    header {
+    .header-inner {
+      padding: 15px;
       justify-content: space-between;
     }
 
-    div {
+    .button-wrapper {
       padding: 0;
       width: 100%;
     }
 
-    .container {
-      padding: 15px;
+    #menuContainer .button-wrapper {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 1800px) {
+    .container-boxed {
+      width: 80% !important;
     }
 
-    #menuContainer div {
-      display: none;
+    header {
+      height: 14vh;
+      max-height: 100%;
     }
   }
 </style>
 
 <script>
   const menuToggle = document.getElementById("menuToggle");
+  const menuClose = document.getElementById("menuClose");
   const menuContainer = document.getElementById("menuContainer");
-  const overlay = document.getElementById("overlay");
+  const overlay = document.querySelector(".overlay");
 
-  menuToggle?.addEventListener("click", () => {
+  function toggleMenu() {
     menuContainer?.classList.toggle("active");
     overlay?.classList.toggle("active");
-  });
+    menuToggle?.classList.toggle("hidden");
+    menuClose?.classList.toggle("active");
+  }
 
-  overlay?.addEventListener("click", () => {
-    menuContainer?.classList.remove("active");
-    overlay?.classList.remove("active");
-  });
+  menuToggle?.addEventListener("click", toggleMenu);
+  menuClose?.addEventListener("click", toggleMenu);
+  overlay?.addEventListener("click", toggleMenu);
 </script>

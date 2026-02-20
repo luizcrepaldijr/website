@@ -1,8 +1,18 @@
+---
+const pathname = Astro.url.pathname;
+---
+
 <div class="menulink">
-  <a href="#">Início</a>
-  <a href="#">Soluções</a>
-  <a href="#">Sobre nós</a>
-  <a href="#">Cases</a>
+  <a href="/" class={pathname === "/" ? "active" : ""}>Início</a>
+  <a href="/solucoes" class={pathname.startsWith("/solucoes") ? "active" : ""}
+    >Soluções</a
+  >
+  <a href="/sobre-nos" class={pathname.startsWith("/sobre-nos") ? "active" : ""}
+    >Sobre nós</a
+  >
+  <a href="/cases" class={pathname.startsWith("/cases") ? "active" : ""}
+    >Cases</a
+  >
 </div>
 
 <style>
@@ -20,6 +30,13 @@
     width: 25%;
     font-size: 1vw;
     text-align: center;
+    color: var(--neutral-light-gray);
+    font-weight: 400;
+  }
+
+  a.active {
+    font-weight: 700 !important;
+    color: var(--neutral-white, #fff);
   }
 
   @media only screen and (max-width: 800px) {

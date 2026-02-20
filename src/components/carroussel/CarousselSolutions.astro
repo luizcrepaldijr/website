@@ -2,25 +2,25 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="embla">
-  <div class="embla__viewport">
-    <div class="embla__container">
+<div class="embla__solutions">
+  <div class="embla__solutions__viewport">
+    <div class="embla__solutions__container">
       <slot />
     </div>
   </div>
 
-  <div class="embla__controls">
-    <button class="embla__prev">
+  <div class="embla__solutions__controls">
+    <button class="embla__solutions__prev">
       <Icon name="arrow-left" />
     </button>
-    <button class="embla__next">
+    <button class="embla__solutions__next">
       <Icon name="arrow-right" />
     </button>
   </div>
 </div>
 
 <style>
-  .embla__controls {
+  .embla__solutions__controls {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +44,7 @@ import { Icon } from "astro-icon/components";
   }
 
   @media only screen and (max-width: 800px) {
-    .embla__controls {
+    .embla__solutions__controls {
       margin-top: 20px;
       padding: 0;
       gap: 20px;
@@ -58,27 +58,27 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <style is:global>
-  .embla__viewport {
+  .embla__solutions__viewport {
     overflow: hidden;
   }
 
-  .embla__container {
+  .embla__solutions__container {
     display: flex;
     touch-action: pan-y pinch-zoom;
   }
 
-  .embla__slide {
-    flex: 0 0 25%;
+  .embla__solutions__slide {
+    flex: 0 0 24%;
     min-width: 0;
   }
 
   @media only screen and (max-width: 767px) {
-    .embla__slide {
+    .embla__solutions__slide {
       flex: 0 0 70%;
     }
   }
 
-  .embla__controls {
+  .embla__solutions__controls {
     margin-top: 10px;
     display: flex;
     gap: 10px;
@@ -87,33 +87,23 @@ import { Icon } from "astro-icon/components";
 
 <script>
   import EmblaCarousel from "embla-carousel";
-  import Autoplay from "embla-carousel-autoplay";
 
   // Selecionamos todos para evitar erros se houver mais de um na página
-  const nodes = document.querySelectorAll<HTMLElement>(".embla");
+  const nodes = document.querySelectorAll(".embla__solutions");
 
   nodes.forEach((wrapperNode) => {
-    const viewportNode =
-      wrapperNode.querySelector<HTMLElement>(".embla__viewport");
-    const prevBtn = wrapperNode.querySelector<HTMLElement>(".embla__prev");
-    const nextBtn = wrapperNode.querySelector<HTMLElement>(".embla__next");
+    const viewportNode = wrapperNode.querySelector(
+      ".embla__solutions__viewport"
+    );
+    const prevBtn = wrapperNode.querySelector(".embla__solutions__prev");
+    const nextBtn = wrapperNode.querySelector(".embla__solutions__next");
 
     // A verificação 'if (viewportNode)' resolve o erro de "null" do TypeScript
     if (viewportNode) {
-      const autoplayOptions = {
-        delay: 5000,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-      };
-
-      const emblaApi = EmblaCarousel(
-        viewportNode,
-        {
-          loop: true,
-          align: "start",
-        },
-        [Autoplay(autoplayOptions)],
-      );
+      const emblaApi = EmblaCarousel(viewportNode as HTMLElement, {
+        loop: true,
+        align: "start",
+      });
 
       prevBtn?.addEventListener("click", () => emblaApi.scrollPrev());
       nextBtn?.addEventListener("click", () => emblaApi.scrollNext());

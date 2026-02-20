@@ -16,9 +16,8 @@ import ArrowRight from "phosphor-astro/ArrowRight.astro";
 <style>
   a {
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--stroke-sm, 1px) solid var(--neutral-white, #fcfcfd);
     position: relative;
-    width: 100%;
     text-align: center;
     font-size: 1vw !important;
     padding: 20px 40px !important;
@@ -40,8 +39,8 @@ import ArrowRight from "phosphor-astro/ArrowRight.astro";
 
   @media only screen and (max-width: 800px) {
     a {
-      font-size: 24px !important;
-      padding: 2.5vw !important;
+      font-size: 4.5vw !important;
+      padding: 2.5vw 8vw !important;
     }
 
     .arrow {

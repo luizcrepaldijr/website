@@ -23,9 +23,9 @@ const { prenumber = "", number, description } = Astro.props;
   .contador {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza conforme a imagem */
+    align-items: center;
     gap: 18px;
-    color: white; /* Ajuste conforme seu tema */
+    color: white;
     padding: 0 62px;
   }
 
@@ -38,6 +38,21 @@ const { prenumber = "", number, description } = Astro.props;
     font-size: 1.2rem;
     margin: 0;
     opacity: 0.8;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .contador {
+      padding: 0 20px;
+      gap: 20px;
+    }
+
+    .number-container {
+      font-size: 2rem;
+    }
+
+    .description {
+      font-size: 0.8rem;
+    }
   }
 </style>
 
@@ -53,14 +68,14 @@ const { prenumber = "", number, description } = Astro.props;
         }
       });
     },
-    { threshold: 0.5 },
+    { threshold: 0.5 }
   );
 
   function animateValue(
     obj: HTMLElement,
     start: number,
     end: number,
-    duration: number,
+    duration: number
   ) {
     let startTimestamp: number | null = null;
     const step = (timestamp: number) => {

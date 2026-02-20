@@ -1,0 +1,74 @@
+<div class="embla__cases">
+    <div class="embla__cases__viewport">
+        <div class="embla__cases__container">
+            <slot />
+        </div>
+    </div>
+</div>
+
+<style>
+    .embla__cases {
+        margin: 32px 0;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .embla__cases {
+            display: block !important;
+            width: 100%;
+        }
+    }
+</style>
+
+<style is:global>
+    .embla__cases__viewport {
+        overflow: hidden;
+    }
+
+    .embla__cases__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+    }
+
+    .embla__cases__slide {
+        flex: 0 0 75%;
+        margin-right: 16px;
+        min-width: 0;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .embla__cases__slide {
+            flex: 0 0 90%;
+            min-width: 0;
+        }
+    }
+</style>
+
+<script>
+    import EmblaCarousel from "embla-carousel";
+    import Autoplay from "embla-carousel-autoplay";
+
+    const nodes = document.querySelectorAll(".embla__cases");
+
+    nodes.forEach((wrapperNode) => {
+        const viewportNode = wrapperNode.querySelector(
+            ".embla__cases__viewport"
+        );
+
+        if (viewportNode) {
+            const autoplayOptions = {
+                delay: 6000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: true,
+            };
+
+            EmblaCarousel(
+                viewportNode as HTMLElement,
+                {
+                    loop: true,
+                    align: "center",
+                },
+                [Autoplay(autoplayOptions)]
+            );
+        }
+    });
+</script>

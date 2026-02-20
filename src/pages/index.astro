@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/pages/home/home.css";
 import { Image } from "astro:assets";
 import CuboImg from "../images/home/hero/cubo.webp";
 import Unilever from "../images/home/parceirosglobais/unilever.webp";
@@ -8,12 +9,22 @@ import LivingProof from "../images/home/parceirosglobais/living-proof.webp";
 import SobreNosArk from "../images/home/sobrenos/sobre-nos-ark.webp";
 import TecnologiaAvancada from "../images/home/sobrenos/tecnologia-avancada.webp";
 import Logo from "../images/logo-2.webp";
+import OperacaoUnilever from "../images/home/cases/operacao-unilever.webp";
+import PowerBI from "../images/home/cases/power-bi.webp";
+import Python from "../images/home/cases/python.webp";
+import Meta from "../images/home/cases/meta.webp";
+import Azure from "../images/home/cases/azure.webp";
+import ReactAdmin from "../images/home/cases/react-admin.webp";
+import CurvaImg from "../images/home/curva/curva.webp";
 import ButtonArrowAnimation from "../components/buttons/ButtonArrowAnimation.astro";
 import ButtonArrow from "../components/buttons/ButtonArrow.astro";
 import ButtonArrowWhite from "../components/buttons/ButtonArrowWhite.astro";
-import Caroussel from "../components/Caroussel.astro";
+import CarousselSolutions from "../components/carroussel/CarousselSolutions.astro";
+import CarousselCases from "../components/carroussel/CarousselCases.astro";
 import Badge from "../components/Badge.astro";
+import Badge2 from "../components/Badge2.astro";
 import Counter from "../components/Counter.astro";
+import TestimonialsMarquee from "../components/TestimonialsMarquee.astro";
 ---
 
 <Layout>
@@ -64,8 +75,8 @@ import Counter from "../components/Counter.astro";
           <ButtonArrow text="Conhecer todos serviços" />
         </span>
       </div>
-      <Caroussel>
-        <div class="embla__slide solucoes-card">
+      <CarousselSolutions>
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -77,7 +88,7 @@ import Counter from "../components/Counter.astro";
           </p>
         </div>
 
-        <div class="embla__slide solucoes-card">
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -89,7 +100,7 @@ import Counter from "../components/Counter.astro";
           </p>
         </div>
 
-        <div class="embla__slide solucoes-card">
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -101,7 +112,7 @@ import Counter from "../components/Counter.astro";
           </p>
         </div>
 
-        <div class="embla__slide solucoes-card">
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -113,7 +124,7 @@ import Counter from "../components/Counter.astro";
           </p>
         </div>
 
-        <div class="embla__slide solucoes-card">
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -125,7 +136,7 @@ import Counter from "../components/Counter.astro";
           </p>
         </div>
 
-        <div class="embla__slide solucoes-card">
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -137,7 +148,7 @@ import Counter from "../components/Counter.astro";
           </p>
         </div>
 
-        <div class="embla__slide solucoes-card">
+        <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
             <source src="/videos/transformacao-digital.webm" type="video/mp4" />
           </video>
@@ -148,7 +159,7 @@ import Counter from "../components/Counter.astro";
             conectadas e orientadas por dados.
           </p>
         </div>
-      </Caroussel>
+      </CarousselSolutions>
     </div>
   </div>
 
@@ -190,7 +201,7 @@ import Counter from "../components/Counter.astro";
   <!-- NUMEROS -->
   <div class="numeros container-boxed">
     <h2>Números que refletem nosso impacto</h2>
-    <div>
+    <div class="counter-wrapper">
       <Counter prenumber="+" number="400" description="Projetos entregues" />
       <Counter prenumber="+" number="10" description="Fábricas conectadas" />
       <Counter
@@ -210,7 +221,143 @@ import Counter from "../components/Counter.astro";
       Casos reais que demonstram como nossas soluções geram impactos nos
       negócios
     </h3>
-
+    <CarousselCases>
+      <div class="embla__cases__slide">
+        <div class="cases-card">
+          <Image
+            src={OperacaoUnilever}
+            alt="Operação Unilever"
+            class="unilever"
+          />
+          <div class="cases-card-content">
+            <div class="badges">
+              <Badge2 text="Transformação digital" />
+              <Badge2 text="Indústria" />
+            </div>
+            <h2>
+              Como ajudamos a reduzir 42% do retrabalho na operação da Unilever
+            </h2>
+            <p>
+              Digitalizamos fluxos críticos e ativamos alertas inteligentes em
+              uma linha de produção da Unilever, eliminando falhas manuais e
+              aumentando a eficiência em poucas semanas.
+            </p>
+            <div class="tecnologias">
+              <h4>Tecnologias utilizadas</h4>
+              <div class="tecnologias-images">
+                <Image
+                  src={PowerBI}
+                  alt="Power BI"
+                  class="powerbi tecnologia-img"
+                />
+                <Image
+                  src={Python}
+                  alt="Python"
+                  class="python tecnologia-img"
+                />
+                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                <Image
+                  src={ReactAdmin}
+                  alt="React Admin"
+                  class="react-admin tecnologia-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="embla__cases__slide">
+        <div class="cases-card">
+          <Image
+            src={OperacaoUnilever}
+            alt="Operação Unilever"
+            class="unilever"
+          />
+          <div class="cases-card-content">
+            <div class="badges">
+              <Badge2 text="Transformação digital" />
+              <Badge2 text="Indústria" />
+            </div>
+            <h2>
+              Como ajudamos a reduzir 42% do retrabalho na operação da Unilever
+            </h2>
+            <p>
+              Digitalizamos fluxos críticos e ativamos alertas inteligentes em
+              uma linha de produção da Unilever, eliminando falhas manuais e
+              aumentando a eficiência em poucas semanas.
+            </p>
+            <div class="tecnologias">
+              <h4>Tecnologias utilizadas</h4>
+              <div class="tecnologias-images">
+                <Image
+                  src={PowerBI}
+                  alt="Power BI"
+                  class="powerbi tecnologia-img"
+                />
+                <Image
+                  src={Python}
+                  alt="Python"
+                  class="python tecnologia-img"
+                />
+                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                <Image
+                  src={ReactAdmin}
+                  alt="React Admin"
+                  class="react-admin tecnologia-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="embla__cases__slide">
+        <div class="cases-card">
+          <Image
+            src={OperacaoUnilever}
+            alt="Operação Unilever"
+            class="unilever"
+          />
+          <div class="cases-card-content">
+            <div class="badges">
+              <Badge2 text="Transformação digital" />
+              <Badge2 text="Indústria" />
+            </div>
+            <h2>
+              Como ajudamos a reduzir 42% do retrabalho na operação da Unilever
+            </h2>
+            <p>
+              Digitalizamos fluxos críticos e ativamos alertas inteligentes em
+              uma linha de produção da Unilever, eliminando falhas manuais e
+              aumentando a eficiência em poucas semanas.
+            </p>
+            <div class="tecnologias">
+              <h4>Tecnologias utilizadas</h4>
+              <div class="tecnologias-images">
+                <Image
+                  src={PowerBI}
+                  alt="Power BI"
+                  class="powerbi tecnologia-img"
+                />
+                <Image
+                  src={Python}
+                  alt="Python"
+                  class="python tecnologia-img"
+                />
+                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                <Image
+                  src={ReactAdmin}
+                  alt="React Admin"
+                  class="react-admin tecnologia-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </CarousselCases>
     <ButtonArrow text="Conhecer cases" />
   </div>
 
@@ -221,6 +368,7 @@ import Counter from "../components/Counter.astro";
       para negócios mais competitivos.
     </h2>
     <ButtonArrowWhite text="Falar com um especialista" />
+    <Image src={CurvaImg} alt="Curva" class="curva-img" />
   </div>
 
   <!-- DEPOIMENTOS -->
@@ -230,12 +378,14 @@ import Counter from "../components/Counter.astro";
     <h3>
       Feedbacks reais de quem já acelerou sua transformação digital com a gente.
     </h3>
+
+    <TestimonialsMarquee />
   </div>
 
   <!-- FALE COM O TIME -->
   <div class="falecomtime container">
     <div class="container-boxed">
-      <Image src={Logo} alt="Logo Transformatech" />
+      <Image src={Logo} alt="Logo Transformatech" class="logo-falecomtime" />
       <h2>Pronto para digitalizar seu negócio?</h2>
       <h3>
         Fale com nosso time e descubra como a tecnologia pode trabalhar a favor
@@ -245,430 +395,3 @@ import Counter from "../components/Counter.astro";
     </div>
   </div>
 </Layout>
-
-<style>
-  h2 {
-    font-weight: 400;
-    font-size: clamp(24px, 3vw, 60px);
-    line-height: 1.2;
-  }
-
-  h3 {
-    font-weight: 400;
-    font-size: clamp(16px, 1.5vw + 10px, 22px);
-    line-height: 1.4;
-  }
-
-  /* NOTEBOOK */
-  @media (max-width: 1600px) and (min-width: 1024px) {
-    h3 {
-      font-size: clamp(16px, 1.1vw + 8px, 18px) !important;
-    }
-
-    .solucoes-card p {
-      font-size: 16px !important;
-    }
-  }
-
-  h4 {
-    font-weight: 400;
-    font-size: clamp(18px, 3vw, 28px) !important;
-    line-height: 1.4;
-  }
-
-  .hero {
-    min-height: 80vh;
-    padding: 40px 0 200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-
-    .content {
-      display: flex;
-      gap: 32px;
-      flex-direction: column;
-      width: 55%;
-      max-width: 900px;
-
-      h1 {
-        font-weight: 400;
-        font-size: clamp(28px, 4vw, 80px);
-        line-height: 1.2;
-      }
-
-      span {
-        width: max-content;
-      }
-    }
-
-    .cubo-img-wrapper {
-      width: 38%;
-      max-width: 1000px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .cuboImg {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-
-  .cubo-img-wrapper::after {
-    content: "";
-    position: absolute;
-    display: block;
-    z-index: 1;
-
-    /* Estilos Desktop */
-    width: 2095.767px;
-    height: 116.358px;
-    border-radius: 1095.767px;
-    background: radial-gradient(
-      34.92% 51.47% at 67.73% 50%,
-      #0359bf 0%,
-      #0c2152 50%,
-      #0c111d 100%
-    );
-
-    /* Posicionamento Desktop */
-    bottom: -150px;
-    right: -400px;
-  }
-
-  .parceiros {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 53px 0;
-    gap: 30px;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-
-      .img {
-        flex: 1;
-        max-width: 120px;
-        height: auto;
-        max-height: 80px;
-        object-fit: contain;
-      }
-    }
-  }
-
-  .servicos {
-    padding: 93px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
-
-    .container-boxed {
-      padding: 0 !important;
-      display: flex;
-      flex-direction: column;
-      gap: 52px;
-
-      .servicos-title {
-        display: flex;
-        gap: 120px;
-        align-items: end;
-        .text-container {
-          width: 70%;
-          display: flex;
-          flex-direction: column;
-          gap: 32px;
-        }
-
-        .button-container {
-          width: 30%;
-        }
-      }
-    }
-  }
-
-  .solucoes-card {
-    position: relative;
-    overflow: hidden;
-
-    min-height: 520px;
-    margin-right: 16px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: 11px;
-
-    padding: 20px !important;
-    border-radius: 20px !important;
-
-    video {
-      position: absolute;
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-      z-index: 0;
-    }
-
-    h4 {
-      font-weight: 600;
-      font-size: clamp(20px, 2vw, 26px) !important;
-    }
-
-    p {
-      font-size: clamp(16px, 1.2vw, 20px);
-      opacity: 0;
-      transform: translateY(10px);
-      max-height: 0;
-      overflow: hidden;
-
-      transition: all 1s ease;
-    }
-  }
-
-  .solucoes-card > :not(.bg-video) {
-    position: relative;
-    z-index: 2;
-  }
-
-  .solucoes-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-      rgba(0, 51, 113, 0) 0%,
-      rgba(0, 51, 113, 0.7) 75%,
-      rgba(0, 51, 113, 0.9) 80%,
-      rgba(0, 51, 113, 1) 85%
-    );
-
-    transition: 1s ease;
-    z-index: 1;
-  }
-
-  .solucoes-card:hover::before {
-    background: linear-gradient(180deg, rgba(0, 51, 113, 0) 0%, #003371 78.63%);
-  }
-
-  .solucoes-card:hover p {
-    opacity: 1;
-    transform: translateY(0);
-    max-height: 200px;
-  }
-
-  .sobre-nos {
-    display: flex;
-    padding: 0 0 96px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .ark {
-      width: 749px !important;
-      height: auto;
-      mix-blend-mode: lighten;
-      margin-bottom: -40px;
-    }
-
-    h2 {
-      max-width: 1037px;
-      text-align: center;
-      margin: 32px 0 64px 0;
-    }
-
-    .sobrenos-content {
-      display: flex;
-      justify-content: space-between;
-
-      .tecnologia-avancada {
-        max-width: 45% !important;
-        height: auto;
-      }
-
-      div {
-        max-width: 50%;
-      }
-    }
-  }
-
-  .numeros {
-    display: flex;
-    padding: 96px 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-
-    div {
-      display: flex;
-    }
-  }
-
-  .cases {
-    display: flex;
-    padding: 96px 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-  }
-
-  .curva {
-    display: flex;
-    padding: 144px 0 !important;
-    flex-direction: column;
-    background-image: url(../images/home/curva/tecnologia-avancada-lines.webp);
-    background-position: center right;
-    background-size: contain;
-    background-repeat: no-repeat;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-  }
-
-  .depoimentos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 96px 0;
-  }
-
-  .falecomtime {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 227px 0 133px;
-  }
-
-  /* CELULARES */
-  @media only screen and (max-width: 800px) {
-    .hero {
-      flex-direction: column-reverse;
-      align-items: center;
-      padding: 40px 20px;
-
-      .content {
-        max-width: 100%;
-        width: 100%;
-        align-items: center;
-        gap: 24px;
-      }
-
-      .cubo-img-wrapper {
-        width: 60%;
-      }
-
-      .cuboImg {
-        height: auto;
-      }
-
-      span {
-        width: 80% !important;
-      }
-
-      .cubo-img-wrapper::after {
-        width: 300px;
-        height: 31.856px;
-        border-radius: 300px;
-        right: 70%;
-        transform: translateX(50%);
-        bottom: -40px;
-        background: radial-gradient(
-          34.92% 51.47% at 67.73% 50%,
-          #0359bf 0%,
-          #0c2152 50%,
-          #0c111d 100%
-        );
-      }
-    }
-
-    .parceiros {
-      flex-direction: column;
-      text-align: center;
-      padding: 40px 20px;
-
-      div {
-        .img {
-          max-width: 30%;
-          max-height: auto;
-        }
-      }
-    }
-
-    .servicos {
-      padding: 40px 20px;
-
-      .container-boxed {
-        .servicos-title {
-          flex-direction: column;
-          align-items: start;
-          gap: 32px;
-
-          .text-container {
-            width: 95%;
-          }
-
-          .button-container {
-            width: 100%;
-          }
-        }
-      }
-    }
-
-    .solucoes-card {
-      min-height: 420px;
-      padding: 10px;
-      margin-right: 8px;
-
-      p {
-        opacity: 1;
-        transform: translateY(0);
-        max-height: 200px;
-      }
-    }
-
-    .solucoes-card::before {
-      background: linear-gradient(
-        180deg,
-        rgba(0, 51, 113, 0) 0%,
-        #003371 78.63%
-      );
-    }
-  }
-
-  /* TELAS MAIORES (SEM CONTROLE ESPECIFICO) */
-  @media only screen and (min-width: 1500px) {
-    .parceiros {
-      div {
-        gap: 40px;
-
-        .img {
-          max-width: 180px;
-          max-height: 110px;
-        }
-      }
-    }
-  }
-
-  @media only screen and (min-width: 1700px) {
-    .parceiros {
-      div {
-        gap: 60px;
-
-        .img {
-          max-width: 220px;
-          max-height: 130px;
-        }
-      }
-    }
-  }
-</style>

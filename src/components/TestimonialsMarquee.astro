@@ -1,0 +1,143 @@
+<div class="testimonials-marquee-container">
+    <!-- Top Row: Scrolls to RIGHT -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track scroll-right">
+            <!-- Duplicate content to ensure seamless scroll -->
+            {
+                Array.from({ length: 10 }).map((_) => (
+                    <div class="testimonial-card">
+                        <p>
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua."
+                        </p>
+                        <div class="author">
+                            <strong>Client Name</strong>
+                            <span>Company CEO</span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+
+    <!-- Bottom Row: Scrolls to LEFT -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track scroll-left">
+            <!-- Duplicate content to ensure seamless scroll -->
+            {
+                Array.from({ length: 10 }).map((_) => (
+                    <div class="testimonial-card">
+                        <p>
+                            "Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat."
+                        </p>
+                        <div class="author">
+                            <strong>Another Client</strong>
+                            <span>CTO, Tech Corp</span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .testimonials-marquee-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        overflow: hidden; /* Critical to prevent page scroll */
+        padding: 40px 0;
+    }
+
+    .marquee-wrapper {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent
+        );
+    }
+
+    .marquee-track {
+        display: flex;
+        gap: 24px;
+        width: max-content;
+        will-change: transform;
+    }
+
+    .scroll-right {
+        animation: scrollRight 40s linear infinite;
+    }
+
+    .scroll-left {
+        animation: scrollLeft 40s linear infinite;
+    }
+
+    /* Pause on hover for better UX */
+    .marquee-wrapper:hover .marquee-track {
+        animation-play-state: paused;
+    }
+
+    .testimonial-card {
+        background: #101828;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 24px;
+        width: 350px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        backdrop-filter: blur(10px);
+    }
+
+    .testimonial-card p {
+        color: #d0d5dd;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .author {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author strong {
+        color: white;
+        font-size: 14px;
+    }
+
+    .author span {
+        color: #98a2b3;
+        font-size: 12px;
+    }
+
+    @keyframes scrollLeft {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes scrollRight {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+</style>

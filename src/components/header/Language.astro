@@ -1,24 +1,132 @@
-<div>
-  <a href=""> PT </a>
+---
+import CaretDown from "phosphor-astro/CaretDown.astro";
+
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith("/en");
+const isEs = pathname.startsWith("/es");
+const isPt = !isEn && !isEs;
+---
+
+<div class="lang-wrapper">
+  <div class="lang-active">
+    <span>{isPt ? "PT" : isEn ? "EN" : "ES"}</span>
+    <CaretDown class="caret" color="white" />
+  </div>
+  <div class="lang-dropdown">
+    <a href="/" class={isPt ? "active" : ""}>PT</a>
+    <a href="/en" class={isEn ? "active" : ""}>EN</a>
+    <a href="/es" class={isEs ? "active" : ""}>ES</a>
+  </div>
 </div>
 
 <style>
-  div {
+  .lang-wrapper {
+    position: relative;
     width: 8.24%;
     display: flex;
     font-size: 1vw;
-    font-weight: bold;
     align-items: center;
     justify-content: center;
     padding: 0 38.5px;
     border-right: 1px solid #ffffff40;
+    cursor: pointer;
+  }
+
+  .lang-active {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--neutral-white, #fff);
+  }
+
+  .lang-active .caret {
+    width: 0.8vw;
+    transition: transform 0.3s ease;
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #101828;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  /* Cria ponte invisível para o hover não se perder no vão */
+  .lang-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+  }
+
+  .lang-wrapper:hover .lang-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 10px);
+  }
+
+  .lang-wrapper:hover .caret {
+    transform: rotate(180deg);
+  }
+
+  a {
+    transition: color 0.3s ease;
+    color: var(--neutral-light-gray);
+    font-weight: 400;
+    text-align: center;
+  }
+
+  a:hover {
+    color: var(--neutral-white, #fff);
+  }
+
+  a.active {
+    font-weight: 700;
+    color: var(--neutral-white, #fff);
   }
 
   @media only screen and (max-width: 800px) {
-    div {
+    .lang-wrapper {
       width: 100%;
       padding: 0;
       border: none;
+      flex-direction: column;
+      cursor: default;
+    }
+
+    .lang-active {
+      display: none;
+    }
+
+    .lang-dropdown {
+      position: static;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    a {
       font-size: 18px;
     }
   }

@@ -42,7 +42,14 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
     </div>
 
     <div class="cubo-img-wrapper">
-      <Image src={CuboImg} class="cuboImg" alt="cubo girando" />
+      <video
+        src="/videos/cubo-hero.webm"
+        class="cuboImg"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster={CuboImg.src}></video>
     </div>
   </div>
 
@@ -77,13 +84,37 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
       <CarousselSolutions>
         <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
-            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+            <source src="/videos/industria-4-0.webm" type="video/mp4" />
           </video>
 
-          <h4>Digital Transformation</h4>
+          <h4>Industry 4.0</h4>
           <p>
-            We empower your business through intelligent, connected, and
-            data-driven solutions.
+            We connect the physical and digital worlds to increase visibility,
+            control, and industrial performance.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/engenharia.webm" type="video/mp4" />
+          </video>
+
+          <h4>Engineering</h4>
+          <p>
+            We transform complex ideas into viable and efficient technical
+            solutions.
+          </p>
+        </div>
+
+        <div class="embla__solutions__slide solucoes-card">
+          <video class="bg-video" autoplay muted loop playsinline>
+            <source src="/videos/agricultura-4-0.webm" type="video/mp4" />
+          </video>
+
+          <h4>Agriculture 4.0</h4>
+          <p>
+            We help producers and agricultural operations make better decisions
+            using real data from the field.
           </p>
         </div>
 
@@ -101,61 +132,25 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
 
         <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
-            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+            <source src="/videos/robotica.webm" type="video/mp4" />
           </video>
 
-          <h4>Digital Transformation</h4>
+          <h4>Robotics</h4>
           <p>
-            We empower your business through intelligent, connected, and
-            data-driven solutions.
+            We automate processes with intelligent robotic systems to increase
+            productivity, precision, and operational safety.
           </p>
         </div>
 
         <div class="embla__solutions__slide solucoes-card">
           <video class="bg-video" autoplay muted loop playsinline>
-            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
+            <source src="/videos/realidade-digital.webm" type="video/mp4" />
           </video>
 
-          <h4>Digital Transformation</h4>
+          <h4>Digital Reality</h4>
           <p>
-            We empower your business through intelligent, connected, and
-            data-driven solutions.
-          </p>
-        </div>
-
-        <div class="embla__solutions__slide solucoes-card">
-          <video class="bg-video" autoplay muted loop playsinline>
-            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
-          </video>
-
-          <h4>Digital Transformation</h4>
-          <p>
-            We empower your business through intelligent, connected, and
-            data-driven solutions.
-          </p>
-        </div>
-
-        <div class="embla__solutions__slide solucoes-card">
-          <video class="bg-video" autoplay muted loop playsinline>
-            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
-          </video>
-
-          <h4>Digital Transformation</h4>
-          <p>
-            We empower your business through intelligent, connected, and
-            data-driven solutions.
-          </p>
-        </div>
-
-        <div class="embla__solutions__slide solucoes-card">
-          <video class="bg-video" autoplay muted loop playsinline>
-            <source src="/videos/transformacao-digital.webm" type="video/mp4" />
-          </video>
-
-          <h4>Digital Transformation</h4>
-          <p>
-            We empower your business through intelligent, connected, and
-            data-driven solutions.
+            We integrate the physical and digital worlds through immersive
+            experiences that enhance training, operations, and decision-making.
           </p>
         </div>
       </CarousselSolutions>
@@ -170,7 +165,14 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
       We are a consultancy specialized in digitizing <b>complex operations</b>
     </h2>
     <div class="sobrenos-content">
-      <Image src={TecnologiaAvancada} alt="" class="tecnologia-avancada" />
+      <video
+        src="/videos/transformatech.webm"
+        class="tecnologia-avancada"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster={TecnologiaAvancada.src}></video>
       <div>
         <h4>
           We use advanced technology to transform data into strategic direction.
@@ -354,7 +356,14 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
       end for more competitive businesses.
     </h2>
     <ButtonArrowWhite text="Talk to an expert" />
-    <Image src={CurvaImg} alt="Curva" class="curva-img" />
+    <video
+      src="/videos/curva.webm"
+      class="curva-img"
+      autoplay
+      loop
+      muted
+      playsinline
+      poster={CurvaImg.src}></video>
   </div>
 
   <!-- DEPOIMENTOS -->

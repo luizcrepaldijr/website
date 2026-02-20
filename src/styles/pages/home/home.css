@@ -64,6 +64,8 @@ h4 {
         width: 100%;
         height: auto;
         display: block;
+        -webkit-mask-image: radial-gradient(circle, black 30%, transparent 75%);
+        mask-image: radial-gradient(circle, black 30%, transparent 75%);
     }
 }
 
@@ -241,6 +243,8 @@ h4 {
         .tecnologia-avancada {
             max-width: 46% !important;
             height: auto;
+            -webkit-mask-image: radial-gradient(circle, black 30%, transparent 90%);
+            mask-image: radial-gradient(circle, black 30%, transparent 90%);
         }
 
         div {
@@ -406,20 +410,27 @@ h4 {
     display: flex;
     padding: 144px 0 !important;
     flex-direction: column;
-    background-image: url('/src/images/home/curva/tecnologia-avancada-lines.webp');
-    background-position: center right;
-    background-size: contain;
-    background-repeat: no-repeat;
     align-items: start;
     justify-content: center;
     gap: 48px;
+    position: relative;
 
     .curva-img {
-        display: none;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100%;
+        width: 50%;
+        object-fit: contain;
+        z-index: -1;
+        -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+        mask-image: radial-gradient(circle, black 30%, transparent 70%);
     }
 
     h2 {
-        max-width: 900px;
+        max-width: 60%;
         font-size: clamp(24px, 3vw, 48px);
     }
 }
@@ -658,12 +669,19 @@ h4 {
         h2 {
             font-size: 22px;
             line-height: 1.4;
+            max-width: 100%;
         }
 
         .curva-img {
             display: block;
+            margin-top: -40px;
+            z-index: -1;
             width: 100%;
             height: auto;
+            position: relative;
+            transform: none;
+            right: auto;
+            top: auto;
         }
     }
 

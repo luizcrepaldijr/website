@@ -6,11 +6,15 @@ import Language from "./Language.astro";
 import Button from "../buttons/Button.astro";
 import List from "phosphor-astro/List.astro";
 import Close from "phosphor-astro/X.astro";
+import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const localizePath = useTranslatedPath(lang);
 ---
 
 <header>
   <div class="container-boxed header-inner">
-    <a href="/">
+    <a href={localizePath("/")}>
       <Image src={LogoImg} class="logo" alt="Transformatech Advisors" />
     </a>
     <List color="white" id="menuToggle" />

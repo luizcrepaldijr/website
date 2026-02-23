@@ -122,9 +122,10 @@
 }
 
 .comofazemos {
-    padding: 80px 0 118px;
+    padding: 250px 0 !important;
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: space-between;
     gap: 40px;
 
@@ -134,27 +135,28 @@
         flex-direction: column;
         justify-content: start;
         align-items: start;
-        width: 40%;
-        max-width: 457px;
+        width: 50%;
 
-        h1 {
+        h2 {
             font-weight: 400;
-            font-size: clamp(28px, 4vw, 80px);
+            font-size: clamp(28px, 4vw, 48px);
             line-height: 1.2;
+            max-width: 600px;
         }
 
         h3 {
             font-weight: 400;
             font-size: clamp(16px, 1.5vw + 10px, 18px);
             line-height: 1.4;
-            max-width: 290px;
         }
     }
 
     .comofazemos-img-wrapper {
-        width: 65%;
+        width: 80%;
+        height: auto;
         max-width: 1000px;
-        position: relative;
+        position: absolute;
+        right: -200px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -164,8 +166,68 @@
         width: 100%;
         height: auto;
         display: block;
-        -webkit-mask-image: radial-gradient(circle, black 30%, transparent 50%);
-        mask-image: radial-gradient(circle, black 30%, transparent 50%);
+        -webkit-mask-image: radial-gradient(circle, black 20%, transparent 50%);
+        mask-image: radial-gradient(circle, black 20%, transparent 50%);
+    }
+}
+
+.tecnologias {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 92px 0;
+    gap: 40px;
+
+    .content-desktop {
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        width: 20%;
+
+        h2 {
+            font-weight: 400;
+            font-size: clamp(40px, 10vw, 108px);
+            line-height: 1.2;
+            max-width: 600px;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw + 10px, 24px);
+            line-height: 1;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw + 10px, 36px);
+            line-height: 1.4;
+        }
+    }
+
+    .content-mobile {
+        display: none;
+    }
+
+    .tecnologias-img-wrapper {
+        width: 80%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tecnologias-img-desktop {
+        width: 100%;
+        height: auto;
+        display: block;
+        -webkit-mask-image: radial-gradient(circle, black 20%, transparent 99%);
+        mask-image: radial-gradient(circle, black 20%, transparent 99%);
+    }
+
+    .tecnologias-img-mobile {
+        display: none;
     }
 }
 
@@ -243,7 +305,7 @@
     }
 
     .comofazemos {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         text-align: center;
         justify-content: center;
@@ -252,21 +314,81 @@
         .content {
             max-width: 100%;
             width: 100%;
+            margin-top: -50px;
             align-items: center;
             gap: 24px;
 
             h3 {
-                max-width: 240px;
+                max-width: 100%;
             }
         }
 
         .comofazemos-img-wrapper {
             width: 100%;
+            position: relative !important;
+            right: 0;
         }
 
         .esferaImg {
             height: auto;
             transform: scale(1);
+        }
+    }
+
+    .tecnologias {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 40px 20px 80px;
+
+        .content-desktop {
+            display: none;
+        }
+
+        .content-mobile {
+            display: flex;
+            justify-content: center;
+            max-width: 100%;
+            width: 100%;
+            align-items: center;
+            gap: 24px;
+
+            h3 {
+                max-width: 240px;
+                font-weight: 400;
+                font-size: clamp(16px, 1.5vw + 10px, 24px);
+                line-height: 1;
+
+                span {
+                    font-weight: 400;
+                    font-size: clamp(24px, 10vw, 40px);
+                    line-height: 1.2;
+                }
+            }
+        }
+
+        .tecnologias-img-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .tecnologias-img-desktop {
+            display: none;
+        }
+
+        .tecnologias-img-mobile {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .comofazemos {
+        .comofazemos-img-wrapper {
+            right: -100px;
         }
     }
 }

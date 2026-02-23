@@ -10,10 +10,14 @@ import EngenhariaImg from "../images/solucoes/engenharia-solucao.webp";
 import Agricultura40Img from "../images/solucoes/agricultura-4-0-solucao.webp";
 import IotImg from "../images/solucoes/iot-solucao.webp";
 import EsferaImg from "../images/solucoes/esfera.webp";
+import TecnologiasDesktop from "../images/solucoes/tecnologias-desktop.webp";
+import TecnologiasMobile from "../images/solucoes/tecnologias-mobile.webp";
 import Image from "astro/components/Image.astro";
 import Accordion from "../components/Accordion.astro";
 import ButtonArrowSquare from "../components/buttons/ButtonArrowSquare.astro";
 import Badge from "../components/Badge.astro";
+import FaleConosco from "../components/FaleConosco.astro";
+import SolucoesSection from "../components/SolucoesSection.astro";
 ---
 
 <Layout>
@@ -67,207 +71,7 @@ import Badge from "../components/Badge.astro";
             <Icon name="dot" />
         </div>
     </div>
-    <div class="solucoes-list container-boxed">
-        <div class="solucoes-item">
-            <Image
-                src={TransformacaoDigitalImg}
-                alt="Transformacao Digital"
-                class="solucoes-item-img"
-            />
-
-            <div class="content">
-                <h2>Transformação digital</h2>
-
-                <h3>
-                    Capacitamos o seu negócio por meio de soluções inteligentes,
-                    conectadas e orientadas por dados.
-                </h3>
-                <p>
-                    Ajudamos as organizações a desbloquear todo o potencial de
-                    seus dados e tecnologias ao integrar ferramentas
-                    inteligentes, automatizar processos e possibilitar insights
-                    em tempo real que impulsionam a tomada de decisões
-                    estratégicas.
-                </p>
-
-                <div class="accordion-wrapper">
-                    <Accordion
-                        title="Consultoria"
-                        description="Ajudamos empresas de bens de consumo a impulsionar sua transformação digital com foco em impacto real. Com experiência prática em operações industriais, definimos projetos, tecnologias e estratégias que geram resultados concretos, por meio de roadmaps escaláveis e alinhados ao negócio."
-                    />
-                    <Accordion
-                        title="Integração de inteligência artificial"
-                        description="Desenvolvemos soluções baseadas em Inteligência Artificial projetadas para resolver desafios operacionais específicos. Ao combinar nossa experiência no setor com capacidades avançadas de IA, criamos soluções que aumentam a eficiência, impulsionam a produtividade e geram ganhos mensuráveis."
-                    />
-                    <Accordion
-                        title="Data Analytics & Applied Data Science"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Treinamento & Bootcamp"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="solucoes-item">
-            <Image
-                src={Industria40Img}
-                alt="Industria 4.0"
-                class="solucoes-item-img"
-            />
-
-            <div class="content">
-                <h2>Industria 4.0</h2>
-
-                <h3>
-                    Conectamos o mundo físico e digital para aumentar
-                    visibilidade, controle e desempenho industrial.
-                </h3>
-                <p>
-                    Atuamos em ambientes industriais onde a falta de integração
-                    entre máquinas, sistemas e dados limita a eficiência
-                    operacional. Implementamos soluções de Industry 4.0 que
-                    conectam o chão de fábrica ao ambiente digital, permitindo
-                    operações mais previsíveis, seguras e orientadas por dados.
-                </p>
-
-                <div class="accordion-wrapper">
-                    <Accordion
-                        title="Infraestrutura de dados e redes OT"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Cibersegurança"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Programação"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Suporte em campo e remoto"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="solucoes-item">
-            <Image
-                src={EngenhariaImg}
-                alt="Engenharia"
-                class="solucoes-item-img"
-            />
-
-            <div class="content">
-                <h2>Engenharia</h2>
-
-                <h3>
-                    Transformamos ideias complexas em soluções técnicas viáveis
-                    e eficientes.
-                </h3>
-                <p>
-                    Oferecemos serviços de engenharia ponta a ponta para
-                    projetos que exigem rigor técnico, planejamento e execução
-                    precisa. Atuamos desde a concepção até a implementação,
-                    conectando engenharia, tecnologia e operação para reduzir
-                    riscos e otimizar resultados.
-                </p>
-
-                <div class="accordion-wrapper">
-                    <Accordion
-                        title="Gerenciamento de projetos"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Estudos conceituais e de viabilidade"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Estimativas de capital e documentação técnica"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Modelagem e simulação"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Projetos elétricos, mecânicos e de automação"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="solucoes-item">
-            <Image
-                src={Agricultura40Img}
-                alt="Agricultura 4.0"
-                class="solucoes-item-img"
-            />
-
-            <div class="content">
-                <h2>Agricultura 4.0</h2>
-
-                <h3>
-                    Ajudamos produtores e operações agrícolas a tomar decisões
-                    melhores usando dados reais do campo.
-                </h3>
-                <p>
-                    Aplicamos tecnologia para transformar informações do solo e
-                    do ambiente em inteligência prática, permitindo irrigar
-                    melhor, reduzir desperdícios, aumentar produtividade e
-                    operar de forma mais sustentável e previsível.
-                </p>
-
-                <div class="accordion-wrapper">
-                    <Accordion
-                        title="Gerenciamento de projetos"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Estudos conceituais e de viabilidade"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Estimativas de capital e documentação técnica"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Modelagem e simulação"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                    <Accordion
-                        title="Projetos elétricos, mecânicos e de automação"
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="solucoes-item">
-            <Image src={IotImg} alt="IoT" class="solucoes-item-img" />
-
-            <div class="content">
-                <h2>IoT</h2>
-
-                <h3>
-                    Conectamos ativos, processos e ambientes para gerar
-                    inteligência operacional, previsibilidade e eficiência em
-                    tempo real.
-                </h3>
-                <p>
-                    Ajudamos empresas a enxergar em tempo real o que acontece na
-                    operação, aplicando IoT para transformar sinais físicos em
-                    inteligência operacional prática.
-                    <br /><br />
-                    Possibilitamos antecipar falhas, otimizar recursos, reduzir desperdícios
-                    e tomar decisões mais rápidas, seguras e baseadas em dados reais.
-                </p>
-
-                <ButtonArrowSquare text="IoT para indústria" />
-                <ButtonArrowSquare text="IoT para agricultura" />
-            </div>
-        </div>
-    </div>
+    <SolucoesSection />
     <div class="comofazemos container-boxed">
         <div class="content">
             <Badge text="Como fazemos" />
@@ -293,4 +97,31 @@ import Badge from "../components/Badge.astro";
                 poster={EsferaImg.src}></video>
         </div>
     </div>
+
+    <div class="tecnologias container-boxed">
+        <div class="content-desktop">
+            <h3>Especialistas em</h3>
+            <h2>20+</h2>
+            <h4>tecnologias</h4>
+        </div>
+
+        <div class="content-mobile">
+            <h3>Especialistas em <br /> <span>20+</span> tecnologias</h3>
+        </div>
+
+        <div class="tecnologias-img-wrapper">
+            <Image
+                src={TecnologiasDesktop}
+                alt="Tecnologias Desktop"
+                class="tecnologias-img-desktop"
+            />
+            <Image
+                src={TecnologiasMobile}
+                alt="Tecnologias Mobile"
+                class="tecnologias-img-mobile"
+            />
+        </div>
+    </div>
+
+    <FaleConosco />
 </Layout>

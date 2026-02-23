@@ -1,0 +1,652 @@
+---
+import Image from "astro/components/Image.astro";
+import Accordion from "./Accordion.astro";
+import ButtonArrowSquare from "./buttons/ButtonArrowSquare.astro";
+
+import TransformacaoDigitalImg from "../images/solucoes/transformacao-digital-solucao.webp";
+import Industria40Img from "../images/solucoes/industria-4-0-solucao.webp";
+import EngenhariaImg from "../images/solucoes/engenharia-solucao.webp";
+import Agricultura40Img from "../images/solucoes/agricultura-4-0-solucao.webp";
+import IotImg from "../images/solucoes/iot-solucao.webp";
+
+const solucoesData = [
+    {
+        id: "transformacao-digital",
+        title: "Transformação digital",
+        subtitle:
+            "Capacitamos o seu negócio por meio de soluções inteligentes, conectadas e orientadas por dados.",
+        description:
+            "Ajudamos as organizações a desbloquear todo o potencial de seus dados e tecnologias ao integrar ferramentas inteligentes, automatizar processos e possibilitar insights em tempo real que impulsionam a tomada de decisões estratégicas.",
+        image: TransformacaoDigitalImg,
+        accordions: [
+            {
+                title: "Consultoria",
+                description:
+                    "Ajudamos empresas de bens de consumo a impulsionar sua transformação digital com foco em impacto real. Com experiência prática em operações industriais, definimos projetos, tecnologias e estratégias que geram resultados concretos, por meio de roadmaps escaláveis e alinhados ao negócio.",
+            },
+            {
+                title: "Integração de inteligência artificial",
+                description:
+                    "Desenvolvemos soluções baseadas em Inteligência Artificial projetadas para resolver desafios operacionais específicos. Ao combinar nossa experiência no setor com capacidades avançadas de IA, criamos soluções que aumentam a eficiência, impulsionam a produtividade e geram ganhos mensuráveis.",
+            },
+            {
+                title: "Data Analytics & Applied Data Science",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Treinamento & Bootcamp",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+        ],
+    },
+    {
+        id: "industria-40",
+        title: "Indústria 4.0",
+        subtitle:
+            "Conectamos o mundo físico e digital para aumentar visibilidade, controle e desempenho industrial.",
+        description:
+            "Atuamos em ambientes industriais onde a falta de integração entre máquinas, sistemas e dados limita a eficiência operacional. Implementamos soluções de Industry 4.0 que conectam o chão de fábrica ao ambiente digital, permitindo operações mais previsíveis, seguras e orientadas por dados.",
+        image: Industria40Img,
+        accordions: [
+            {
+                title: "Infraestrutura de dados e redes OT",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Cibersegurança",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Programação",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Suporte em campo e remoto",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+        ],
+    },
+    {
+        id: "engenharia",
+        title: "Engenharia",
+        subtitle:
+            "Transformamos ideias complexas em soluções técnicas viáveis e eficientes.",
+        description:
+            "Oferecemos serviços de engenharia ponta a ponta para projetos que exigem rigor técnico, planejamento e execução precisa. Atuamos desde a concepção até a implementação, conectando engenharia, tecnologia e operação para reduzir riscos e otimizar resultados.",
+        image: EngenhariaImg,
+        accordions: [
+            {
+                title: "Gerenciamento de projetos",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Estudos conceituais e de viabilidade",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Estimativas de capital e documentação técnica",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Modelagem e simulação",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Projetos elétricos, mecânicos e de automação",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+        ],
+    },
+    {
+        id: "agricultura-40",
+        title: "Agricultura 4.0",
+        subtitle:
+            "Ajudamos produtores e operações agrícolas a tomar decisões melhores usando dados reais do campo.",
+        description:
+            "Aplicamos tecnologia para transform informações do solo e do ambiente em inteligência prática, permitindo irrigar melhor, reduzir desperdícios, aumentar produtividade e operar de forma mais sustentável e previsível.",
+        image: Agricultura40Img,
+        accordions: [
+            {
+                title: "Gerenciamento de projetos",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Estudos conceituais e de viabilidade",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Estimativas de capital e documentação técnica",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Modelagem e simulação",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+            {
+                title: "Projetos elétricos, mecânicos e de automação",
+                description:
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+            },
+        ],
+    },
+    {
+        id: "iot",
+        title: "IoT",
+        subtitle:
+            "Conectamos ativos, processos e ambientes para gerar inteligência operacional, previsibilidade e eficiência em tempo real.",
+        description:
+            "Ajudamos empresas a enxergar em tempo real o que acontece na operação, aplicando IoT para transformar sinais físicos em inteligência operacional prática.<br /><br />Possibilitamos antecipar falhas, otimizar recursos, reduzir desperdícios e tomar decisões mais rápidas, seguras e baseadas em dados reais.",
+        image: IotImg,
+        buttons: ["IoT para indústria", "IoT para agricultura"],
+    },
+];
+---
+
+<div class="solucoes-section-wrapper">
+    <div class="solucoes-desktop-container">
+        <div class="solucoes-desktop-pinned">
+            <div class="solucoes-bg-container">
+                {
+                    solucoesData.map((solucao, index) => (
+                        <div class="solucoes-bg-layer" data-index={index}>
+                            <Image
+                                src={solucao.image}
+                                alt={solucao.title}
+                                class="solucoes-bg-img"
+                            />
+                            <div class="solucoes-bg-overlay" />
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="container-boxed solucoes-desktop-content">
+                <div class="solucoes-menu">
+                    <ul class="solucoes-nav-list">
+                        {
+                            solucoesData.map((solucao, index) => (
+                                <li
+                                    class="solucoes-nav-item"
+                                    data-index={index}
+                                >
+                                    <div class="nav-indicator" />
+                                    <span>{solucao.title}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+
+                <div class="solucoes-panels">
+                    {
+                        solucoesData.map((solucao, index) => (
+                            <div class="solucoes-panel" data-index={index}>
+                                <h2 class="panel-title">{solucao.title}</h2>
+                                <h3 class="panel-subtitle">
+                                    {solucao.subtitle}
+                                </h3>
+                                <p
+                                    class="panel-desc"
+                                    set:html={solucao.description}
+                                />
+
+                                {solucao.accordions && (
+                                    <div class="accordion-wrapper">
+                                        {solucao.accordions.map((acc) => (
+                                            <Accordion
+                                                title={acc.title}
+                                                description={acc.description}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+
+                                {solucao.buttons && (
+                                    <div class="buttons-wrapper">
+                                        {solucao.buttons.map((btn) => (
+                                            <ButtonArrowSquare text={btn} />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="solucoes-loader">
+                    <svg
+                        class="progress-ring"
+                        width="45"
+                        height="45"
+                        viewBox="0 0 45 45"
+                    >
+                        <circle
+                            class="progress-ring__circle_bg"
+                            stroke="rgba(255,255,255,0.2)"
+                            stroke-width="3"
+                            fill="transparent"
+                            r="21"
+                            cx="22.5"
+                            cy="22.5"></circle>
+                        <circle
+                            class="progress-ring__circle"
+                            stroke="#FCFCFD"
+                            stroke-width="3"
+                            fill="transparent"
+                            r="21"
+                            cx="22.5"
+                            cy="22.5"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="solucoes-mobile container-boxed">
+        {
+            solucoesData.map((solucao) => (
+                <div class="solucoes-item">
+                    <Image
+                        src={solucao.image}
+                        alt={solucao.title}
+                        class="solucoes-item-img"
+                    />
+                    <div class="content">
+                        <h2>{solucao.title}</h2>
+                        <h3>{solucao.subtitle}</h3>
+                        <p set:html={solucao.description} />
+
+                        {solucao.accordions && (
+                            <div class="accordion-wrapper">
+                                {solucao.accordions.map((acc) => (
+                                    <Accordion
+                                        title={acc.title}
+                                        description={acc.description}
+                                    />
+                                ))}
+                            </div>
+                        )}
+
+                        {solucao.buttons && (
+                            <div class="accordion-wrapper">
+                                {solucao.buttons.map((btn) => (
+                                    <ButtonArrowSquare text={btn} />
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .solucoes-mobile {
+        display: none; /* Esconde no desktop */
+        flex-direction: column;
+        gap: 80px;
+        padding: 60px 0;
+    }
+
+    .solucoes-item-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 24px;
+    }
+
+    .solucoes-item .content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .solucoes-item h2 {
+        font-size: 32px;
+        color: var(--neutral-white);
+        margin: 0;
+    }
+
+    .solucoes-item h3 {
+        font-size: 20px;
+        font-weight: 400;
+        color: var(--neutral-light-gray);
+        margin: 0;
+    }
+
+    .solucoes-item p {
+        font-size: 16px;
+        color: var(--neutral-light-gray);
+        opacity: 0.8;
+    }
+
+    .accordion-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    @media (min-width: 801px) {
+        .solucoes-mobile {
+            display: none !important;
+        }
+
+        .solucoes-desktop-container {
+            position: relative;
+            background-color: var(--neutral-background-dark, #0b0c10);
+        }
+
+        .solucoes-desktop-pinned {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .solucoes-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45vw; /* Slightly less than half to leave breathing room for text if needed */
+            height: 100%;
+            z-index: 0;
+        }
+
+        .solucoes-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .solucoes-bg-layer.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .solucoes-bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .solucoes-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to right,
+                var(--neutral-background-dark, #0b0c10) 0%,
+                transparent 15%,
+                transparent 70%,
+                var(--neutral-background-dark, #0b0c10) 100%
+            );
+        }
+
+        .solucoes-desktop-content {
+            position: absolute; /* Mudado para absolute para conseguirmos centralizar com limites exatos */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            width: clamp(
+                1100px,
+                90%,
+                1620px
+            ); /* Exactly matching global container-boxed width */
+            padding-inline: clamp(
+                15px,
+                4vw,
+                40px
+            ); /* Plus standard padding 30px essentially */
+            height: 100vh;
+        }
+
+        .solucoes-menu {
+            width: 35%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 8vh;
+            /* padding-left removido pois o painel central já lida com margens agora */
+        }
+
+        .solucoes-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .solucoes-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.4);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-indicator {
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue, #0056b3);
+            transition: width 0.3s ease;
+        }
+
+        .solucoes-nav-item.active {
+            color: var(--neutral-white);
+            font-weight: 500;
+            font-size: 22px;
+        }
+
+        .solucoes-nav-item.active .nav-indicator {
+            width: 30px;
+        }
+
+        .solucoes-panels {
+            width: 60%;
+            position: relative;
+            height: 100vh; /* Changed from 100% to 100vh */
+            display: flex;
+            align-items: center;
+            max-width: 600px; /* Constrain max width of the right panel text content to avoid blowing up on ultrawides */
+            margin-right: 0px;
+            padding-left: 5%;
+        }
+
+        .solucoes-panel {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-40%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .solucoes-panel.active {
+            opacity: 1;
+            transform: translateY(-50%);
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        .panel-title {
+            font-size: 40px;
+            color: var(--neutral-white);
+            margin: 0;
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--neutral-light-gray);
+            margin: 0;
+        }
+
+        .panel-desc {
+            font-size: 16px;
+            color: var(--neutral-light-gray);
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .buttons-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .solucoes-loader {
+            position: absolute;
+            bottom: 8vh;
+            right: 0px;
+            z-index: 10;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.1s ease;
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initSolucoesGSAP() {
+        const desktopContainer = document.querySelector(
+            ".solucoes-desktop-container"
+        );
+        if (!desktopContainer || window.innerWidth <= 800) return;
+
+        const pinnedSection = document.querySelector(
+            ".solucoes-desktop-pinned"
+        );
+        const bgLayers = gsap.utils.toArray(".solucoes-bg-layer");
+        const navItems = gsap.utils.toArray(".solucoes-nav-item");
+        const panels = gsap.utils.toArray(".solucoes-panel");
+        const circle = document.querySelector(".progress-ring__circle");
+
+        const totalItems = navItems.length;
+
+        // Configuração do círculo do SVG para o Loader
+        let circumference = 0;
+        if (circle) {
+            const radius = (circle as SVGCircleElement).r.baseVal.value;
+            circumference = radius * 2 * Math.PI;
+            (
+                circle as SVGCircleElement
+            ).style.strokeDasharray = `${circumference} ${circumference}`;
+            (
+                circle as SVGCircleElement
+            ).style.strokeDashoffset = `${circumference}`;
+        }
+
+        // Primeiro item ativo logo de inicio
+        if (bgLayers[0]) (bgLayers[0] as HTMLElement).classList.add("active");
+        if (navItems[0]) (navItems[0] as HTMLElement).classList.add("active");
+        if (panels[0]) (panels[0] as HTMLElement).classList.add("active");
+
+        // Cria a distância de scroll baseado no total de itens (ex: 70vh cada para demorar bastante o scroll)
+        const scrollDistance = totalItems * 80;
+
+        ScrollTrigger.create({
+            trigger: desktopContainer,
+            pin: pinnedSection,
+            start: "top top",
+            end: `+=${scrollDistance}%`,
+            scrub: true,
+            onUpdate: (self) => {
+                const progress = self.progress; // Retorna valor entre 0 e 1
+
+                // Atualizar o path do Loader
+                if (circle) {
+                    const offset = circumference - progress * circumference;
+                    (
+                        circle as SVGCircleElement
+                    ).style.strokeDashoffset = `${offset}`;
+                }
+
+                // Identificar o índice atual baseado no progresso
+                let activeIndex = Math.floor(progress * totalItems);
+                if (activeIndex >= totalItems) activeIndex = totalItems - 1;
+
+                updateActiveItem(activeIndex);
+            },
+        });
+
+        function updateActiveItem(index: number) {
+            bgLayers.forEach((el, i) => {
+                if (i === index) (el as HTMLElement).classList.add("active");
+                else (el as HTMLElement).classList.remove("active");
+            });
+
+            navItems.forEach((el, i) => {
+                if (i === index) (el as HTMLElement).classList.add("active");
+                else (el as HTMLElement).classList.remove("active");
+            });
+
+            panels.forEach((el, i) => {
+                if (i === index) (el as HTMLElement).classList.add("active");
+                else (el as HTMLElement).classList.remove("active");
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", initSolucoesGSAP);
+
+    // Tratamento Astro View Transitions
+    document.addEventListener("astro:page-load", () => {
+        // Garantindo funcionamento se o usuário navegar e regressar pra página
+        ScrollTrigger.getAll().forEach((t) => {
+            // Em caso de múltiplos ScrollTriggers (Workflow e afins) matar o que tem esse trigger específico evitaria problemas, mas podemos deixar global para testes rápidos se for tranquilo.
+            if (t.trigger?.classList.contains("solucoes-desktop-container")) {
+                t.kill();
+            }
+        });
+        initSolucoesGSAP();
+    });
+</script>

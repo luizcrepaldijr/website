@@ -1,0 +1,49 @@
+---
+interface Props {
+    text: string;
+}
+
+const { text } = Astro.props;
+
+import ArrowRight from "phosphor-astro/ArrowRight.astro";
+---
+
+<a href="#">
+    {text}
+    <ArrowRight class="arrow" />
+</a>
+
+<style>
+    a {
+        border: var(--stroke-sm, 1px) solid var(--neutral-white, #fcfcfd);
+        position: relative;
+        text-align: center;
+        font-size: 24px !important;
+        padding: 20px 40px !important;
+        background-color: transparent;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    a:hover {
+        opacity: 0.8;
+    }
+
+    .arrow {
+        width: 30px !important;
+    }
+
+    @media only screen and (max-width: 800px) {
+        a {
+            font-size: 18px !important;
+            padding: 16px 0 !important;
+        }
+
+        .arrow {
+            width: 24px !important;
+        }
+    }
+</style>

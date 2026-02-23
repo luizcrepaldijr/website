@@ -70,7 +70,104 @@
     }
 }
 
+.solucoes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 
+    .solucoes-item {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        .solucoes-item-img {
+            width: 40%;
+            height: 880px;
+        }
+
+        .content {
+            gap: 32px;
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                font-weight: 400;
+                font-size: clamp(28px, 4vw, 48px);
+                line-height: 1.2;
+            }
+
+            h3 {
+                font-weight: 400;
+                font-size: clamp(16px, 1.5vw + 10px, 24px);
+                line-height: 1.4;
+                max-width: 650px;
+            }
+
+            p {
+                font-weight: 400;
+                font-size: clamp(16px, 1.5vw + 10px, 18px);
+                line-height: 1.4;
+                max-width: 650px;
+            }
+
+            .accordion-wrapper {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    }
+}
+
+.comofazemos {
+    padding: 80px 0 118px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    .content {
+        display: flex;
+        gap: 24px;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        width: 40%;
+        max-width: 457px;
+
+        h1 {
+            font-weight: 400;
+            font-size: clamp(28px, 4vw, 80px);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw + 10px, 18px);
+            line-height: 1.4;
+            max-width: 290px;
+        }
+    }
+
+    .comofazemos-img-wrapper {
+        width: 65%;
+        max-width: 1000px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .esferaImg {
+        width: 100%;
+        height: auto;
+        display: block;
+        -webkit-mask-image: radial-gradient(circle, black 30%, transparent 50%);
+        mask-image: radial-gradient(circle, black 30%, transparent 50%);
+    }
+}
 
 @keyframes scroll-marquee {
     0% {
@@ -84,15 +181,21 @@
 
 @media only screen and (max-width: 800px) {
     .hero {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
+        text-align: center;
+        justify-content: center;
         padding: 40px 20px 80px;
 
         .content {
             max-width: 100%;
             width: 100%;
-            align-items: start;
+            align-items: center;
             gap: 24px;
+
+            h3 {
+                max-width: 240px;
+            }
         }
 
         .solucoes-img-wrapper {
@@ -100,6 +203,68 @@
         }
 
         .solucoesImg {
+            height: auto;
+            transform: scale(1);
+        }
+    }
+
+    .marquee {
+        padding: 30px 0;
+
+        .marquee-content {
+            gap: 24px;
+        }
+    }
+
+    .solucoes-list {
+        padding: 40px 20px;
+        gap: 40px;
+
+        .solucoes-item {
+            flex-direction: column;
+            gap: 24px;
+
+            .solucoes-item-img {
+                width: 100%;
+                height: 400px;
+            }
+
+            .content {
+
+                h3 {
+                    font-size: 16px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .comofazemos {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 40px 20px 80px;
+
+        .content {
+            max-width: 100%;
+            width: 100%;
+            align-items: center;
+            gap: 24px;
+
+            h3 {
+                max-width: 240px;
+            }
+        }
+
+        .comofazemos-img-wrapper {
+            width: 100%;
+        }
+
+        .esferaImg {
             height: auto;
             transform: scale(1);
         }

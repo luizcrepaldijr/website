@@ -1,0 +1,133 @@
+---
+import Plus from "phosphor-astro/Plus.astro";
+import Minus from "phosphor-astro/Minus.astro";
+
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<accordion-item class="accordion">
+    <button class="accordion-header">
+        <span class="accordion-title">{title}</span>
+        <span class="icon-open"><Plus color="#fff" /></span>
+        <span class="icon-close"><Minus color="#0577ff" /></span>
+    </button>
+    <div class="accordion-content">
+        <div class="accordion-inner">
+            <p>{description}</p>
+        </div>
+    </div>
+</accordion-item>
+
+<style>
+    .accordion {
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0 0 24px;
+        cursor: pointer;
+        font-size: clamp(16px, 1.5vw + 4px, 20px);
+        font-weight: 400;
+        transition: color 0.3s ease;
+    }
+
+    .accordion-title {
+        text-align: left;
+        max-width: 90%;
+    }
+
+    .icon-open,
+    .icon-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-open :global(svg),
+    .icon-close :global(svg) {
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon-close {
+        display: none;
+    }
+
+    .accordion.active .accordion-header {
+        color: #0577ff;
+    }
+
+    .accordion.active .icon-open {
+        display: none;
+    }
+
+    .accordion.active .icon-close {
+        display: flex;
+    }
+
+    .accordion-content {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease-out;
+    }
+
+    .accordion.active .accordion-content {
+        grid-template-rows: 1fr;
+    }
+
+    .accordion-inner {
+        overflow: hidden;
+    }
+
+    .accordion-inner p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: clamp(14px, 1.2vw + 2px, 16px);
+        line-height: 1.5;
+        padding-bottom: 24px;
+        margin: 0;
+    }
+</style>
+
+<script>
+    class AccordionItem extends HTMLElement {
+        constructor() {
+            super();
+            const button = this.querySelector(".accordion-header");
+
+            button?.addEventListener("click", () => {
+                const isActive = this.classList.contains("active");
+
+                // Fechar os outros (comportamento clássico de acordeão)
+                const allAccordions =
+                    document.querySelectorAll("accordion-item");
+                allAccordions.forEach((acc) => {
+                    if (acc !== this) {
+                        acc.classList.remove("active");
+                    }
+                });
+
+                // Alternar o atual
+                if (!isActive) {
+                    this.classList.add("active");
+                } else {
+                    this.classList.remove("active");
+                }
+            });
+        }
+    }
+
+    customElements.define("accordion-item", AccordionItem);
+</script>

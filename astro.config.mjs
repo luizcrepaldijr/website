@@ -9,7 +9,7 @@ export default defineConfig({
   vite: {
     server: {
       allowedHosts: [
-        'f315-45-184-78-10.ngrok-free.app'
+        'ffab-193-176-127-143.ngrok-free.app'
       ]
     }
   }

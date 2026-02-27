@@ -4,6 +4,7 @@ import {
   useTranslations,
   useTranslatedPath,
 } from "../../i18n/utils";
+import CaretDown from "phosphor-astro/CaretDown.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,25 +16,39 @@ const localizePath = useTranslatedPath(lang);
 <div class="menulink">
   <a
     href={localizePath("/")}
-    class={pathname === localizePath("/") ? "active" : ""}
+    class={`menu-item ${pathname === localizePath("/") ? "active" : ""}`}
   >
     {t("nav.home")}
   </a>
-  <a
-    href={localizePath("/solucoes")}
-    class={pathname.startsWith(localizePath("/solucoes")) ? "active" : ""}
-  >
-    {t("nav.solutions")}
-  </a>
+  <div class="dropdown-wrapper">
+    <a
+      href={localizePath("/solucoes")}
+      class={`menu-item ${
+        pathname.startsWith(localizePath("/solucoes")) ? "active" : ""
+      }`}
+    >
+      {t("nav.solutions")}
+      <CaretDown class="caret" color="white" />
+    </a>
+    <div class="dropdown-menu">
+      <a href={localizePath("/solucoes/iot")}>IoT</a>
+      <a href={localizePath("/realidade-digital")}>Realidade Digital</a>
+      <a href={localizePath("/solucoes/robotica")}>Robótica</a>
+    </div>
+  </div>
   <a
     href={localizePath("/sobre-nos")}
-    class={pathname.startsWith(localizePath("/sobre-nos")) ? "active" : ""}
+    class={`menu-item ${
+      pathname.startsWith(localizePath("/sobre-nos")) ? "active" : ""
+    }`}
   >
     {t("nav.about")}
   </a>
   <a
     href={localizePath("/cases")}
-    class={pathname.startsWith(localizePath("/cases")) ? "active" : ""}
+    class={`menu-item ${
+      pathname.startsWith(localizePath("/cases")) ? "active" : ""
+    }`}
   >
     {t("nav.cases")}
   </a>
@@ -51,16 +66,107 @@ const localizePath = useTranslatedPath(lang);
 
   a {
     text-transform: uppercase;
-    width: 25%;
     font-size: 1vw;
     text-align: center;
     color: var(--neutral-light-gray);
     font-weight: 400;
+    transition: color 0.3s ease;
+    border: none;
+  }
+
+  a:hover {
+    color: var(--neutral-white, #fff);
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 25%;
   }
 
   a.active {
     font-weight: 700 !important;
     color: var(--neutral-white, #fff);
+  }
+
+  /* DROPDOWN STYLES */
+  .dropdown-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+  }
+
+  .dropdown-wrapper .menu-item {
+    width: 100%;
+  }
+
+  .caret {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .caret svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #101828;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+    min-width: 200px;
+  }
+
+  .dropdown-menu a {
+    width: 100%;
+    text-align: left;
+    text-transform: none; /* Submenus are usually not fully uppercase */
+    padding: 8px;
+    justify-content: flex-start;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
+  .dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dropdown-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20px;
+  }
+
+  .dropdown-wrapper:hover .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 15px);
+  }
+
+  .dropdown-wrapper:hover .caret {
+    transform: rotate(180deg);
   }
 
   @media only screen and (max-width: 800px) {
@@ -70,11 +176,42 @@ const localizePath = useTranslatedPath(lang);
       border: none;
       width: 100%;
       gap: 40px;
+      align-items: flex-start;
     }
 
-    a {
+    a,
+    .menu-item,
+    .dropdown-wrapper {
       width: 100%;
       font-size: 18px;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .dropdown-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .caret {
+      width: 14px;
+    }
+
+    .dropdown-menu {
+      position: static;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 20px 0 0 20px;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .dropdown-wrapper:hover .dropdown-menu {
+      transform: none;
     }
   }
 </style>

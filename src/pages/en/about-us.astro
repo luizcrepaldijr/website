@@ -1,11 +1,530 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import "../../styles/pages/sobrenos.css";
+import EsferaImg from "../../images/sobrenos/hero-esfera.webp";
+import SobreNosBlocks from "../../images/sobrenos/sobre-nos-blocks.webp";
+import felicidadeImg from "../../images/sobrenos/felicidade.webp";
+import logoSmoke from "../../images/logo-smoke.webp";
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+import CuboImg from "../../images/home/hero/cubo.webp";
+import worldmapImg from "../../images/sobrenos/world-map.webp";
+import BadgeFlag from "../../components/BadgeFlag.astro";
+import brazilFlag from "../../images/sobrenos/brazil.webp";
+import euaFlag from "../../images/sobrenos/eua.webp";
+import europaFlag from "../../images/sobrenos/europa.webp";
+import TeamCard from "../../components/TeamCard.astro";
+import CarousselTeam from "../../components/carroussel/CarousselTeam.astro";
+import mapPin from "../../images/sobrenos/map-pin.webp";
+
+// Team Images
+import alejandroMoreno from "../../images/sobrenos/equipe/alejandro_moreno.webp";
+import anaLima from "../../images/sobrenos/equipe/ana_lima.webp";
+import caioBeserra from "../../images/sobrenos/equipe/caio_beserra.webp";
+import carlosNogueira from "../../images/sobrenos/equipe/carlos_nogueira.webp";
+import christianCastilho from "../../images/sobrenos/equipe/christian_castilho.webp";
+import dianaOliveira from "../../images/sobrenos/equipe/diana.webp";
+import leonardoReigada from "../../images/sobrenos/equipe/leonardo.webp";
+import luizCrepaldi from "../../images/sobrenos/equipe/luiz_crepaldi.webp";
+import marioOliveira from "../../images/sobrenos/equipe/mario_oliveira.webp";
+import matheusBraz from "../../images/sobrenos/equipe/matheus_braz.webp";
+import matheusSantana from "../../images/sobrenos/equipe/matheus_santana.webp";
+import pedroNascimento from "../../images/sobrenos/equipe/pedro_nascimento.webp";
+import vitorCarlos from "../../images/sobrenos/equipe/victor_carlos.webp";
+import ParceirosImg from "../../images/sobrenos/parceria.webp";
+
+// Import marquee images
+import m1_1 from "../../images/sobrenos/marquee/marquee-1-img-1.webp";
+import m1_2 from "../../images/sobrenos/marquee/marquee-1-img-2.webp";
+import m1_3 from "../../images/sobrenos/marquee/marquee-1-img-3.webp";
+import m1_4 from "../../images/sobrenos/marquee/marquee-1-img-4.webp";
+import m1_5 from "../../images/sobrenos/marquee/marquee-1-img-5.webp";
+import m1_6 from "../../images/sobrenos/marquee/marquee-1-img-6.webp";
+
+import m2_1 from "../../images/sobrenos/marquee/marquee-2-img-1.webp";
+import m2_2 from "../../images/sobrenos/marquee/marquee-2-img-2.webp";
+import m2_3 from "../../images/sobrenos/marquee/marquee-2-img-3.webp";
+import m2_4 from "../../images/sobrenos/marquee/marquee-2-img-4.webp";
+import m2_5 from "../../images/sobrenos/marquee/marquee-2-img-5.webp";
+import m2_6 from "../../images/sobrenos/marquee/marquee-2-img-6.webp";
+import Badge from "../../components/Badge.astro";
+import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
+
+const column1 = [m1_1, m1_2, m1_3, m1_4, m1_5, m1_6];
+const column2 = [m2_1, m2_2, m2_3, m2_4, m2_5, m2_6];
+
+const teamMembers = [
+    {
+        name: "Alejandro Moreno",
+        role: "XR Developer",
+        description:
+            "Unity developer, passionate about innovation and immersive experiences. Naturally curious, always looking to transform complex ideas into real projects.",
+        image: alejandroMoreno,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Ana Paula Lima",
+        role: "Digital Solution Architect",
+        description:
+            "Accounting scientist with an MBA in Software Engineering from UTFPR, she has been working for over 5 years in the Microsoft ecosystem as a solution architect and Power Platform developer, creating secure and scalable applications focused on business and user experience.",
+        image: anaLima,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Caio Beserra",
+        role: "Data & BI Specialist",
+        description:
+            "Data and BI professional with over 10 years of experience, specializing in Power Platform. He works on corporate data and artificial intelligence projects, with strong expertise in SQL, Azure, Python, and Machine Learning.",
+        image: caioBeserra,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Carlos Nogueira",
+        role: "Founder & CEO",
+        description:
+            "Communications Engineer, entrepreneur, and founder of Transformatech, with over 25 years of experience (17 at P&G). Passionate about technology, innovation, and solving complex problems, creating solutions that transform companies and people's lives.",
+        image: carlosNogueira,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Christian Castilho",
+        role: "AI Developer",
+        description:
+            "Engineering student, he works with Applied Artificial Intelligence in developing solutions that automate processes, extract value from data, and drive innovation within companies.",
+        image: christianCastilho,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Diana Oliveira",
+        role: "Product Owner & Data Scientist",
+        description:
+            "Passionate about challenges and finding paths beyond the obvious, she creates innovative solutions and clear, efficient processes that help companies make better decisions.",
+        image: dianaOliveira,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Leonardo Reigada",
+        role: "Cybersecurity Consultant",
+        description:
+            "Cyber Security Officer with solid experience in OT, IoT, engineering, and digital transformation. Results-driven servant leader, acting regionally as CSO leading strategic projects, risk mitigation, and business continuity, besides building high-performance teams.",
+        image: leonardoReigada,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Luiz Crepaldi",
+        role: "AI & Data Scientist",
+        description:
+            "Engineering student, he works with Applied Artificial Intelligence in developing solutions that automate processes, extract value from data, and drive innovation within companies.",
+        image: luizCrepaldi,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Mario Oliveira",
+        role: "Business Developer",
+        description:
+            "C-level executive and founder, with over 30 years of experience in manufacturing, life sciences, and technology. He leads complex transformations, connecting innovation, operations, and growth in highly regulated environments.",
+        image: marioOliveira,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Matheus Braz",
+        role: "Software Developer",
+        description:
+            "Software Engineering student and Web Developer at Transformatech Advisors. Passionate about programming, technology, and innovation, focused on creating modern, functional, and intuitive interfaces.",
+        image: matheusBraz,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Matheus Santana",
+        role: "XR Developer",
+        description:
+            "XR Developer passionate about learning, every day, what I do not yet know, and creating things that really matter and impact people's lives.",
+        image: matheusSantana,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Pedro Nascimento",
+        role: "Automation and Controls Specialist",
+        description:
+            "Automation and Controls Specialist at Transformatech, working collaboratively to deliver efficient technological solutions to our clients.",
+        image: pedroNascimento,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Vitor Carlos",
+        role: "Software Developer",
+        description:
+            "Software Engineering intern at Transformatech, focused on continuous learning and creating solutions for real problems.",
+        image: vitorCarlos,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+];
 ---
 
 <Layout>
-    <div
-        style="height: 100vh; display: flex; align-items: center; justify-content: center;"
-    >
-        <h1>About Us</h1>
+    <div class="hero container">
+        <div class="content">
+            <h1>
+                <b>We expand the boundaries</b> of what the market considers possible.
+            </h1>
+            <h3>
+                We were born from the combination of practical experience,
+                creativity, and a healthy obsession with technology that truly
+                transforms.
+            </h3>
+        </div>
+        <div class="esfera-img-wrapper">
+            <video
+                src="/videos/sobre-nos-esfera.webm"
+                class="esferaImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={EsferaImg.src}
+            >
+            </video>
+        </div>
+        <Icon name="arrow-down" class="arrow-down" />
     </div>
+
+    <div class="missao container-boxed">
+        <Badge text="Our mission" />
+
+        <h2>
+            Our DNA combines years of experience in large corporations with a
+            restless mindset that never accepts "it has always been this way" as
+            an answer.
+        </h2>
+    </div>
+
+    <div class="problemas container-boxed">
+        <h2>We like hard problems. <b>A lot.</b></h2>
+        <p>
+            <b> We grow with challenges, and our clients reap the results.</b>
+            We are passionate about solving problems no one wants to tackle, creating
+            new ways to do old things, and using technology as a tool for real transformation.
+        </p>
+
+        <div class="blocks-img-wrapper">
+            <video
+                src="/videos/sobre-nos-blocks.webm"
+                class="blocksImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={SobreNosBlocks.src}></video>
+        </div>
+
+        <h4>
+            Here, digital transformation isn't just a buzzword.
+            <b>It's a daily practice.</b>
+        </h4>
+    </div>
+
+    <div class="jeito-transformatech container-boxed">
+        <div
+            class="jeito-inner"
+            style={`background: linear-gradient(270deg, #070921 0%, rgba(0, 51, 113, 0.70) 100%), url(${logoSmoke.src}) no-repeat -10% center / contain, #0C111D;`}
+        >
+            <div class="jeito-content-inner">
+                <h2>The <b>Transformatech</b> way of working</h2>
+                <br />
+                <p>
+                    We are a restless company, passionate about technology,
+                    obsessed with valuing talented people, and driven by the
+                    desire to transform the world.
+                </p>
+                <br />
+                <p>
+                    We believe in long-term relationships. In partners who grow
+                    with us. In projects that strengthen businesses, people, and
+                    trust simultaneously.
+                </p>
+            </div>
+
+            <div class="marquee-container">
+                <div class="marquee-column">
+                    <div class="marquee-track-1">
+                        {
+                            column1.map((img) => (
+                                <Image src={img} alt="Transformatech Team" />
+                            ))
+                        }
+                        {
+                            column1.map((img) => (
+                                <Image src={img} alt="Transformatech Team" />
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="marquee-column" style="margin-top: -60px;">
+                    <div class="marquee-track-2">
+                        {
+                            column2.map((img) => (
+                                <Image src={img} alt="Transformatech Team" />
+                            ))
+                        }
+                        {
+                            column2.map((img) => (
+                                <Image src={img} alt="Transformatech Team" />
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="felicidade container-boxed">
+        <div class="felicidade-img-wrapper">
+            <Image src={felicidadeImg} alt="" class="felicidadeImg" />
+        </div>
+        <div class="felicidade-content">
+            <h2>
+                We are in the business of <b>happiness</b>.
+            </h2>
+            <p>
+                It may seem unusual for a tech company, but this is a conviction
+                that guides our work. Behind every system, there are people who
+                depend on technology to operate better.
+                <br />
+                <br />
+                At Transformatech, we develop solutions for professionals seeking
+                more efficiency, less rework, and more predictability in their daily
+                lives.
+                <br />
+                <br />
+                Our goal is simple: to create more stories of operational success
+                than technical frustration.
+            </p>
+        </div>
+    </div>
+
+    <div class="empresa-nao-cabe-em-caixa container-boxed">
+        <div class="content">
+            <h2>A company that <b>doesn't fit in a box</b>.</h2>
+            <h3>
+                Transformatech isn't just technology, consulting, automation, or
+                data. It's all of this together, organized into solutions that
+                solve real problems.
+                <br />
+                <br />
+                We are always changing, creating, testing, and evolving.
+                <br />
+                That's why it's hard to define us in a single sentence.
+            </h3>
+        </div>
+
+        <div class="cubo-img-wrapper">
+            <video
+                src="/videos/cubo-hero.webm"
+                class="cuboImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={CuboImg.src}></video>
+        </div>
+    </div>
+
+    <div class="worldmap container-boxed">
+        <div class="map">
+            <Image src={worldmapImg} alt="" class="worldmapImg" />
+            <Image src={mapPin} alt="" class="mapPin" />
+
+            <Image src={mapPin} alt="" class="mapPinUSA" />
+            <Image src={mapPin} alt="" class="mapPinEuropa" />
+        </div>
+        <div class="content">
+            <h2><b>Borderless.</b> With purpose</h2>
+            <p>
+                We operate in Brazil, the United States, and Europe, and we
+                continue to expand.
+                <br />
+                For us, boundaries are just lines on a map.
+                <br />
+                <br />
+                We grew with a clear goal: to bring real impact to as many clients
+                as possible, building relationships based on results, trust, and
+                well-told stories.
+            </p>
+            <div class="badges">
+                <BadgeFlag text="Brazil" image={brazilFlag} />
+                <BadgeFlag text="USA" image={euaFlag} />
+                <BadgeFlag text="Europe" image={europaFlag} />
+            </div>
+        </div>
+    </div>
+
+    <div class="nossotime container-boxed">
+        <Badge text="Our team" />
+        <h2>
+            A restless team, passionate about transforming
+            <b> complex challenges into results.</b>
+        </h2>
+
+        <div class="desktop-only">
+            <div class="team-grid">
+                {teamMembers.map((member) => <TeamCard {...member} />)}
+
+                <div class="join-us-card">
+                    <Image src={logoSmoke} alt="" class="join-us-logo" />
+                    <div class="join-us-content">
+                        <div class="text">
+                            <h3>Want to join our team?</h3>
+                            <p>
+                                We are always looking for restless, technical
+                                people committed to transforming complex
+                                challenges into real solutions.
+                            </p>
+                        </div>
+                        <div class="join-us-btn">
+                            <ButtonArrowWhite text="Talk to us" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-only">
+            <CarousselTeam>
+                {
+                    teamMembers.map((member) => (
+                        <div class="embla__team__slide">
+                            <TeamCard {...member} />
+                        </div>
+                    ))
+                }
+            </CarousselTeam>
+
+            <div class="join-us-card">
+                <Image src={logoSmoke} alt="" class="join-us-logo" />
+                <div class="join-us-content">
+                    <div class="text">
+                        <h3>Want to join our team?</h3>
+                        <p>
+                            We are always looking for restless, technical people
+                            committed to transforming complex challenges into
+                            real solutions.
+                        </p>
+                    </div>
+                    <div class="join-us-btn">
+                        <ButtonArrowWhite text="Talk to us" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parceria container">
+        <div class="container-boxed">
+            <div class="content">
+                <h2>More than a project. <b>A partnership.</b></h2>
+                <h3>
+                    Tell us where you want to go. <br />
+                    We will help you design the way.
+                </h3>
+                <span class="button">
+                    <ButtonArrowWhite
+                        text="Bring Transformatech to my business"
+                    />
+                </span>
+            </div>
+
+            <div class="parceiros-img-wrapper">
+                <video
+                    src="/videos/parceiros-transformatech.webm"
+                    class="parceiros-img"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={ParceirosImg.src}></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let mm = gsap.matchMedia();
+
+            mm.add("(min-width: 601px)", () => {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=150%",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+
+                tl.to(".hero .content", { opacity: 0, y: -100, duration: 1 })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(".esfera-img-wrapper", { y: "-40vh", duration: 1 }, "<")
+                    .fromTo(
+                        ".missao",
+                        { opacity: 0, marginTop: "5vh" },
+                        { opacity: 1, marginTop: "-50vh", duration: 0.8 },
+                        "-=0.8"
+                    );
+            });
+
+            mm.add("(max-width: 600px)", () => {
+                const tlMobile = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=120%",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+
+                tlMobile
+                    .to(".hero .content", { opacity: 0, y: -50, duration: 1 })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(".esfera-img-wrapper", { y: "-20vh", duration: 1 }, "<")
+                    .fromTo(
+                        ".missao",
+                        { opacity: 0, marginTop: "5vh" },
+                        { opacity: 1, marginTop: "-30vh", duration: 0.8 },
+                        "-=0.8"
+                    );
+            });
+        });
+    </script>
 </Layout>

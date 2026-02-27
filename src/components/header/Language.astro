@@ -1,6 +1,10 @@
 ---
 import CaretDown from "phosphor-astro/CaretDown.astro";
-import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  getRouteFromUrl,
+} from "../../i18n/utils";
 
 const pathname = Astro.url.pathname;
 const currentLang = getLangFromUrl(Astro.url);
@@ -9,16 +13,6 @@ const translatePath = useTranslatedPath(currentLang);
 const isEn = currentLang === "en";
 const isEs = currentLang === "es";
 const isPt = currentLang === "pt";
-
-// Helper to strip the lang prefix from the current pathname to get the root path
-function getRouteFromUrl(url: URL): string {
-  const pathname = new URL(url).pathname;
-  const parts = pathname.split("/");
-  if (parts.length > 1 && (parts[1] === "en" || parts[1] === "es")) {
-    parts.splice(1, 1);
-  }
-  return parts.join("/") || "/";
-}
 
 const route = getRouteFromUrl(Astro.url);
 ---
@@ -140,6 +134,10 @@ const route = getRouteFromUrl(Astro.url);
       padding: 0;
       flex-direction: column;
       gap: 40px;
+    }
+
+    .lang-wrapper:hover .lang-dropdown {
+      transform: none;
     }
 
     a {

@@ -14,6 +14,7 @@ import brazilFlag from "../images/sobrenos/brazil.webp";
 import euaFlag from "../images/sobrenos/eua.webp";
 import europaFlag from "../images/sobrenos/europa.webp";
 import TeamCard from "../components/TeamCard.astro";
+import CarousselTeam from "../components/carroussel/CarousselTeam.astro";
 import mapPin from "../images/sobrenos/map-pin.webp";
 
 // Team Images
@@ -51,6 +52,139 @@ import ButtonArrowWhite from "../components/buttons/ButtonArrowWhite.astro";
 
 const column1 = [m1_1, m1_2, m1_3, m1_4, m1_5, m1_6];
 const column2 = [m2_1, m2_2, m2_3, m2_4, m2_5, m2_6];
+
+const teamMembers = [
+    {
+        name: "Alejandro Moreno",
+        role: "XR Developer",
+        description:
+            "Desenvolvedor Unity, apaixonado por inovação e experiências imersivas. Curioso por natureza, sempre buscando transformar ideias complexas em projetos reais.",
+        image: alejandroMoreno,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Ana Paula Lima",
+        role: "Digital Solution Architect",
+        description:
+            "Cientista contábil com MBA em Engenharia de Software pela UTFPR, atua há mais de 5 anos no ecossistema Microsoft como arquiteta de soluções e desenvolvedora Power Platform, criando aplicações seguras e escaláveis com foco no negócio e na experiência do usuário.",
+        image: anaLima,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Caio Beserra",
+        role: "Data & BI Specialist",
+        description:
+            "Profissional de dados e BI com mais de 10 anos de experiência, especializado em Power Platform. Atua em projetos de dados corporativos e inteligência artificial, com forte domínio em SQL, Azure, Python e Machine Learning.",
+        image: caioBeserra,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Carlos Nogueira",
+        role: "Founder & CEO",
+        description:
+            "Engenheiro de Comunicações, empreendedor e fundador da Transformatech, com mais de 25 anos de experiência (17 na P&G). Apaixonado por tecnologia, inovação e por resolver problemas complexos, criando soluções que transformam empresas e a vida das pessoas.",
+        image: carlosNogueira,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Christian Castilho",
+        role: "AI Developer",
+        description:
+            "Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas.",
+        image: christianCastilho,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Diana Oliveira",
+        role: "Product Owner & Data Scientist",
+        description:
+            "Apaixonada por desafios e por encontrar caminhos além do óbvio, cria soluções inovadoras e processos claros e eficientes que ajudam empresas a tomar melhores decisões.",
+        image: dianaOliveira,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Leonardo Reigada",
+        role: "Cybersecurity Consultant",
+        description:
+            "Cyber Security Officer com sólida experiência em OT, IoT, engenharia e transformação digital. Results-driven servant leader, com atuação regional como CSO liderando projetos estratégicos, mitigação de riscos e business continuity, além de construir times de alta performance.",
+        image: leonardoReigada,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Luiz Crepaldi",
+        role: "AI & Data Scientist",
+        description:
+            "Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas.",
+        image: luizCrepaldi,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Mario Oliveira",
+        role: "Business Developer",
+        description:
+            "Executivo C-level e fundador, com mais de 30 anos de experiência em manufatura, life sciences e tecnologia. Atua na liderança de transformações complexas, conectando inovação, operação e crescimento em ambientes altamente regulados.",
+        image: marioOliveira,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Matheus Braz",
+        role: "Software Developer",
+        description:
+            "Estudante de Engenharia de Software e Desenvolvedor Web na Transformatech Advisors. Apaixonado por programação, tecnologia e inovação, com foco em criar interfaces modernas, funcionais e intuitivas.",
+        image: matheusBraz,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Matheus Santana",
+        role: "XR Developer",
+        description:
+            "Desenvolvedor de XR apaixonado por aprender, todos os dias, o que ainda não sei e criar coisas que realmente importam e impactam a vida das pessoas.",
+        image: matheusSantana,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Pedro Nascimento",
+        role: "Automation and Controls Specialist",
+        description:
+            "Especialista em Controle e Automação na Transformatech, atuando de forma colaborativa para entregar soluções tecnológicas eficientes aos nossos clientes.",
+        image: pedroNascimento,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+    {
+        name: "Vitor Carlos",
+        role: "Software Developer",
+        description:
+            "Estagiário de Engenharia de Software na Transformatech, focado em aprendizado contínuo e em criar soluções para problemas reais.",
+        image: vitorCarlos,
+        linkedin: "#",
+        instagram: "#",
+        facebook: "#",
+    },
+];
 ---
 
 <Layout>
@@ -77,6 +211,16 @@ const column2 = [m2_1, m2_2, m2_3, m2_4, m2_5, m2_6];
             </video>
         </div>
         <Icon name="arrow-down" class="arrow-down" />
+    </div>
+
+    <div class="missao container-boxed">
+        <Badge text="Nossa missão" />
+
+        <h2>
+            Nosso DNA une anos de atuação em grandes corporações com uma
+            mentalidade inquieta, que nunca aceita o “sempre foi assim” como
+            resposta.
+        </h2>
     </div>
 
     <div class="problemas container-boxed">
@@ -251,129 +395,39 @@ const column2 = [m2_1, m2_2, m2_3, m2_4, m2_5, m2_6];
             <b> desafios complexos em resultado.</b>
         </h2>
 
-        <div class="team-grid">
-            <TeamCard
-                name="Alejandro Moreno"
-                role="XR Developer"
-                description="Desenvolvedor Unity, apaixonado por inovação e experiências imersivas. Curioso por natureza, sempre buscando transformar ideias complexas em projetos reais."
-                image={alejandroMoreno}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Ana Paula Lima"
-                role="Digital Solution Architect"
-                description="Cientista contábil com MBA em Engenharia de Software pela UTFPR, atua há mais de 5 anos no ecossistema Microsoft como arquiteta de soluções e desenvolvedora Power Platform, criando aplicações seguras e escaláveis com foco no negócio e na experiência do usuário."
-                image={anaLima}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Caio Beserra"
-                role="Data & BI Specialist"
-                description="Profissional de dados e BI com mais de 10 anos de experiência, especializado em Power Platform. Atua em projetos de dados corporativos e inteligência artificial, com forte domínio em SQL, Azure, Python e Machine Learning."
-                image={caioBeserra}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Carlos Nogueira"
-                role="Founder & CEO"
-                description="Engenheiro de Comunicações, empreendedor e fundador da Transformatech, com mais de 25 anos de experiência (17 na P&G). Apaixonado por tecnologia, inovação e por resolver problemas complexos, criando soluções que transformam empresas e a vida das pessoas."
-                image={carlosNogueira}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
+        <div class="desktop-only">
+            <div class="team-grid">
+                {teamMembers.map((member) => <TeamCard {...member} />)}
 
-            <TeamCard
-                name="Christian Castilho"
-                role="AI Developer"
-                description="Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas."
-                image={christianCastilho}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
+                <div class="join-us-card">
+                    <Image src={logoSmoke} alt="" class="join-us-logo" />
+                    <div class="join-us-content">
+                        <div class="text">
+                            <h3>Quer fazer parte do nosso time?</h3>
+                            <p>
+                                Estamos sempre em busca de pessoas inquietas,
+                                técnicas e comprometidas com transformar
+                                desafios complexos em soluções reais.
+                            </p>
+                        </div>
+                        <div class="join-us-btn">
+                            <ButtonArrowWhite text="Fale conosco" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <TeamCard
-                name="Diana Oliveira"
-                role="Product Owner & Data Scientist"
-                description="Apaixonada por desafios e por encontrar caminhos além do óbvio, cria soluções inovadoras e processos claros e eficientes que ajudam empresas a tomar melhores decisões."
-                image={dianaOliveira}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Leonardo Reigada"
-                role="Cybersecurity Consultant"
-                description="Cyber Security Officer com sólida experiência em OT, IoT, engenharia e transformação digital. Results-driven servant leader, com atuação regional como CSO liderando projetos estratégicos, mitigação de riscos e business continuity, além de construir times de alta performance."
-                image={leonardoReigada}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Luiz Crepaldi"
-                role="AI & Data Scientist"
-                description="Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas."
-                image={luizCrepaldi}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-
-            <TeamCard
-                name="Mario Oliveira"
-                role="Business Developer"
-                description="Executivo C-level e fundador, com mais de 30 anos de experiência em manufatura, life sciences e tecnologia. Atua na liderança de transformações complexas, conectando inovação, operação e crescimento em ambientes altamente regulados."
-                image={marioOliveira}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-
-            <TeamCard
-                name="Matheus Braz"
-                role="Software Developer"
-                description="Estudante de Engenharia de Software e Desenvolvedor Web na Transformatech Advisors. Apaixonado por programação, tecnologia e inovação, com foco em criar interfaces modernas, funcionais e intuitivas."
-                image={matheusBraz}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Matheus Santana"
-                role="XR Developer"
-                description="Desenvolvedor de XR apaixonado por aprender, todos os dias, o que ainda não sei e criar coisas que realmente importam e impactam a vida das pessoas."
-                image={matheusSantana}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-            <TeamCard
-                name="Pedro Nascimento"
-                role="Automation and Controls Specialist"
-                description="Especialista em Controle e Automação na Transformatech, atuando de forma colaborativa para entregar soluções tecnológicas eficientes aos nossos clientes."
-                image={pedroNascimento}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
-
-            <TeamCard
-                name="Vitor Carlos"
-                role="Software Developer"
-                description="Estagiário de Engenharia de Software na Transformatech, focado em aprendizado contínuo e em criar soluções para problemas reais."
-                image={vitorCarlos}
-                linkedin="#"
-                instagram="#"
-                facebook="#"
-            />
+        <div class="mobile-only">
+            <CarousselTeam>
+                {
+                    teamMembers.map((member) => (
+                        <div class="embla__team__slide">
+                            <TeamCard {...member} />
+                        </div>
+                    ))
+                }
+            </CarousselTeam>
 
             <div class="join-us-card">
                 <Image src={logoSmoke} alt="" class="join-us-logo" />

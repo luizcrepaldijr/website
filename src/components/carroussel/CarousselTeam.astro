@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="embla__team">
+    <div class="embla__team__viewport">
+        <div class="embla__team__container">
+            <slot />
+        </div>
+    </div>
+    <div class="embla__team__controls">
+        <button class="embla__team__prev" aria-label="Anterior">
+            <Icon name="arrow-left" />
+        </button>
+        <button class="embla__team__next" aria-label="Próximo">
+            <Icon name="arrow-right" />
+        </button>
+    </div>
+</div>
+
+<style>
+    .embla__team {
+        display: none;
+        margin: 32px 0;
+        width: 100vw;
+        margin-left: -20px; /* Offset parent padding */
+        padding-left: 20px;
+    }
+
+    .embla__team__controls {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 16px;
+        margin-bottom: 32px;
+        margin-left: -20px; /* Offset to center relative to viewport */
+        width: 100vw;
+    }
+
+    .embla__team__prev,
+    .embla__team__next {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: transparent;
+        color: #fcfcfd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .embla__team__prev:hover,
+    .embla__team__next:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .embla__team__prev [data-icon],
+    .embla__team__next [data-icon] {
+        width: 24px;
+        height: 24px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .embla__team {
+            display: block !important;
+        }
+    }
+</style>
+
+<style is:global>
+    .embla__team__viewport {
+        overflow: hidden;
+    }
+
+    .embla__team__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+    }
+
+    .embla__team__slide {
+        flex: 0 0 85%;
+        margin-right: 16px;
+        min-width: 0;
+    }
+</style>
+
+<script>
+    import EmblaCarousel from "embla-carousel";
+
+    const nodes = document.querySelectorAll(".embla__team");
+
+    nodes.forEach((wrapperNode) => {
+        const viewportNode = wrapperNode.querySelector(
+            ".embla__team__viewport"
+        );
+        const prevBtn = wrapperNode.querySelector(".embla__team__prev");
+        const nextBtn = wrapperNode.querySelector(".embla__team__next");
+
+        if (viewportNode) {
+            const emblaApi = EmblaCarousel(viewportNode as HTMLElement, {
+                loop: false,
+                align: "center",
+            });
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener("click", () => emblaApi.scrollPrev());
+                nextBtn.addEventListener("click", () => emblaApi.scrollNext());
+            }
+        }
+    });
+</script>

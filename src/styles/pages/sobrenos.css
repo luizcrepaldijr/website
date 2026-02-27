@@ -723,6 +723,18 @@ body {
 
         .map {
             width: 100%;
+
+            .mapPin {
+                width: 30px;
+            }
+
+            .mapPinUSA {
+                width: 30px;
+            }
+
+            .mapPinEuropa {
+                width: 30px;
+            }
         }
 
         .content {

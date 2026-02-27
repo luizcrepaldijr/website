@@ -10,6 +10,10 @@ h3 {
     line-height: 1.4;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .hero {
     padding: 96px 0 0;
     display: flex;
@@ -319,11 +323,42 @@ h3 {
 
     .map {
         width: 80%;
+        position: relative;
 
         .worldmapImg {
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        .mapPin {
+            width: 66px;
+            height: auto;
+            position: absolute;
+            bottom: 20%;
+            left: 30%;
+            opacity: 0;
+            animation: mapPinAnimation 3s forwards;
+        }
+
+        .mapPinUSA {
+            width: 66px;
+            height: auto;
+            position: absolute;
+            top: 40%;
+            left: 15%;
+            opacity: 0;
+            animation: mapPinAnimation 6s forwards;
+        }
+
+        .mapPinEuropa {
+            width: 66px;
+            height: auto;
+            position: absolute;
+            top: 40%;
+            left: 15%;
+            opacity: 0;
+            animation: mapPinAnimation2 6s forwards;
         }
     }
 
@@ -385,15 +420,25 @@ h3 {
     .join-us-card {
         grid-column: span 3;
         border-radius: 16px;
-        background: linear-gradient(90deg, rgba(0, 51, 113, 0.70) 0%, #070921 100%), #0C111D;
-        box-shadow: 0 3.417px 0 0 rgba(255, 255, 255, 0.10) inset, 0 0 68.333px 10.25px rgba(7, 13, 79, 0.05), 0 0 136.667px 68.333px rgba(7, 13, 79, 0.05), 0 0 0 3.417px rgba(255, 255, 255, 0.06) inset;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        background: linear-gradient(0deg, #003371 0.39%, rgba(0, 51, 113, 0.00) 59.84%);
         padding: 48px;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         position: relative;
         overflow: hidden;
         height: 100%;
         min-height: 300px;
+    }
+
+    .join-us-logo {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        width: 220px;
+        height: auto;
+        z-index: 1;
+        pointer-events: none;
     }
 
     .join-us-content {
@@ -404,26 +449,14 @@ h3 {
         z-index: 2;
         gap: 32px;
 
-        .logo-bg {
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 320px;
-            height: 320px;
-            color: rgba(255, 255, 255, 0.03);
-            /* Subtle logo background */
-            z-index: -1;
-        }
-
         .text {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            max-width: 60%;
+            max-width: 440px;
 
             h3 {
-                font-size: 24px;
+                font-size: 28px;
                 font-weight: 300;
                 color: #FCFCFD;
             }
@@ -435,28 +468,8 @@ h3 {
             }
         }
 
-        .btn-primary {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: #FCFCFD;
-            border-radius: 64px;
-            color: #070921;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-
-            [data-icon] {
-                width: 20px;
-                height: 20px;
-            }
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-            }
+        .join-us-btn {
+            flex-shrink: 0;
         }
     }
 }
@@ -465,8 +478,16 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: var(--neutral-dark-gray, #101828);
     padding: 96px 0 !important;
     gap: 148px;
+
+    .container-boxed {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 148px;
+    }
 
     .content {
         display: flex;
@@ -742,6 +763,11 @@ h3 {
         flex-direction: column-reverse;
         gap: 24px;
 
+        .container-boxed {
+            flex-direction: column-reverse;
+            gap: 24px;
+        }
+
         .content {
             width: 100%;
 
@@ -787,21 +813,36 @@ h3 {
 
     .nossotime .join-us-card {
         padding: 32px 24px;
+        background: linear-gradient(180deg, rgba(0, 51, 113, 0.70) 0%, #070921 100%), #0C111D;
+    }
+
+    .nossotime .join-us-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        right: auto;
+        width: 250px;
+        opacity: 0.1;
     }
 
     .nossotime .join-us-content {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
         gap: 24px;
 
         .text {
             max-width: 100%;
+            align-items: center;
         }
 
-        .logo-bg {
-            right: -50px;
-            width: 200px;
-            height: 200px;
+        .join-us-btn {
+            width: 100%;
+        }
+
+        .join-us-btn a {
+            width: 100%;
         }
     }
 }
@@ -823,5 +864,58 @@ h3 {
 
     100% {
         transform: translateY(-50%);
+    }
+}
+
+@keyframes mapPinAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes mapPinAnimation2 {
+    0% {
+        opacity: 0;
+        top: 40%;
+        left: 15%;
+    }
+
+    50% {
+        opacity: 0;
+
+        top: 40%;
+        left: 15%;
+    }
+
+    75% {
+        top: 40%;
+        left: 15%;
+        opacity: 1;
+    }
+
+    90% {
+        top: 40%;
+        left: 15%;
+        opacity: 1;
+
+    }
+
+    100% {
+        top: 35%;
+        left: 50%;
+        opacity: 1;
     }
 }

@@ -66,11 +66,17 @@ export const ui = {
 export const routes = {
   en: {
     solucoes: "solutions",
+    "solucoes/iot": "solutions/iot",
+    "solucoes/realidade-digital": "solutions/digital-reality",
+    "solucoes/robotica": "solutions/robotics",
     "sobre-nos": "about-us",
     cases: "cases",
   },
   es: {
     solucoes: "soluciones",
+    "solucoes/iot": "soluciones/iot",
+    "solucoes/realidade-digital": "soluciones/realidad-digital",
+    "solucoes/robotica": "soluciones/robotica",
     "sobre-nos": "sobre-nosotros",
     cases: "casos",
   },

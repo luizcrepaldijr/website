@@ -14,7 +14,7 @@ export function useTranslations(lang: keyof typeof ui) {
 
 export function useTranslatedPath(lang: keyof typeof ui) {
   return function translatePath(path: string, l: string = lang) {
-    const pathName = path.replaceAll("/", "");
+    const pathName = path.replace(/^\/|\/$/g, "");
     const hasTranslation =
       defaultLang !== l &&
       routes[l as keyof typeof routes] !== undefined &&
@@ -43,7 +43,7 @@ export function getRouteFromUrl(url: URL): string {
   }
   
   const pathWithoutLang = parts.join("/") || "/";
-  const pathName = pathWithoutLang.replaceAll("/", "");
+  const pathName = pathWithoutLang.replace(/^\/|\/$/g, "");
   
   if (!pathName) return "/";
 

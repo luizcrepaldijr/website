@@ -115,8 +115,10 @@ const route = getRouteFromUrl(Astro.url);
       width: 100%;
       padding: 0;
       border: none;
-      flex-direction: column;
+      flex-direction: row;
       cursor: default;
+      margin-top: auto;
+      margin-bottom: 30px;
     }
 
     .lang-active {
@@ -132,8 +134,9 @@ const route = getRouteFromUrl(Astro.url);
       border: none;
       box-shadow: none;
       padding: 0;
-      flex-direction: column;
-      gap: 40px;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: flex-start;
     }
 
     .lang-wrapper:hover .lang-dropdown {

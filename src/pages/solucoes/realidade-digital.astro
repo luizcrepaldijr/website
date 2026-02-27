@@ -1,0 +1,145 @@
+---
+import ButtonArrowAnimation from "../../components/buttons/ButtonArrowAnimation.astro";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/pages/realidade-digital.css";
+import CuboImg from "../../images/home/hero/cubo.webp";
+import VideoThumb from "../../images/realidade-digital/video-thumb.webp";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout>
+    <div class="hero container-boxed">
+        <div class="content">
+            <h1>
+                <b>Realidade Digital:</b> a nova forma de treinar e evoluir a indústria
+            </h1>
+            <h3>
+                Treinamento, suporte e execução operacional com realidade
+                virtual, aumentada e mista, integrados ao ambiente real da
+                indústria.
+            </h3>
+
+            <ButtonArrowAnimation text="Preciso desse serviço" />
+        </div>
+
+        <div class="cubo-img-wrapper">
+            <video
+                src="/videos/cubo-hero.webm"
+                class="cuboImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={CuboImg.src}></video>
+        </div>
+        <Icon name="arrow-down" class="arrow-down" />
+    </div>
+
+    <div class="ambientes-virtuais container-boxed">
+        <div class="content">
+            <h2>
+                Combinamos ambientes virtuais imersivos para treinar equipes com
+                mais segurança e eficiência.
+            </h2>
+            <h3>
+                Criamos simulações realistas de máquinas, processos e cenários
+                operacionais, permitindo que equipes pratiquem procedimentos
+                quantas vezes for necessário e ganhem confiança antes da
+                execução real.
+            </h3>
+        </div>
+
+        <div class="youtube-wrapper" id="video-container">
+            <div id="video-placeholder" class="video-placeholder">
+                <img
+                    src={VideoThumb.src}
+                    alt="Thumbnail do vídeo"
+                    class="video-thumb-custom"
+                />
+                <button class="play-button" aria-label="Play Video">
+                    <span class="play-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        let mm = gsap.matchMedia();
+
+        mm.add("(min-width: 801px)", () => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top top",
+                    end: "+=150%",
+                    scrub: 1,
+                    pin: true,
+                },
+            });
+
+            tl.to(".hero .content", { opacity: 0, y: -100, duration: 1 })
+                .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                .to(
+                    ".cubo-img-wrapper",
+                    { y: "-60vh", x: "25vw", duration: 1 },
+                    "<"
+                )
+                .fromTo(
+                    ".ambientes-virtuais",
+                    { opacity: 0, marginTop: "5vh" },
+                    { opacity: 1, marginTop: "-50vh", duration: 0.8 },
+                    "-=0.8"
+                );
+        });
+
+        mm.add("(max-width: 800px)", () => {
+            const tlMobile = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top top",
+                    end: "+=120%",
+                    scrub: 1,
+                    pin: true,
+                },
+            });
+
+            tlMobile
+                .to(".hero .content", { opacity: 0, y: -50, duration: 1 })
+                .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                .to(".cubo-img-wrapper", { y: "-10vh", duration: 1 }, "<")
+                .fromTo(
+                    ".ambientes-virtuais",
+                    { opacity: 0, marginTop: "5vh" },
+                    { opacity: 1, marginTop: "-20vh", duration: 0.8 },
+                    "-=0.8"
+                );
+        });
+    });
+
+    const container = document.getElementById("video-container");
+    const placeholder = document.getElementById("video-placeholder");
+
+    placeholder?.addEventListener("click", () => {
+        if (container) {
+            container.innerHTML = `
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+    });
+</script>

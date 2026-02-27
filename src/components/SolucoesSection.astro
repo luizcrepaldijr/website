@@ -297,11 +297,15 @@ const solucoesData = [
 </div>
 
 <style>
+    .solucoes-desktop-container {
+        display: none; /* Escondido no mobile */
+    }
+
     .solucoes-mobile {
-        display: none; /* Esconde no desktop */
+        display: flex; /* Escondido apenas via media query no desktop */
         flex-direction: column;
         gap: 80px;
-        padding: 60px 0;
+        padding: 60px 20px;
     }
 
     .solucoes-item-img {
@@ -349,6 +353,7 @@ const solucoesData = [
         }
 
         .solucoes-desktop-container {
+            display: block;
             position: relative;
             background-color: var(--neutral-background-dark, #0b0c10);
         }

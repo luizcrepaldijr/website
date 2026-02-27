@@ -9,7 +9,7 @@ export default defineConfig({
   vite: {
     server: {
       allowedHosts: [
-        '2152-45-184-78-39.ngrok-free.app'
+        'pugnaciously-epochal-arturo.ngrok-free.dev'
       ]
     }
   }

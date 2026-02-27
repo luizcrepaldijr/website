@@ -37,14 +37,174 @@
         position: absolute;
         overflow: hidden;
         bottom: -400px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: -1;
 
         .cuboImg {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
+            overflow: hidden;
             -webkit-mask-image: radial-gradient(circle, black 30%, transparent 75%);
             mask-image: radial-gradient(circle, black 30%, transparent 75%);
         }
+    }
+
+    .arrow-down {
+        position: absolute;
+        width: 65px;
+        height: 65px;
+        bottom: 100px;
+        right: 100px;
+    }
+}
+
+.ambientes-virtuais {
+    padding: 96px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    position: relative;
+    z-index: 10;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        text-align: left;
+        gap: 32px;
+        max-width: 810px;
+
+        h2 {
+            font-size: 48px;
+            font-weight: 400;
+            line-height: 140%;
+            max-width: 780px;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw + 10px, 18px);
+            line-height: 1.4;
+        }
+    }
+
+    .youtube-wrapper {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        /* Ajuste conforme necessário */
+        margin: 0 auto;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 12px;
+        /* Opcional: arredondar cantos */
+    }
+
+    .video-placeholder {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-thumb-custom {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 0, 0, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+    }
+
+    .play-button:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+        background-color: #ff0000;
+    }
+
+    .play-icon {
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 25px solid white;
+        margin-left: 5px;
+    }
+
+    /* Garante que o iframe preencha o container após o clique */
+    .youtube-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .hero {
+        padding: 40px 20px !important;
+        height: 100vh;
+
+        .content {
+            h1 {
+                font-size: 24px;
+
+                b {
+                    font-size: 32px !important;
+                }
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+        }
+
+        .cubo-img-wrapper {
+            width: 80%;
+            position: relative;
+            bottom: 0;
+            left: auto;
+            transform: none;
+        }
+
+        .arrow-down {
+            bottom: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .ambientes-virtuais {
+        padding: 40px 20px;
+        gap: 24px;
+
+        .content {
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .youtube-wrapper {
+        max-width: 100%;
     }
 }

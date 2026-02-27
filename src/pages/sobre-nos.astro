@@ -1,11 +1,424 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/pages/sobrenos.css";
+import EsferaImg from "../images/sobrenos/hero-esfera.webp";
+import SobreNosBlocks from "../images/sobrenos/sobre-nos-blocks.webp";
+import felicidadeImg from "../images/sobrenos/felicidade.webp";
+import logoSmoke from "../images/logo-smoke.webp";
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+import CuboImg from "../images/home/hero/cubo.webp";
+import worldmapImg from "../images/sobrenos/world-map.webp";
+import BadgeFlag from "../components/BadgeFlag.astro";
+import brazilFlag from "../images/sobrenos/brazil.webp";
+import euaFlag from "../images/sobrenos/eua.webp";
+import europaFlag from "../images/sobrenos/europa.webp";
+import TeamCard from "../components/TeamCard.astro";
+
+// Team Images
+import alejandroMoreno from "../images/sobrenos/equipe/alejandro_moreno.webp";
+import anaLima from "../images/sobrenos/equipe/ana_lima.webp";
+import caioBeserra from "../images/sobrenos/equipe/caio_beserra.webp";
+import carlosNogueira from "../images/sobrenos/equipe/carlos_nogueira.webp";
+import christianCastilho from "../images/sobrenos/equipe/christian_castilho.webp";
+import dianaOliveira from "../images/sobrenos/equipe/diana.webp";
+import leonardoReigada from "../images/sobrenos/equipe/leonardo.webp";
+import luizCrepaldi from "../images/sobrenos/equipe/luiz_crepaldi.webp";
+import marioOliveira from "../images/sobrenos/equipe/mario_oliveira.webp";
+import matheusBraz from "../images/sobrenos/equipe/matheus_braz.webp";
+import matheusSantana from "../images/sobrenos/equipe/matheus_santana.webp";
+import pedroNascimento from "../images/sobrenos/equipe/pedro_nascimento.webp";
+import vitorCarlos from "../images/sobrenos/equipe/victor_carlos.webp";
+import ParceirosImg from "../images/sobrenos/parceria.webp";
+
+// Import marquee images
+import m1_1 from "../images/sobrenos/marquee/marquee-1-img-1.webp";
+import m1_2 from "../images/sobrenos/marquee/marquee-1-img-2.webp";
+import m1_3 from "../images/sobrenos/marquee/marquee-1-img-3.webp";
+import m1_4 from "../images/sobrenos/marquee/marquee-1-img-4.webp";
+import m1_5 from "../images/sobrenos/marquee/marquee-1-img-5.webp";
+import m1_6 from "../images/sobrenos/marquee/marquee-1-img-6.webp";
+
+import m2_1 from "../images/sobrenos/marquee/marquee-2-img-1.webp";
+import m2_2 from "../images/sobrenos/marquee/marquee-2-img-2.webp";
+import m2_3 from "../images/sobrenos/marquee/marquee-2-img-3.webp";
+import m2_4 from "../images/sobrenos/marquee/marquee-2-img-4.webp";
+import m2_5 from "../images/sobrenos/marquee/marquee-2-img-5.webp";
+import m2_6 from "../images/sobrenos/marquee/marquee-2-img-6.webp";
+import Badge from "../components/Badge.astro";
+import ButtonArrowWhite from "../components/buttons/ButtonArrowWhite.astro";
+
+const column1 = [m1_1, m1_2, m1_3, m1_4, m1_5, m1_6];
+const column2 = [m2_1, m2_2, m2_3, m2_4, m2_5, m2_6];
 ---
 
 <Layout>
-    <div
-        style="height: 100vh; display: flex; align-items: center; justify-content: center;"
-    >
-        <h1>Sobre Nós</h1>
+    <div class="hero container">
+        <div class="content">
+            <h1>
+                <b>Expandimos os limites</b> do que o mercado considera possível.
+            </h1>
+            <h3>
+                Nascemos da combinação entre experiência prática, criatividade e
+                uma obsessão saudável por tecnologia que realmente transforma.
+            </h3>
+        </div>
+        <div class="esfera-img-wrapper">
+            <video
+                src="/videos/sobre-nos-esfera.webm"
+                class="esferaImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={EsferaImg.src}
+            >
+            </video>
+        </div>
+        <Icon name="arrow-down" class="arrow-down" />
+    </div>
+
+    <div class="problemas container-boxed">
+        <h2>Gostamos de problemas difíceis. <b>Mesmo.</b></h2>
+        <p>
+            <b>
+                Crescemos com os desafios, e nossos clientes colhem os
+                resultados.
+            </b>
+            Somos apaixonados por resolver problemas que ninguém quer pegar, criar
+            novas formas de fazer coisas antigas e usar tecnologia como ferramenta
+            de transformação real.
+        </p>
+
+        <div class="blocks-img-wrapper">
+            <video
+                src="/videos/sobre-nos-blocks.webm"
+                class="blocksImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={SobreNosBlocks.src}></video>
+        </div>
+
+        <h4>
+            Aqui, transformação digital não é discurso bonito.
+            <b>É prática diária.</b>
+        </h4>
+    </div>
+
+    <div class="jeito-transformatech container-boxed">
+        <div
+            class="jeito-inner"
+            style={`background: linear-gradient(270deg, #070921 0%, rgba(0, 51, 113, 0.70) 100%), url(${logoSmoke.src}) no-repeat -10% center / contain, #0C111D;`}
+        >
+            <div class="jeito-content-inner">
+                <h2>Jeito <b>Transformatech</b> de trabalhar</h2>
+                <br />
+                <p>
+                    Somos uma empresa inquieta, apaixonada por tecnologia,
+                    obcecada por valorizar pessoas talentosas e movida pela
+                    vontade de transformar o mundo.
+                </p>
+                <br />
+                <p>
+                    Acreditamos em relações de longo prazo. Em parceiros que
+                    crescem junto conosco. Em projetos que fortalecem negócios,
+                    pessoas e confiança ao mesmo tempo.
+                </p>
+            </div>
+
+            <div class="marquee-container">
+                <div class="marquee-column">
+                    <div class="marquee-track-1">
+                        {
+                            column1.map((img) => (
+                                <Image src={img} alt="Equipe Transformatech" />
+                            ))
+                        }
+                        {
+                            column1.map((img) => (
+                                <Image src={img} alt="Equipe Transformatech" />
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="marquee-column" style="margin-top: -60px;">
+                    <div class="marquee-track-2">
+                        {
+                            column2.map((img) => (
+                                <Image src={img} alt="Equipe Transformatech" />
+                            ))
+                        }
+                        {
+                            column2.map((img) => (
+                                <Image src={img} alt="Equipe Transformatech" />
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="felicidade container-boxed">
+        <div class="felicidade-img-wrapper">
+            <Image src={felicidadeImg} alt="" class="felicidadeImg" />
+        </div>
+        <div class="felicidade-content">
+            <h2>
+                Estamos no negócio da <b>felicidade</b>.
+            </h2>
+            <p>
+                Pode parecer incomum para uma empresa de tecnologia, mas essa é
+                uma convicção que orienta nosso trabalho. Por trás de cada
+                sistema, existem pessoas que dependem da tecnologia para operar
+                melhor.
+                <br />
+                <br />
+                Na Transformatech, desenvolvemos soluções para profissionais que
+                buscam mais eficiência, menos retrabalho e mais previsibilidade no
+                dia a dia.
+                <br />
+                <br />
+                Nosso objetivo é simples: criar mais histórias de sucesso operacional
+                do que de frustração técnica.
+            </p>
+        </div>
+    </div>
+
+    <div class="empresa-nao-cabe-em-caixa container-boxed">
+        <div class="content">
+            <h2>Uma empresa que <b>não cabe em uma caixa</b>.</h2>
+            <h3>
+                A Transformatech não é apenas tecnologia, consultoria, automação
+                ou dados. É tudo isso junto, organizado em soluções que resolvem
+                problemas reais.
+                <br />
+                <br />
+                Estamos sempre mudando, criando, testando e evoluindo.
+                <br />
+                Por isso, é difícil nos definir em uma única frase.
+            </h3>
+        </div>
+
+        <div class="cubo-img-wrapper">
+            <video
+                src="/videos/cubo-hero.webm"
+                class="cuboImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={CuboImg.src}></video>
+        </div>
+    </div>
+
+    <div class="worldmap container-boxed">
+        <div class="map">
+            <Image src={worldmapImg} alt="" class="worldmapImg" />
+        </div>
+        <div class="content">
+            <h2><b>Sem fronteiras.</b> Com propósito</h2>
+            <p>
+                Operamos no Brasil, nos Estados Unidos e na Europa, e seguimos
+                expandindo.
+                <br />
+                Para nós, fronteiras são apenas linhas no mapa.
+                <br />
+                <br />
+                Crescemos com um objetivo claro: levar impacto real ao máximo de
+                clientes possível, criando relações baseadas em resultados, confiança
+                e histórias bem contadas.
+            </p>
+            <div class="badges">
+                <BadgeFlag text="Brasil" image={brazilFlag} />
+                <BadgeFlag text="EUA" image={euaFlag} />
+                <BadgeFlag text="Europa" image={europaFlag} />
+            </div>
+        </div>
+    </div>
+
+    <div class="nossotime container-boxed">
+        <Badge text="Nosso time" />
+        <h2>
+            Um time inquieto, apaixonado por transformar
+            <b> desafios complexos em resultado.</b>
+        </h2>
+
+        <div class="team-grid">
+                        <TeamCard
+                        name="Alejandro Moreno"
+                        role="XR Developer"
+                        description="Desenvolvedor Unity, apaixonado por inovação e experiências imersivas. Curioso por natureza, sempre buscando transformar ideias complexas em projetos reais."
+                        image={alejandroMoreno}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Ana Paula Lima"
+                        role="Digital Solution Architect"
+                        description="Cientista contábil com MBA em Engenharia de Software pela UTFPR, atua há mais de 5 anos no ecossistema Microsoft como arquiteta de soluções e desenvolvedora Power Platform, criando aplicações seguras e escaláveis com foco no negócio e na experiência do usuário."
+                        image={anaLima}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Caio Beserra"
+                        role="Data & BI Specialist"
+                        description="Profissional de dados e BI com mais de 10 anos de experiência, especializado em Power Platform. Atua em projetos de dados corporativos e inteligência artificial, com forte domínio em SQL, Azure, Python e Machine Learning."
+                        image={caioBeserra}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Carlos Nogueira"
+                        role="Founder & CEO"
+                        description="Engenheiro de Comunicações, empreendedor e fundador da Transformatech, com mais de 25 anos de experiência (17 na P&G). Apaixonado por tecnologia, inovação e por resolver problemas complexos, criando soluções que transformam empresas e a vida das pessoas."
+                        image={carlosNogueira}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+
+
+                        <TeamCard
+                        name="Christian Castilho"
+                        role="AI Developer"
+                        description="Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas."
+                        image={christianCastilho}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+
+                        <TeamCard
+                        name="Diana Oliveira"
+                        role="Product Owner & Data Scientist"
+                        description="Apaixonada por desafios e por encontrar caminhos além do óbvio, cria soluções inovadoras e processos claros e eficientes que ajudam empresas a tomar melhores decisões."
+                        image={dianaOliveira}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Leonardo Reigada"
+                        role="Cybersecurity Consultant"
+                        description="Cyber Security Officer com sólida experiência em OT, IoT, engenharia e transformação digital. Results-driven servant leader, com atuação regional como CSO liderando projetos estratégicos, mitigação de riscos e business continuity, além de construir times de alta performance."
+                        image={leonardoReigada}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Luiz Crepaldi"
+                        role="AI & Data Scientist"
+                        description="Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas."
+                        image={luizCrepaldi}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+
+
+                        <TeamCard
+                        name="Mario Oliveira"
+                        role="Business Developer"
+                        description="Executivo C-level e fundador, com mais de 30 anos de experiência em manufatura, life sciences e tecnologia. Atua na liderança de transformações complexas, conectando inovação, operação e crescimento em ambientes altamente regulados."
+                        image={marioOliveira}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+
+                        <TeamCard
+                        name="Matheus Braz"
+                        role="Software Developer"
+                        description="Estudante de Engenharia de Software e Desenvolvedor Web na Transformatech Advisors. Apaixonado por programação, tecnologia e inovação, com foco em criar interfaces modernas, funcionais e intuitivas."
+                        image={matheusBraz}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Matheus Santana"
+                        role="XR Developer"
+                        description="Desenvolvedor de XR apaixonado por aprender, todos os dias, o que ainda não sei e criar coisas que realmente importam e impactam a vida das pessoas."
+                        image={matheusSantana}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+                        <TeamCard
+                        name="Pedro Nascimento"
+                        role="Automation and Controls Specialist"
+                        description="Especialista em Controle e Automação na Transformatech, atuando de forma colaborativa para entregar soluções tecnológicas eficientes aos nossos clientes."
+                        image={pedroNascimento}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+
+
+                        <TeamCard
+                        name="Vitor Carlos"
+                        role="Software Developer"
+                        description="Estagiário de Engenharia de Software na Transformatech, focado em aprendizado contínuo e em criar soluções para problemas reais."
+                        image={vitorCarlos}
+                        linkedin="#"
+                        instagram="#"
+                        facebook="#"
+                    />
+
+
+                    <div class="join-us-card">
+                        <div class="join-us-content">
+                            <div class="text">
+                                <h3>Quer fazer parte do nosso time?</h3>
+                                <p>
+                                    Estamos sempre em busca de pessoas
+                                    inquietas, técnicas e comprometidas com
+                                    transformar desafios complexos em soluções
+                                    reais.
+                                </p>
+        
+                            <a href="#" class="btn-primary">
+                                Fale conosco
+                                <Icon name="arrow-right" />
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+        </div>
+    </div>
+
+    <div class="parceria container-boxed">
+        <div class="content">
+            <h2>Mais que um projeto. <b>Uma parceria.</b></h2>
+            <h3>
+                Conte-nos onde você quer chegar. <br />
+                Nós ajudamos a desenhar o caminho.
+            </h3>
+            <span class="button">
+                <ButtonArrowWhite
+                    text="Levar a Transformatech para o meu negócio"
+                />
+            </span>
+        </div>
+
+        <div class="parceiros-img-wrapper">
+            <video
+                src="/videos/parceiros-transformatech.webm"
+                class="parceiros-img"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={ParceirosImg.src}></video>
+        </div>
     </div>
 </Layout>
+

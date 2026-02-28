@@ -355,6 +355,9 @@ body {
             bottom: 20%;
             left: 30%;
             opacity: 0;
+        }
+
+        .mapPin.animate {
             animation: mapPinAnimation 3s forwards;
         }
 
@@ -365,6 +368,9 @@ body {
             top: 40%;
             left: 15%;
             opacity: 0;
+        }
+
+        .mapPinUSA.animate {
             animation: mapPinAnimation 6s forwards;
         }
 
@@ -375,6 +381,9 @@ body {
             top: 40%;
             left: 15%;
             opacity: 0;
+        }
+
+        .mapPinEuropa.animate {
             animation: mapPinAnimation2 6s forwards;
         }
     }
@@ -461,7 +470,7 @@ body {
         position: absolute;
         right: 24px;
         top: 24px;
-        width: 220px;
+        width: 150px;
         height: auto;
         z-index: 1;
         pointer-events: none;
@@ -469,7 +478,7 @@ body {
 
     .join-us-content {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
         width: 100%;
         z-index: 2;

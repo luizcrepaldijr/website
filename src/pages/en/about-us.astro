@@ -527,4 +527,28 @@ const teamMembers = [
             });
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll(
+                ".mapPin, .mapPinUSA, .mapPinEuropa"
+            );
+
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("animate");
+                            observer.unobserve(entry.target); // 👈 faz rodar só uma vez
+                        }
+                    });
+                },
+                {
+                    threshold: 0.3,
+                }
+            );
+
+            elements.forEach((el) => observer.observe(el));
+        });
+    </script>
 </Layout>

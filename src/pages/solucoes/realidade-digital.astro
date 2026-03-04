@@ -4,6 +4,9 @@ import Layout from "../../layouts/Layout.astro";
 import "../../styles/pages/realidade-digital.css";
 import CuboImg from "../../images/home/hero/cubo.webp";
 import VideoThumb from "../../images/realidade-digital/video-thumb.webp";
+import MagicBox from "../../images/realidade-digital/magic-box.webp";
+import MetaQuest from "../../images/realidade-digital/meta-quest.webp";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -58,6 +61,70 @@ import { Icon } from "astro-icon/components";
                 <button class="play-button" aria-label="Play Video">
                     <span class="play-icon"></span>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="realidade-digital-section container-boxed">
+        <div class="rd-content">
+            <div class="rd-badge">
+                <span>Tecnologia</span>
+                <Image src={MagicBox} alt="Magic Box" class="rd-badge-img" />
+            </div>
+
+            <h2>
+                O time visualiza em realidade virtual como cada atividade deve
+                ser executada diretamente sobre o equipamento real.
+            </h2>
+            <h3>
+                O colaborador recebe orientações passo a passo no próprio
+                contexto de trabalho, tornando o aprendizado mais intuitivo,
+                imersivo e prático.
+            </h3>
+            <p><b>Com Realidade Digital é possível:</b></p>
+        </div>
+
+        <div class="rd-video-wrapper">
+            <video
+                src="/videos/oculos.webm"
+                class="rd-video"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={MetaQuest.src}></video>
+            <div class="rd-meta-quest-label">
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.5 14.5c-1.381 0-2.5-1.567-2.5-3.5s1.119-3.5 2.5-3.5c.692 0 1.317.39 1.775 1.013L12 11.5l.225-.987C12.683 9.89 13.308 9.5 14 9.5c1.381 0 2.5 1.567 2.5 3.5s-1.119 3.5-2.5 3.5c-.692 0-1.317-.39-1.775-1.013L12 14.5l-.225.987c-.458.623-1.083 1.013-1.775 1.013z"
+                        fill="white"></path>
+                </svg>
+                <span>Meta Quest 3</span>
+            </div>
+        </div>
+
+        <div class="rd-checklist">
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Visualização clara de como executar cada tarefa</span>
+            </div>
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Aprendizado prático durante a execução</span>
+            </div>
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Execução correta e padronizada</span>
+            </div>
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Mais segurança no ambiente operacional</span>
             </div>
         </div>
     </div>

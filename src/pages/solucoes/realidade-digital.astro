@@ -32,7 +32,6 @@ import { Icon } from "astro-icon/components";
                 playsinline
                 poster={CuboImg.src}></video>
         </div>
-        <Icon name="arrow-down" class="arrow-down" />
     </div>
 
     <div class="ambientes-virtuais container-boxed">
@@ -73,7 +72,7 @@ import { Icon } from "astro-icon/components";
     document.addEventListener("DOMContentLoaded", () => {
         let mm = gsap.matchMedia();
 
-        mm.add("(min-width: 801px)", () => {
+        mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".hero",
@@ -88,13 +87,39 @@ import { Icon } from "astro-icon/components";
                 .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                 .to(
                     ".cubo-img-wrapper",
-                    { y: "-60vh", x: "25vw", duration: 1 },
+                    { y: "10vh", x: "12vw", scale: 0.8, duration: 1 },
                     "<"
                 )
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-50vh", duration: 0.8 },
+                    "-=0.8"
+                );
+        });
+
+        mm.add("(min-width: 2400px)", () => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top top",
+                    end: "+=150%",
+                    scrub: 1,
+                    pin: true,
+                },
+            });
+
+            tl.to(".hero .content", { opacity: 0, y: -80, duration: 1 })
+                .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                .to(
+                    ".cubo-img-wrapper",
+                    { y: "0vh", x: 350, scale: 0.7, duration: 1 },
+                    "<"
+                )
+                .fromTo(
+                    ".ambientes-virtuais",
+                    { opacity: 0, marginTop: "5vh" },
+                    { opacity: 1, marginTop: "-40vh", duration: 0.8 },
                     "-=0.8"
                 );
         });

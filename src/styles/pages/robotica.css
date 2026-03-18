@@ -1,0 +1,208 @@
+body {
+    overflow-x: hidden;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 96px 0 0;
+    gap: 48px;
+    height: 120vh;
+    position: relative;
+}
+
+.hero .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+}
+
+.hero .content h1 {
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.1;
+}
+
+.hero .content h1 b {
+    display: block;
+    font-size: clamp(28px, 4vw, 56px) !important;
+}
+
+.hero .content h3 {
+    font-weight: 400;
+    font-size: clamp(16px, 1.5vw + 10px, 22px);
+    line-height: 1.4;
+    max-width: 800px;
+}
+
+.hero .robotica-img-wrapper {
+    width: 60%;
+    max-width: 900px;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.hero .roboticaImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-composite: intersect;
+}
+
+.hero .arrow-down {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    bottom: 100px;
+    right: 100px;
+}
+
+.robotica-section-2 {
+    padding: 96px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    position: relative;
+    z-index: 10;
+}
+
+.robotica-section-2 .content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    gap: 32px;
+    max-width: 810px;
+}
+
+.robotica-section-2 .content h2 {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 780px;
+}
+
+.robotica-section-2 .content h3 {
+    font-weight: 400;
+    font-size: clamp(16px, 1.5vw + 10px, 18px);
+    line-height: 1.4;
+    color: #b6becd;
+}
+
+.robotica-section-2 .content p {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Checklist CSS */
+.robotica-checklist {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    max-width: 100%;
+}
+
+.robotica-checklist-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid #FFFFFF40;
+    border-radius: 0;
+}
+
+.robotica-checklist-item span {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+.robotica-checklist-item svg {
+    color: white;
+    flex-shrink: 0;
+}
+
+.robotica-checklist-item+.robotica-checklist-item {
+    border-left: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .hero {
+        padding: 40px 20px !important;
+        height: 100vh;
+    }
+
+    .hero .content h1 {
+        font-size: 24px;
+    }
+
+    .hero .content h1 b {
+        font-size: 32px !important;
+    }
+
+    .hero .content h3 {
+        font-size: 16px;
+    }
+
+    .hero .robotica-img-wrapper {
+        width: 80%;
+        position: relative;
+        bottom: 0;
+        left: auto;
+        transform: none;
+    }
+
+    .hero .arrow-down {
+        bottom: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .robotica-section-2 {
+        padding: 40px 20px;
+        gap: 24px;
+    }
+
+    .robotica-section-2 .content h2 {
+        font-size: 24px;
+    }
+
+    .robotica-section-2 .content h3 {
+        font-size: 16px;
+    }
+
+    .robotica-section-2 .content p {
+        font-size: 16px;
+    }
+
+    .robotica-checklist {
+        grid-template-columns: 1fr;
+    }
+
+    .robotica-checklist-item {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .robotica-checklist-item span {
+        font-size: 16px;
+    }
+
+    .robotica-checklist-item+.robotica-checklist-item {
+        border-left: 1px solid #FFFFFF40;
+        border-top: none;
+    }
+}

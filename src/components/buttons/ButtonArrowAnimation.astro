@@ -1,14 +1,15 @@
 ---
 interface Props {
   text: string;
+  link?: string;
 }
 
-const { text } = Astro.props;
+const { text, link } = Astro.props;
 
 import ArrowRight from "phosphor-astro/ArrowRight.astro";
 ---
 
-<a href="#">
+<a href={link || "#"}>
   <div class="border-mask">
     <div class="border-glow"></div>
   </div>

@@ -1,20 +1,76 @@
+---
+import { Image } from "astro:assets";
+
+import joaoTrifano from "../images/testimonial/joao-trifano.webp";
+import unileverLogo from "../images/testimonial/unilever.webp";
+import paolaRibeiro from "../images/testimonial/paola-ribeiro.webp";
+import citrosucoLogo from "../images/testimonial/citrosuco.webp";
+import pauloHenrique from "../images/testimonial/paulo-henrique-matias.webp";
+
+const testimonials = [
+    {
+        name: "João Trifano",
+        job: "Diretor Técnico na Unilever",
+        text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+        photo: joaoTrifano,
+        companyLogo: unileverLogo,
+    },
+    {
+        name: "Paola Ribeiro",
+        job: "Liderança na Citrosuco",
+        text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+        photo: paolaRibeiro,
+        companyLogo: citrosucoLogo,
+    },
+    {
+        name: "Paulo Henrique Matias",
+        job: "Especialista na Unilever",
+        text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+        photo: pauloHenrique,
+        companyLogo: unileverLogo,
+    },
+];
+
+const marqueeItems1 = [
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+];
+const marqueeItems2 = [
+    ...testimonials.reverse(),
+    ...testimonials.reverse(),
+    ...testimonials.reverse(),
+    ...testimonials.reverse(),
+];
+---
+
 <div class="testimonials-marquee-container">
     <!-- Top Row: Scrolls to RIGHT -->
     <div class="marquee-wrapper">
         <div class="marquee-track scroll-right">
-            <!-- Duplicate content to ensure seamless scroll -->
             {
-                Array.from({ length: 10 }).map((_) => (
+                marqueeItems1.map((item) => (
                     <div class="testimonial-card">
-                        <p>
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua."
-                        </p>
-                        <div class="author">
-                            <strong>Client Name</strong>
-                            <span>Company CEO</span>
+                        <div class="testimonial-header">
+                            <div class="author-info">
+                                <Image
+                                    src={item.photo}
+                                    alt={item.name}
+                                    class="author-photo"
+                                />
+                                <div class="author-text">
+                                    <strong>{item.name}</strong>
+                                    <span>{item.job}</span>
+                                </div>
+                            </div>
+                            <Image
+                                src={item.companyLogo}
+                                alt="Company Logo"
+                                class="company-logo"
+                            />
                         </div>
+                        <p>{item.text}</p>
                     </div>
                 ))
             }
@@ -24,19 +80,28 @@
     <!-- Bottom Row: Scrolls to LEFT -->
     <div class="marquee-wrapper">
         <div class="marquee-track scroll-left">
-            <!-- Duplicate content to ensure seamless scroll -->
             {
-                Array.from({ length: 10 }).map((_) => (
+                marqueeItems2.map((item) => (
                     <div class="testimonial-card">
-                        <p>
-                            "Ut enim ad minim veniam, quis nostrud exercitation
-                            ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat."
-                        </p>
-                        <div class="author">
-                            <strong>Another Client</strong>
-                            <span>CTO, Tech Corp</span>
+                        <div class="testimonial-header">
+                            <div class="author-info">
+                                <Image
+                                    src={item.photo}
+                                    alt={item.name}
+                                    class="author-photo"
+                                />
+                                <div class="author-text">
+                                    <strong>{item.name}</strong>
+                                    <span>{item.job}</span>
+                                </div>
+                            </div>
+                            <Image
+                                src={item.companyLogo}
+                                alt="Company Logo"
+                                class="company-logo"
+                            />
                         </div>
+                        <p>{item.text}</p>
                     </div>
                 ))
             }
@@ -50,7 +115,7 @@
         flex-direction: column;
         gap: 24px;
         width: 100%;
-        overflow: hidden; /* Critical to prevent page scroll */
+        overflow: hidden;
         padding: 40px 0;
     }
 
@@ -83,44 +148,73 @@
         animation: scrollLeft 40s linear infinite;
     }
 
-    /* Pause on hover for better UX */
     .marquee-wrapper:hover .marquee-track {
         animation-play-state: paused;
     }
 
     .testimonial-card {
-        background: #101828;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #0f121d;
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 16px;
         padding: 24px;
-        width: 350px;
+        width: 500px;
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 24px;
         backdrop-filter: blur(10px);
+    }
+
+    .testimonial-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .author-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .author-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .author-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .author-text strong {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .author-text span {
+        color: #98a2b3;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .company-logo {
+        height: 35px;
+        width: auto;
+        object-fit: contain;
     }
 
     .testimonial-card p {
         color: #d0d5dd;
         font-size: 16px;
-        line-height: 1.5;
+        line-height: 1.6;
+        font-weight: 300;
         margin: 0;
-    }
-
-    .author {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .author strong {
-        color: white;
-        font-size: 14px;
-    }
-
-    .author span {
-        color: #98a2b3;
-        font-size: 12px;
     }
 
     @keyframes scrollLeft {
@@ -138,6 +232,30 @@
         }
         100% {
             transform: translateX(0);
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .testimonial-card {
+            width: 350px;
+            padding: 20px;
+        }
+
+        .author-text strong {
+            font-size: 16px;
+        }
+
+        .author-photo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .company-logo {
+            height: 25px;
+        }
+
+        .testimonial-card p {
+            font-size: 16px;
         }
     }
 </style>

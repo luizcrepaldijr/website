@@ -3,9 +3,15 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+interface Props {
+  link?: string;
+}
+
+const { link } = Astro.props;
 ---
 
-<a href="#">
+<a href={link || "#"}>
   <div class="border-mask">
     <div class="border-glow"></div>
   </div>

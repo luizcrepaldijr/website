@@ -713,7 +713,7 @@ body {
     }
 
     .felicidade {
-        flex-direction: column-reverse;
+        flex-direction: column;
         padding: 40px 20px !important;
         gap: 24px;
 
@@ -727,6 +727,17 @@ body {
 
         .felicidade-img-wrapper {
             max-width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .felicidadeImg {
+                max-width: 300px;
+                border-radius: 8px;
+                mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+                mask-composite: intersect;
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+                -webkit-mask-composite: source-in;
+            }
         }
     }
 

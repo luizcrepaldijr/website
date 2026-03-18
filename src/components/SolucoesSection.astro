@@ -15,8 +15,7 @@ const solucoesData = [
         title: "Transformação digital",
         subtitle:
             "Capacitamos o seu negócio por meio de soluções inteligentes, conectadas e orientadas por dados.",
-        description:
-            "Ajudamos as organizações a desbloquear todo o potencial de seus dados e tecnologias ao integrar ferramentas inteligentes, automatizar processos e possibilitar insights em tempo real que impulsionam a tomada de decisões estratégicas.",
+        video: "/videos/home/transformacao-digital.webm",
         image: TransformacaoDigitalImg,
         accordions: [
             {
@@ -46,8 +45,7 @@ const solucoesData = [
         title: "Indústria 4.0",
         subtitle:
             "Conectamos o mundo físico e digital para aumentar visibilidade, controle e desempenho industrial.",
-        description:
-            "Atuamos em ambientes industriais onde a falta de integração entre máquinas, sistemas e dados limita a eficiência operacional. Implementamos soluções de Industry 4.0 que conectam o chão de fábrica ao ambiente digital, permitindo operações mais previsíveis, seguras e orientadas por dados.",
+        video: "/videos/home/industria-4-0.webm",
         image: Industria40Img,
         accordions: [
             {
@@ -77,8 +75,7 @@ const solucoesData = [
         title: "Engenharia",
         subtitle:
             "Transformamos ideias complexas em soluções técnicas viáveis e eficientes.",
-        description:
-            "Oferecemos serviços de engenharia ponta a ponta para projetos que exigem rigor técnico, planejamento e execução precisa. Atuamos desde a concepção até a implementação, conectando engenharia, tecnologia e operação para reduzir riscos e otimizar resultados.",
+        video: "/videos/home/engenharia.webm",
         image: EngenhariaImg,
         accordions: [
             {
@@ -113,8 +110,7 @@ const solucoesData = [
         title: "Agricultura 4.0",
         subtitle:
             "Ajudamos produtores e operações agrícolas a tomar decisões melhores usando dados reais do campo.",
-        description:
-            "Aplicamos tecnologia para transform informações do solo e do ambiente em inteligência prática, permitindo irrigar melhor, reduzir desperdícios, aumentar produtividade e operar de forma mais sustentável e previsível.",
+        video: "/videos/home/agricultura-4-0.webm",
         image: Agricultura40Img,
         accordions: [
             {
@@ -151,6 +147,7 @@ const solucoesData = [
             "Conectamos ativos, processos e ambientes para gerar inteligência operacional, previsibilidade e eficiência em tempo real.",
         description:
             "Ajudamos empresas a enxergar em tempo real o que acontece na operação, aplicando IoT para transformar sinais físicos em inteligência operacional prática.<br /><br />Possibilitamos antecipar falhas, otimizar recursos, reduzir desperdícios e tomar decisões mais rápidas, seguras e baseadas em dados reais.",
+        video: "/videos/home/Iot.webm",
         image: IotImg,
         buttons: ["IoT para indústria", "IoT para agricultura"],
     },
@@ -164,11 +161,22 @@ const solucoesData = [
                 {
                     solucoesData.map((solucao, index) => (
                         <div class="solucoes-bg-layer" data-index={index}>
-                            <Image
-                                src={solucao.image}
-                                alt={solucao.title}
-                                class="solucoes-bg-img"
-                            />
+                            {solucao.video ? (
+                                <video
+                                    src={solucao.video}
+                                    class="solucoes-bg-video"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                                />
+                            ) : (
+                                <Image
+                                    src={solucao.image}
+                                    alt={solucao.title}
+                                    class="solucoes-bg-img"
+                                />
+                            )}
                             <div class="solucoes-bg-overlay" />
                         </div>
                     ))
@@ -261,11 +269,22 @@ const solucoesData = [
         {
             solucoesData.map((solucao) => (
                 <div class="solucoes-item">
-                    <Image
-                        src={solucao.image}
-                        alt={solucao.title}
-                        class="solucoes-item-img"
-                    />
+                    {solucao.video ? (
+                        <video
+                            src={solucao.video}
+                            class="solucoes-item-video"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                        />
+                    ) : (
+                        <Image
+                            src={solucao.image}
+                            alt={solucao.title}
+                            class="solucoes-item-img"
+                        />
+                    )}
                     <div class="content">
                         <h2>{solucao.title}</h2>
                         <h3>{solucao.subtitle}</h3>
@@ -313,6 +332,19 @@ const solucoesData = [
         height: auto;
         border-radius: 8px;
         margin-bottom: 24px;
+        object-fit: cover;
+    }
+
+    .solucoes-item-video {
+        width: 100%;
+        max-height: 250px;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        object-fit: cover;
+        mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-composite: intersect;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-composite: source-in;
     }
 
     .solucoes-item .content {
@@ -397,19 +429,29 @@ const solucoesData = [
             object-fit: cover;
         }
 
+        .solucoes-bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .solucoes-bg-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(
-                to right,
-                var(--neutral-background-dark, #0b0c10) 0%,
-                transparent 15%,
-                transparent 70%,
-                var(--neutral-background-dark, #0b0c10) 100%
-            );
+                    to right,
+                    var(--neutral-background-dark, #0b0c10) 0%,
+                    transparent 15%,
+                    transparent 70%,
+                    var(--neutral-background-dark, #0b0c10) 100%
+                ),
+                linear-gradient(
+                    to bottom,
+                    var(--neutral-background-dark, #0b0c10) 0%,
+                    transparent 15%,
+                    transparent 70%,
+                    var(--neutral-background-dark, #0b0c10) 100%
+                );
         }
 
         .solucoes-desktop-content {

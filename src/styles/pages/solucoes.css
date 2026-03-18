@@ -309,7 +309,7 @@
         align-items: center;
         text-align: center;
         justify-content: center;
-        padding: 40px 20px 80px;
+        padding: 40px 20px 80px !important;
 
         .content {
             max-width: 100%;

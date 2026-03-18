@@ -3,12 +3,16 @@ import Layout from "../../layouts/Layout.astro";
 import "../../styles/pages/robotica.css";
 import RoboticaHeroFallback from "../../images/robotica/robotica-hero.webp";
 import ButtonArrowAnimation from "../../components/buttons/ButtonArrowAnimation.astro";
+import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Badge from "../../components/Badge.astro";
 import RobosHumanoides from "../../images/robotica/robos-humanoides.webp";
 import RobosQuadrupedes from "../../images/robotica/robos-quadrupedes.webp";
 import RobosColaborativos from "../../images/robotica/robos-colaborativos.webp";
+import IntegracaoTotalImg from "../../images/robotica/integracao-total.webp";
+import RoboticaConectadaImg from "../../images/robotica/robotica-conectada-a-dados.webp";
+import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.webp";
 ---
 
 <Layout>
@@ -132,11 +136,13 @@ import RobosColaborativos from "../../images/robotica/robos-colaborativos.webp";
                     </div>
                 </div>
                 <div class="robotica-card-img-wrapper">
-                    <Image
-                        src={RobosHumanoides}
-                        alt="Robôs humanoides"
+                    <video
+                        src="/videos/robotica/humanoid.webm"
                         class="robotica-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
 
@@ -181,11 +187,13 @@ import RobosColaborativos from "../../images/robotica/robos-colaborativos.webp";
                     </div>
                 </div>
                 <div class="robotica-card-img-wrapper">
-                    <Image
-                        src={RobosQuadrupedes}
-                        alt="Robôs quadrúpedes"
+                    <video
+                        src="/videos/robotica/cachorro.webm"
                         class="robotica-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
 
@@ -229,17 +237,187 @@ import RobosColaborativos from "../../images/robotica/robos-colaborativos.webp";
                     </div>
                 </div>
                 <div class="robotica-card-img-wrapper">
-                    <Image
-                        src={RobosColaborativos}
-                        alt="Robôs colaborativos"
+                    <video
+                        src="/videos/robotica/cobot.webm"
                         class="robotica-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
         </div>
 
         <div class="robotica-btn-container">
             <ButtonArrowAnimation text="Preciso desse serviço" />
+        </div>
+    </div>
+
+    <div class="robotica-engenharia container-boxed">
+        <div class="reng-header">
+            <h2>
+                Mais do que robôs.<br /><span
+                    >Engenharia para operar em escala.</span>
+            </h2>
+        </div>
+
+        <div class="reng-row">
+            <div class="reng-media">
+                <video
+                    src="/videos/robotica/integração-total-com-fabrica.webm"
+                    class="reng-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IntegracaoTotalImg.src}></video>
+            </div>
+            <div class="reng-content">
+                <h3>Integração <b>total</b> com a fábrica</h3>
+                <p>
+                    Cada robô opera como parte ativa do fluxo produtivo,
+                    totalmente sincronizado com os sistemas das plantas
+                    industriais existentes.
+                </p>
+                <ul class="reng-list">
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Sistemas de produção (MES)</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Automação e supervisão (SCADA, CLPs)</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Comunicação com redes industriais e IoT</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Integração com sistemas de qualidade e manutenção</span
+                        >
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Operação sincronizada aos processos e sistemas de
+                            controle da fábrica</span
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="reng-row">
+            <div class="reng-content">
+                <h3>Robótica <b>conectada a dados</b></h3>
+                <p>
+                    Dados operacionais em tempo real para decisões melhores. A
+                    robótica passa a gerar visibilidade contínua sobre
+                    desempenho, qualidade e eficiência.
+                </p>
+                <ul class="reng-list">
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Monitoramento de produtividade e tempos de ciclo</span
+                        >
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Registro de paradas, falhas e anomalias</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Controle de qualidade em processo</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Coleta de condições operacionais e ambientais</span
+                        >
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Integração com plataformas analíticas</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="reng-media">
+                <Image
+                    src={RoboticaConectadaImg}
+                    alt="Robótica conectada a dados"
+                    class="reng-img"
+                />
+            </div>
+        </div>
+
+        <div class="reng-row">
+            <div class="reng-media">
+                <video
+                    src="/videos/robotica/manutencao-preditiva-melhoria-continua.webm"
+                    class="reng-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={ManutencaoPreditivaImg.src}></video>
+            </div>
+            <div class="reng-content">
+                <h3>Manutenção <b>preditiva</b> e melhoria contínua</h3>
+                <p>
+                    Da automação à inteligência operacional, transformamos robôs
+                    em sensores estratégicos para evoluir a operação
+                    continuamente.
+                </p>
+                <ul class="reng-list">
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Redução de falhas inesperadas</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Aumento da disponibilidade dos ativos</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Otimização do uso de recursos</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Melhoria contínua dos processos</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="robotica-parceria container">
+        <div class="container-boxed">
+            <div class="content">
+                <h2>Pronto para elevar sua <b>automação a outro nível?</b></h2>
+                <h3>
+                    Traga os desafios da sua planta. Nós ajudamos a integrar
+                    robótica, dados e processos para elevar produtividade,
+                    segurança e eficiência.
+                </h3>
+                <span class="button">
+                    <ButtonArrowWhite
+                        text="Levar robótica para o meu negócio"
+                    />
+                </span>
+            </div>
+
+            <div class="parceiros-img-wrapper">
+                <video
+                    src="/videos/sobre-nos/parceiros-transformatech.webm"
+                    class="parceiros-img"
+                    autoplay
+                    loop
+                    muted
+                    playsinline></video>
+            </div>
         </div>
     </div>
 
@@ -348,7 +526,7 @@ import RobosColaborativos from "../../images/robotica/robos-colaborativos.webp";
                     .fromTo(
                         ".robotica-section-2",
                         { opacity: 0, marginTop: "5vh" },
-                        { opacity: 1, marginTop: "-20vh", duration: 0.8 },
+                        { opacity: 1, marginTop: "-5vh", duration: 0.8 },
                         "-=0.8"
                     );
             });

@@ -74,46 +74,48 @@ import { Icon } from "astro-icon/components";
     </div>
 
     <div class="realidade-digital-section container-boxed">
-        <div class="rd-content">
-            <div class="rd-badge">
-                <span>Tecnologia</span>
-                <Image src={MagicBox} alt="Magic Box" class="rd-badge-img" />
+        <div class="rd-top-row">
+            <div class="rd-content">
+                <div class="rd-badge">
+                    <span>Tecnologia</span>
+                    <Image src={MagicBox} alt="Magic Box" class="rd-badge-img" />
+                </div>
+
+                <h2>
+                    O time visualiza em realidade virtual como cada atividade deve
+                    ser executada diretamente sobre o equipamento real.
+                </h2>
+                <h3>
+                    O colaborador recebe orientações passo a passo no próprio
+                    contexto de trabalho, tornando o aprendizado mais intuitivo,
+                    imersivo e prático.
+                </h3>
+                <p><b>Com Realidade Digital é possível:</b></p>
             </div>
 
-            <h2>
-                O time visualiza em realidade virtual como cada atividade deve
-                ser executada diretamente sobre o equipamento real.
-            </h2>
-            <h3>
-                O colaborador recebe orientações passo a passo no próprio
-                contexto de trabalho, tornando o aprendizado mais intuitivo,
-                imersivo e prático.
-            </h3>
-            <p><b>Com Realidade Digital é possível:</b></p>
-        </div>
-
-        <div class="rd-video-wrapper">
-            <video
-                src="/videos/realidade-digital/oculos.webm"
-                class="rd-video"
-                autoplay
-                loop
-                muted
-                playsinline
-                poster={MetaQuest.src}></video>
-            <div class="rd-meta-quest-label">
-                <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.5 14.5c-1.381 0-2.5-1.567-2.5-3.5s1.119-3.5 2.5-3.5c.692 0 1.317.39 1.775 1.013L12 11.5l.225-.987C12.683 9.89 13.308 9.5 14 9.5c1.381 0 2.5 1.567 2.5 3.5s-1.119 3.5-2.5 3.5c-.692 0-1.317-.39-1.775-1.013L12 14.5l-.225.987c-.458.623-1.083 1.013-1.775 1.013z"
-                        fill="white"></path>
-                </svg>
-                <span>Meta Quest 3</span>
+            <div class="rd-video-wrapper">
+                <video
+                    src="/videos/realidade-digital/oculos.webm"
+                    class="rd-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={MetaQuest.src}></video>
+                <div class="rd-meta-quest-label">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.5 14.5c-1.381 0-2.5-1.567-2.5-3.5s1.119-3.5 2.5-3.5c.692 0 1.317.39 1.775 1.013L12 11.5l.225-.987C12.683 9.89 13.308 9.5 14 9.5c1.381 0 2.5 1.567 2.5 3.5s-1.119 3.5-2.5 3.5c-.692 0-1.317-.39-1.775-1.013L12 14.5l-.225.987c-.458.623-1.083 1.013-1.775 1.013z"
+                            fill="white"></path>
+                    </svg>
+                    <span>Meta Quest 3</span>
+                </div>
             </div>
         </div>
 
@@ -148,27 +150,42 @@ import { Icon } from "astro-icon/components";
 
         <div class="rd-cards-grid">
             <div class="rd-card">
-                <Image
-                    src={VRImg}
-                    alt="Realidade Virtual"
-                    class="rd-card-img"
-                />
+                <video
+                    src="/videos/realidade-digital/realidade-virtual.webm"
+                    class="rd-card-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={VRImg.src}></video>
                 <div class="rd-card-overlay"></div>
-                <h4>Realidade Virtual (VR)</h4>
+                <div class="rd-card-bottom">
+                    <h4>Realidade Virtual (VR)</h4>
+                    <p>Simulações digitais permitem praticar procedimentos e fluxos de trabalho em ambientes controlados, preparando equipes antes da execução real, sem riscos e sem impacto na operação.</p>
+                </div>
             </div>
             <div class="rd-card">
-                <Image
-                    src={ARImg}
-                    alt="Realidade Aumentada"
-                    class="rd-card-img"
-                />
+                <video
+                    src="/videos/realidade-digital/realidade-aumentada.webm"
+                    class="rd-card-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={ARImg.src}></video>
                 <div class="rd-card-overlay"></div>
-                <h4>Realidade Aumentada (AR)</h4>
+                <div class="rd-card-bottom">
+                    <h4>Realidade Aumentada (AR)</h4>
+                    <p>Informações e instruções digitais aparecem diretamente sobre o ambiente físico, orientando a execução das atividades no momento em que elas acontecem.</p>
+                </div>
             </div>
             <div class="rd-card">
                 <Image src={MRImg} alt="Realidade Mista" class="rd-card-img" />
                 <div class="rd-card-overlay"></div>
-                <h4>Realidade Mista</h4>
+                <div class="rd-card-bottom">
+                    <h4>Realidade Mista</h4>
+                    <p>Elementos digitais interagem com o ambiente real, combinando visualização, dados e contexto para apoiar decisões e a execução de tarefas mais complexas.</p>
+                </div>
             </div>
         </div>
 
@@ -193,11 +210,13 @@ import { Icon } from "astro-icon/components";
                     </p>
                 </div>
                 <div class="rd-op-card-img-wrapper">
-                    <Image
-                        src={SegurancaImg}
-                        alt="Segurança Imagem"
+                    <video
+                        src="/videos/realidade-digital/segurança-vr.webm"
                         class="rd-op-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
 
@@ -210,11 +229,13 @@ import { Icon } from "astro-icon/components";
                     </p>
                 </div>
                 <div class="rd-op-card-img-wrapper">
-                    <Image
-                        src={ChangeoverImg}
-                        alt="Changeover Imagem"
+                    <video
+                        src="/videos/realidade-digital/changeover.webm"
                         class="rd-op-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
 
@@ -228,11 +249,13 @@ import { Icon } from "astro-icon/components";
                     </p>
                 </div>
                 <div class="rd-op-card-img-wrapper">
-                    <Image
-                        src={ManutencaoImg}
-                        alt="Manutenção Imagem"
+                    <video
+                        src="/videos/realidade-digital/manutenção.webm"
                         class="rd-op-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
 
@@ -245,11 +268,13 @@ import { Icon } from "astro-icon/components";
                     </p>
                 </div>
                 <div class="rd-op-card-img-wrapper">
-                    <Image
-                        src={SuporteRemotoImg}
-                        alt="Suporte Remoto Imagem"
+                    <video
+                        src="/videos/realidade-digital/suporte-remoto.webm"
                         class="rd-op-card-img"
-                    />
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
                 </div>
             </div>
         </div>
@@ -262,8 +287,8 @@ import { Icon } from "astro-icon/components";
                 executa?
             </h2>
             <h3>
-                Traga os desafios da sua operação. Nós ajudamos a transformar capacitação
-                técnica em performance real no dia a dia.
+                Traga os desafios da sua operação. Nós ajudamos a transformar
+                capacitação técnica em performance real no dia a dia.
             </h3>
             <span class="button">
                 <ButtonArrowWhite
@@ -303,7 +328,6 @@ import { Icon } from "astro-icon/components";
                 if (index < cards.length - 1) {
                     gsap.to(card, {
                         scale: 1 - 0.05 * (cards.length - 1 - index), // The lowest gets scaled down the most initially relative
-                        opacity: 0.8,
                         ease: "none",
                         scrollTrigger: {
                             trigger: cards[index + 1],

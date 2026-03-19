@@ -4,7 +4,7 @@ import "../../styles/pages/sobrenos.css";
 import EsferaImg from "../../images/sobrenos/hero-esfera.webp";
 import SobreNosBlocks from "../../images/sobrenos/sobre-nos-blocks.webp";
 import felicidadeImg from "../../images/sobrenos/felicidade.webp";
-import logoSmoke from "../../images/logo-smoke.webp";
+import logoSmoke from "../../images/sobrenos/logo-bright.webp";
 import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
 import CuboImg from "../../images/home/hero/cubo.webp";
@@ -305,7 +305,13 @@ const teamMembers = [
 
     <div class="felicidade container-boxed">
         <div class="felicidade-img-wrapper">
-            <Image src={felicidadeImg} alt="" class="felicidadeImg" />
+            <video
+                src="/videos/sobre-nos/negocio-da-fecilidade.webm"
+                class="felicidadeImg"
+                autoplay
+                loop
+                muted
+                playsinline></video>
         </div>
         <div class="felicidade-content">
             <h2>

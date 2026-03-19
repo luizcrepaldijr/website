@@ -562,10 +562,20 @@ import { Icon } from "astro-icon/components";
 
         gsap.registerPlugin(ScrollTrigger);
 
-        document.addEventListener("DOMContentLoaded", () => {
-            let mm = gsap.matchMedia();
+        let mm: gsap.MatchMedia | null = null;
+
+        function initAnimations() {
+            // Mata tudo que existia antes
+            if (mm) {
+                mm.kill();
+                mm = null;
+            }
+            ScrollTrigger.getAll().forEach((st) => st.kill());
+            gsap.globalTimeline.clear();
+
+            mm = gsap.matchMedia();
+
             mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
-                // Hero
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-hero",
@@ -593,15 +603,7 @@ import { Icon } from "astro-icon/components";
                         "-=0.8"
                     );
 
-                // Indústrias + Agricultura (tudo aqui dentro)
                 _registerScrollers();
-
-                // Refresh após dois frames de layout
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        ScrollTrigger.refresh();
-                    });
-                });
             });
 
             mm.add("(min-width: 2400px)", () => {
@@ -629,12 +631,6 @@ import { Icon } from "astro-icon/components";
                     );
 
                 _registerScrollers();
-
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        ScrollTrigger.refresh();
-                    });
-                });
             });
 
             mm.add("(max-width: 800px)", () => {
@@ -798,7 +794,17 @@ import { Icon } from "astro-icon/components";
                         "+=0.3"
                     )
                     .to(".agri-text-5", { autoAlpha: 0, duration: 0.5 }, "<");
+
+                // Refresh depois que os dois pins anteriores já estão registrados
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        ScrollTrigger.refresh();
+                    });
+                });
             }
-        });
+        }
+
+        // Roda na primeira carga E em cada navegação via View Transitions
+        document.addEventListener("DOMContentLoaded", initAnimations);
     </script>
 </Layout>

@@ -1,11 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import "../../styles/pages/cases.css";
 import { Image } from "astro:assets";
 import Badge from "../../components/Badge.astro";
 import Badge2 from "../../components/Badge2.astro";
 import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
-import ButtonArrow from "../../components/buttons/ButtonArrow.astro";
 import FaleConosco from "../../components/FaleConosco.astro";
 
 import ParceirosImg from "../../images/sobrenos/parceria.webp";
@@ -15,10 +15,9 @@ import LivingProof from "../../images/home/parceirosglobais/living-proof.webp";
 import TecnologiasDesktop from "../../images/solucoes/tecnologias-desktop.webp";
 import TecnologiasMobile from "../../images/solucoes/tecnologias-mobile.webp";
 
-// Case images
-import AgriTechImg from "../../images/cases/agritech/agritech.webp";
-import PqsImg from "../../images/cases/pqs/pqs.webp";
-import BeautyPrismImg from "../../images/cases/beauty-prism/beauty-prism.webp";
+const enCases = await getCollection("cases", ({ id }) => {
+    return id.startsWith("en/");
+});
 ---
 
 <Layout>
@@ -64,133 +63,37 @@ import BeautyPrismImg from "../../images/cases/beauty-prism/beauty-prism.webp";
             efficiency, scalability, and strategic decision-making.
         </p>
 
-        <!-- Case 1: AgriTech -->
-        <div class="case-card">
-            <Image src={AgriTechImg} alt="AgriTech" class="case-card-img" />
-            <div class="case-card-content">
-                <div class="case-card-badges">
-                    <Badge2 text="IoT" />
-                    <Badge2 text="Agriculture 4.0" />
-                </div>
-                <h3>
-                    <b>AgriTech:</b> Intelligent IoT platform for irrigation
-                    based on real-time soil data.
-                </h3>
-                <div class="case-card-detail">
-                    <strong>Challenge</strong>
-                    <p>
-                        Lack of continuous soil moisture monitoring and
-                        systematic-based calculations. Unpredictable irrigation
-                        and water consumption.
-                    </p>
-                </div>
-                <div class="case-card-detail">
-                    <strong>Solution</strong>
-                    <p>
-                        IoT infrastructure with smart soil sensors via LoRaWAN
-                        and a platform with detailed dashboards, automatic
-                        alerts, and real-time irrigation recommendations.
-                    </p>
-                </div>
-                <div class="case-card-detail">
-                    <strong>Result</strong>
-                    <p>
-                        Optimization of irrigation and GT, waste reduction,
-                        predictability in management. Provides a solid technical
-                        foundation for precision agriculture.
-                    </p>
-                </div>
-                <div class="case-card-btn">
-                    <ButtonArrowWhite text="Read more" />
+        {enCases.map(entry => (
+            <div class="case-card">
+                <Image src={entry.data.image} alt={entry.data.title} class="case-card-img" />
+                <div class="case-card-content">
+                    <div class="case-card-badges">
+                        {entry.data.badges.map((badge: string) => (
+                            <Badge2 text={badge} />
+                        ))}
+                    </div>
+                    <h3>{entry.data.title}</h3>
+                    <div class="case-card-detail">
+                        <strong>Challenge</strong>
+                        <p>{entry.data.challenge}</p>
+                    </div>
+                    <div class="case-card-detail">
+                        <strong>Solution</strong>
+                        <p>{entry.data.solution}</p>
+                    </div>
+                    <div class="case-card-detail">
+                        <strong>Result</strong>
+                        <p>{entry.data.result}</p>
+                    </div>
+                    <div class="case-card-btn">
+                        <ButtonArrowWhite 
+                            text="Read more" 
+                            link={`/en/cases/${entry.id.replace('en/', '')}`} 
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Case 2: PQS -->
-        <div class="case-card">
-            <Image src={PqsImg} alt="PQS" class="case-card-img" />
-            <div class="case-card-content">
-                <div class="case-card-badges">
-                    <Badge2 text="Digital Transformation" />
-                    <Badge2 text="Industry" />
-                </div>
-                <h3>
-                    <b>PQS:</b> Digital platform for structured industrial
-                    defect control
-                </h3>
-                <div class="case-card-detail">
-                    <strong>Challenge</strong>
-                    <p>
-                        Processes showed high scrap rates and high costs in
-                        structured defect classification, with vulnerable and
-                        polarized manual processes.
-                    </p>
-                </div>
-                <div class="case-card-detail">
-                    <strong>Solution</strong>
-                    <p>
-                        Power Apps dashboard with SQL backend, integrated with
-                        automatic classification, configurable alerts, and
-                        quality validations on the factory floor.
-                    </p>
-                </div>
-                <div class="case-card-detail">
-                    <strong>Result</strong>
-                    <p>
-                        Elimination of parallel spreadsheets, increased
-                        reliability of traceability data, and optimized governance.
-                    </p>
-                </div>
-                <div class="case-card-btn">
-                    <ButtonArrowWhite text="Read more" />
-                </div>
-            </div>
-        </div>
-
-        <!-- Case 3: Beauty Prism -->
-        <div class="case-card">
-            <Image
-                src={BeautyPrismImg}
-                alt="Beauty Prism"
-                class="case-card-img"
-            />
-            <div class="case-card-content">
-                <div class="case-card-badges">
-                    <Badge2 text="Digital Transformation" />
-                    <Badge2 text="Engineering" />
-                </div>
-                <h3>
-                    <b>Beauty Prism:</b> Integrated platform for digital
-                    portfolio governance
-                </h3>
-                <div class="case-card-detail">
-                    <strong>Challenge</strong>
-                    <p>
-                        Process data fragmented across stations, copied files,
-                        and Office spreadsheets, leading to slow reaction times
-                        and low executive visibility.
-                    </p>
-                </div>
-                <div class="case-card-detail">
-                    <strong>Solution</strong>
-                    <p>
-                        Power Apps system with Power Automate automations,
-                        data centralization, and strategic visibility integrated
-                        with dashboards.
-                    </p>
-                </div>
-                <div class="case-card-detail">
-                    <strong>Result</strong>
-                    <p>
-                        Single source of truth, elimination of rework, and
-                        strategic visibility at all management levels.
-                    </p>
-                </div>
-                <div class="case-card-btn">
-                    <ButtonArrowWhite text="Read more" />
-                </div>
-            </div>
-        </div>
+        ))}
     </div>
 
     <!-- TECHNOLOGIES -->

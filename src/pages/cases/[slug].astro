@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import "../../styles/pages/individual-cases.css";
+
+export async function getStaticPaths() {
+    const ptCases = await getCollection("cases", ({ id }) => {
+        return id.startsWith("pt/");
+    });
+
+    return ptCases.map((entry) => ({
+        params: { slug: entry.id.replace("pt/", "") },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout>
+    <div class="case-hero-section">
+        <div class="container-boxed hero-grid">
+            <div class="hero-content">
+                <h1>{entry.data.title}</h1>
+                <h2 class="hero-subtitle">{entry.data.subtitle}</h2>
+                <p class="hero-description">{entry.data.description}</p>
+
+                {
+                    entry.data.stats && (
+                        <div class="stats-container">
+                            {entry.data.stats.map((stat: any) => (
+                                <div class="stat-card">
+                                    <span
+                                        class="stat-value"
+                                        data-value={stat.value}
+                                    >
+                                        0
+                                    </span>
+                                    <p class="stat-label">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+            <div class="hero-image">
+                <Image
+                    src={entry.data.image}
+                    alt={entry.data.title}
+                    class="main-img"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="case-content-section container-boxed">
+        <div class="case-content-grid">
+            <div class="case-info">
+                <div class="detail-section">
+                    <strong>Desafio</strong>
+                    <p>{entry.data.challenge}</p>
+                </div>
+                <div class="detail-section">
+                    <strong>Solução</strong>
+                    <p>{entry.data.solution}</p>
+                </div>
+                <div class="detail-section">
+                    <strong>Resultado</strong>
+                    <p>{entry.data.result}</p>
+                </div>
+            </div>
+            <div class="case-body">
+                <Content />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+        gsap.registerPlugin(ScrollTrigger);
+
+        const statsValues = document.querySelectorAll(".stat-value");
+
+        statsValues.forEach((el) => {
+            const element = el as HTMLElement;
+            const targetValueStr = element.getAttribute("data-value") || "0";
+            const numericValue =
+                parseFloat(targetValueStr.replace(/[^\d.-]/g, "")) || 0;
+            const nonNumeric = targetValueStr.replace(/[\d.,-]/g, "");
+            const hasPlus = targetValueStr.startsWith("+");
+            const isPercent = targetValueStr.endsWith("%");
+
+            gsap.to(element, {
+                innerText: numericValue,
+                duration: 2,
+                snap: { innerText: 1 },
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 90%",
+                },
+                onUpdate: function () {
+                    let current = Math.floor(
+                        parseFloat((this.targets()[0] as HTMLElement).innerText)
+                    );
+                    let formatted = current
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+                    if (hasPlus) formatted = "+" + formatted;
+                    if (isPercent) formatted = formatted + "%";
+                    else if (nonNumeric && !isPercent)
+                        formatted = formatted + nonNumeric;
+
+                    element.innerText = formatted;
+                },
+            });
+        });
+    </script>
+</Layout>

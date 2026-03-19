@@ -564,8 +564,8 @@ import { Icon } from "astro-icon/components";
 
         document.addEventListener("DOMContentLoaded", () => {
             let mm = gsap.matchMedia();
-
             mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
+                // Hero
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-hero",
@@ -575,7 +575,6 @@ import { Icon } from "astro-icon/components";
                         pin: true,
                     },
                 });
-
                 tl.to(".iot-hero .content", {
                     opacity: 0,
                     y: -100,
@@ -593,6 +592,16 @@ import { Icon } from "astro-icon/components";
                         { opacity: 1, marginTop: "-50vh", duration: 0.8 },
                         "-=0.8"
                     );
+
+                // Indústrias + Agricultura (tudo aqui dentro)
+                _registerScrollers();
+
+                // Refresh após dois frames de layout
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        ScrollTrigger.refresh();
+                    });
+                });
             });
 
             mm.add("(min-width: 2400px)", () => {
@@ -605,7 +614,6 @@ import { Icon } from "astro-icon/components";
                         pin: true,
                     },
                 });
-
                 tl.to(".iot-hero .content", { opacity: 0, y: -80, duration: 1 })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                     .to(
@@ -619,6 +627,14 @@ import { Icon } from "astro-icon/components";
                         { opacity: 1, marginTop: "-40vh", duration: 0.8 },
                         "-=0.8"
                     );
+
+                _registerScrollers();
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        ScrollTrigger.refresh();
+                    });
+                });
             });
 
             mm.add("(max-width: 800px)", () => {
@@ -631,7 +647,6 @@ import { Icon } from "astro-icon/components";
                         pin: true,
                     },
                 });
-
                 tlMobile
                     .to(".iot-hero .content", {
                         opacity: 0,
@@ -652,12 +667,15 @@ import { Icon } from "astro-icon/components";
                     );
             });
 
-            mm.add("(min-width: 801px)", () => {
-                // Indústrias Scroller
+            function _registerScrollers() {
+                gsap.set(".text-2, .text-3, .text-4, .media-2", {
+                    autoAlpha: 0,
+                });
+
                 const indTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-industrias-master-scrollarea",
-                        start: "top top", // Pins exactly at the top of the screen
+                        start: "top top",
                         end: "+=300%",
                         scrub: 1,
                         pin: true,
@@ -665,12 +683,6 @@ import { Icon } from "astro-icon/components";
                     },
                 });
 
-                // Prep initial states strictly
-                gsap.set(".text-2, .text-3, .text-4, .media-2", {
-                    autoAlpha: 0,
-                });
-
-                // Scene 1 -> 2
                 indTl
                     .to(".media-1", { xPercent: -100, duration: 1 })
                     .fromTo(
@@ -685,8 +697,6 @@ import { Icon } from "astro-icon/components";
                         { autoAlpha: 1, x: 0, duration: 0.5 },
                         "<0.5"
                     )
-
-                    // Scene 2 -> 3 (Fade swap)
                     .to(".media-1", { autoAlpha: 0, duration: 0.5 })
                     .to(".text-2", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
                     .fromTo(
@@ -701,8 +711,6 @@ import { Icon } from "astro-icon/components";
                         { autoAlpha: 1, x: 0, duration: 0.5 },
                         "<0.5"
                     )
-
-                    // Scene 3 -> 4
                     .to(".media-2", { xPercent: -100, duration: 1 })
                     .to(".text-3", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
                     .fromTo(
@@ -712,7 +720,11 @@ import { Icon } from "astro-icon/components";
                         "<0.5"
                     );
 
-                // ── AGRICULTURA SCROLLER ──
+                gsap.set(
+                    ".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2",
+                    { autoAlpha: 0 }
+                );
+
                 const agriTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-agricultura-master-scrollarea",
@@ -724,12 +736,6 @@ import { Icon } from "astro-icon/components";
                     },
                 });
 
-                gsap.set(
-                    ".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2",
-                    { autoAlpha: 0 }
-                );
-
-                // Scene 1 -> 2: video moves left, text2 appears right
                 agriTl
                     .to(".agri-media-1", { xPercent: -100, duration: 1 })
                     .fromTo(
@@ -744,8 +750,6 @@ import { Icon } from "astro-icon/components";
                         { autoAlpha: 1, x: 0, duration: 0.5 },
                         "<0.5"
                     )
-
-                    // Scene 2 -> 3: crossfade video1->video2, text swap
                     .to(".agri-media-1", { autoAlpha: 0, duration: 0.5 })
                     .to(
                         ".agri-text-2",
@@ -764,8 +768,6 @@ import { Icon } from "astro-icon/components";
                         { autoAlpha: 1, x: 0, duration: 0.5 },
                         "<0.5"
                     )
-
-                    // Scene 3 -> 4: video2 moves left, text4 right
                     .to(".agri-media-2", { xPercent: -100, duration: 1 })
                     .to(
                         ".agri-text-3",
@@ -777,19 +779,11 @@ import { Icon } from "astro-icon/components";
                         { autoAlpha: 0, x: 50 },
                         { autoAlpha: 1, x: 0, duration: 0.5 },
                         "<0.5"
-                    );
-
-                // Scene 4 -> 5: video grows, centers, text5 overlay
-                agriTl
+                    )
                     .to(".agri-text-4", { autoAlpha: 0, y: -30, duration: 0.5 })
                     .to(
                         ".agri-media-2",
-                        {
-                            xPercent: -50, // Como a media-2 está com right:0, precisamos compensar para o centro
-                            left: "50%",
-                            scale: 1.1,
-                            duration: 1,
-                        },
+                        { xPercent: -50, left: "50%", scale: 1.1, duration: 1 },
                         "<"
                     )
                     .fromTo(
@@ -804,7 +798,7 @@ import { Icon } from "astro-icon/components";
                         "+=0.3"
                     )
                     .to(".agri-text-5", { autoAlpha: 0, duration: 0.5 }, "<");
-            });
+            }
         });
     </script>
 </Layout>

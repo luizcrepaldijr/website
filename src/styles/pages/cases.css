@@ -294,6 +294,11 @@
 
     .case-card-content h3 {
         font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .case-card-btn {
+        margin-top: 15px;
     }
 
     /* TECNOLOGIAS */

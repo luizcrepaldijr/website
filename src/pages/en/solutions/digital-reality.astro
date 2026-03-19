@@ -1,9 +1,16 @@
 ---
 import ButtonArrowAnimation from "../../../components/buttons/ButtonArrowAnimation.astro";
+import ButtonArrowWhite from "../../../components/buttons/ButtonArrowWhite.astro";
 import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/pages/realidade-digital.css";
 import CuboImg from "../../../images/home/hero/cubo.webp";
 import VideoThumb from "../../../images/realidade-digital/video-thumb.webp";
+import MagicBox from "../../../images/realidade-digital/magic-box.webp";
+import MetaQuest from "../../../images/realidade-digital/meta-quest.webp";
+import VRImg from "../../../images/realidade-digital/realidade-virtual.webp";
+import ARImg from "../../../images/realidade-digital/realidade-aumentada.webp";
+import MRImg from "../../../images/realidade-digital/realidade-mista.webp";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -32,7 +39,6 @@ import { Icon } from "astro-icon/components";
                 playsinline
                 poster={CuboImg.src}></video>
         </div>
-        <Icon name="arrow-down" class="arrow-down" />
     </div>
 
     <div class="ambientes-virtuais container-boxed">
@@ -62,6 +68,241 @@ import { Icon } from "astro-icon/components";
             </div>
         </div>
     </div>
+
+    <div class="realidade-digital-section container-boxed">
+        <div class="rd-top-row">
+            <div class="rd-content">
+                <div class="rd-badge">
+                    <span>Technology</span>
+                    <Image src={MagicBox} alt="Magic Box" class="rd-badge-img" />
+                </div>
+
+                <h2>
+                    The team visualizes in virtual reality how each activity should
+                    be executed directly on the real equipment.
+                </h2>
+                <h3>
+                    The employee receives step-by-step guidance in their own
+                    work context, making learning more intuitive,
+                    immersive, and practical.
+                </h3>
+                <p><b>With Digital Reality it is possible to:</b></p>
+            </div>
+
+            <div class="rd-video-wrapper">
+                <video
+                    src="/videos/realidade-digital/oculos.webm"
+                    class="rd-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={MetaQuest.src}></video>
+                <div class="rd-meta-quest-label">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.5 14.5c-1.381 0-2.5-1.567-2.5-3.5s1.119-3.5 2.5-3.5c.692 0 1.317.39 1.775 1.013L12 11.5l.225-.987C12.683 9.89 13.308 9.5 14 9.5c1.381 0 2.5 1.567 2.5 3.5s-1.119 3.5-2.5 3.5c-.692 0-1.317-.39-1.775-1.013L12 14.5l-.225.987c-.458.623-1.083 1.013-1.775 1.013z"
+                            fill="white"></path>
+                    </svg>
+                    <span>Meta Quest 3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rd-checklist">
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Clear visualization of how to execute each task</span>
+            </div>
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Practical learning during execution</span>
+            </div>
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>Correct and standardized execution</span>
+            </div>
+            <div class="rd-checklist-item">
+                <Icon name="check" size={24} />
+                <span>More safety in the operational environment</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="rd-abordagem-integrada container-boxed">
+        <div class="rd-abordagem-header">
+            <h2>We use an integrated approach to Digital Reality</h2>
+            <h3>
+                We integrate Digital Reality technologies to accompany the entire
+                learning journey until operational execution.
+            </h3>
+        </div>
+
+        <div class="rd-cards-grid">
+            <div class="rd-card">
+                <video
+                    src="/videos/realidade-digital/realidade-virtual.webm"
+                    class="rd-card-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={VRImg.src}></video>
+                <div class="rd-card-overlay"></div>
+                <div class="rd-card-bottom">
+                    <h4>Virtual Reality (VR)</h4>
+                    <p>Digital simulations allow practicing procedures and workflows in controlled environments, preparing teams before real execution, without risks and without impact on the operation.</p>
+                </div>
+            </div>
+            <div class="rd-card">
+                <video
+                    src="/videos/realidade-digital/realidade-aumentada.webm"
+                    class="rd-card-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={ARImg.src}></video>
+                <div class="rd-card-overlay"></div>
+                <div class="rd-card-bottom">
+                    <h4>Augmented Reality (AR)</h4>
+                    <p>Digital information and instructions appear directly on the physical environment, guiding the execution of activities as they happen.</p>
+                </div>
+            </div>
+            <div class="rd-card">
+                <Image src={MRImg} alt="Mixed Reality" class="rd-card-img" />
+                <div class="rd-card-overlay"></div>
+                <div class="rd-card-bottom">
+                    <h4>Mixed Reality</h4>
+                    <p>Digital elements interact with the real environment, combining visualization, data and context to support decisions and the execution of more complex tasks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="rd-btn-container">
+            <ButtonArrowAnimation text="I need this service" />
+        </div>
+    </div>
+
+    <div class="rd-operacao-industrial container-boxed">
+        <div class="rd-op-header">
+            <h2>Digital Reality applied to industrial operations</h2>
+        </div>
+
+        <div class="rd-op-cards-container">
+            <div class="rd-op-card">
+                <div class="rd-op-card-content">
+                    <h3>Safety</h3>
+                    <p>
+                        Safe training in simulated environments, allowing
+                        teams to practice critical procedures before
+                        acting on the factory floor.
+                    </p>
+                </div>
+                <div class="rd-op-card-img-wrapper">
+                    <video
+                        src="/videos/realidade-digital/segurança-vr.webm"
+                        class="rd-op-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+
+            <div class="rd-op-card">
+                <div class="rd-op-card-content">
+                    <h3>Changeover</h3>
+                    <p>
+                        Faster and more standardized setup changes, with
+                        digital guidance that reduces errors and downtime.
+                    </p>
+                </div>
+                <div class="rd-op-card-img-wrapper">
+                    <video
+                        src="/videos/realidade-digital/changeover.webm"
+                        class="rd-op-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+
+            <div class="rd-op-card">
+                <div class="rd-op-card-content">
+                    <h3>Maintenance</h3>
+                    <p>
+                        Maintenance guided by interactive visual instructions,
+                        combining digital information and the real context for
+                        precise execution.
+                    </p>
+                </div>
+                <div class="rd-op-card-img-wrapper">
+                    <video
+                        src="/videos/realidade-digital/manutenção.webm"
+                        class="rd-op-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+
+            <div class="rd-op-card">
+                <div class="rd-op-card-content">
+                    <h3>Remote Support</h3>
+                    <p>
+                        Real-time remote support visualizing the local specialist
+                        to resolve problems more quickly.
+                    </p>
+                </div>
+                <div class="rd-op-card-img-wrapper">
+                    <video
+                        src="/videos/realidade-digital/suporte-remoto.webm"
+                        class="rd-op-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rd-pronto-transformar container-boxed">
+        <div class="content">
+            <h2>
+                Ready to transform how your team learns and executes?
+            </h2>
+            <h3>
+                Bring your operation's challenges. We help transform
+                technical training into real performance in everyday life.
+            </h3>
+            <span class="button">
+                <ButtonArrowWhite
+                    text="Bring digital reality to my business"
+                />
+            </span>
+        </div>
+
+        <div class="cubo-img-wrapper">
+            <video
+                src="/videos/cubo-hero.webm"
+                class="cuboImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={CuboImg.src}></video>
+        </div>
+    </div>
 </Layout>
 
 <script>
@@ -74,6 +315,26 @@ import { Icon } from "astro-icon/components";
         let mm = gsap.matchMedia();
 
         mm.add("(min-width: 801px)", () => {
+            const cards = gsap.utils.toArray(".rd-op-card") as HTMLElement[];
+
+            cards.forEach((card, index) => {
+                if (index < cards.length - 1) {
+                    gsap.to(card, {
+                        scale: 1 - 0.05 * (cards.length - 1 - index),
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: cards[index + 1],
+                            start: `top bottom-=200`,
+                            end: `top top+=${100 + (index + 1) * 30}`,
+                            scrub: true,
+                            invalidateOnRefresh: true,
+                        },
+                    });
+                }
+            });
+        });
+
+        mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".hero",
@@ -87,14 +348,40 @@ import { Icon } from "astro-icon/components";
             tl.to(".hero .content", { opacity: 0, y: -100, duration: 1 })
                 .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                 .to(
-                    ".cubo-img-wrapper",
-                    { y: "-60vh", x: "25vw", duration: 1 },
+                    ".hero .cubo-img-wrapper",
+                    { y: "10vh", x: "12vw", scale: 0.8, duration: 1 },
                     "<"
                 )
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-50vh", duration: 0.8 },
+                    "-=0.8"
+                );
+        });
+
+        mm.add("(min-width: 2400px)", () => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top top",
+                    end: "+=150%",
+                    scrub: 1,
+                    pin: true,
+                },
+            });
+
+            tl.to(".hero .content", { opacity: 0, y: -80, duration: 1 })
+                .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                .to(
+                    ".hero .cubo-img-wrapper",
+                    { y: "0vh", x: 350, scale: 0.7, duration: 1 },
+                    "<"
+                )
+                .fromTo(
+                    ".ambientes-virtuais",
+                    { opacity: 0, marginTop: "5vh" },
+                    { opacity: 1, marginTop: "-40vh", duration: 0.8 },
                     "-=0.8"
                 );
         });
@@ -113,7 +400,7 @@ import { Icon } from "astro-icon/components";
             tlMobile
                 .to(".hero .content", { opacity: 0, y: -50, duration: 1 })
                 .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                .to(".cubo-img-wrapper", { y: "-10vh", duration: 1 }, "<")
+                .to(".hero .cubo-img-wrapper", { y: "-10vh", duration: 1 }, "<")
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
@@ -143,66 +430,3 @@ import { Icon } from "astro-icon/components";
         }
     });
 </script>
-
-<style>
-    .youtube-wrapper {
-        aspect-ratio: 16 / 9;
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-        cursor: pointer;
-        overflow: hidden;
-        border-radius: 12px;
-    }
-
-    .video-placeholder {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-
-    .video-thumb-custom {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(255, 0, 0, 0.9);
-        border: none;
-        border-radius: 50%;
-        width: 70px;
-        height: 70px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease;
-    }
-
-    .play-button:hover {
-        transform: translate(-50%, -50%) scale(1.1);
-        background-color: #ff0000;
-    }
-
-    .play-icon {
-        width: 0;
-        height: 0;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 25px solid white;
-        margin-left: 5px;
-    }
-
-    .youtube-wrapper iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-</style>

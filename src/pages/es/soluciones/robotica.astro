@@ -1,14 +1,531 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/pages/robotica.css";
+import RoboticaHeroFallback from "../../../images/robotica/robotica-hero.webp";
+import ButtonArrowAnimation from "../../../components/buttons/ButtonArrowAnimation.astro";
+import ButtonArrowWhite from "../../../components/buttons/ButtonArrowWhite.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Badge from "../../../components/Badge.astro";
+import IntegracaoTotalImg from "../../../images/robotica/integracao-total.webp";
+import RoboticaConectadaImg from "../../../images/robotica/robotica-conectada-a-dados.webp";
+import ManutencaoPreditivaImg from "../../../images/robotica/manutencao-preditiva.webp";
 ---
 
 <Layout>
     <div class="hero container-boxed">
-        <div class="content" style="padding-top: 150px; text-align: center;">
+        <div class="content">
             <h1>
-                <b>Robótica</b> Integrada
+                <b>Robótica:</b> automatización industrial en un nuevo nivel
             </h1>
-            <p>Página en construcción...</p>
+            <h3>
+                Desde la concepción hasta la integración de sistemas robóticos en
+                entornos industriales para elevar la productividad, la seguridad y
+                la eficiencia operativa.
+            </h3>
+
+            <ButtonArrowAnimation text="Necesito este servicio" />
+        </div>
+
+        <div class="robotica-img-wrapper">
+            <video
+                src="/videos/robotica/robotica-hero.webm"
+                class="roboticaImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={RoboticaHeroFallback.src}></video>
+        </div>
+        <Icon name="arrow-down" class="arrow-down" />
+    </div>
+
+    <div class="robotica-section-2 container-boxed">
+        <div class="content">
+            <h2>
+                Creemos que la robótica va<br />mucho más allá de la automatización.
+            </h2>
+            <h3>
+                La robótica industrial es la nueva capa de inteligencia que
+                conecta máquinas, personas y datos para elevar la productividad,
+                la seguridad y la previsibilidad operativa.
+            </h3>
+            <p><b>Con la robótica aplicada, es posible:</b></p>
+        </div>
+
+        <div class="robotica-checklist">
+            <div class="robotica-checklist-item">
+                <Icon name="check" size={24} />
+                <span
+                    >Integración de robots a los sistemas y a la lógica de producción</span
+                >
+            </div>
+            <div class="robotica-checklist-item">
+                <Icon name="check" size={24} />
+                <span
+                    >Automatización flexible para optimizar procesos industriales
+                    críticos</span
+                >
+            </div>
+            <div class="robotica-checklist-item">
+                <Icon name="check" size={24} />
+                <span
+                    >Inspección autónoma en áreas de riesgo y operación continua</span
+                >
+            </div>
+            <div class="robotica-checklist-item">
+                <Icon name="check" size={24} />
+                <span
+                    >Medición continua de productividad y desempeño operativo</span
+                >
+            </div>
         </div>
     </div>
+
+    <div class="robotica-solucoes container-boxed">
+        <div class="robotica-solucoes-header">
+            <Badge text="Tecnologías" />
+            <h2>
+                <b>Soluciones de robótica a medida</b>
+                <span>para cada entorno industrial</span>
+            </h2>
+        </div>
+
+        <div class="robotica-cards-container">
+            <div class="robotica-card">
+                <div class="robotica-card-content">
+                    <h3>Robots <b>humanoides</b></h3>
+                    <p>
+                        Aplicados en escenarios que requieren movilidad e interacción
+                        con entornos humanos, preparando las fábricas para la
+                        automatización flexible del futuro.
+                    </p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Interacción segura con personas y sistemas</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Ejecución de tareas multiuso y reconfigurables</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Apoyo a actividades logísticas y de mantenimiento</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Movilidad avanzada en diferentes terrenos</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Preparación de la planta para la automatización de
+                                próxima generación</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="robotica-card-img-wrapper">
+                    <video
+                        src="/videos/robotica/humanoid.webm"
+                        class="robotica-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+
+            <div class="robotica-card">
+                <div class="robotica-card-content">
+                    <h3>Robots <b>cuadrúpedos</b></h3>
+                    <p>
+                        Robots cuadrúpedos para inspección y monitoreo
+                        autónomo. Movilidad y detección avanzada para
+                        entornos industriales complejos, como:
+                    </p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Inspección autónoma de máquinas y áreas de riesgo</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Detección de fugas de aire y gases</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Monitoreo del uso de EPP por parte de los colaboradores</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Medición de temperatura, ruido y vibración</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Rondas autónomas de seguridad</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Recolección continua de datos en campo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="robotica-card-img-wrapper">
+                    <video
+                        src="/videos/robotica/cachorro.webm"
+                        class="robotica-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+
+            <div class="robotica-card">
+                <div class="robotica-card-content">
+                    <h3>Robots colaborativos (<b>cobots</b>)</h3>
+                    <p>
+                        Los cobots se aplican principalmente en procesos que
+                        requieren repetitividad, precisión y reducción del esfuerzo
+                        físico, como:
+                    </p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Paletización y despaletización automatizada</span
+                            >
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Montaje y submontaje de componentes</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Manejo y transferencia de piezas</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Embalaje y final de línea</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span>Apoyo directo a operadores humanos</span>
+                        </div>
+                        <div>
+                            <Icon name="check" size={16} />
+                            <span
+                                >Estandarización del proceso y ganancia de velocidad</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="robotica-card-img-wrapper">
+                    <video
+                        src="/videos/robotica/cobot.webm"
+                        class="robotica-card-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+        </div>
+
+        <div class="robotica-btn-container">
+            <ButtonArrowAnimation text="Necesito este servicio" />
+        </div>
+    </div>
+
+    <div class="robotica-engenharia container-boxed">
+        <div class="reng-header">
+            <h2>
+                Más que robots.<br /><span
+                    >Ingeniería para operar a escala.</span>
+            </h2>
+        </div>
+
+        <div class="reng-row">
+            <div class="reng-media">
+                <video
+                    src="/videos/robotica/integração-total-com-fabrica.webm"
+                    class="reng-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IntegracaoTotalImg.src}></video>
+            </div>
+            <div class="reng-content">
+                <h3>Integración <b>total</b> con la fábrica</h3>
+                <p>
+                    Cada robot opera como una parte activa del flujo productivo,
+                    totalmente sincronizado con los sistemas de las plantas
+                    industriales existentes.
+                </p>
+                <ul class="reng-list">
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Sistemas de producción (MES)</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Automatización y supervisión (SCADA, PLCs)</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Comunicación con redes industriales e IoT</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Integración con sistemas de calidad y mantenimiento</span
+                        >
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Operación sincronizada con los procesos y sistemas de
+                            control de la fábrica</span
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="reng-row">
+            <div class="reng-content">
+                <h3>Robótica <b>conectada a datos</b></h3>
+                <p>
+                    Datos operativos en tiempo real para mejores decisiones. La
+                    robótica genera visibilidad continua sobre el desempeño,
+                    la calidad y la eficiencia.
+                </p>
+                <ul class="reng-list">
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Monitoreo de productividad y tiempos de ciclo</span
+                        >
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Registro de paradas, fallas y anomalías</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Control de calidad en proceso</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span
+                            >Recolección de condiciones operativas y ambientales</span
+                        >
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Integración con plataformas analíticas</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="reng-media">
+                <Image
+                    src={RoboticaConectadaImg}
+                    alt="Robótica conectada a datos"
+                    class="reng-img"
+                />
+            </div>
+        </div>
+
+        <div class="reng-row">
+            <div class="reng-media">
+                <video
+                    src="/videos/robotica/manutencao-preditiva-melhoria-continua.webm"
+                    class="reng-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={ManutencaoPreditivaImg.src}></video>
+            </div>
+            <div class="reng-content">
+                <h3>Mantenimiento <b>predictivo</b> y mejora continua</h3>
+                <p>
+                    De la automatización a la inteligencia operativa, transformamos
+                    los robots en sensores estratégicos para evolucionar la operación continuamente.
+                </p>
+                <ul class="reng-list">
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Reducción de fallas inesperadas</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Aumento de la disponibilidad de activos</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Optimización del uso de recursos</span>
+                    </li>
+                    <li>
+                        <Icon name="arrow-right-2" class="reng-list-icon" />
+                        <span>Mejora continua de los procesos</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="robotica-parceria container">
+        <div class="container-boxed">
+            <div class="content">
+                <h2>¿Listo para elevar su <b>automatización a otro nivel?</b></h2>
+                <h3>
+                    Traiga los desafíos de su planta. Ayudamos a integrar 
+                    robótica, datos y procesos para elevar la productividad, 
+                    la seguridad y la eficiencia.
+                </h3>
+                <span class="button">
+                    <ButtonArrowWhite
+                        text="Llevar la robótica a mi negocio"
+                    />
+                </span>
+            </div>
+
+            <div class="parceiros-img-wrapper">
+                <video
+                    src="/videos/sobre-nos/parceiros-transformatech.webm"
+                    class="parceiros-img"
+                    autoplay
+                    loop
+                    muted
+                    playsinline></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let mm = gsap.matchMedia();
+
+            mm.add("(min-width: 801px)", () => {
+                const cards = gsap.utils.toArray(
+                    ".robotica-card"
+                ) as HTMLElement[];
+
+                cards.forEach((card, index) => {
+                    if (index < cards.length - 1) {
+                        gsap.to(card, {
+                            scale: 1 - 0.05 * (cards.length - 1 - index),
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: cards[index + 1],
+                                start: `top bottom-=200`,
+                                end: `top top+=${100 + (index + 1) * 30}`,
+                                scrub: true,
+                                invalidateOnRefresh: true,
+                            },
+                        });
+                    }
+                });
+            });
+
+            mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=150%",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+
+                tl.to(".hero .content", { opacity: 0, y: -100, duration: 1 })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(
+                        ".hero .robotica-img-wrapper",
+                        { y: "5vh", x: "22vw", scale: 0.75, duration: 1 },
+                        "<"
+                    )
+                    .fromTo(
+                        ".robotica-section-2",
+                        { opacity: 0, marginTop: "5vh" },
+                        { opacity: 1, marginTop: "-50vh", duration: 0.8 },
+                        "-=0.8"
+                    );
+            });
+
+            mm.add("(min-width: 2400px)", () => {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=150%",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+
+                tl.to(".hero .content", { opacity: 0, y: -80, duration: 1 })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(
+                        ".hero .robotica-img-wrapper",
+                        { y: "0vh", x: "12vw", scale: 0.85, duration: 1 },
+                        "<"
+                    )
+                    .fromTo(
+                        ".robotica-section-2",
+                        { opacity: 0, marginTop: "5vh" },
+                        { opacity: 1, marginTop: "-40vh", duration: 0.8 },
+                        "-=0.8"
+                    );
+            });
+
+            mm.add("(max-width: 800px)", () => {
+                const tlMobile = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=120%",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+
+                tlMobile
+                    .to(".hero .content", { opacity: 0, y: -50, duration: 1 })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(
+                        ".hero .robotica-img-wrapper",
+                        { y: "-10vh", duration: 1 },
+                        "<"
+                    )
+                    .fromTo(
+                        ".robotica-section-2",
+                        { opacity: 0, marginTop: "5vh" },
+                        { opacity: 1, marginTop: "-5vh", duration: 0.8 },
+                        "-=0.8"
+                    );
+            });
+        });
+    </script>
 </Layout>

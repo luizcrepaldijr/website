@@ -1,11 +1,231 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/pages/cases.css";
+import { Image } from "astro:assets";
+import Badge from "../components/Badge.astro";
+import Badge2 from "../components/Badge2.astro";
+import ButtonArrowWhite from "../components/buttons/ButtonArrowWhite.astro";
+import ButtonArrow from "../components/buttons/ButtonArrow.astro";
+import FaleConosco from "../components/FaleConosco.astro";
+
+import ParceirosImg from "../images/sobrenos/parceria.webp";
+import Unilever from "../images/home/parceirosglobais/unilever.webp";
+import Evera from "../images/home/parceirosglobais/evera.webp";
+import LivingProof from "../images/home/parceirosglobais/living-proof.webp";
+import TecnologiasDesktop from "../images/solucoes/tecnologias-desktop.webp";
+import TecnologiasMobile from "../images/solucoes/tecnologias-mobile.webp";
+
+// Case images
+import AgriTechImg from "../images/cases/agritech/agritech.webp";
+import PqsImg from "../images/cases/pqs/pqs.webp";
+import BeautyPrismImg from "../images/cases/beauty-prism/beauty-prism.webp";
 ---
 
 <Layout>
-    <div
-        style="height: 100vh; display: flex; align-items: center; justify-content: center;"
-    >
-        <h1>Cases</h1>
+    <!-- HERO -->
+    <div class="cases-hero container">
+        <div class="container-boxed">
+            <div class="content">
+                <Badge text="Cases de sucesso" />
+                <h2>Resultados que <b>transformam negócios</b></h2>
+                <h3>
+                    Cases reais que demonstram como aplicamos tecnologia,
+                    inteligência e dados para estruturar eficiência, governança
+                    e vantagem competitiva.
+                </h3>
+            </div>
+
+            <div class="hero-img-wrapper">
+                <video
+                    src="/videos/sobre-nos/parceiros-transformatech.webm"
+                    class="hero-img"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={ParceirosImg.src}></video>
+            </div>
+        </div>
     </div>
+
+    <!-- PARCEIROS GLOBAIS -->
+    <div class="parceiros container-boxed">
+        <h4><b>Parceiros globais</b> que confiam na Transformatech</h4>
+        <div>
+            <Image src={Unilever} class="img" alt="Unilever" />
+            <Image src={Evera} class="img" alt="Evera" />
+            <Image src={LivingProof} class="img" alt="Living Proof" />
+        </div>
+    </div>
+
+    <!-- CASES LIST -->
+    <div class="cases-list container-boxed">
+        <h2>Cases de sucesso</h2>
+        <p>
+            Mais do que implementar soluções, construímos bases sólidas para
+            eficiência, escalabilidade e tomada de decisão estratégica.
+        </p>
+
+        <!-- Case 1: AgriTech -->
+        <div class="case-card">
+            <Image src={AgriTechImg} alt="AgriTech" class="case-card-img" />
+            <div class="case-card-content">
+                <div class="case-card-badges">
+                    <Badge2 text="IoT" />
+                    <Badge2 text="Agricultura 4.0" />
+                </div>
+                <h3>
+                    <b>AgriTech:</b> Plataforma inteligente com IoT para irrigação
+                    baseada em dados de solo em tempo real.
+                </h3>
+                <div class="case-card-detail">
+                    <strong>Desafio</strong>
+                    <p>
+                        Falta de monitoramento contínuo da umidade do solo e de
+                        cálculo baseado em sistemáticas. Irrigação imprevisível
+                        e consumo de água.
+                    </p>
+                </div>
+                <div class="case-card-detail">
+                    <strong>Solução</strong>
+                    <p>
+                        Infraestrutura IoT com sensores de solo inteligentes via
+                        LoRaWAN e uma plataforma com dashboards detalhados,
+                        alertas automáticos e recomendação de irrigação em tempo
+                        real.
+                    </p>
+                </div>
+                <div class="case-card-detail">
+                    <strong>Resultado</strong>
+                    <p>
+                        Otimização da irrigação e GT, redução de desperdícios,
+                        previsibilidade no manejo. Mais de base técnica sólida
+                        para agricultura de precisão.
+                    </p>
+                </div>
+                <div class="case-card-btn">
+                    <ButtonArrowWhite text="Leia mais" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Case 2: PQS -->
+        <div class="case-card">
+            <Image src={PqsImg} alt="PQS" class="case-card-img" />
+            <div class="case-card-content">
+                <div class="case-card-badges">
+                    <Badge2 text="Transformação Digital" />
+                    <Badge2 text="Indústria" />
+                </div>
+                <h3>
+                    <b>PQS:</b> Plataforma digital para controle estruturado de defeitos
+                    industriais
+                </h3>
+                <div class="case-card-detail">
+                    <strong>Desafio</strong>
+                    <p>
+                        Processos apresentavam alto descarte e alto custo na
+                        classificação estruturada de defeitos, com processos
+                        manuais vulneráveis e polarização.
+                    </p>
+                </div>
+                <div class="case-card-detail">
+                    <strong>Solução</strong>
+                    <p>
+                        Painel em Power Apps com base SQL, integrado à
+                        classificação automática, alertas configuráveis, através
+                        de validações de qualidade no chão de fábrica.
+                    </p>
+                </div>
+                <div class="case-card-detail">
+                    <strong>Resultado</strong>
+                    <p>
+                        Eliminação de planilhas paralelas, maior confiabilidade
+                        dos dados de rastreabilidade e governança otimizada.
+                    </p>
+                </div>
+                <div class="case-card-btn">
+                    <ButtonArrowWhite text="Leia mais" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Case 3: Beauty Prism -->
+        <div class="case-card">
+            <Image
+                src={BeautyPrismImg}
+                alt="Beauty Prism"
+                class="case-card-img"
+            />
+            <div class="case-card-content">
+                <div class="case-card-badges">
+                    <Badge2 text="Transformação Digital" />
+                    <Badge2 text="Engenharia" />
+                </div>
+                <h3>
+                    <b>Beauty Prism:</b> Plataforma integrada para governança digital
+                    de portfólio
+                </h3>
+                <div class="case-card-detail">
+                    <strong>Desafio</strong>
+                    <p>
+                        Dados de processos fragmentados entre estações, copiados
+                        e planilhas Office, surgindo crescimentos na reação e
+                        gerando baixa visibilidade executiva.
+                    </p>
+                </div>
+                <div class="case-card-detail">
+                    <strong>Solução</strong>
+                    <p>
+                        Sistema em Power Apps com automações via Power Automate,
+                        centralização dos dados e visibilidade estratégica
+                        integrada com dashboards.
+                    </p>
+                </div>
+                <div class="case-card-detail">
+                    <strong>Resultado</strong>
+                    <p>
+                        Ponto único de verdade, eliminação de retrabalho e
+                        visibilidade estratégica em todos níveis de gestão.
+                    </p>
+                </div>
+                <div class="case-card-btn">
+                    <ButtonArrowWhite text="Leia mais" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TECNOLOGIAS -->
+    <div class="cases-tecnologias container-boxed">
+        <div class="content-desktop">
+            <h3>Especialistas em</h3>
+            <h2>20+</h2>
+            <h4>tecnologias</h4>
+        </div>
+
+        <div class="content-mobile">
+            <h3>Especialistas em <br /> <span>20+</span> tecnologias</h3>
+        </div>
+
+        <div class="tecnologias-img-wrapper">
+            <Image
+                src={TecnologiasDesktop}
+                alt="Tecnologias Desktop"
+                class="tecnologias-img-desktop"
+            />
+            <Image
+                src={TecnologiasMobile}
+                alt="Tecnologias Mobile"
+                class="tecnologias-img-mobile"
+            />
+        </div>
+    </div>
+
+    <!-- FALE CONOSCO -->
+    <FaleConosco
+        title="Pronto para transformar seu desafio em resultado real?"
+        subtitle="Fale com nosso time e descubra como a tecnologia pode trabalhar a favor do seu negócio."
+        buttonText="Conversar sobre meu desafio"
+    />
 </Layout>

@@ -39,15 +39,19 @@ const casesCollection = defineCollection({
       title: z.string(),
       description: z.string(),
       image: image(),
+      features: z.object({
+        title: z.string(),
+        items: z.array(z.string()),
+      }).optional(),
       infrastructure: z.object({
         title: z.string(),
         description: z.string(),
         items: z.array(z.string()),
-      }),
+      }).optional(),
       sensors: z.object({
         title: z.string(),
         items: z.array(z.string()),
-      }),
+      }).optional(),
       monitoring: z.object({
         title: z.string(),
         description: z.string(),
@@ -62,7 +66,7 @@ const casesCollection = defineCollection({
         items: z.array(z.string()),
         callout: z.string(),
       }).optional(),
-      callout: z.string(),
+      callout: z.string().optional(),
     }).optional(),
     resultsData: z.object({
       description: z.string(),

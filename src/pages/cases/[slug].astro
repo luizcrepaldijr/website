@@ -231,6 +231,11 @@ const iconMap: Record<string, any> = {
                                 >O desafio</a
                             >
                         </li>
+                        {entry.data.approachData && (
+                            <li>
+                                <a href="#abordagem" class="nav-link">Abordagem</a>
+                            </li>
+                        )}
                         <li>
                             <a href="#solucao" class="nav-link">A solução</a>
                         </li>
@@ -238,11 +243,13 @@ const iconMap: Record<string, any> = {
                             <a href="#resultados" class="nav-link">Resultados</a
                             >
                         </li>
-                        <li>
-                            <a href="#diferencial" class="nav-link"
-                                >Diferencial</a
-                            >
-                        </li>
+                        {entry.data.differentialData && (
+                            <li>
+                                <a href="#diferencial" class="nav-link"
+                                    >Diferencial</a
+                                >
+                            </li>
+                        )}
                     </ul>
                 </nav>
             </aside>
@@ -354,6 +361,34 @@ const iconMap: Record<string, any> = {
                         )
                     }
                 </section>
+
+                {entry.data.approachData && (
+                    <section id="abordagem" class="content-section scroll-section">
+                        <h2 class="section-title">{entry.data.approachData.title}</h2>
+                        <div class="approach-content">
+                            <p class="section-description">{entry.data.approachData.description}</p>
+                            
+                            {entry.data.approachData.subtitle && (
+                                <h3 class="approach-subtitle" style="margin-top: 2rem; margin-bottom: 1.5rem;">
+                                    {entry.data.approachData.subtitle}
+                                </h3>
+                            )}
+                            
+                            <ul class="solution-list">
+                                {entry.data.approachData.items.map((item: any) => (
+                                    <li>
+                                        <Image
+                                            src={RightArrowIcon}
+                                            alt=""
+                                            class="solution-list-icon"
+                                        />
+                                        <span><strong>{item.title}:</strong> {item.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </section>
+                )}
 
                 <section id="solucao" class="content-section scroll-section">
                     <h2 class="section-title">A solução</h2>

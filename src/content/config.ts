@@ -58,16 +58,26 @@ const casesCollection = defineCollection({
         items: z.array(z.string()),
         additionalTitle: z.string().optional(),
         additionalItems: z.array(z.string()).optional(),
-        callout: z.string(),
+        callout: z.string().optional(),
       }).optional(),
       intelligence: z.object({
         title: z.string(),
         description: z.string(),
         items: z.array(z.string()),
-        callout: z.string(),
+        callout: z.string().optional(),
       }).optional(),
       callout: z.string().optional(),
     }).optional(),
+    approachData: z.object({
+      title: z.string(),
+      description: z.string(),
+      subtitle: z.string().optional(),
+      items: z.array(z.object({
+        title: z.string(),
+        text: z.string()
+      }))
+    }).optional(),
+
     resultsData: z.object({
       description: z.string(),
       image: image(),

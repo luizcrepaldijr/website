@@ -10,9 +10,9 @@ interface Props {
 }
 
 const {
-    title = "Pronto para transformar seu desafio em <strong>resultado real</strong>?",
-    subtitle = "Fale com nosso time e descubra como a tecnologia pode trabalhar a favor do seu negócio.",
-    buttonText = "Falar com um especialista",
+    title = "Ready to transform your challenge into <strong>real results</strong>?",
+    subtitle = "Talk to our team and discover how technology can work for your business.",
+    buttonText = "Talk to an expert",
 } = Astro.props;
 ---
 
@@ -21,7 +21,7 @@ const {
         <Image src={Logo} alt="Logo Transformatech" class="logo-falecomtime" />
         <h2 set:html={title} />
         <h3 set:html={subtitle} />
-        <ButtonArrowAnimation text={buttonText} link="/contato" />
+        <ButtonArrowAnimation text={buttonText} link="/en/contact" />
     </div>
 </div>
 

@@ -28,6 +28,7 @@ import EvidenciasVisuaisIcon from "../../../icons/evidencias-visuais.svg";
 import MelhoriaQualidadeIcon from "../../../icons/melhoria-qualidade.svg";
 import MaiorEngajamentoIcon from "../../../icons/maior-engajamento.svg";
 import BaseEstruturadaIcon from "../../../icons/base-estruturada.svg";
+import FaleConoscoEn from "../../../components/FaleConoscoEn.astro";
 
 export async function getStaticPaths() {
     const enCases = await getCollection("cases", ({ id }) => {
@@ -781,6 +782,8 @@ const iconMap: Record<string, any> = {
             </main>
         </div>
     </div>
+
+    <FaleConoscoEn />
 
     <script>
         import { gsap } from "gsap";

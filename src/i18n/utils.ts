@@ -15,36 +15,44 @@ export function useTranslations(lang: keyof typeof ui) {
 export function useTranslatedPath(lang: keyof typeof ui) {
   return function translatePath(path: string, l: string = lang) {
     const pathName = path.replace(/^\/|\/$/g, "");
-    const hasTranslation =
-      defaultLang !== l &&
-      routes[l as keyof typeof routes] !== undefined &&
-      routes[l as keyof typeof routes][
-        pathName as keyof (typeof routes)[keyof typeof routes]
-      ] !== undefined;
+    const langRoutes = routes[l as keyof typeof routes];
 
-    const translatedPath = hasTranslation
-      ? "/" +
-        routes[l as keyof typeof routes][
-          pathName as keyof (typeof routes)[keyof typeof routes]
-        ]
-      : path;
+    // Check for exact match first
+    if (
+      l !== defaultLang &&
+      langRoutes &&
+      langRoutes[pathName as keyof typeof langRoutes] !== undefined
+    ) {
+      const translatedPath = langRoutes[pathName as keyof typeof langRoutes];
+      return `/${l}/${translatedPath}`;
+    }
 
-    return !l || l === defaultLang ? translatedPath : `/${l}${translatedPath}`;
+    // Check for partial match (like cases/slug)
+    if (l !== defaultLang && langRoutes) {
+      for (const [key, value] of Object.entries(langRoutes)) {
+        if (pathName.startsWith(key + "/")) {
+          const rest = pathName.slice(key.length);
+          return `/${l}/${value}${rest}`;
+        }
+      }
+    }
+
+    return !l || l === defaultLang ? `/${pathName}` : `/${l}/${pathName}`;
   };
 }
 
 export function getRouteFromUrl(url: URL): string {
   const pathname = new URL(url).pathname;
   const parts = pathname.split("/");
-  
+
   // Remove language prefix if present
   if (parts.length > 1 && (parts[1] === "en" || parts[1] === "es")) {
     parts.splice(1, 1);
   }
-  
+
   const pathWithoutLang = parts.join("/") || "/";
   const pathName = pathWithoutLang.replace(/^\/|\/$/g, "");
-  
+
   if (!pathName) return "/";
 
   const currentLang = getLangFromUrl(url);
@@ -55,12 +63,21 @@ export function getRouteFromUrl(url: URL): string {
   // Reverse lookup the original route key from the dictionary
   const langRoutes = routes[currentLang as keyof typeof routes];
   if (langRoutes) {
+    // Exact match
     const originalKey = Object.entries(langRoutes).find(
       ([_, translated]) => translated === pathName
     )?.[0];
-    
+
     if (originalKey) {
       return `/${originalKey}`;
+    }
+
+    // Partial match (like casos/slug -> cases/slug)
+    for (const [key, translated] of Object.entries(langRoutes)) {
+      if (pathName.startsWith(translated + "/")) {
+        const rest = pathName.slice(translated.length);
+        return `/${key}${rest}`;
+      }
     }
   }
 

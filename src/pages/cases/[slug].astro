@@ -31,13 +31,40 @@ export async function getStaticPaths() {
     }));
 }
 
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/images/**/*.{jpeg,jpg,png,gif,webp,svg}"
+);
+
+const resolveImage = async (path: any) => {
+    if (!path || typeof path !== "string") return path;
+    const normalizedPath = path.replace("../../../", "/src/");
+    const loader = allImages[normalizedPath];
+    if (loader) {
+        const mod = await loader();
+        return mod.default;
+    }
+    return path;
+};
+
 const { entry } = Astro.props;
+
+// Pre-resolve all images in the entry data
+const resolvedImage = await resolveImage(entry.data.image);
+const resolvedHeroMockup = await resolveImage(entry.data.heroMockup);
+const resolvedTestimonialPhoto = await resolveImage(entry.data.testimonial?.photo);
+const resolvedTestimonialLogo = await resolveImage(
+    entry.data.testimonial?.companyLogo
+);
+const resolvedSolutionImage = await resolveImage(entry.data.solutionData?.image);
+const resolvedResultsImage = await resolveImage(entry.data.resultsData?.image);
+
 const { Content } = await render(entry);
 
 const optimizedBackground = await getImage({
-    src: entry.data.image,
+    src: resolvedImage,
     format: "webp",
     width: 1920,
+    height: 1080,
 });
 
 const formattedDate = entry.data.pubDate
@@ -95,9 +122,11 @@ const iconMap: Record<string, any> = {
                     <div class="hero-mockup-container">
                         <div class="macbook-gradient" />
                         <Image 
-                            src={entry.data.heroMockup} 
+                            src={resolvedHeroMockup} 
                             alt="Case Hero Mockup" 
                             class="hero-mockup-image"
+                            width={1200}
+                            height={750}
                         />
                     </div>
                 )}
@@ -142,9 +171,11 @@ const iconMap: Record<string, any> = {
                                 <div class="testimonial-footer">
                                     <div class="author-info">
                                         <Image
-                                            src={entry.data.testimonial.photo}
+                                            src={resolvedTestimonialPhoto}
                                             alt={entry.data.testimonial.author}
                                             class="author-photo"
+                                            width={80}
+                                            height={80}
                                         />
                                         <div class="author-details">
                                             <strong>
@@ -156,9 +187,11 @@ const iconMap: Record<string, any> = {
                                         </div>
                                     </div>
                                     <Image
-                                        src={entry.data.testimonial.companyLogo}
+                                        src={resolvedTestimonialLogo}
                                         alt="Company Logo"
                                         class="company-logo"
+                                        width={120}
+                                        height={40}
                                     />
                                 </div>
                             </div>
@@ -315,9 +348,11 @@ const iconMap: Record<string, any> = {
                                 <div class="solution-macbook-container">
                                     <div class="macbook-gradient" />
                                     <Image
-                                        src={entry.data.solutionData.image}
+                                        src={resolvedSolutionImage}
                                         alt="Platform on MacBook"
                                         class="macbook-image"
+                                        width={1200}
+                                        height={750}
                                     />
                                 </div>
 
@@ -540,9 +575,11 @@ const iconMap: Record<string, any> = {
                                 <div class="results-macbook-container">
                                     <div class="macbook-gradient" />
                                     <Image
-                                        src={entry.data.resultsData.image}
+                                        src={resolvedResultsImage}
                                         alt="Results on MacBook"
                                         class="macbook-image"
+                                        width={1200}
+                                        height={750}
                                     />
                                 </div>
 

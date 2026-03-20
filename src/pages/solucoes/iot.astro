@@ -11,6 +11,15 @@ import ButtonArrowAnimation from "../../components/buttons/ButtonArrowAnimation.
 import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
 import Badge from "../../components/Badge.astro";
 import { Icon } from "astro-icon/components";
+import LogoBigFallback from "../../images/logo-big.webp";
+
+const wfSteps = [
+    { title: "Diagnóstico técnico da operação",   desc: "Entendimento profundo de processos, máquinas e desafios reais." },
+    { title: "Estratégia de sensoriamento",       desc: "Definição de sensores, pontos de medição e arquitetura ideal." },
+    { title: "Arquitetura de dados",              desc: "Gateways, redes LoRaWAN, dashboards, APIs e integrações." },
+    { title: "Instalação e comissionamento",      desc: "Execução em campo, testes e validação de desempenho." },
+    { title: "Suporte e evolução contínua",       desc: "Monitoramento, ajustes, manutenção e expansão conforme a operação cresce." },
+];
 ---
 
 <Layout>
@@ -330,6 +339,39 @@ import { Icon } from "astro-icon/components";
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── IOT WORKFLOW ── -->
+    <div class="iot-workflow-scrollarea">
+        <div class="iot-workflow-pinned">
+            <!-- Decorative rings -->
+            <div class="wf-ring wf-ring-1"></div>
+            <div class="wf-ring wf-ring-2"></div>
+
+            <!-- Rotating logo -->
+            <div class="wf-logo-wrapper">
+                <img src={LogoBigFallback.src} class="wf-logo" alt="" />
+            </div>
+
+            <!-- Right content -->
+            <div class="wf-content">
+                <div class="wf-header">
+                    <h2>Como entregamos IoT na Indústria</h2>
+                    <span class="wf-subtitle">Nosso workflow</span>
+                </div>
+
+                <div class="wf-steps-area">
+                    {wfSteps.map((step, i) => (
+                        <div class={`wf-step wf-step-${i}`}>
+                            <div class="wf-line"></div>
+                            <span class="wf-dot"><Icon name="dot" size={8} /></span>
+                            <h3>{step.title}</h3>
+                            <p class="wf-desc">{step.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
@@ -716,6 +758,75 @@ import { Icon } from "astro-icon/components";
                         "<0.5"
                     );
 
+                // ── Workflow animation ──
+                const WF_STEPS = 5;
+                const WF_DUR   = 1;
+                const WF_DEG   = 360 / WF_STEPS; // 72° per step
+
+                // Initial states
+                gsap.set(".wf-step-0", { y: 0 });
+                gsap.set(".wf-step-0 .wf-line", { autoAlpha: 1 });
+                gsap.set(".wf-step-0 .wf-dot", { opacity: 1 });
+                gsap.set(".wf-step-0 h3",       { opacity: 1 });
+                gsap.set(".wf-step-0 .wf-desc", { autoAlpha: 1 });
+
+                for (let i = 1; i < WF_STEPS; i++) {
+                    const qY = i * 78;
+                    const vis = i <= 2;
+                    const hOp = i === 1 ? 0.28 : 0.16;
+                    gsap.set(`.wf-step-${i}`,          { y: qY, autoAlpha: vis ? 1 : 0 });
+                    gsap.set(`.wf-step-${i} .wf-line`,  { autoAlpha: 0 });
+                    gsap.set(`.wf-step-${i} .wf-dot`,   { opacity: vis ? 0.35 : 0 });
+                    gsap.set(`.wf-step-${i} h3`,        { opacity: vis ? hOp : 0 });
+                    gsap.set(`.wf-step-${i} .wf-desc`,  { autoAlpha: 0 });
+                }
+
+                const wfTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".iot-workflow-scrollarea",
+                        start: "top top",
+                        end: `+=${(WF_STEPS - 1) * 100}%`,
+                        scrub: 1,
+                        pin: true,
+                        anticipatePin: 1,
+                    },
+                });
+
+                for (let i = 0; i < WF_STEPS - 1; i++) {
+                    const t = i * WF_DUR;
+
+                    // Rotate logo
+                    wfTl.to(".wf-logo", { rotation: (i + 1) * WF_DEG, ease: "none", duration: WF_DUR }, t);
+
+                    // Step i → done
+                    wfTl
+                        .to(`.wf-step-${i} .wf-desc`,  { autoAlpha: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i} .wf-line`,   { autoAlpha: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i} .wf-dot`,    { opacity: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i} h3`,         { opacity: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i}`,            { autoAlpha: 0, y: -55, duration: 0.35 }, t + 0.15);
+
+                    // Step i+1 → active
+                    wfTl
+                        .to(`.wf-step-${i + 1}`,            { autoAlpha: 1, y: 0, duration: 0.4 }, t + 0.45)
+                        .to(`.wf-step-${i + 1} .wf-line`,   { autoAlpha: 1, duration: 0.3 }, t + 0.6)
+                        .to(`.wf-step-${i + 1} .wf-dot`,    { opacity: 1, duration: 0.3 }, t + 0.6)
+                        .to(`.wf-step-${i + 1} h3`,         { opacity: 1, duration: 0.3 }, t + 0.6)
+                        .to(`.wf-step-${i + 1} .wf-desc`,   { autoAlpha: 1, duration: 0.3 }, t + 0.7);
+
+                    // Shift remaining queue
+                    for (let j = i + 2; j < WF_STEPS; j++) {
+                        const offset = j - (i + 1);
+                        const vis    = offset <= 2;
+                        const hOp   = offset === 1 ? 0.28 : 0.16;
+                        const qY    = offset * 78;
+                        wfTl
+                            .to(`.wf-step-${j}`,         { autoAlpha: vis ? 1 : 0, y: qY, duration: 0.4 }, t + 0.45)
+                            .to(`.wf-step-${j} .wf-dot`, { opacity: vis ? 0.35 : 0, duration: 0.3 }, t + 0.45)
+                            .to(`.wf-step-${j} h3`,      { opacity: vis ? hOp : 0, duration: 0.3 }, t + 0.45);
+                    }
+                }
+
                 gsap.set(
                     ".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2",
                     { autoAlpha: 0 }
@@ -795,7 +906,7 @@ import { Icon } from "astro-icon/components";
                     )
                     .to(".agri-text-5", { autoAlpha: 0, duration: 0.5 }, "<");
 
-                // Refresh depois que os dois pins anteriores já estão registrados
+                // Refresh depois que os três pins anteriores já estão registrados
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         ScrollTrigger.refresh();

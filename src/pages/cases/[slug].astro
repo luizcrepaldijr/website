@@ -1,8 +1,24 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import "../../styles/pages/individual-cases.css";
+
+import CalendarIcon from "../../icons/calendar.svg";
+import TimeIcon from "../../icons/time.svg";
+import ThumbsDownIcon from "../../icons/thumbs-down.svg";
+import CloseIcon from "../../icons/close-2.svg";
+import ThumbsUpIcon from "../../icons/thumbs-up.svg";
+import RightArrowIcon from "../../icons/right-arrow.svg";
+import ArrowRight2Icon from "../../icons/arrow-right-2.svg";
+import MonitoramentoIcon from "../../icons/monitoramento.svg";
+import DesperdicioIcon from "../../icons/desperdicio.svg";
+import PadronizacaoIcon from "../../icons/padronizacao.svg";
+import VisibilidadeIcon from "../../icons/visibilidade.svg";
+import EscalabilidadeIcon from "../../icons/escalabilidade.svg";
+import BaseIcon from "../../icons/base.svg";
+import CheckIcon from "../../icons/check.svg";
+import RocketIcon from "../../icons/rocket.svg";
 
 export async function getStaticPaths() {
     const ptCases = await getCollection("cases", ({ id }) => {
@@ -17,63 +33,629 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const optimizedBackground = await getImage({
+    src: entry.data.image,
+    format: "webp",
+    width: 1920,
+});
+
+const formattedDate = entry.data.pubDate
+    ? new Intl.DateTimeFormat("pt-BR").format(new Date(entry.data.pubDate))
+    : "";
+
+const iconMap: Record<string, any> = {
+    monitoramento: MonitoramentoIcon,
+    desperdicio: DesperdicioIcon,
+    padronizacao: PadronizacaoIcon,
+    visibilidade: VisibilidadeIcon,
+    escalabilidade: EscalabilidadeIcon,
+    base: BaseIcon,
+};
 ---
 
 <Layout>
-    <div class="case-hero-section">
+    <div
+        class="case-hero-section"
+        style={`background-image: url(${optimizedBackground.src})`}
+    >
+        <div class="hero-overlay"></div>
         <div class="container-boxed hero-grid">
-            <div class="hero-content">
-                <h1>{entry.data.title}</h1>
-                <h2 class="hero-subtitle">{entry.data.subtitle}</h2>
-                <p class="hero-description">{entry.data.description}</p>
+            <div class={entry.data.heroMockup ? "hero-content has-mockup" : "hero-content"}>
+                <div class="hero-text-container">
+                    <img
+                        class="hero-img"
+                        src={optimizedBackground.src}
+                        alt={entry.data.title}
+                    />
+                    <h1>{entry.data.title}</h1>
+                    <h2 class="hero-subtitle">{entry.data.subtitle}</h2>
+                    <p class="hero-description">{entry.data.description}</p>
 
-                {
-                    entry.data.stats && (
-                        <div class="stats-container">
-                            {entry.data.stats.map((stat: any) => (
-                                <div class="stat-card">
-                                    <span
-                                        class="stat-value"
-                                        data-value={stat.value}
-                                    >
-                                        0
-                                    </span>
-                                    <p class="stat-label">{stat.label}</p>
-                                </div>
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
-            <div class="hero-image">
-                <Image
-                    src={entry.data.image}
-                    alt={entry.data.title}
-                    class="main-img"
-                />
+                    {
+                        entry.data.stats && (
+                            <div class="stats-container">
+                                {entry.data.stats.map((stat: any) => (
+                                    <div class="stat-card">
+                                        <span
+                                            class="stat-value"
+                                            data-value={stat.value}
+                                        >
+                                            0
+                                        </span>
+                                        <p class="stat-label">{stat.label}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    }
+                </div>
+                
+                {entry.data.heroMockup && (
+                    <div class="hero-mockup-container">
+                        <div class="macbook-gradient" />
+                        <Image 
+                            src={entry.data.heroMockup} 
+                            alt="Case Hero Mockup" 
+                            class="hero-mockup-image"
+                        />
+                    </div>
+                )}
             </div>
         </div>
     </div>
 
+    {
+        (entry.data.companyName || entry.data.testimonial) && (
+            <div class="case-details-testimonial-section">
+                <div class="container-boxed">
+                    {entry.data.companyName && (
+                        <div class="case-info-bar">
+                            <div class="info-item">
+                                <strong>EMPRESA</strong>
+                                <span>{entry.data.companyName}</span>
+                            </div>
+                            <div class="info-divider" />
+                            <div class="info-item">
+                                <strong>LOCALIZAÇÃO</strong>
+                                <span>{entry.data.location}</span>
+                            </div>
+                            <div class="info-divider" />
+                            <div class="info-item">
+                                <strong>SEGMENTO</strong>
+                                <span>{entry.data.segment}</span>
+                            </div>
+                            <div class="info-divider" />
+                            <div class="info-item">
+                                <strong>STACK</strong>
+                                <span>{entry.data.stack}</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {entry.data.testimonial && (
+                        <div class="case-testimonial-wrapper">
+                            <div class="case-testimonial-card">
+                                <p class="testimonial-text">
+                                    {entry.data.testimonial.text}
+                                </p>
+                                <div class="testimonial-footer">
+                                    <div class="author-info">
+                                        <Image
+                                            src={entry.data.testimonial.photo}
+                                            alt={entry.data.testimonial.author}
+                                            class="author-photo"
+                                        />
+                                        <div class="author-details">
+                                            <strong>
+                                                {entry.data.testimonial.author}
+                                            </strong>
+                                            <span>
+                                                {entry.data.testimonial.job}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Image
+                                        src={entry.data.testimonial.companyLogo}
+                                        alt="Company Logo"
+                                        class="company-logo"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        )
+    }
+
     <div class="case-content-section container-boxed">
         <div class="case-content-grid">
-            <div class="case-info">
-                <div class="detail-section">
-                    <strong>Desafio</strong>
-                    <p>{entry.data.challenge}</p>
+            <aside class="case-sidebar">
+                <nav class="sticky-nav">
+                    <ul>
+                        <li>
+                            <a href="#desafio" class="nav-link active"
+                                >O desafio</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#solucao" class="nav-link">A solução</a>
+                        </li>
+                        <li>
+                            <a href="#resultados" class="nav-link">Resultados</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#diferencial" class="nav-link"
+                                >Diferencial</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="case-main-content">
+                <div class="meta-info">
+                    {
+                        formattedDate && (
+                            <div class="meta-tag">
+                                <Image
+                                    src={CalendarIcon}
+                                    alt=""
+                                    class="meta-icon"
+                                />
+                                <span>
+                                    Publicado em{" "}
+                                    <strong>{formattedDate}</strong>
+                                </span>
+                            </div>
+                        )
+                    }
+                    {
+                        entry.data.readingTime && (
+                            <div class="meta-tag">
+                                <Image
+                                    src={TimeIcon}
+                                    alt=""
+                                    class="meta-icon"
+                                />
+                                <span>
+                                    Tempo de leitura:{" "}
+                                    <strong>{entry.data.readingTime}</strong>
+                                </span>
+                            </div>
+                        )
+                    }
                 </div>
-                <div class="detail-section">
-                    <strong>Solução</strong>
-                    <p>{entry.data.solution}</p>
+
+                <section id="intro" class="content-section">
+                    {
+                        entry.data.introTitle && (
+                            <p class="intro-text">{entry.data.introTitle}</p>
+                        )
+                    }
+                    <p
+                        class={entry.data.introTitle
+                            ? "section-description"
+                            : "intro-text"}
+                    >
+                        {entry.data.introDescription || entry.data.description}
+                    </p>
+                </section>
+
+                <section id="desafio" class="content-section scroll-section">
+                    <h2 class="section-title">O desafio</h2>
+                    <p class="section-description">{entry.data.challenge}</p>
+
+                    {
+                        (entry.data.problems || entry.data.necessities) && (
+                            <div class="challenge-cards-grid">
+                                <div class="challenge-card problems-card">
+                                    <div class="card-header">
+                                        <div class="icon-circle red">
+                                            <Image
+                                                src={ThumbsDownIcon}
+                                                alt=""
+                                            />
+                                        </div>
+                                        <h3>Problemas</h3>
+                                    </div>
+                                    <ul class="card-list">
+                                        {entry.data.problems.map(
+                                            (item: string) => (
+                                                <li>
+                                                    <Image
+                                                        src={CloseIcon}
+                                                        alt=""
+                                                        class="list-icon"
+                                                    />
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+
+                                <div class="challenge-card necessities-card">
+                                    <div class="card-header">
+                                        <div class="icon-circle blue">
+                                            <Image src={ThumbsUpIcon} alt="" />
+                                        </div>
+                                        <h3>Necessidades</h3>
+                                    </div>
+                                    <ul class="card-list">
+                                        {entry.data.necessities.map(
+                                            (item: string) => (
+                                                <li>
+                                                    <Image
+                                                        src={RightArrowIcon}
+                                                        alt=""
+                                                        class="list-icon"
+                                                    />
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+                        )
+                    }
+                </section>
+
+                <section id="solucao" class="content-section scroll-section">
+                    <h2 class="section-title">A solução</h2>
+                    {
+                        entry.data.solutionData ? (
+                            <div class="solution-content">
+                                <p class="section-description">
+                                    {entry.data.solutionData.description}
+                                </p>
+
+                                <div class="solution-macbook-container">
+                                    <div class="macbook-gradient" />
+                                    <Image
+                                        src={entry.data.solutionData.image}
+                                        alt="Platform on MacBook"
+                                        class="macbook-image"
+                                    />
+                                </div>
+
+                                <div class="infrastructure-section">
+                                    <h3>
+                                        {
+                                            entry.data.solutionData
+                                                .infrastructure.title
+                                        }
+                                    </h3>
+                                    <p class="section-description">
+                                        {
+                                            entry.data.solutionData
+                                                .infrastructure.description
+                                        }
+                                    </p>
+
+                                    <ul class="solution-list">
+                                        {entry.data.solutionData.infrastructure.items.map(
+                                            (item: string) => (
+                                                <li>
+                                                    <Image
+                                                        src={ArrowRight2Icon}
+                                                        alt=""
+                                                        class="solution-list-icon"
+                                                    />
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+
+                                    <div class="sensors-section">
+                                        <h3>
+                                            {
+                                                entry.data.solutionData.sensors
+                                                    .title
+                                            }
+                                        </h3>
+                                        <ul class="solution-list">
+                                            {entry.data.solutionData.sensors.items.map(
+                                                (item: string) => (
+                                                    <li>
+                                                        <Image
+                                                            src={
+                                                                ArrowRight2Icon
+                                                            }
+                                                            alt=""
+                                                            class="solution-list-icon"
+                                                        />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+
+                                    <div class="solution-callout">
+                                        <Image
+                                            src={ArrowRight2Icon}
+                                            alt=""
+                                            class="solution-list-icon"
+                                        />
+                                        <p
+                                            set:html={
+                                                entry.data.solutionData.callout
+                                            }
+                                        />
+                                    </div>
+
+                                    {entry.data.solutionData.monitoring && (
+                                        <div class="infrastructure-section">
+                                            <h3>
+                                                {
+                                                    entry.data.solutionData
+                                                        .monitoring.title
+                                                }
+                                            </h3>
+                                            <p class="section-description">
+                                                {
+                                                    entry.data.solutionData
+                                                        .monitoring.description
+                                                }
+                                            </p>
+
+                                            <ul class="solution-list">
+                                                {entry.data.solutionData.monitoring.items.map(
+                                                    (item: string) => (
+                                                        <li>
+                                                            <Image
+                                                                src={
+                                                                    ArrowRight2Icon
+                                                                }
+                                                                alt=""
+                                                                class="solution-list-icon"
+                                                            />
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+
+                                            {entry.data.solutionData.monitoring
+                                                .additionalTitle && (
+                                                <div class="additional-info">
+                                                    <h3>
+                                                        {
+                                                            entry.data
+                                                                .solutionData
+                                                                .monitoring
+                                                                .additionalTitle
+                                                        }
+                                                    </h3>
+                                                    <ul class="solution-list">
+                                                        {entry.data.solutionData.monitoring.additionalItems?.map(
+                                                            (item: string) => (
+                                                                <li>
+                                                                    <Image
+                                                                        src={
+                                                                            ArrowRight2Icon
+                                                                        }
+                                                                        alt=""
+                                                                        class="solution-list-icon"
+                                                                    />
+                                                                    <span>
+                                                                        {item}
+                                                                    </span>
+                                                                </li>
+                                                            )
+                                                        )}
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                            <div class="solution-callout">
+                                                <Image
+                                                    src={ArrowRight2Icon}
+                                                    alt=""
+                                                    class="solution-list-icon"
+                                                />
+                                                <p
+                                                    set:html={
+                                                        entry.data.solutionData
+                                                            .monitoring.callout
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {entry.data.solutionData.intelligence && (
+                                        <div class="infrastructure-section">
+                                            <h3>
+                                                {
+                                                    entry.data.solutionData
+                                                        .intelligence.title
+                                                }
+                                            </h3>
+                                            <p class="section-description">
+                                                {
+                                                    entry.data.solutionData
+                                                        .intelligence
+                                                        .description
+                                                }
+                                            </p>
+
+                                            <ul class="solution-list">
+                                                {entry.data.solutionData.intelligence.items.map(
+                                                    (item: string) => (
+                                                        <li>
+                                                            <Image
+                                                                src={
+                                                                    ArrowRight2Icon
+                                                                }
+                                                                alt=""
+                                                                class="solution-list-icon"
+                                                            />
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+
+                                            <div class="solution-callout">
+                                                <Image
+                                                    src={ArrowRight2Icon}
+                                                    alt=""
+                                                    class="solution-list-icon"
+                                                />
+                                                <p
+                                                    set:html={
+                                                        entry.data.solutionData
+                                                            .intelligence
+                                                            .callout
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
+                        ) : (
+                            <p class="section-description">
+                                {entry.data.solution}
+                            </p>
+                        )
+                    }
+                </section>
+
+                <section id="resultados" class="content-section scroll-section">
+                    <h2 class="section-title">Resultados</h2>
+                    {
+                        entry.data.resultsData ? (
+                            <div class="results-content">
+                                <p class="section-description">
+                                    {entry.data.resultsData.description}
+                                </p>
+
+                                <div class="results-macbook-container">
+                                    <div class="macbook-gradient" />
+                                    <Image
+                                        src={entry.data.resultsData.image}
+                                        alt="Results on MacBook"
+                                        class="macbook-image"
+                                    />
+                                </div>
+
+                                <p class="impact-title">
+                                    {entry.data.resultsData.impactTitle}
+                                </p>
+
+                                <div class="impacts-grid">
+                                    {entry.data.resultsData.impacts.map(
+                                        (impact: any) => (
+                                            <div class="impact-card">
+                                                <div class="impact-icon-wrapper">
+                                                    <Image
+                                                        src={iconMap[impact.icon]}
+                                                        alt=""
+                                                        class="impact-icon"
+                                                        width={40}
+                                                        height={40}
+                                                    />
+                                                </div>
+                                                <p class="impact-text">
+                                                    {impact.title}
+                                                </p>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </div>
+                        ) : (
+                            <p class="section-description">
+                                {entry.data.result}
+                            </p>
+                        )
+                    }
+                </section>
+
+                <section id="diferencial" class="content-section scroll-section">
+                    {
+                        entry.data.differentialData ? (
+                            <div class="differential-section">
+                                <h2 class="section-title">
+                                    {entry.data.differentialData.title}
+                                </h2>
+                                <p class="section-description">
+                                    {entry.data.differentialData.description}
+                                </p>
+                                <p class="sub-description">
+                                    {
+                                        entry.data.differentialData
+                                            .subDescription
+                                    }
+                                </p>
+                                <ul class="differential-list">
+                                    {entry.data.differentialData.items.map(
+                                        (item: string) => (
+                                            <li>
+                                                <Image
+                                                    src={CheckIcon}
+                                                    alt=""
+                                                    class="list-check-icon"
+                                                />
+                                                <span>{item}</span>
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+
+                                <div class="cta-card">
+                                    <div class="cta-content">
+                                        <Image
+                                            src={RocketIcon}
+                                            alt=""
+                                            class="cta-icon"
+                                        />
+                                        <p
+                                            class="cta-text"
+                                            set:html={
+                                                entry.data.differentialData.cta
+                                                    .text
+                                            }
+                                        />
+                                    </div>
+                                    <a
+                                        href={
+                                            entry.data.differentialData.cta
+                                                .buttonLink
+                                        }
+                                        class="cta-button"
+                                    >
+                                        {
+                                            entry.data.differentialData.cta
+                                                .buttonText
+                                        }
+                                    </a>
+                                </div>
+                            </div>
+                        ) : (
+                            entry.data.differential && (
+                                <>
+                                    <h2 class="section-title">Diferencial</h2>
+                                    <p class="section-description">
+                                        {entry.data.differential}
+                                    </p>
+                                </>
+                            )
+                        )
+                    }
+                </section>
+
+                <div class="case-body">
+                    <Content />
                 </div>
-                <div class="detail-section">
-                    <strong>Resultado</strong>
-                    <p>{entry.data.result}</p>
-                </div>
-            </div>
-            <div class="case-body">
-                <Content />
-            </div>
+            </main>
         </div>
     </div>
 
@@ -118,5 +700,28 @@ const { Content } = await render(entry);
                 },
             });
         });
+
+        // ScrollSpy logic for sidebar
+        const sections = document.querySelectorAll(".scroll-section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        sections.forEach((section) => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top 200px",
+                end: "bottom 200px",
+                onEnter: () => setActiveLink(section.id),
+                onEnterBack: () => setActiveLink(section.id),
+            });
+        });
+
+        function setActiveLink(id: string) {
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
     </script>
 </Layout>

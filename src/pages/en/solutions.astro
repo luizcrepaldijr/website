@@ -1,11 +1,356 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import SolucoesImg from "../../images/solucoes/solucoes.webp";
+import "../../styles/pages/solucoes.css";
+import { Icon } from "astro-icon/components";
+
+import TransformacaoDigitalImg from "../../images/solucoes/transformacao-digital-solucao.webp";
+import Industria40Img from "../../images/solucoes/industria-4-0-solucao.webp";
+import EngenhariaImg from "../../images/solucoes/engenharia-solucao.webp";
+import Agricultura40Img from "../../images/solucoes/agricultura-4-0-solucao.webp";
+import IotImg from "../../images/solucoes/iot-solucao.webp";
+import EsferaImg from "../../images/solucoes/esfera.webp";
+import TecnologiasDesktop from "../../images/solucoes/tecnologias-desktop.webp";
+import TecnologiasMobile from "../../images/solucoes/tecnologias-mobile.webp";
+import Image from "astro/components/Image.astro";
+import Accordion from "../../components/Accordion.astro";
+import ButtonArrowSquare from "../../components/buttons/ButtonArrowSquare.astro";
+import Badge from "../../components/Badge.astro";
+import FaleConoscoEn from "../../components/FaleConoscoEn.astro";
+import SolucoesSectionEn from "../../components/SolucoesSectionEn.astro";
+import "../../styles/pages/iot.css";
+import LogoBigFallback from "../../images/logo-big.webp";
+import CarousselWorkflow from "../../components/carroussel/CarousselWorkflow.astro";
+
+const wfSteps = [
+    {
+        title: "Diagnostic",
+        desc: "We understand the business reality, operational challenges, and opportunities.",
+    },
+    {
+        title: "Strategic Planning",
+        desc: "We define objectives, indicators, and priorities with clarity and alignment.",
+    },
+    {
+        title: "Solution Design",
+        desc: "We co-create solutions considering technology, processes, and people.",
+    },
+    {
+        title: "Implementation",
+        desc: "We execute focusing on agility, security, and integration with existing systems.",
+    },
+    {
+        title: "Monitoring and Optimization",
+        desc: "We track results and adjust continuously.",
+    },
+    {
+        title: "Sustainable Results",
+        desc: "We deliver visibility, learning, and a foundation for continuous evolution.",
+    },
+];
 ---
 
 <Layout>
-    <div
-        style="height: 100vh; display: flex; align-items: center; justify-content: center;"
-    >
-        <h1>Solutions</h1>
+    <div class="hero container-boxed">
+        <div class="content">
+            <h1>Our solutions</h1>
+            <h3>
+                We architect strategy, connect data, and transform real operations.
+            </h3>
+        </div>
+
+        <div class="solucoes-img-wrapper">
+            <video
+                src="/videos/solucoes/solucoes.webm"
+                class="solucoesImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={SolucoesImg.src}></video>
+        </div>
     </div>
+    <div class="marquee container">
+        <div class="marquee-content">
+            <h3>Digital transformation</h3>
+            <Icon name="dot" />
+            <h3>Industry 4.0</h3>
+            <Icon name="dot" />
+            <h3>Engineering</h3>
+            <Icon name="dot" />
+            <h3>Agriculture 4.0</h3>
+            <Icon name="dot" />
+            <h3>IoT</h3>
+            <Icon name="dot" />
+            <h3>Robotics</h3>
+            <Icon name="dot" />
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+            <h3>Digital transformation</h3>
+            <Icon name="dot" />
+            <h3>Industry 4.0</h3>
+            <Icon name="dot" />
+            <h3>Engineering</h3>
+            <Icon name="dot" />
+            <h3>Agriculture 4.0</h3>
+            <Icon name="dot" />
+            <h3>IoT</h3>
+            <Icon name="dot" />
+            <h3>Robotics</h3>
+            <Icon name="dot" />
+        </div>
+    </div>
+    <SolucoesSectionEn />
+    <div class="comofazemos container-boxed">
+        <div class="content">
+            <Badge text="How we do it" />
+            <h2>
+                We understand your business challenges and
+                <b>co-create</b> solutions
+            </h2>
+            <h3>
+                Our methodology combines strategy, technology, and agile execution
+                to ensure technically solid projects, aligned with the
+                business and focused on real results.
+            </h3>
+        </div>
+
+        <div class="comofazemos-img-wrapper">
+            <video
+                src="/videos/solucoes/esfera.webm"
+                class="esferaImg"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster={EsferaImg.src}></video>
+        </div>
+    </div>
+
+    <!-- ── WORKFLOW ── -->
+    <div class="iot-workflow-scrollarea sol-workflow">
+        <div class="iot-workflow-pinned">
+            <div class="wf-ring wf-ring-1"></div>
+            <div class="wf-ring wf-ring-2"></div>
+
+            <div class="wf-logo-wrapper">
+                <img src={LogoBigFallback.src} class="wf-logo" alt="" />
+            </div>
+
+            <!-- Desktop -->
+            <div class="wf-content">
+                <div class="wf-header">
+                    <h2>Our workflow</h2>
+                </div>
+                <div class="wf-steps-area">
+                    {
+                        wfSteps.map((step, i) => (
+                            <div class={`wf-step wf-step-${i}`}>
+                                <div class="wf-line" />
+                                <span class="wf-dot">
+                                    <Icon name="dot" size={8} />
+                                </span>
+                                <h3>{step.title}</h3>
+                                <p class="wf-desc">{step.desc}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Mobile carousel -->
+            <div class="wf-mobile-carousel">
+                <div class="wf-mobile-header">
+                    <h2>Our workflow</h2>
+                </div>
+                <CarousselWorkflow
+                    steps={wfSteps}
+                    logoSrc={LogoBigFallback.src}
+                />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        function initWorkflow() {
+            ScrollTrigger.getAll()
+                .filter((st) =>
+                    st.vars?.trigger?.toString?.().includes?.("sol-workflow")
+                )
+                .forEach((st) => st.kill());
+
+            const mm = gsap.matchMedia();
+
+            mm.add("(min-width: 801px)", () => {
+                const WF_STEPS = 6;
+                const WF_DUR = 1;
+                const WF_DEG = 360 / WF_STEPS; // 60° per step
+
+                gsap.set(".sol-workflow .wf-step-0", { y: 0 });
+                gsap.set(".sol-workflow .wf-step-0 .wf-line", { autoAlpha: 1 });
+                gsap.set(".sol-workflow .wf-step-0 .wf-dot", { opacity: 1 });
+                gsap.set(".sol-workflow .wf-step-0 h3", { opacity: 1 });
+                gsap.set(".sol-workflow .wf-step-0 .wf-desc", { autoAlpha: 1 });
+
+                for (let i = 1; i < WF_STEPS; i++) {
+                    const qY = i * 78;
+                    const vis = i <= 2;
+                    const hOp = i === 1 ? 0.28 : 0.16;
+                    gsap.set(`.sol-workflow .wf-step-${i}`, {
+                        y: qY,
+                        autoAlpha: vis ? 1 : 0,
+                    });
+                    gsap.set(`.sol-workflow .wf-step-${i} .wf-line`, {
+                        autoAlpha: 0,
+                    });
+                    gsap.set(`.sol-workflow .wf-step-${i} .wf-dot`, {
+                        opacity: vis ? 0.35 : 0,
+                    });
+                    gsap.set(`.sol-workflow .wf-step-${i} h3`, {
+                        opacity: vis ? hOp : 0,
+                    });
+                    gsap.set(`.sol-workflow .wf-step-${i} .wf-desc`, {
+                        autoAlpha: 0,
+                    });
+                }
+
+                const wfTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".sol-workflow",
+                        start: "top top",
+                        end: `+=${(WF_STEPS - 1) * 100}%`,
+                        scrub: 1,
+                        pin: true,
+                        anticipatePin: 1,
+                    },
+                });
+
+                for (let i = 0; i < WF_STEPS - 1; i++) {
+                    const t = i * WF_DUR;
+
+                    wfTl.to(
+                        ".sol-workflow .wf-logo",
+                        {
+                            rotation: (i + 1) * WF_DEG,
+                            ease: "none",
+                            duration: WF_DUR,
+                        },
+                        t
+                    );
+
+                    wfTl.to(
+                        `.sol-workflow .wf-step-${i} .wf-desc`,
+                        { autoAlpha: 0, duration: 0.2 },
+                        t
+                    )
+                        .to(
+                            `.sol-workflow .wf-step-${i} .wf-line`,
+                            { autoAlpha: 0, duration: 0.2 },
+                            t
+                        )
+                        .to(
+                            `.sol-workflow .wf-step-${i} .wf-dot`,
+                            { opacity: 0, duration: 0.2 },
+                            t
+                        )
+                        .to(
+                            `.sol-workflow .wf-step-${i} h3`,
+                            { opacity: 0, duration: 0.2 },
+                            t
+                        )
+                        .to(
+                            `.sol-workflow .wf-step-${i}`,
+                            { autoAlpha: 0, y: -55, duration: 0.35 },
+                            t + 0.15
+                        );
+
+                    wfTl.to(
+                        `.sol-workflow .wf-step-${i + 1}`,
+                        { autoAlpha: 1, y: 0, duration: 0.4 },
+                        t + 0.45
+                    )
+                        .to(
+                            `.sol-workflow .wf-step-${i + 1} .wf-line`,
+                            { autoAlpha: 1, duration: 0.3 },
+                            t + 0.6
+                        )
+                        .to(
+                            `.sol-workflow .wf-step-${i + 1} .wf-dot`,
+                            { opacity: 1, duration: 0.3 },
+                            t + 0.6
+                        )
+                        .to(
+                            `.sol-workflow .wf-step-${i + 1} h3`,
+                            { opacity: 1, duration: 0.3 },
+                            t + 0.6
+                        )
+                        .to(
+                            `.sol-workflow .wf-step-${i + 1} .wf-desc`,
+                            { autoAlpha: 1, duration: 0.3 },
+                            t + 0.7
+                        );
+
+                    for (let j = i + 2; j < WF_STEPS; j++) {
+                        const offset = j - (i + 1);
+                        const vis = offset <= 2;
+                        const hOp = offset === 1 ? 0.28 : 0.16;
+                        const qY = offset * 78;
+                        wfTl.to(
+                            `.sol-workflow .wf-step-${j}`,
+                            { autoAlpha: vis ? 1 : 0, y: qY, duration: 0.4 },
+                            t + 0.45
+                        )
+                            .to(
+                                `.sol-workflow .wf-step-${j} .wf-dot`,
+                                { opacity: vis ? 0.35 : 0, duration: 0.3 },
+                                t + 0.45
+                            )
+                            .to(
+                                `.sol-workflow .wf-step-${j} h3`,
+                                { opacity: vis ? hOp : 0, duration: 0.3 },
+                                t + 0.45
+                            );
+                    }
+                }
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => ScrollTrigger.refresh());
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", initWorkflow);
+    </script>
+
+    <div class="tecnologias container-boxed">
+        <div class="content-desktop">
+            <h3>Experts in</h3>
+            <h2>20+</h2>
+            <h4>technologies</h4>
+        </div>
+
+        <div class="content-mobile">
+            <h3>Experts in <br /> <span>20+</span> technologies</h3>
+        </div>
+
+        <div class="tecnologias-img-wrapper">
+            <Image
+                src={TecnologiasDesktop}
+                alt="Tecnologias Desktop"
+                class="tecnologias-img-desktop"
+            />
+            <Image
+                src={TecnologiasMobile}
+                alt="Tecnologias Mobile"
+                class="tecnologias-img-mobile"
+            />
+        </div>
+    </div>
+
+    <FaleConoscoEn />
 </Layout>

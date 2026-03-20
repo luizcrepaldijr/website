@@ -19,6 +19,15 @@ import EscalabilidadeIcon from "../../../icons/escalabilidade.svg";
 import BaseIcon from "../../../icons/base.svg";
 import CheckIcon from "../../../icons/check.svg";
 import RocketIcon from "../../../icons/rocket.svg";
+import EliminacaoPlanilhasIcon from "../../../icons/eliminacao-planilhas.svg";
+import ReducaoRetrabalhoIcon from "../../../icons/reducao-retrabalho.svg";
+import PadronizacaoApontamentosIcon from "../../../icons/padronizacao-apontamentos.svg";
+import AgilidadeTrataviasIcon from "../../../icons/agilidade-tratavias.svg";
+import MaiorRastreabilidadeIcon from "../../../icons/maior-rastreabilidade.svg";
+import EvidenciasVisuaisIcon from "../../../icons/evidencias-visuais.svg";
+import MelhoriaQualidadeIcon from "../../../icons/melhoria-qualidade.svg";
+import MaiorEngajamentoIcon from "../../../icons/maior-engajamento.svg";
+import BaseEstruturadaIcon from "../../../icons/base-estruturada.svg";
 
 export async function getStaticPaths() {
     const esCases = await getCollection("cases", ({ id }) => {
@@ -78,6 +87,15 @@ const iconMap: Record<string, any> = {
     visibilidade: VisibilidadeIcon,
     escalabilidade: EscalabilidadeIcon,
     base: BaseIcon,
+    "eliminacao-planilhas": EliminacaoPlanilhasIcon,
+    "reducao-retrabalho": ReducaoRetrabalhoIcon,
+    "padronizacao-apontamentos": PadronizacaoApontamentosIcon,
+    "agilidade-tratavias": AgilidadeTrataviasIcon,
+    "maior-rastreabilidade": MaiorRastreabilidadeIcon,
+    "evidencias-visuais": EvidenciasVisuaisIcon,
+    "melhoria-qualidade": MelhoriaQualidadeIcon,
+    "maior-engajamento": MaiorEngajamentoIcon,
+    "base-estruturada": BaseEstruturadaIcon,
 };
 ---
 
@@ -362,50 +380,47 @@ const iconMap: Record<string, any> = {
                                     />
                                 </div>
 
-                                <div class="infrastructure-section">
-                                    <h3>
-                                        {
-                                            entry.data.solutionData
-                                                .infrastructure.title
-                                        }
-                                    </h3>
-                                    <p class="section-description">
-                                        {
-                                            entry.data.solutionData
-                                                .infrastructure.description
-                                        }
-                                    </p>
-
-                                    <ul class="solution-list">
-                                        {entry.data.solutionData.infrastructure.items.map(
-                                            (item: string) => (
-                                                <li>
-                                                    <Image
-                                                        src={ArrowRight2Icon}
-                                                        alt=""
-                                                        class="solution-list-icon"
-                                                    />
-                                                    <span>{item}</span>
-                                                </li>
-                                            )
-                                        )}
-                                    </ul>
-
-                                    <div class="sensors-section">
-                                        <h3>
-                                            {
-                                                entry.data.solutionData.sensors
-                                                    .title
-                                            }
-                                        </h3>
+                                {entry.data.solutionData.features && (
+                                    <div class="infrastructure-section">
+                                        <h3>{entry.data.solutionData.features.title}</h3>
                                         <ul class="solution-list">
-                                            {entry.data.solutionData.sensors.items.map(
+                                            {entry.data.solutionData.features.items.map(
                                                 (item: string) => (
                                                     <li>
                                                         <Image
-                                                            src={
-                                                                ArrowRight2Icon
-                                                            }
+                                                            src={ArrowRight2Icon}
+                                                            alt=""
+                                                            class="solution-list-icon"
+                                                        />
+                                                        <span set:html={item}></span>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                )}
+
+                                {entry.data.solutionData.infrastructure && (
+                                    <div class="infrastructure-section">
+                                        <h3>
+                                            {
+                                                entry.data.solutionData
+                                                    .infrastructure.title
+                                            }
+                                        </h3>
+                                        <p class="section-description">
+                                            {
+                                                entry.data.solutionData
+                                                    .infrastructure.description
+                                            }
+                                        </p>
+
+                                        <ul class="solution-list">
+                                            {entry.data.solutionData.infrastructure.items.map(
+                                                (item: string) => (
+                                                    <li>
+                                                        <Image
+                                                            src={ArrowRight2Icon}
                                                             alt=""
                                                             class="solution-list-icon"
                                                         />
@@ -414,20 +429,50 @@ const iconMap: Record<string, any> = {
                                                 )
                                             )}
                                         </ul>
-                                    </div>
 
-                                    <div class="solution-callout">
-                                        <Image
-                                            src={ArrowRight2Icon}
-                                            alt=""
-                                            class="solution-list-icon"
-                                        />
-                                        <p
-                                            set:html={
-                                                entry.data.solutionData.callout
-                                            }
-                                        />
+                                        {entry.data.solutionData.sensors && (
+                                            <div class="sensors-section">
+                                                <h3>
+                                                    {
+                                                        entry.data.solutionData.sensors
+                                                            .title
+                                                    }
+                                                </h3>
+                                                <ul class="solution-list">
+                                                    {entry.data.solutionData.sensors.items.map(
+                                                        (item: string) => (
+                                                            <li>
+                                                                <Image
+                                                                    src={
+                                                                        ArrowRight2Icon
+                                                                    }
+                                                                    alt=""
+                                                                    class="solution-list-icon"
+                                                                />
+                                                                <span>{item}</span>
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        )}
+
+                                        {entry.data.solutionData.callout && (
+                                            <div class="solution-callout">
+                                                <Image
+                                                    src={ArrowRight2Icon}
+                                                    alt=""
+                                                    class="solution-list-icon"
+                                                />
+                                                <p
+                                                    set:html={
+                                                        entry.data.solutionData.callout
+                                                    }
+                                                />
+                                            </div>
+                                        )}
                                     </div>
+                                )}
 
                                     {entry.data.solutionData.monitoring && (
                                         <div class="infrastructure-section">
@@ -558,7 +603,6 @@ const iconMap: Record<string, any> = {
                                             </div>
                                         </div>
                                     )}
-                                </div>
                             </div>
                         ) : (
                             <p class="section-description">

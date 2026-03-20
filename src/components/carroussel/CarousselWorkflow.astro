@@ -1,0 +1,257 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Step {
+    title: string;
+    desc: string;
+}
+
+interface Props {
+    steps: Step[];
+    logoSrc: string;
+}
+
+const { steps, logoSrc } = Astro.props;
+---
+
+<div class="embla__wf">
+    <div class="embla__wf__viewport">
+        <div class="embla__wf__container">
+            {steps.map((step) => (
+                <div class="embla__wf__slide">
+                    <!-- Fixed logo — no rotation -->
+                    <div class="wf-slide-logo-wrapper">
+                        <img
+                            src={logoSrc}
+                            class="wf-slide-logo"
+                            alt=""
+                        />
+                    </div>
+
+                    <div class="wf-slide-body">
+                        <!-- Vertical indicator -->
+                        <div class="wf-slide-indicator">
+                            <div class="wf-line"></div>
+                            <span class="wf-dot">
+                                <Icon name="dot" size={8} />
+                            </span>
+                        </div>
+
+                        <h3>{step.title}</h3>
+                        <p class="wf-desc">{step.desc}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="embla__wf__controls">
+        <button class="embla__wf__prev" aria-label="Anterior">
+            <Icon name="arrow-left" />
+        </button>
+        <div class="embla__wf__dots"></div>
+        <button class="embla__wf__next" aria-label="Próximo">
+            <Icon name="arrow-right" />
+        </button>
+    </div>
+</div>
+
+<style>
+    .embla__wf {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .embla__wf__controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 32px;
+    }
+
+    /* Buttons: no border/padding — the SVG icon already has its own styling */
+    .embla__wf__prev,
+    .embla__wf__next {
+        background: transparent;
+        border: none;
+        padding: 0;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+    }
+
+    .embla__wf__prev [data-icon],
+    .embla__wf__next [data-icon] {
+        width: 48px;
+        height: 48px;
+    }
+
+    .embla__wf__dots {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    /* Dots injected by JS */
+    :global(.embla__wf__dot) {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    :global(.embla__wf__dot.is-selected) {
+        background: #0577ff;
+        transform: scale(1.4);
+    }
+</style>
+
+<style is:global>
+    .embla__wf__viewport {
+        overflow: hidden;
+    }
+
+    .embla__wf__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+    }
+
+    .embla__wf__slide {
+        flex: 0 0 100%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 24px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .wf-slide-logo-wrapper {
+        width: 64vw;
+        max-width: 280px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .wf-slide-logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .wf-slide-body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Vertical line + dot stacked */
+    .wf-slide-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .wf-slide-indicator .wf-line {
+        width: 1px;
+        height: 48px;
+        background: #0577ff;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .wf-slide-indicator .wf-dot {
+        display: flex;
+        align-items: center;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .embla__wf__slide h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffffff;
+        margin: 0 0 10px;
+        line-height: 1.3;
+    }
+
+    .embla__wf__slide .wf-desc {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+</style>
+
+<script>
+    import EmblaCarousel from "embla-carousel";
+
+    document.querySelectorAll<HTMLElement>(".embla__wf").forEach((wrapper) => {
+        const viewport = wrapper.querySelector<HTMLElement>(
+            ".embla__wf__viewport"
+        );
+        const prevBtn = wrapper.querySelector<HTMLButtonElement>(
+            ".embla__wf__prev"
+        );
+        const nextBtn = wrapper.querySelector<HTMLButtonElement>(
+            ".embla__wf__next"
+        );
+        const dotsContainer = wrapper.querySelector<HTMLElement>(
+            ".embla__wf__dots"
+        );
+
+        if (!viewport) return;
+
+        const embla = EmblaCarousel(viewport, {
+            loop: false,
+            align: "center",
+        });
+
+        // Build dots
+        const slideCount = embla.scrollSnapList().length;
+        const dots: HTMLButtonElement[] = [];
+
+        if (dotsContainer) {
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement("button");
+                dot.classList.add("embla__wf__dot");
+                dot.addEventListener("click", () => embla.scrollTo(i));
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            }
+        }
+
+        const updateDots = () => {
+            const idx = embla.selectedScrollSnap();
+            dots.forEach((d, i) => {
+                d.classList.toggle("is-selected", i === idx);
+            });
+        };
+
+        embla.on("select", updateDots);
+        embla.on("init", updateDots);
+        updateDots();
+
+        prevBtn?.addEventListener("click", () => embla.scrollPrev());
+        nextBtn?.addEventListener("click", () => embla.scrollNext());
+    });
+</script>

@@ -12,6 +12,8 @@ import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
 import Badge from "../../components/Badge.astro";
 import { Icon } from "astro-icon/components";
 import LogoBigFallback from "../../images/logo-big.webp";
+import Accordion from "../../components/Accordion.astro";
+import CarousselWorkflow from "../../components/carroussel/CarousselWorkflow.astro";
 
 const wfSteps = [
     { title: "Diagnóstico técnico da operação",   desc: "Entendimento profundo de processos, máquinas e desafios reais." },
@@ -344,6 +346,80 @@ const wfSteps = [
         </div>
     </div>
 
+    <!-- ── IOT INDÚSTRIAS MOBILE ── -->
+    <div class="iot-ind-mobile">
+        <div class="iot-industrias-tabs">
+            <button class="active">IoT para indústrias</button>
+            <button>IoT para agricultura</button>
+        </div>
+
+        <!-- Block 1 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-industria.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaIndustriaFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>IoT para indústrias</h2>
+                <p>Permite observar a operação de forma contínua, capturando dados críticos diretamente do chão de fábrica.</p>
+            </div>
+        </div>
+
+        <!-- Block 2 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-industria.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaIndustriaFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>A indústria moderna exige processos conectados, previsíveis e eficientes.</h2>
+                <p>O IoT industrial permite observar a operação de forma contínua, capturando dados críticos diretamente do chão de fábrica.</p>
+            </div>
+        </div>
+
+        <!-- Block 3 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-industria-2.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaIndustria2Fallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>O que monitoramos</h2>
+                <p>Nossas principais aplicações na indústria:</p>
+                <div class="card-checklist">
+                    <div><Icon name="arrow-right-2" size={24} /><span>Coleta automática de dados de processo</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Análise de vibração em motores e equipamentos críticos</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Monitoramento de linhas de embalagem para cálculo de eficiência (OEE)</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Integração de dados em plataformas analíticas e sistemas internos</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Comunicação sem fio confiável via LoRaWAN</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 4 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-industria-2.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaIndustria2Fallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>Resultados obtidos com IoT Industrial</h2>
+                <p>Esses dados alimentam uma plataforma que entrega:</p>
+                <div class="card-checklist">
+                    <div><Icon name="arrow-right-2" size={24} /><span>Redução de falhas e paradas inesperadas</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Melhoria significativa do OEE</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Aumento da vida útil de ativos críticos</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Mais controle, rastreabilidade e facilidade de auditoria</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Decisões baseadas em dados confiáveis e em tempo real</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ── IOT WORKFLOW ── -->
     <div class="iot-workflow-scrollarea">
         <div class="iot-workflow-pinned">
@@ -356,7 +432,7 @@ const wfSteps = [
                 <img src={LogoBigFallback.src} class="wf-logo" alt="" />
             </div>
 
-            <!-- Right content -->
+            <!-- Right content (desktop) -->
             <div class="wf-content">
                 <div class="wf-header">
                     <h2>Como entregamos IoT na Indústria</h2>
@@ -373,6 +449,15 @@ const wfSteps = [
                         </div>
                     ))}
                 </div>
+            </div>
+
+            <!-- Mobile carousel -->
+            <div class="wf-mobile-carousel">
+                <div class="wf-mobile-header">
+                    <h2>Como entregamos IoT na Indústria</h2>
+                    <span class="wf-subtitle">NOSSO WORKFLOW</span>
+                </div>
+                <CarousselWorkflow steps={wfSteps} logoSrc={LogoBigFallback.src} />
             </div>
         </div>
     </div>
@@ -495,6 +580,97 @@ const wfSteps = [
                     <div class="iot-agri-text agri-text-5">
                         <h2>Oferecemos suporte no campo e à distância</h2>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── IOT AGRICULTURA MOBILE ── -->
+    <div class="iot-agri-mobile">
+        <div class="iot-industrias-tabs">
+            <button>IoT para indústrias</button>
+            <button class="active">IoT para agricultura</button>
+        </div>
+
+        <!-- Block 1 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/sensor-agro.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={SensorAgroFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>IoT para agricultura</h2>
+                <p>Eficiência hídrica, produtividade e decisões inteligentes no campo</p>
+            </div>
+        </div>
+
+        <!-- Block 2 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/sensor-agro.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={SensorAgroFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>O agronegócio enfrenta o desafio de produzir mais, com menos recursos e maior sustentabilidade.</h2>
+                <p>O IoT permite ao produtor entender o solo em tempo real e tomar decisões precisas, reduzindo desperdícios e aumentando produtividade.</p>
+            </div>
+        </div>
+
+        <!-- Block 3 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-agricultura.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaAgriculturaFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>O que monitoramos</h2>
+                <p>Sensores distribuídos estrategicamente capturam:</p>
+                <div class="card-checklist">
+                    <div><Icon name="arrow-right-2" size={24} /><span>Umidade do solo em diferentes profundidades</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Temperatura do solo e do ambiente</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Condutividade elétrica (fertilidade e salinidade)</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Condições que impactam diretamente a irrigação</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 4 -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-agricultura.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaAgriculturaFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>O que entregamos</h2>
+                <p>Esses dados alimentam uma plataforma que entrega:</p>
+                <div class="card-checklist">
+                    <div><Icon name="arrow-right-2" size={24} /><span>Indicadores em tempo real</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Recomendações objetivas de irrigação</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Cálculo automático da água aplicada</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Conversão do consumo em USD</span></div>
+                    <div><Icon name="arrow-right-2" size={24} /><span>Alertas sobre necessidades imediatas do solo</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 5: Suporte + accordion (replaces iot-agri-applications on mobile) -->
+        <div class="iot-ind-mobile-block">
+            <video
+                src="/videos/iot/iot-para-agricultura.webm"
+                class="iot-ind-mobile-video"
+                autoplay loop muted playsinline
+                poster={IotParaAgriculturaFallback.src}></video>
+            <div class="iot-ind-mobile-text">
+                <h2>Oferecemos suporte no campo e à distância</h2>
+                <div class="iot-agri-mobile-accordion">
+                    <Accordion title="Instalação completa" description="Sensores, gateways, painéis solares e antenas." />
+                    <Accordion title="Monitoramento remoto dos sensores" description="Bateria, comunicação, conectividade e qualidade dos dados." />
+                    <Accordion title="Manutenção contínua" description="Ajustes, substituições e expansão da solução conforme a fazenda cresce." />
+                    <Accordion title="O produtor cuida da produção." description="A Transformatech cuida da tecnologia." />
                 </div>
             </div>
         </div>

@@ -1004,6 +1004,34 @@ body {
         font-size: 16px;
     }
 
+    /* ── IOT INDÚSTRIAS: hide desktop, show mobile blocks ── */
+    .iot-industrias-master-scrollarea {
+        display: none !important;
+    }
+
+    .iot-ind-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ── IOT AGRICULTURA: hide desktop + applications, show mobile blocks ── */
+    .iot-agricultura-master-scrollarea {
+        display: none !important;
+    }
+
+    .iot-agri-applications {
+        display: none !important;
+    }
+
+    .iot-agri-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .iot-agri-mobile-accordion {
+        margin-top: 24px;
+    }
+
     /* ── IOT INDÚSTRIAS MOBILE ── */
     .iot-industrias-tabs button {
         padding: 16px 8px;
@@ -1286,6 +1314,7 @@ body {
 
 .wf-header {
     margin-bottom: 52px;
+    text-align: right;
 }
 
 .wf-header h2 {
@@ -1302,6 +1331,7 @@ body {
     color: rgba(255, 255, 255, 0.45);
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    display: block;
 }
 
 /* Steps area — all steps stacked at the same position via absolute */
@@ -1351,65 +1381,126 @@ body {
     padding-left: 0;
 }
 
-/* ── MOBILE: static list (carousel TODO) ── */
+/* ── WORKFLOW MOBILE CAROUSEL ── */
+.wf-mobile-carousel {
+    display: none;
+}
+
 @media only screen and (max-width: 800px) {
+    /* Hide the GSAP pinned section entirely */
     .iot-workflow-scrollarea {
-        padding: 48px 20px;
+        background: #090c15;
+        padding: 48px 0;
     }
 
     .iot-workflow-pinned {
-        height: auto;
+        height: auto !important;
         overflow: visible;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
     }
 
     .wf-ring,
-    .wf-logo-wrapper {
+    .wf-logo-wrapper,
+    .wf-content {
+        display: none !important;
+    }
+
+    /* Show the carousel */
+    .wf-mobile-carousel {
+        display: block;
+        padding: 0 20px;
+    }
+
+    .wf-mobile-header {
+        margin-bottom: 32px;
+    }
+
+    .wf-mobile-header h2 {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.25;
+        margin-bottom: 6px;
+    }
+
+    .wf-mobile-header .wf-subtitle {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+    }
+}
+
+/* ── IOT IND + AGRI MOBILE: hidden on desktop ── */
+@media only screen and (min-width: 801px) {
+    .iot-ind-mobile,
+    .iot-agri-mobile {
         display: none;
     }
+}
 
-    .wf-content {
-        position: relative;
-        width: 100%;
-        height: auto;
-        padding: 0;
-        top: auto;
-        right: auto;
-        justify-content: flex-start;
-    }
-
-    .wf-steps-area {
-        position: relative;
-        height: auto;
-    }
-
-    .wf-step {
-        position: relative;
-        top: auto;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-        padding: 24px 0;
+/* ── IOT IND MOBILE BLOCKS ── */
+@media only screen and (max-width: 800px) {
+    .iot-ind-mobile-block {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px 48px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .wf-step h3 {
-        font-size: 18px;
+    .iot-ind-mobile-block:last-child {
+        border-bottom: none;
     }
 
-    .wf-desc {
-        font-size: 14px;
-        padding-left: 0;
-        opacity: 1 !important;
-        visibility: visible !important;
+    .iot-ind-mobile-video {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+        mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+        margin-bottom: 24px;
     }
 
-    .wf-line,
-    .wf-dot {
-        opacity: 1 !important;
-        visibility: visible !important;
+    .iot-ind-mobile-text h2 {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 12px;
     }
-}
+
+    .iot-ind-mobile-text p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    .iot-ind-mobile-text .card-checklist {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 8px;
+    }
+
+    .iot-ind-mobile-text .card-checklist div {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .iot-ind-mobile-text .card-checklist div:last-child {
+        border-bottom: none;
+    }
+
+    .iot-ind-mobile-text .card-checklist div span {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .iot-ind-mobile-text .card-checklist div svg {
+        color: #ffffff;
+        flex-shrink: 0;
+    }
 }

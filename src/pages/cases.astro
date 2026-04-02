@@ -20,7 +20,7 @@ const ptCases = await getCollection("cases", ({ id }) => {
 });
 ---
 
-<Layout>
+<Layout title="Cases">
     <!-- HERO -->
     <div class="cases-hero container">
         <div class="container-boxed">
@@ -75,7 +75,7 @@ const ptCases = await getCollection("cases", ({ id }) => {
                     />
                     <div class="case-card-content">
                         <div class="case-card-badges">
-                            {entry.data.badges.map((badge) => (
+                            {entry.data.badges.map((badge: any) => (
                                 <Badge2 text={badge} />
                             ))}
                         </div>
@@ -92,12 +92,12 @@ const ptCases = await getCollection("cases", ({ id }) => {
                             <strong>Resultado</strong>
                             <p>{entry.data.result}</p>
                         </div>
-                    <div class="case-card-btn">
-                        <ButtonArrowWhite 
-                            text="Leia mais" 
-                            link={`/cases/${entry.id.replace("pt/", "")}`} 
-                        />
-                    </div>
+                        <div class="case-card-btn">
+                            <ButtonArrowWhite
+                                text="Leia mais"
+                                link={`/cases/${entry.id.replace("pt/", "")}`}
+                            />
+                        </div>
                     </div>
                 </div>
             ))

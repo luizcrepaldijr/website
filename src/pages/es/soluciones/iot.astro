@@ -788,6 +788,13 @@ const wfSteps = [
         let heroMm: gsap.MatchMedia | null = null;
         let scrollerMm: gsap.MatchMedia | null = null;
         let activePanel: "ind" | "agri" = "ind";
+        let pendingRaf1: number | null = null;
+        let pendingRaf2: number | null = null;
+
+        function cancelPendingReinit() {
+            if (pendingRaf1 !== null) { cancelAnimationFrame(pendingRaf1); pendingRaf1 = null; }
+            if (pendingRaf2 !== null) { cancelAnimationFrame(pendingRaf2); pendingRaf2 = null; }
+        }
 
         // ── Tab switching — only reinit panel scrollers, never touch hero ──
         document.querySelectorAll<HTMLButtonElement>(".iot-global-tabs button").forEach((btn) => {
@@ -800,13 +807,21 @@ const wfSteps = [
                     b.classList.toggle("active", b === btn);
                 });
 
+                // Kill scrollers synchronously so pin spacers are removed before layout recalculates
+                cancelPendingReinit();
+                if (scrollerMm) { scrollerMm.kill(); scrollerMm = null; }
+
                 document.getElementById("panel-ind")!.style.display = panel === "ind" ? "block" : "none";
                 document.getElementById("panel-agri")!.style.display = panel === "agri" ? "block" : "none";
 
+                // scrollIntoView now sees the correct layout (spacers already gone)
                 document.querySelector(".iot-global-tabs")!.scrollIntoView({ behavior: "instant" });
 
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
+                // Re-register scrollers after layout settles
+                pendingRaf1 = requestAnimationFrame(() => {
+                    pendingRaf2 = requestAnimationFrame(() => {
+                        pendingRaf1 = null;
+                        pendingRaf2 = null;
                         reinitScrollers();
                     });
                 });
@@ -892,6 +907,17 @@ const wfSteps = [
 
         function _registerScrollers() {
             if (activePanel === "ind") {
+                // ── Clear residual GSAP styles from any previous run ──
+                gsap.set(".media-1, .media-2, .text-1, .text-2, .text-3, .text-4", { clearProps: "all" });
+                gsap.set(".wf-logo", { clearProps: "all" });
+                for (let i = 0; i < 5; i++) {
+                    gsap.set(
+                        [`.wf-step-${i}`, `.wf-step-${i} .wf-line`, `.wf-step-${i} .wf-dot`,
+                         `.wf-step-${i} h3`, `.wf-step-${i} .wf-desc`],
+                        { clearProps: "all" }
+                    );
+                }
+
                 // ── Indústrias animation ──
                 gsap.set(".text-2, .text-3, .text-4, .media-2", { autoAlpha: 0 });
 
@@ -980,6 +1006,12 @@ const wfSteps = [
             }
 
             if (activePanel === "agri") {
+                // ── Clear residual GSAP styles from any previous run ──
+                gsap.set(
+                    ".agri-media-1, .agri-media-2, .agri-text-1, .agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5",
+                    { clearProps: "all" }
+                );
+
                 // ── Agricultura animation ──
                 gsap.set(".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2", { autoAlpha: 0 });
 

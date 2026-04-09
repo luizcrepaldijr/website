@@ -12,6 +12,9 @@ export const ui = {
     "nav.solutions": "Soluções",
     "nav.about": "Sobre nós",
     "nav.cases": "Cases",
+    "nav.iot": "IoT",
+    "nav.digital_reality": "Realidade Digital",
+    "nav.robotics": "Robótica",
 
     "btn.start": "Quero começar",
     "btn.specialist": "Falar com um especialista",
@@ -30,6 +33,9 @@ export const ui = {
     "nav.solutions": "Solutions",
     "nav.about": "About us",
     "nav.cases": "Cases",
+    "nav.iot": "IoT",
+    "nav.digital_reality": "Digital Reality",
+    "nav.robotics": "Robotics",
 
     "btn.start": "Get started",
     "btn.specialist": "Talk to an expert",
@@ -48,6 +54,9 @@ export const ui = {
     "nav.solutions": "Soluciones",
     "nav.about": "Sobre nosotros",
     "nav.cases": "Casos",
+    "nav.iot": "IoT",
+    "nav.digital_reality": "Realidad Digital",
+    "nav.robotics": "Robótica",
 
     "btn.start": "Empezar",
     "btn.specialist": "Hablar con un experto",

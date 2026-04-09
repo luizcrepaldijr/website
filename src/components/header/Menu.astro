@@ -31,10 +31,9 @@ const localizePath = useTranslatedPath(lang);
       <CaretDown class="caret" color="white" />
     </a>
     <div class="dropdown-menu">
-      <a href={localizePath("/solucoes/iot")}>IoT</a>
-      <a href={localizePath("/solucoes/realidade-digital")}>Realidade Digital</a
-      >
-      <a href={localizePath("/solucoes/robotica")}>Robótica</a>
+      <a href={localizePath("/solucoes/iot")}>{t("nav.iot")}</a>
+      <a href={localizePath("/solucoes/realidade-digital")}>{t("nav.digital_reality")}</a>
+      <a href={localizePath("/solucoes/robotica")}>{t("nav.robotics")}</a>
     </div>
   </div>
   <a

@@ -393,10 +393,48 @@ body {
     max-width: 840px;
 }
 
+/* ── GLOBAL TABS (sticky) ── */
+.iot-global-tabs {
+    position: sticky;
+    top: 0;
+    display: flex;
+    width: 100%;
+    z-index: 100;
+    font-size: clamp(16px, 1.2vw, 20px);
+    flex-shrink: 0;
+}
+
+.iot-global-tabs button {
+    flex: 1;
+    padding: 24px;
+    background: #0f1520;
+    color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.iot-global-tabs button.active {
+    background: #007bff;
+    color: #ffffff;
+    border-bottom-color: #007bff;
+}
+
+/* ── PANELS ── */
+.iot-panel {
+    display: block;
+}
+
+#panel-agri {
+    display: none;
+}
+
 /* ── IOT INDÚSTRIAS E AGRICULTURA ── */
 .iot-industrias-tabs {
     position: relative;
-    /* sem sticky */
     display: flex;
     width: 100%;
     z-index: 50;

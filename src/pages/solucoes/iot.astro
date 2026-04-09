@@ -210,14 +210,17 @@ const wfSteps = [
         </p>
     </div>
 
-    <!-- ── IOT INDÚSTRIAS E AGRICULTURA ── -->
+    <!-- ── GLOBAL TABS ── -->
+    <div class="iot-global-tabs">
+        <button class="active" data-panel="ind">IoT para indústrias</button>
+        <button data-panel="agri">IoT para agricultura</button>
+    </div>
+
+    <!-- ── PANEL: INDÚSTRIAS ── -->
+    <div class="iot-panel" id="panel-ind">
+
     <div class="iot-industrias-master-scrollarea">
         <div class="iot-ind-pinned-master">
-            <div class="iot-industrias-tabs">
-                <button class="active">IoT para indústrias</button>
-                <button>IoT para agricultura</button>
-            </div>
-
             <div class="iot-ind-pinned-content">
                 <!-- Media -->
                 <div class="iot-ind-medias">
@@ -348,11 +351,6 @@ const wfSteps = [
 
     <!-- ── IOT INDÚSTRIAS MOBILE ── -->
     <div class="iot-ind-mobile">
-        <div class="iot-industrias-tabs">
-            <button class="active">IoT para indústrias</button>
-            <button>IoT para agricultura</button>
-        </div>
-
         <!-- Block 1 -->
         <div class="iot-ind-mobile-block">
             <video
@@ -460,16 +458,40 @@ const wfSteps = [
                 <CarousselWorkflow steps={wfSteps} logoSrc={LogoBigFallback.src} />
             </div>
         </div>
+    </div><!-- close iot-workflow-scrollarea -->
+
+    <div class="iot-controle container">
+        <div class="container-boxed">
+            <div class="content">
+                <h2>Pronto para operar com <b>controle em tempo real?</b></h2>
+                <h3>
+                    Traga os desafios da sua indústria ou do seu campo. Nós
+                    ajudamos a transformar dados em controle, eficiência e
+                    previsibilidade.
+                </h3>
+                <span class="button">
+                    <ButtonArrowWhite text="Levar IoT para o meu negócio" />
+                </span>
+            </div>
+            <div class="parceiros-img-wrapper">
+                <video
+                    src="/videos/iot/iot-hero.webm"
+                    class="parceiros-img"
+                    autoplay
+                    loop
+                    muted
+                    playsinline></video>
+            </div>
+        </div>
     </div>
+    </div><!-- close #panel-ind -->
+
+    <!-- ── PANEL: AGRICULTURA ── -->
+    <div class="iot-panel" id="panel-agri">
 
     <!-- ── IOT AGRICULTURA ── -->
     <div class="iot-agricultura-master-scrollarea">
         <div class="iot-agri-pinned-master">
-            <div class="iot-industrias-tabs">
-                <button>IoT para indústrias</button>
-                <button class="active">IoT para agricultura</button>
-            </div>
-
             <div class="iot-agri-pinned-content">
                 <!-- Media -->
                 <div class="iot-agri-medias">
@@ -587,11 +609,6 @@ const wfSteps = [
 
     <!-- ── IOT AGRICULTURA MOBILE ── -->
     <div class="iot-agri-mobile">
-        <div class="iot-industrias-tabs">
-            <button>IoT para indústrias</button>
-            <button class="active">IoT para agricultura</button>
-        </div>
-
         <!-- Block 1 -->
         <div class="iot-ind-mobile-block">
             <video
@@ -713,32 +730,7 @@ const wfSteps = [
             <span class="texto">A Transformatech cuida da tecnologia.</span>
         </div>
     </div>
-
-    <div class="iot-controle container">
-        <div class="container-boxed">
-            <div class="content">
-                <h2>Pronto para operar com <b>controle em tempo real?</b></h2>
-                <h3>
-                    Traga os desafios da sua indústria ou do seu campo. Nós
-                    ajudamos a transformar dados em controle, eficiência e
-                    previsibilidade.
-                </h3>
-                <span class="button">
-                    <ButtonArrowWhite text="Levar IoT para o meu negócio" />
-                </span>
-            </div>
-
-            <div class="parceiros-img-wrapper">
-                <video
-                    src="/videos/iot/iot-hero.webm"
-                    class="parceiros-img"
-                    autoplay
-                    loop
-                    muted
-                    playsinline></video>
-            </div>
-        </div>
-    </div>
+    </div><!-- close #panel-agri -->
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -780,20 +772,60 @@ const wfSteps = [
 
         gsap.registerPlugin(ScrollTrigger);
 
-        let mm: gsap.MatchMedia | null = null;
+        let heroMm: gsap.MatchMedia | null = null;
+        let scrollerMm: gsap.MatchMedia | null = null;
+        let activePanel: "ind" | "agri" = "ind";
 
+        // ── Tab switching — only reinit panel scrollers, never touch hero ──
+        document.querySelectorAll<HTMLButtonElement>(".iot-global-tabs button").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const panel = btn.dataset.panel as "ind" | "agri";
+                if (panel === activePanel) return;
+                activePanel = panel;
+
+                document.querySelectorAll<HTMLButtonElement>(".iot-global-tabs button").forEach((b) => {
+                    b.classList.toggle("active", b === btn);
+                });
+
+                document.getElementById("panel-ind")!.style.display = panel === "ind" ? "block" : "none";
+                document.getElementById("panel-agri")!.style.display = panel === "agri" ? "block" : "none";
+
+                document.querySelector(".iot-global-tabs")!.scrollIntoView({ behavior: "instant" });
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        reinitScrollers();
+                    });
+                });
+            });
+        });
+
+        // ── Kill only panel scrollers, recreate for active panel ──
+        function reinitScrollers() {
+            if (scrollerMm) { scrollerMm.kill(); scrollerMm = null; }
+
+            scrollerMm = gsap.matchMedia();
+            scrollerMm.add("(min-width: 801px)", () => {
+                _registerScrollers();
+            });
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    ScrollTrigger.refresh();
+                });
+            });
+        }
+
+        // ── Full init: hero (once) + scrollers ──
         function initAnimations() {
-            // Mata tudo que existia antes
-            if (mm) {
-                mm.kill();
-                mm = null;
-            }
+            if (heroMm) { heroMm.kill(); heroMm = null; }
+            if (scrollerMm) { scrollerMm.kill(); scrollerMm = null; }
             ScrollTrigger.getAll().forEach((st) => st.kill());
             gsap.globalTimeline.clear();
 
-            mm = gsap.matchMedia();
+            heroMm = gsap.matchMedia();
 
-            mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
+            heroMm.add("(min-width: 801px) and (max-width: 2399px)", () => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-hero",
@@ -803,28 +835,13 @@ const wfSteps = [
                         pin: true,
                     },
                 });
-                tl.to(".iot-hero .content", {
-                    opacity: 0,
-                    y: -100,
-                    duration: 1,
-                })
+                tl.to(".iot-hero .content", { opacity: 0, y: -100, duration: 1 })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(
-                        ".iot-hero .iot-img-wrapper",
-                        { y: "20vh", x: "22vw", scale: 0.75, duration: 1 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".iot-section-2",
-                        { opacity: 0, y: "55vh" },
-                        { opacity: 1, y: "0vh", duration: 0.8 },
-                        "-=0.8"
-                    );
-
-                _registerScrollers();
+                    .to(".iot-hero .iot-img-wrapper", { y: "20vh", x: "22vw", scale: 0.75, duration: 1 }, "<")
+                    .fromTo(".iot-section-2", { opacity: 0, y: "55vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
             });
 
-            mm.add("(min-width: 2400px)", () => {
+            heroMm.add("(min-width: 2400px)", () => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-hero",
@@ -836,22 +853,11 @@ const wfSteps = [
                 });
                 tl.to(".iot-hero .content", { opacity: 0, y: -80, duration: 1 })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(
-                        ".iot-hero .iot-img-wrapper",
-                        { y: "0vh", x: "12vw", scale: 0.85, duration: 1 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".iot-section-2",
-                        { opacity: 0, y: "45vh" },
-                        { opacity: 1, y: "0vh", duration: 0.8 },
-                        "-=0.8"
-                    );
-
-                _registerScrollers();
+                    .to(".iot-hero .iot-img-wrapper", { y: "0vh", x: "12vw", scale: 0.85, duration: 1 }, "<")
+                    .fromTo(".iot-section-2", { opacity: 0, y: "45vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
             });
 
-            mm.add("(max-width: 800px)", () => {
+            heroMm.add("(max-width: 800px)", () => {
                 const tlMobile = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-hero",
@@ -862,29 +868,19 @@ const wfSteps = [
                     },
                 });
                 tlMobile
-                    .to(".iot-hero .content", {
-                        opacity: 0,
-                        y: -50,
-                        duration: 1,
-                    })
+                    .to(".iot-hero .content", { opacity: 0, y: -50, duration: 1 })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(
-                        ".iot-hero .iot-img-wrapper",
-                        { y: "-10vh", duration: 1 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".iot-section-2",
-                        { opacity: 0, y: "10vh" },
-                        { opacity: 1, y: "0vh", duration: 0.8 },
-                        "-=0.8"
-                    );
+                    .to(".iot-hero .iot-img-wrapper", { y: "-10vh", duration: 1 }, "<")
+                    .fromTo(".iot-section-2", { opacity: 0, y: "10vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
             });
 
-            function _registerScrollers() {
-                gsap.set(".text-2, .text-3, .text-4, .media-2", {
-                    autoAlpha: 0,
-                });
+            reinitScrollers();
+        }
+
+        function _registerScrollers() {
+            if (activePanel === "ind") {
+                // ── Indústrias animation ──
+                gsap.set(".text-2, .text-3, .text-4, .media-2", { autoAlpha: 0 });
 
                 const indTl = gsap.timeline({
                     scrollTrigger: {
@@ -899,62 +895,36 @@ const wfSteps = [
 
                 indTl
                     .to(".media-1", { xPercent: -100, duration: 1 })
-                    .fromTo(
-                        ".text-1",
-                        { autoAlpha: 1, x: 0 },
-                        { autoAlpha: 0, x: -50, duration: 0.5 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".text-2",
-                        { autoAlpha: 0, x: 50 },
-                        { autoAlpha: 1, x: 0, duration: 0.5 },
-                        "<0.5"
-                    )
+                    .fromTo(".text-1", { autoAlpha: 1, x: 0 }, { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
+                    .fromTo(".text-2", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
                     .to(".media-1", { autoAlpha: 0, duration: 0.5 })
                     .to(".text-2", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(
-                        ".media-2",
-                        { autoAlpha: 0, xPercent: 0 },
-                        { autoAlpha: 1, duration: 0.5 },
-                        "<0.5"
-                    )
-                    .fromTo(
-                        ".text-3",
-                        { autoAlpha: 0, x: 50 },
-                        { autoAlpha: 1, x: 0, duration: 0.5 },
-                        "<0.5"
-                    )
+                    .fromTo(".media-2", { autoAlpha: 0, xPercent: 0 }, { autoAlpha: 1, duration: 0.5 }, "<0.5")
+                    .fromTo(".text-3", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
                     .to(".media-2", { xPercent: -100, duration: 1 })
                     .to(".text-3", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(
-                        ".text-4",
-                        { autoAlpha: 0, x: 50 },
-                        { autoAlpha: 1, x: 0, duration: 0.5 },
-                        "<0.5"
-                    );
+                    .fromTo(".text-4", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5");
 
                 // ── Workflow animation ──
                 const WF_STEPS = 5;
                 const WF_DUR   = 1;
-                const WF_DEG   = 360 / WF_STEPS; // 72° per step
+                const WF_DEG   = 360 / WF_STEPS;
 
-                // Initial states
                 gsap.set(".wf-step-0", { y: 0 });
                 gsap.set(".wf-step-0 .wf-line", { autoAlpha: 1 });
-                gsap.set(".wf-step-0 .wf-dot", { opacity: 1 });
-                gsap.set(".wf-step-0 h3",       { opacity: 1 });
-                gsap.set(".wf-step-0 .wf-desc", { autoAlpha: 1 });
+                gsap.set(".wf-step-0 .wf-dot",  { opacity: 1 });
+                gsap.set(".wf-step-0 h3",        { opacity: 1 });
+                gsap.set(".wf-step-0 .wf-desc",  { autoAlpha: 1 });
 
                 for (let i = 1; i < WF_STEPS; i++) {
-                    const qY = i * 78;
+                    const qY  = i * 78;
                     const vis = i <= 2;
                     const hOp = i === 1 ? 0.28 : 0.16;
-                    gsap.set(`.wf-step-${i}`,          { y: qY, autoAlpha: vis ? 1 : 0 });
-                    gsap.set(`.wf-step-${i} .wf-line`,  { autoAlpha: 0 });
-                    gsap.set(`.wf-step-${i} .wf-dot`,   { opacity: vis ? 0.35 : 0 });
-                    gsap.set(`.wf-step-${i} h3`,        { opacity: vis ? hOp : 0 });
-                    gsap.set(`.wf-step-${i} .wf-desc`,  { autoAlpha: 0 });
+                    gsap.set(`.wf-step-${i}`,         { y: qY, autoAlpha: vis ? 1 : 0 });
+                    gsap.set(`.wf-step-${i} .wf-line`, { autoAlpha: 0 });
+                    gsap.set(`.wf-step-${i} .wf-dot`,  { opacity: vis ? 0.35 : 0 });
+                    gsap.set(`.wf-step-${i} h3`,       { opacity: vis ? hOp : 0 });
+                    gsap.set(`.wf-step-${i} .wf-desc`, { autoAlpha: 0 });
                 }
 
                 const wfTl = gsap.timeline({
@@ -970,27 +940,19 @@ const wfSteps = [
 
                 for (let i = 0; i < WF_STEPS - 1; i++) {
                     const t = i * WF_DUR;
-
-                    // Rotate logo
                     wfTl.to(".wf-logo", { rotation: (i + 1) * WF_DEG, ease: "none", duration: WF_DUR }, t);
-
-                    // Step i → done
                     wfTl
-                        .to(`.wf-step-${i} .wf-desc`,  { autoAlpha: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i} .wf-line`,   { autoAlpha: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i} .wf-dot`,    { opacity: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i} h3`,         { opacity: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i}`,            { autoAlpha: 0, y: -55, duration: 0.35 }, t + 0.15);
-
-                    // Step i+1 → active
+                        .to(`.wf-step-${i} .wf-desc`, { autoAlpha: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i} .wf-line`,  { autoAlpha: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i} .wf-dot`,   { opacity: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i} h3`,        { opacity: 0, duration: 0.2 }, t)
+                        .to(`.wf-step-${i}`,           { autoAlpha: 0, y: -55, duration: 0.35 }, t + 0.15);
                     wfTl
-                        .to(`.wf-step-${i + 1}`,            { autoAlpha: 1, y: 0, duration: 0.4 }, t + 0.45)
-                        .to(`.wf-step-${i + 1} .wf-line`,   { autoAlpha: 1, duration: 0.3 }, t + 0.6)
-                        .to(`.wf-step-${i + 1} .wf-dot`,    { opacity: 1, duration: 0.3 }, t + 0.6)
-                        .to(`.wf-step-${i + 1} h3`,         { opacity: 1, duration: 0.3 }, t + 0.6)
-                        .to(`.wf-step-${i + 1} .wf-desc`,   { autoAlpha: 1, duration: 0.3 }, t + 0.7);
-
-                    // Shift remaining queue
+                        .to(`.wf-step-${i + 1}`,           { autoAlpha: 1, y: 0, duration: 0.4 }, t + 0.45)
+                        .to(`.wf-step-${i + 1} .wf-line`,  { autoAlpha: 1, duration: 0.3 }, t + 0.6)
+                        .to(`.wf-step-${i + 1} .wf-dot`,   { opacity: 1, duration: 0.3 }, t + 0.6)
+                        .to(`.wf-step-${i + 1} h3`,        { opacity: 1, duration: 0.3 }, t + 0.6)
+                        .to(`.wf-step-${i + 1} .wf-desc`,  { autoAlpha: 1, duration: 0.3 }, t + 0.7);
                     for (let j = i + 2; j < WF_STEPS; j++) {
                         const offset = j - (i + 1);
                         const vis    = offset <= 2;
@@ -1002,11 +964,11 @@ const wfSteps = [
                             .to(`.wf-step-${j} h3`,      { opacity: vis ? hOp : 0, duration: 0.3 }, t + 0.45);
                     }
                 }
+            }
 
-                gsap.set(
-                    ".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2",
-                    { autoAlpha: 0 }
-                );
+            if (activePanel === "agri") {
+                // ── Agricultura animation ──
+                gsap.set(".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2", { autoAlpha: 0 });
 
                 const agriTl = gsap.timeline({
                     scrollTrigger: {
@@ -1021,73 +983,20 @@ const wfSteps = [
 
                 agriTl
                     .to(".agri-media-1", { xPercent: -100, duration: 1 })
-                    .fromTo(
-                        ".agri-text-1",
-                        { autoAlpha: 1, x: 0 },
-                        { autoAlpha: 0, x: -50, duration: 0.5 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".agri-text-2",
-                        { autoAlpha: 0, x: 50 },
-                        { autoAlpha: 1, x: 0, duration: 0.5 },
-                        "<0.5"
-                    )
+                    .fromTo(".agri-text-1", { autoAlpha: 1, x: 0 }, { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
+                    .fromTo(".agri-text-2", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
                     .to(".agri-media-1", { autoAlpha: 0, duration: 0.5 })
-                    .to(
-                        ".agri-text-2",
-                        { autoAlpha: 0, x: -50, duration: 0.5 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".agri-media-2",
-                        { autoAlpha: 0, xPercent: 0 },
-                        { autoAlpha: 1, duration: 0.5 },
-                        "<0.5"
-                    )
-                    .fromTo(
-                        ".agri-text-3",
-                        { autoAlpha: 0, x: 50 },
-                        { autoAlpha: 1, x: 0, duration: 0.5 },
-                        "<0.5"
-                    )
+                    .to(".agri-text-2", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
+                    .fromTo(".agri-media-2", { autoAlpha: 0, xPercent: 0 }, { autoAlpha: 1, duration: 0.5 }, "<0.5")
+                    .fromTo(".agri-text-3", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
                     .to(".agri-media-2", { xPercent: -100, duration: 1 })
-                    .to(
-                        ".agri-text-3",
-                        { autoAlpha: 0, x: -50, duration: 0.5 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".agri-text-4",
-                        { autoAlpha: 0, x: 50 },
-                        { autoAlpha: 1, x: 0, duration: 0.5 },
-                        "<0.5"
-                    )
+                    .to(".agri-text-3", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
+                    .fromTo(".agri-text-4", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
                     .to(".agri-text-4", { autoAlpha: 0, y: -30, duration: 0.5 })
-                    .to(
-                        ".agri-media-2",
-                        { xPercent: -50, left: "50%", scale: 1.1, duration: 1 },
-                        "<"
-                    )
-                    .fromTo(
-                        ".agri-text-5",
-                        { autoAlpha: 0, y: 100 },
-                        { autoAlpha: 1, y: 0, duration: 0.8 },
-                        "-=0.5"
-                    )
-                    .to(
-                        ".agri-media-2",
-                        { autoAlpha: 0, duration: 0.5 },
-                        "+=0.3"
-                    )
+                    .to(".agri-media-2", { xPercent: -50, left: "50%", scale: 1.1, duration: 1 }, "<")
+                    .fromTo(".agri-text-5", { autoAlpha: 0, y: 100 }, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.5")
+                    .to(".agri-media-2", { autoAlpha: 0, duration: 0.5 }, "+=0.3")
                     .to(".agri-text-5", { autoAlpha: 0, duration: 0.5 }, "<");
-
-                // Refresh depois que os três pins anteriores já estão registrados
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        ScrollTrigger.refresh();
-                    });
-                });
             }
         }
 

@@ -20,8 +20,8 @@ import ArrowRight from "phosphor-astro/ArrowRight.astro";
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     text-align: center;
-    font-size: clamp(13px, 0.8vw, 16px) !important;
-    padding: 14px 28px !important;
+    font-size: clamp(14px, 1.1vw, 20px) !important;
+    padding: clamp(10px, 1vw, 14px) clamp(16px, 1.5vw, 24px) !important;
     background-color: var(--neutral-white);
     color: var(--neutral-background);
     font-weight: 600;
@@ -36,13 +36,13 @@ import ArrowRight from "phosphor-astro/ArrowRight.astro";
   }
 
   .arrow {
-    width: 1.2vw !important;
+    width: clamp(14px, 1.1vw, 20px) !important;
   }
 
   @media only screen and (max-width: 800px) {
     a {
-      font-size: 4.5vw !important;
-      padding: 2.5vw 8vw !important;
+      font-size: 16px !important;
+      padding: 16px 24px !important;
     }
 
     .arrow {

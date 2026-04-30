@@ -27,5 +27,34 @@ const pageTitle = title ? `${title} - Transformatech` : "Transformatech";
     <Header />
     <slot />
     <Footer />
+    <script>
+      import gsap from "gsap";
+      import TextPlugin from "gsap/TextPlugin";
+      import ScrollTrigger from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(TextPlugin, ScrollTrigger);
+
+      const texts = document.querySelectorAll(".typewriter-text");
+
+      texts.forEach((text) => {
+        const originalText =
+          text.getAttribute("data-text") || text.textContent?.trim() || "";
+        if (!text.getAttribute("data-text")) {
+          text.setAttribute("data-text", originalText);
+        }
+        text.textContent = "";
+
+        gsap.to(text, {
+          text: originalText,
+          duration: originalText.length * 0.02,
+          ease: "none",
+          scrollTrigger: {
+            trigger: text,
+            start: "top 85%",
+            once: true,
+          },
+        });
+      });
+    </script>
   </body>
 </html>

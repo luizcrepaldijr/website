@@ -90,11 +90,23 @@ h4 {
 }
 
 .parceiros {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 53px 0;
     gap: 30px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
     div {
         display: flex;
@@ -148,7 +160,7 @@ h4 {
     position: relative;
     overflow: hidden;
 
-    min-height: 520px;
+    min-height: 640px;
     margin-right: 16px;
 
     display: flex;
@@ -260,7 +272,7 @@ h4 {
             }
 
             h4 {
-                font-size: clamp(22px, 3vw, 30px) !important;
+                font-size: clamp(18px, 1.70vw, 28px) !important;
             }
         }
     }
@@ -340,7 +352,8 @@ h4 {
         width: 100%;
         justify-self: center;
         margin: 0 auto;
-        display: flex;
+        display: grid;
+        grid-template-columns: 4fr 6fr;
         border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(6px);
@@ -350,15 +363,18 @@ h4 {
         gap: 48px;
 
         .unilever {
-            width: 50%;
-            height: 402px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
         }
 
         .cases-card-content {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 24px;
-            width: 50%;
+            width: 100%;
 
             .badges {
                 display: flex;
@@ -367,7 +383,7 @@ h4 {
             }
 
             h2 {
-                font-size: clamp(24px, 3vw, 30px);
+                font-size: clamp(32px, 4vw, 42px);
                 font-weight: 600;
             }
 
@@ -375,18 +391,18 @@ h4 {
                 border-left: 1px solid #FCFCFD;
                 padding-left: 16px;
                 letter-spacing: 1.4;
-                font-size: clamp(12px, 1.2vw, 16px);
-
+                font-size: clamp(16px, 1.5vw, 20px);
+                line-height: 1.6;
             }
 
             .tecnologias {
                 margin-top: 35px;
                 display: flex;
                 flex-direction: column;
-                gap: 16px;
+                gap: 24px;
 
                 h4 {
-                    font-size: clamp(12px, 1.2vw, 16px) !important;
+                    font-size: clamp(16px, 1.5vw, 20px) !important;
                     color: var(--neutral-light-gray, #B6BECD);
                     font-weight: 700;
                 }
@@ -397,7 +413,7 @@ h4 {
 
                     .tecnologia-img {
                         width: auto;
-                        height: 47px;
+                        height: 56px;
                     }
                 }
             }
@@ -584,6 +600,7 @@ h4 {
         text-align: center;
 
         .cases-card {
+            display: flex;
             flex-direction: column;
             padding: 40px 24px;
             gap: 24px;
@@ -666,7 +683,7 @@ h4 {
             gap: 40px;
 
             .img {
-                max-width: 180px;
+                max-width: 140px;
                 max-height: 110px;
             }
         }

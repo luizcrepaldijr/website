@@ -203,10 +203,16 @@ const localizePath = useTranslatedPath(lang);
   const overlay = document.querySelector(".overlay");
 
   function toggleMenu() {
-    menuContainer?.classList.toggle("active");
+    const isActive = menuContainer?.classList.toggle("active");
     overlay?.classList.toggle("active");
     menuToggle?.classList.toggle("hidden");
     menuClose?.classList.toggle("active");
+
+    if (isActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   }
 
   menuToggle?.addEventListener("click", toggleMenu);

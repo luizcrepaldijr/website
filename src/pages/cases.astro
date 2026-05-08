@@ -24,36 +24,38 @@ const ptCases = await getCollection("cases", ({ id }) => {
     <!-- HERO -->
     <div class="cases-hero container">
         <div class="container-boxed">
-            <div class="content">
-                <Badge text="Cases de sucesso" />
-                <h2>Resultados que <b>transformam negócios</b></h2>
-                <h3>
-                    Cases reais que demonstram como aplicamos tecnologia,
-                    inteligência e dados para estruturar eficiência, governança
-                    e vantagem competitiva.
-                </h3>
+            <div class="hero-top">
+                <div class="content">
+                    <Badge text="Cases de sucesso" />
+                    <h2>Resultados que <b>transformam negócios</b></h2>
+                    <h3>
+                        Cases reais que demonstram como aplicamos tecnologia,
+                        inteligência e dados para estruturar eficiência, governança
+                        e vantagem competitiva.
+                    </h3>
+                </div>
+
+                <div class="hero-img-wrapper">
+                    <video
+                        src="/videos/sobre-nos/parceiros-transformatech.webm"
+                        class="hero-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        poster={ParceirosImg.src}></video>
+                </div>
             </div>
 
-            <div class="hero-img-wrapper">
-                <video
-                    src="/videos/sobre-nos/parceiros-transformatech.webm"
-                    class="hero-img"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    poster={ParceirosImg.src}></video>
+            <!-- PARCEIROS GLOBAIS (primeira dobra) -->
+            <div class="parceiros">
+                <h4><b>Parceiros globais</b> que confiam na Transformatech</h4>
+                <div class="parceiros-logos">
+                    <Image src={Unilever} class="img" alt="Unilever" />
+                    <Image src={Evera} class="img" alt="Evera" />
+                    <Image src={LivingProof} class="img" alt="Living Proof" />
+                </div>
             </div>
-        </div>
-    </div>
-
-    <!-- PARCEIROS GLOBAIS -->
-    <div class="parceiros container-boxed">
-        <h4><b>Parceiros globais</b> que confiam na Transformatech</h4>
-        <div>
-            <Image src={Unilever} class="img" alt="Unilever" />
-            <Image src={Evera} class="img" alt="Evera" />
-            <Image src={LivingProof} class="img" alt="Living Proof" />
         </div>
     </div>
 
@@ -79,7 +81,7 @@ const ptCases = await getCollection("cases", ({ id }) => {
                                 <Badge2 text={badge} />
                             ))}
                         </div>
-                        <h3>{entry.data.title}</h3>
+                        <h3>{entry.data.title}{entry.data.subtitle ? ` ${entry.data.subtitle}` : ""}</h3>
                         <div class="case-card-detail">
                             <strong>Desafio</strong>
                             <p>{entry.data.challenge}</p>

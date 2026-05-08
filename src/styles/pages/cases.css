@@ -2,19 +2,22 @@
 
 /* HERO */
 .cases-hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background: var(--neutral-dark-gray, #101828);
-    padding: 96px 0 !important;
-    gap: 148px;
+    padding: 64px 0 0 !important;
 }
 
 .cases-hero .container-boxed {
     display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cases-hero .hero-top {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 148px;
+    gap: 80px;
+    padding-bottom: 48px;
 }
 
 .cases-hero .content {
@@ -59,27 +62,47 @@
     mask-composite: intersect;
 }
 
-.parceiros {
+/* Parceiros dentro do hero (primeira dobra) */
+.cases-hero .parceiros {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 53px 0;
+    padding: 28px 0 36px;
     gap: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
+.cases-hero .parceiros h4 {
+    font-size: clamp(13px, 1.1vw, 16px);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
 
-        .img {
-            flex: 1;
-            max-width: 120px;
-            height: auto;
-            max-height: 80px;
-            object-fit: contain;
-        }
-    }
+.cases-hero .parceiros h4 b {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cases-hero .parceiros-logos {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+    flex: 1;
+}
+
+.cases-hero .parceiros-logos .img {
+    max-width: 110px;
+    height: auto;
+    max-height: 56px;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.cases-hero .parceiros-logos .img:hover {
+    opacity: 1;
 }
 
 /* CASES LIST */
@@ -146,12 +169,16 @@
 }
 
 .case-card-content h3 {
-    font-size: clamp(26px, 1.4vw, 32px);
+    font-size: clamp(18px, 1.4vw, 24px);
     font-weight: 400;
     color: #FCFCFD;
-    line-height: 1.3;
+    line-height: 1.4;
     text-align: left;
     margin-bottom: 20px;
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
 }
 
 .case-card-detail {
@@ -233,12 +260,13 @@
 /* ── MOBILE ── */
 @media only screen and (max-width: 800px) {
     .cases-hero {
-        padding: 48px 0 !important;
+        padding: 48px 0 0 !important;
     }
 
-    .cases-hero .container-boxed {
+    .cases-hero .hero-top {
         flex-direction: column-reverse;
-        gap: 32px;
+        gap: 24px;
+        padding-bottom: 32px;
     }
 
     .cases-hero .content {
@@ -253,17 +281,20 @@
         width: 80%;
     }
 
-    .parceiros {
+    .cases-hero .parceiros {
         flex-direction: column;
         text-align: center;
-        padding: 40px 20px;
+        padding: 24px 20px 32px;
+        gap: 20px;
+    }
 
-        div {
-            .img {
-                max-width: 30%;
-                max-height: auto;
-            }
-        }
+    .cases-hero .parceiros-logos {
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .cases-hero .parceiros-logos .img {
+        max-width: 28%;
     }
 
     /* CASES LIST */

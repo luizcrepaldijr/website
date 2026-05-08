@@ -35,7 +35,6 @@ body {
     font-weight: 400;
     font-size: clamp(16px, 1.5vw + 10px, 22px);
     line-height: 1.4;
-    max-width: 800px;
 }
 
 .hero .robotica-img-wrapper {

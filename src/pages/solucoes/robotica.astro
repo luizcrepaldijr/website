@@ -102,29 +102,29 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
                     </p>
                     <div class="card-checklist">
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Interação segura com pessoas e sistemas</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Execução de tarefas multiuso e reconfiguráveis</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Apoio a atividades logísticas e de manutenção</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Mobilidade avançada em diferentes terrenos</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Preparação da planta para automação de próxima
                                 geração</span
@@ -153,32 +153,32 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
                     </p>
                     <div class="card-checklist">
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Inspeção autônoma de máquinas e áreas de risco</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Detecção de vazamentos de ar e gases</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Monitoramento de uso de EPIs por colaboradores</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Medição de temperatura, ruído e vibração</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Rondas autônomas de segurança</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Coleta contínua de dados em campo</span>
                         </div>
                     </div>
@@ -204,29 +204,29 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
                     </p>
                     <div class="card-checklist">
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Paletização e despaletização automatizada</span
                             >
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Montagem e submontagem de componentes</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Manuseio e transferência de peças</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Embalagem e final de linha</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span>Apoio direto a operadores humanos</span>
                         </div>
                         <div>
-                            <Icon name="check" size={16} />
+                            <Icon name="check" size={18} />
                             <span
                                 >Padronização do processo e ganho de velocidade</span
                             >
@@ -428,27 +428,8 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
         document.addEventListener("DOMContentLoaded", () => {
             let mm = gsap.matchMedia();
 
-            mm.add("(min-width: 801px)", () => {
-                const cards = gsap.utils.toArray(
-                    ".robotica-card"
-                ) as HTMLElement[];
 
-                cards.forEach((card, index) => {
-                    if (index < cards.length - 1) {
-                        gsap.to(card, {
-                            scale: 1 - 0.05 * (cards.length - 1 - index),
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: cards[index + 1],
-                                start: `top bottom-=200`,
-                                end: `top top+=${100 + (index + 1) * 30}`,
-                                scrub: true,
-                                invalidateOnRefresh: true,
-                            },
-                        });
-                    }
-                });
-            });
+
 
             mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
                 const tl = gsap.timeline({
@@ -466,13 +447,13 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
                     .to(
                         ".hero .robotica-img-wrapper",
                         { y: "5vh", x: "22vw", scale: 0.75, duration: 1 },
-                        "<"
+                        "<",
                     )
                     .fromTo(
                         ".robotica-section-2",
                         { opacity: 0, marginTop: "5vh" },
                         { opacity: 1, marginTop: "-50vh", duration: 0.8 },
-                        "-=0.8"
+                        "-=0.8",
                     );
             });
 
@@ -492,13 +473,13 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
                     .to(
                         ".hero .robotica-img-wrapper",
                         { y: "0vh", x: "12vw", scale: 0.85, duration: 1 },
-                        "<"
+                        "<",
                     )
                     .fromTo(
                         ".robotica-section-2",
                         { opacity: 0, marginTop: "5vh" },
                         { opacity: 1, marginTop: "-40vh", duration: 0.8 },
-                        "-=0.8"
+                        "-=0.8",
                     );
             });
 
@@ -519,13 +500,13 @@ import ManutencaoPreditivaImg from "../../images/robotica/manutencao-preditiva.w
                     .to(
                         ".hero .robotica-img-wrapper",
                         { y: "-10vh", duration: 1 },
-                        "<"
+                        "<",
                     )
                     .fromTo(
                         ".robotica-section-2",
                         { opacity: 0, marginTop: "5vh" },
                         { opacity: 1, marginTop: "-5vh", duration: 0.8 },
-                        "-=0.8"
+                        "-=0.8",
                     );
             });
         });

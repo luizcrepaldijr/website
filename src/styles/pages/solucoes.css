@@ -15,7 +15,7 @@
         h1 {
             font-weight: 400;
             font-size: clamp(28px, 4vw, 80px);
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         h3 {
@@ -152,11 +152,11 @@
     }
 
     .comofazemos-img-wrapper {
-        width: 80%;
+        width: 95%;
         height: auto;
         max-width: 1000px;
         position: absolute;
-        right: -200px;
+        right: -100px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -169,6 +169,49 @@
         -webkit-mask-image: radial-gradient(circle, black 20%, transparent 50%);
         mask-image: radial-gradient(circle, black 20%, transparent 50%);
     }
+
+    .workflow-link {
+        position: absolute;
+        bottom: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: clamp(13px, 1vw, 16px);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+        z-index: 2;
+
+        .workflow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            transition: border-color 0.2s ease, background 0.2s ease;
+
+            svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        &:hover {
+            color: #ffffff;
+
+            .workflow-arrow {
+                border-color: rgba(255, 255, 255, 0.8);
+                background: rgba(255, 255, 255, 0.08);
+            }
+        }
+    }
+
 }
 
 .tecnologias {
@@ -180,7 +223,7 @@
 
     .content-desktop {
         display: flex;
-        gap: 5px;
+        gap: 0px;
         flex-direction: column;
         justify-content: start;
         align-items: start;
@@ -189,7 +232,7 @@
         h2 {
             font-weight: 400;
             font-size: clamp(40px, 10vw, 108px);
-            line-height: 1.2;
+            line-height: 1;
             max-width: 600px;
         }
 

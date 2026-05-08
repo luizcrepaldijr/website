@@ -111,7 +111,7 @@ const wfSteps = [
             </h2>
             <h3>
                 Nossa metodologia combina estratégia, tecnologia e execução ágil
-                para garantir projetos tecnicamente sólidos, alinhados ao
+                para garantir<br />projetos tecnicamente sólidos, alinhados ao
                 negócio e focados em resultados reais.
             </h3>
         </div>
@@ -125,11 +125,15 @@ const wfSteps = [
                 muted
                 playsinline
                 poster={EsferaImg.src}></video>
+            <a href="#workflow" class="workflow-link">
+                Conheça nosso workflow
+                <Icon name="arrow-down" class="workflow-arrow" />
+            </a>
         </div>
     </div>
 
     <!-- ── WORKFLOW ── -->
-    <div class="iot-workflow-scrollarea sol-workflow">
+    <div id="workflow" class="iot-workflow-scrollarea sol-workflow">
         <div class="iot-workflow-pinned">
             <div class="wf-ring wf-ring-1"></div>
             <div class="wf-ring wf-ring-2"></div>
@@ -181,7 +185,7 @@ const wfSteps = [
         function initWorkflow() {
             ScrollTrigger.getAll()
                 .filter((st) =>
-                    st.vars?.trigger?.toString?.().includes?.("sol-workflow")
+                    st.vars?.trigger?.toString?.().includes?.("sol-workflow"),
                 )
                 .forEach((st) => st.kill());
 
@@ -241,59 +245,59 @@ const wfSteps = [
                             ease: "none",
                             duration: WF_DUR,
                         },
-                        t
+                        t,
                     );
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i} .wf-desc`,
                         { autoAlpha: 0, duration: 0.2 },
-                        t
+                        t,
                     )
                         .to(
                             `.sol-workflow .wf-step-${i} .wf-line`,
                             { autoAlpha: 0, duration: 0.2 },
-                            t
+                            t,
                         )
                         .to(
                             `.sol-workflow .wf-step-${i} .wf-dot`,
                             { opacity: 0, duration: 0.2 },
-                            t
+                            t,
                         )
                         .to(
                             `.sol-workflow .wf-step-${i} h3`,
                             { opacity: 0, duration: 0.2 },
-                            t
+                            t,
                         )
                         .to(
                             `.sol-workflow .wf-step-${i}`,
                             { autoAlpha: 0, y: -55, duration: 0.35 },
-                            t + 0.15
+                            t + 0.15,
                         );
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i + 1}`,
                         { autoAlpha: 1, y: 0, duration: 0.4 },
-                        t + 0.45
+                        t + 0.45,
                     )
                         .to(
                             `.sol-workflow .wf-step-${i + 1} .wf-line`,
                             { autoAlpha: 1, duration: 0.3 },
-                            t + 0.6
+                            t + 0.6,
                         )
                         .to(
                             `.sol-workflow .wf-step-${i + 1} .wf-dot`,
                             { opacity: 1, duration: 0.3 },
-                            t + 0.6
+                            t + 0.6,
                         )
                         .to(
                             `.sol-workflow .wf-step-${i + 1} h3`,
                             { opacity: 1, duration: 0.3 },
-                            t + 0.6
+                            t + 0.6,
                         )
                         .to(
                             `.sol-workflow .wf-step-${i + 1} .wf-desc`,
                             { autoAlpha: 1, duration: 0.3 },
-                            t + 0.7
+                            t + 0.7,
                         );
 
                     for (let j = i + 2; j < WF_STEPS; j++) {
@@ -304,17 +308,17 @@ const wfSteps = [
                         wfTl.to(
                             `.sol-workflow .wf-step-${j}`,
                             { autoAlpha: vis ? 1 : 0, y: qY, duration: 0.4 },
-                            t + 0.45
+                            t + 0.45,
                         )
                             .to(
                                 `.sol-workflow .wf-step-${j} .wf-dot`,
                                 { opacity: vis ? 0.35 : 0, duration: 0.3 },
-                                t + 0.45
+                                t + 0.45,
                             )
                             .to(
                                 `.sol-workflow .wf-step-${j} h3`,
                                 { opacity: vis ? hOp : 0, duration: 0.3 },
-                                t + 0.45
+                                t + 0.45,
                             );
                     }
                 }

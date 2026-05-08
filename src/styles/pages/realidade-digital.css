@@ -66,7 +66,7 @@ body {
     padding: 96px 0;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 200px;
     position: relative;
     z-index: 10;
 
@@ -76,7 +76,7 @@ body {
         align-items: start;
         text-align: left;
         gap: 32px;
-        max-width: 810px;
+        max-width: 860px;
 
         h2 {
             font-size: 48px;
@@ -421,7 +421,6 @@ body {
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: 1200px;
         position: relative;
     }
 
@@ -435,7 +434,7 @@ body {
         box-shadow: 0 3.417px 0 0 rgba(255, 255, 255, 0.10) inset, 0 0 68.333px 10.25px rgba(7, 13, 79, 0.05), 0 0 136.667px 68.333px rgba(7, 13, 79, 0.05), 0 0 0 3.417px rgba(255, 255, 255, 0.06) inset;
         border: 1px solid #2b4a71;
         overflow: hidden;
-        height: 380px;
+        height: 400px;
         margin-bottom: 24px;
         position: sticky;
 
@@ -466,18 +465,19 @@ body {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 16px;
+            gap: 24px;
 
             h3 {
-                font-size: 28px;
+                font-size: 42px;
                 font-weight: 400;
                 color: #ffffff;
                 margin: 0;
             }
 
             p {
-                font-size: 16px;
+                font-size: 18px;
                 font-weight: 300;
+                max-width: 503px;
                 line-height: 1.5;
                 color: #b6becd;
                 margin: 0;
@@ -533,30 +533,10 @@ body {
     }
 
     .cubo-img-wrapper {
-        width: 42%;
+        width: 36%;
         max-width: 1000px;
         position: relative;
         display: inline-block;
-    }
-
-    .cubo-img-wrapper::after {
-        content: "";
-        position: absolute;
-        display: block;
-        z-index: 1;
-
-        /* Estilos Desktop */
-        width: 2095.767px;
-        height: 116.358px;
-        border-radius: 1095.767px;
-        background: radial-gradient(34.92% 51.47% at 67.73% 50%,
-                #0359bf 0%,
-                #0c2152 50%,
-                #0c111d 100%);
-
-        /* Posicionamento Desktop */
-        bottom: -150px;
-        right: -400px;
     }
 
     .cuboImg {
@@ -776,19 +756,6 @@ body {
             bottom: 0;
             left: auto;
             transform: none;
-        }
-
-        .cubo-img-wrapper::after {
-            width: 300px;
-            height: 31.856px;
-            border-radius: 300px;
-            right: 70%;
-            transform: translateX(50%);
-            bottom: -40px;
-            background: radial-gradient(34.92% 51.47% at 67.73% 50%,
-                    #0359bf 0%,
-                    #0c2152 50%,
-                    #0c111d 100%);
         }
     }
 }

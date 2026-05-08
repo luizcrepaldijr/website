@@ -28,7 +28,7 @@ body {
 }
 
 .iot-hero .content h1 b {
-    display: inline;
+    display: block;
     font-size: inherit;
     font-weight: 700;
 }
@@ -37,7 +37,6 @@ body {
     font-weight: 400;
     font-size: clamp(16px, 1.5vw + 10px, 20px);
     line-height: 1.5;
-    max-width: 640px;
     color: rgba(255, 255, 255, 0.75);
 }
 
@@ -72,7 +71,7 @@ body {
     padding: 96px 0;
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 24px;
     position: relative;
     z-index: 10;
     margin-top: -50vh;
@@ -97,7 +96,7 @@ body {
 .iot-section-2 .content h3 {
     font-weight: 400;
     font-size: clamp(16px, 1.2vw, 18px);
-    line-height: 1.6;
+    line-height: 1.2;
     color: #b6becd;
     max-width: 720px;
 }
@@ -308,7 +307,7 @@ body {
 
 .lorawan-label-1 {
     top: 70px;
-    left: -10vw;
+    left: -12vw;
 }
 
 .lorawan-label-2 {
@@ -323,7 +322,7 @@ body {
 
 .lorawan-label-4 {
     top: 70px;
-    right: -10vw;
+    right: -12vw;
 }
 
 .lorawan-label.visible {
@@ -332,7 +331,7 @@ body {
 }
 
 .lbl-text {
-    font-size: clamp(14px, 1vw, 15px);
+    font-size: clamp(16px, 1.1vw, 18px);
     font-weight: 400;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.8);
@@ -347,7 +346,7 @@ body {
 .line-1 {
     width: 140px;
     height: 160px;
-    margin-right: -100px;
+    transform: translateX(70px);
 }
 
 .line-2 {
@@ -363,7 +362,7 @@ body {
 .line-4 {
     width: 140px;
     height: 160px;
-    margin-left: -100px;
+    transform: translateX(-70px);
 }
 
 
@@ -385,12 +384,12 @@ body {
 }
 
 .lorawan-footer {
-    font-size: clamp(22px, 1.2vw, 36px);
+    font-size: 36px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.2;
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
-    max-width: 840px;
+    max-width: 1000px;
 }
 
 /* ── GLOBAL TABS (sticky) ── */
@@ -409,18 +408,31 @@ body {
     padding: 24px;
     background: #0f1520;
     color: rgba(255, 255, 255, 0.5);
-    border: none;
+    border: 1px solid #494c55;
     cursor: pointer;
     font-size: inherit;
     font-weight: 500;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .iot-global-tabs button.active {
     background: #007bff;
     color: #ffffff;
-    border-bottom-color: #007bff;
+    border: 1px solid #4399ff;
+}
+
+.iot-global-tabs button:hover {
+    background: #007bff;
+    color: #ffffff;
+    border-color: #4399ff;
+}
+
+.iot-global-tabs button:first-child {
+    border-left: none;
+}
+
+.iot-global-tabs button:last-child {
+    border-right: none;
 }
 
 /* ── PANELS ── */
@@ -447,18 +459,31 @@ body {
     padding: 24px;
     background: #0f1520;
     color: rgba(255, 255, 255, 0.5);
-    border: none;
+    border: 1px solid #494c55;
     cursor: pointer;
     font-size: inherit;
     font-weight: 500;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .iot-industrias-tabs button.active {
     background: #007bff;
     color: #ffffff;
-    border-bottom-color: #007bff;
+    border: 1px solid #4399ff;
+}
+
+.iot-industrias-tabs button:hover {
+    background: #007bff;
+    color: #ffffff;
+    border-color: #4399ff;
+}
+
+.iot-industrias-tabs button:first-child {
+    border-left: none;
+}
+
+.iot-industrias-tabs button:last-child {
+    border-right: none;
 }
 
 /* GSAP Pin Container */
@@ -508,8 +533,14 @@ body {
     max-width: 800px;
     height: auto;
     object-fit: contain;
-    -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 80%);
-    mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 80%);
+    -webkit-mask-image:
+        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-composite: destination-in;
+    mask-image:
+        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    mask-composite: intersect;
 }
 
 .iot-ind-media.media-1 {
@@ -526,7 +557,6 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    max-width: 1400px;
     left: 50%;
     transform: translateX(-50%);
     pointer-events: none;
@@ -544,7 +574,7 @@ body {
 }
 
 .iot-ind-text h2 {
-    font-size: clamp(32px, 3vw, 48px);
+    font-size: clamp(28px, 2.2vw, 48px);
     font-weight: 400;
     line-height: 1.2;
     color: #ffffff;
@@ -592,7 +622,7 @@ body {
     align-items: center;
     gap: 16px;
     padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #494c55;
 }
 
 .iot-ind-text .card-checklist div span {
@@ -655,8 +685,22 @@ body {
     max-width: 800px;
     height: auto;
     object-fit: contain;
-    -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 80%);
-    mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 80%);
+}
+
+.iot-agri-media.agri-media-2 video,
+.iot-agri-media.agri-media-1 video {
+    max-width: 1100px;
+}
+
+.iot-agri-media video {
+    -webkit-mask-image:
+        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-composite: destination-in;
+    mask-image:
+        linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    mask-composite: intersect;
 }
 
 .iot-agri-media.agri-media-1 {
@@ -673,7 +717,6 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    max-width: 1400px;
     left: 50%;
     transform: translateX(-50%);
     pointer-events: none;
@@ -747,7 +790,7 @@ body {
     align-items: center;
     gap: 16px;
     padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #494c55;
 }
 
 .iot-agri-text .card-checklist div span {
@@ -785,8 +828,7 @@ body {
 }
 
 .iot-agri-text.agri-text-5 h2 {
-    font-size: 42px;
-    /* Tamanho da fonte solicitado */
+    font-size: clamp(36px, 4.5vw, 58px);
     line-height: 1.2;
     font-weight: 500;
 }
@@ -1424,7 +1466,58 @@ body {
     display: none;
 }
 
+.rd-pronto-transformar {
+    background-color: #101828;
+    overflow: hidden;
+
+    .container-boxed {
+        padding: 96px 0 196px !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        min-height: 72vh;
+
+        .content {
+            display: flex;
+            gap: 36px;
+            flex-direction: column;
+            width: 42.5%;
+            flex-shrink: 0;
+
+            h2 {
+                font-weight: 400;
+                font-size: clamp(28px, 2.23vw, 42px);
+                line-height: 1.2;
+            }
+
+            .button {
+                width: fit-content;
+            }
+        }
+    }
+
+    .cubo-img-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .cuboImg {
+        width: 110%;
+        max-width: 680px;
+        height: auto;
+        display: block;
+        -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 72%);
+        mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 72%);
+        transform: translateX(5%);
+    }
+}
+
 @media only screen and (max-width: 800px) {
+
     /* Hide the GSAP pinned section entirely */
     .iot-workflow-scrollarea {
         background: #090c15;
@@ -1465,13 +1558,66 @@ body {
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.45);
     }
+
+    .rd-pronto-transformar {
+        .container-boxed {
+            padding: 40px 20px !important;
+            flex-direction: column-reverse;
+            gap: 64px;
+
+            .content {
+                width: 100%;
+
+                h2 {
+                    font-size: 24px;
+                }
+
+                h3 {
+                    font-size: 16px !important;
+                }
+            }
+
+            .cubo-img-wrapper {
+                width: 100%;
+                padding: 0 24px;
+                box-sizing: border-box;
+                position: relative;
+                bottom: 0;
+                left: auto;
+                transform: none;
+            }
+
+            .button a {
+                white-space: nowrap;
+                font-size: 14px !important;
+                padding: 12px 20px !important;
+            }
+        }
+    }
 }
 
 /* ── IOT IND + AGRI MOBILE: hidden on desktop ── */
 @media only screen and (min-width: 801px) {
+
     .iot-ind-mobile,
     .iot-agri-mobile {
         display: none;
+    }
+
+    /* Hero: video maior e mais para baixo */
+    .iot-img-wrapper {
+        max-width: 1300px;
+        top: 340px;
+    }
+
+    /* Hero: botão menor (menos altura) */
+    .iot-hero a {
+        font-size: clamp(13px, 0.9vw, 16px) !important;
+        padding: 7px clamp(16px, 1.4vw, 24px) !important;
+    }
+
+    .iot-hero a .arrow {
+        width: clamp(13px, 0.9vw, 16px) !important;
     }
 }
 
@@ -1523,7 +1669,7 @@ body {
         align-items: center;
         gap: 14px;
         padding: 14px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid #494c55;
     }
 
     .iot-ind-mobile-text .card-checklist div:last-child {

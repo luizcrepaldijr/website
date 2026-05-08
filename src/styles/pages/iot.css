@@ -1466,6 +1466,56 @@ body {
     display: none;
 }
 
+.rd-pronto-transformar {
+    background-color: #101828;
+    overflow: hidden;
+
+    .container-boxed {
+        padding: 96px 0 196px !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        min-height: 72vh;
+
+        .content {
+            display: flex;
+            gap: 36px;
+            flex-direction: column;
+            width: 42.5%;
+            flex-shrink: 0;
+
+            h2 {
+                font-weight: 400;
+                font-size: clamp(28px, 2.23vw, 42px);
+                line-height: 1.2;
+            }
+
+            .button {
+                width: fit-content;
+            }
+        }
+    }
+
+    .cubo-img-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .cuboImg {
+        width: 110%;
+        max-width: 680px;
+        height: auto;
+        display: block;
+        -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 72%);
+        mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 72%);
+        transform: translateX(5%);
+    }
+}
+
 @media only screen and (max-width: 800px) {
 
     /* Hide the GSAP pinned section entirely */
@@ -1508,6 +1558,42 @@ body {
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.45);
     }
+
+    .rd-pronto-transformar {
+        .container-boxed {
+            padding: 40px 20px !important;
+            flex-direction: column-reverse;
+            gap: 64px;
+
+            .content {
+                width: 100%;
+
+                h2 {
+                    font-size: 24px;
+                }
+
+                h3 {
+                    font-size: 16px !important;
+                }
+            }
+
+            .cubo-img-wrapper {
+                width: 100%;
+                padding: 0 24px;
+                box-sizing: border-box;
+                position: relative;
+                bottom: 0;
+                left: auto;
+                transform: none;
+            }
+
+            .button a {
+                white-space: nowrap;
+                font-size: 14px !important;
+                padding: 12px 20px !important;
+            }
+        }
+    }
 }
 
 /* ── IOT IND + AGRI MOBILE: hidden on desktop ── */
@@ -1516,6 +1602,22 @@ body {
     .iot-ind-mobile,
     .iot-agri-mobile {
         display: none;
+    }
+
+    /* Hero: video maior e mais para baixo */
+    .iot-img-wrapper {
+        max-width: 1300px;
+        top: 340px;
+    }
+
+    /* Hero: botão menor (menos altura) */
+    .iot-hero a {
+        font-size: clamp(13px, 0.9vw, 16px) !important;
+        padding: 7px clamp(16px, 1.4vw, 24px) !important;
+    }
+
+    .iot-hero a .arrow {
+        width: clamp(13px, 0.9vw, 16px) !important;
     }
 }
 

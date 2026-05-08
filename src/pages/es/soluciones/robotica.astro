@@ -437,27 +437,8 @@ import ManutencaoPreditivaImg from "../../../images/robotica/manutencao-preditiv
         document.addEventListener("DOMContentLoaded", () => {
             let mm = gsap.matchMedia();
 
-            mm.add("(min-width: 801px)", () => {
-                const cards = gsap.utils.toArray(
-                    ".robotica-card"
-                ) as HTMLElement[];
 
-                cards.forEach((card, index) => {
-                    if (index < cards.length - 1) {
-                        gsap.to(card, {
-                            scale: 1 - 0.05 * (cards.length - 1 - index),
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: cards[index + 1],
-                                start: `top bottom-=200`,
-                                end: `top top+=${100 + (index + 1) * 30}`,
-                                scrub: true,
-                                invalidateOnRefresh: true,
-                            },
-                        });
-                    }
-                });
-            });
+
 
             mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
                 const tl = gsap.timeline({

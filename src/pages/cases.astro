@@ -70,18 +70,20 @@ const ptCases = await getCollection("cases", ({ id }) => {
         {
             ptCases.map((entry) => (
                 <div class="case-card">
-                    <Image
-                        src={entry.data.image}
-                        alt={entry.data.title}
-                        class="case-card-img"
-                    />
+                    <div class="case-card-img-wrapper">
+                        <Image
+                            src={entry.data.image}
+                            alt={entry.data.title}
+                            class="case-card-img"
+                        />
+                    </div>
                     <div class="case-card-content">
                         <div class="case-card-badges">
                             {entry.data.badges.map((badge: any) => (
                                 <Badge2 text={badge} />
                             ))}
                         </div>
-                        <h3>{entry.data.title}{entry.data.subtitle ? ` ${entry.data.subtitle}` : ""}</h3>
+                        <h3><b>{entry.data.title}</b>{entry.data.subtitle ? ` ${entry.data.subtitle}` : ""}</h3>
                         <div class="case-card-detail">
                             <strong>Desafio</strong>
                             <p>{entry.data.challenge}</p>

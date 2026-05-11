@@ -27,12 +27,12 @@
     }
 
     .solucoes-img-wrapper {
-        width: 55%;
-        max-width: 1000px;
+        width: 44%;
+        max-width: 800px;
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     .solucoesImg {

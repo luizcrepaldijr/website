@@ -13,8 +13,8 @@ const { title, description } = Astro.props;
 <accordion-item class="accordion">
     <button class="accordion-header">
         <span class="accordion-title">{title}</span>
-        <span class="icon-open"><Plus color="#fff" /></span>
-        <span class="icon-close"><Minus color="#0577ff" /></span>
+        <span class="icon-open"><Plus color="currentColor" /></span>
+        <span class="icon-close"><Minus color="currentColor" /></span>
     </button>
     <div class="accordion-content">
         <div class="accordion-inner">
@@ -37,11 +37,11 @@ const { title, description } = Astro.props;
         background: transparent;
         border: none;
         color: white;
-        padding: 0 0 24px;
+        padding: 24px 0;
         cursor: pointer;
         font-size: clamp(16px, 1.5vw + 4px, 20px);
         font-weight: 400;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     .accordion-title {
@@ -58,8 +58,8 @@ const { title, description } = Astro.props;
 
     .icon-open :global(svg),
     .icon-close :global(svg) {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 
     .icon-close {

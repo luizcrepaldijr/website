@@ -1348,6 +1348,7 @@ body {
 }
 
 .wf-ring-1 {
+    display: none;
     width: clamp(480px, 44vw, 640px);
     height: clamp(480px, 44vw, 640px);
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1398,7 +1399,7 @@ body {
 }
 
 .wf-header h2 {
-    font-size: clamp(22px, 2.2vw, 34px);
+    font-size: clamp(32px, 4vw, 56px);
     font-weight: 400;
     line-height: 1.25;
     color: #ffffff;
@@ -1428,7 +1429,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 14px;
+    gap: 0;
 }
 
 .wf-line {
@@ -1445,20 +1446,22 @@ body {
 }
 
 .wf-step h3 {
-    font-size: clamp(17px, 1.6vw, 22px);
+    font-size: clamp(20px, 1.8vw, 26px);
     font-weight: 500;
     color: #ffffff;
     line-height: 1.3;
     flex-shrink: 0;
+    margin-left: 18px;
 }
 
 .wf-desc {
-    font-size: clamp(13px, 1vw, 15px);
+    font-size: clamp(15px, 1.1vw, 18px);
     font-weight: 400;
     line-height: 1.65;
     color: rgba(255, 255, 255, 0.65);
-    max-width: 320px;
+    max-width: 400px;
     padding-left: 0;
+    margin-left: 24px;
 }
 
 /* ── WORKFLOW MOBILE CAROUSEL ── */

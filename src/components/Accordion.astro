@@ -39,9 +39,15 @@ const { title, description } = Astro.props;
         color: white;
         padding: 24px 0;
         cursor: pointer;
-        font-size: clamp(16px, 1.5vw + 4px, 20px);
-        font-weight: 400;
+        font-size: clamp(16px, 1.2vw + 4px, 20px);
+        font-weight: 300;
         transition: all 0.3s ease;
+    }
+
+    @media (max-width: 1440px) {
+        .accordion-header {
+            font-size: 17px;
+        }
     }
 
     .accordion-title {
@@ -68,6 +74,7 @@ const { title, description } = Astro.props;
 
     .accordion.active .accordion-header {
         color: #0577ff;
+        font-weight: 600;
     }
 
     .accordion.active .icon-open {
@@ -90,14 +97,21 @@ const { title, description } = Astro.props;
 
     .accordion-inner {
         overflow: hidden;
+        padding-left: 18px;
     }
 
     .accordion-inner p {
         color: rgba(255, 255, 255, 0.7);
-        font-size: clamp(14px, 1.2vw + 2px, 16px);
+        font-size: clamp(14px, 1vw + 2px, 16px);
         line-height: 1.5;
         padding-bottom: 24px;
         margin: 0;
+    }
+
+    @media (max-width: 1440px) {
+        .accordion-inner p {
+            font-size: 14px;
+        }
     }
 </style>
 

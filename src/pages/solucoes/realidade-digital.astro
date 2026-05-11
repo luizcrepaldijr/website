@@ -130,7 +130,10 @@ import { Icon } from "astro-icon/components";
             </div>
             <div class="rd-checklist-item">
                 <Icon name="check" size={24} />
-                <span>Execução correta e padronizada</span>
+                <span
+                    >Execução correta e <span class="br"
+                    ></span>padronizada</span
+                >
             </div>
             <div class="rd-checklist-item">
                 <Icon name="check" size={24} />
@@ -325,9 +328,6 @@ import { Icon } from "astro-icon/components";
 
     document.addEventListener("DOMContentLoaded", () => {
         let mm = gsap.matchMedia();
-
-
-
 
         mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
             const tl = gsap.timeline({

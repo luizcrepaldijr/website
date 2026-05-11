@@ -195,8 +195,13 @@ const wfSteps = [
                 const WF_STEPS = 6;
                 const WF_DUR = 1;
                 const WF_DEG = 360 / WF_STEPS; // 60° per step
+                const WF_RADIUS = 380;
 
-                gsap.set(".sol-workflow .wf-step-0", { y: 0 });
+                function getX(y: number) {
+                    return Math.sqrt(WF_RADIUS ** 2 - y ** 2) - WF_RADIUS;
+                }
+
+                gsap.set(".sol-workflow .wf-step-0", { y: 0, x: 0 });
                 gsap.set(".sol-workflow .wf-step-0 .wf-line", { autoAlpha: 1 });
                 gsap.set(".sol-workflow .wf-step-0 .wf-dot", { opacity: 1 });
                 gsap.set(".sol-workflow .wf-step-0 h3", { opacity: 1 });
@@ -204,10 +209,12 @@ const wfSteps = [
 
                 for (let i = 1; i < WF_STEPS; i++) {
                     const qY = i * 78;
+                    const qX = getX(qY);
                     const vis = i <= 2;
                     const hOp = i === 1 ? 0.28 : 0.16;
                     gsap.set(`.sol-workflow .wf-step-${i}`, {
                         y: qY,
+                        x: qX,
                         autoAlpha: vis ? 1 : 0,
                     });
                     gsap.set(`.sol-workflow .wf-step-${i} .wf-line`, {
@@ -270,13 +277,18 @@ const wfSteps = [
                         )
                         .to(
                             `.sol-workflow .wf-step-${i}`,
-                            { autoAlpha: 0, y: -55, duration: 0.35 },
+                            {
+                                autoAlpha: 0,
+                                y: -55,
+                                x: getX(-55),
+                                duration: 0.35,
+                            },
                             t + 0.15,
                         );
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i + 1}`,
-                        { autoAlpha: 1, y: 0, duration: 0.4 },
+                        { autoAlpha: 1, y: 0, x: 0, duration: 0.4 },
                         t + 0.45,
                     )
                         .to(
@@ -305,9 +317,15 @@ const wfSteps = [
                         const vis = offset <= 2;
                         const hOp = offset === 1 ? 0.28 : 0.16;
                         const qY = offset * 78;
+                        const qX = getX(qY);
                         wfTl.to(
                             `.sol-workflow .wf-step-${j}`,
-                            { autoAlpha: vis ? 1 : 0, y: qY, duration: 0.4 },
+                            {
+                                autoAlpha: vis ? 1 : 0,
+                                y: qY,
+                                x: qX,
+                                duration: 0.4,
+                            },
                             t + 0.45,
                         )
                             .to(

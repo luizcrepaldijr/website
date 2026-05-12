@@ -1160,6 +1160,18 @@ const wfSteps = [
                     );
             });
 
+            // Handle panel parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const panelParam = urlParams.get("panel");
+            if (panelParam === "agri" || panelParam === "ind") {
+                if (panelParam !== activePanel) {
+                    const btn = document.querySelector(
+                        `.iot-global-tabs button[data-panel="${panelParam}"]`,
+                    ) as HTMLButtonElement;
+                    if (btn) btn.click();
+                }
+            }
+
             reinitScrollers();
         }
 

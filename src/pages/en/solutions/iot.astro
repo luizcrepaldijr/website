@@ -801,8 +801,9 @@ const wfSteps = [
     <script>
         import { gsap } from "gsap";
         import { ScrollTrigger } from "gsap/ScrollTrigger";
+        import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         let heroMm: gsap.MatchMedia | null = null;
         let scrollerMm: gsap.MatchMedia | null = null;
@@ -813,6 +814,27 @@ const wfSteps = [
         function cancelPendingReinit() {
             if (pendingRaf1 !== null) { cancelAnimationFrame(pendingRaf1); pendingRaf1 = null; }
             if (pendingRaf2 !== null) { cancelAnimationFrame(pendingRaf2); pendingRaf2 = null; }
+        }
+
+        // Initial lock
+        document.body.style.overflow = "hidden";
+
+        // Button listener
+        const heroBtn = document.querySelector(".iot-hero .content a");
+        if (heroBtn) {
+            heroBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                document.body.style.overflow = "auto";
+                
+                gsap.to(window, {
+                    scrollTo: {
+                        y: 1.5 * window.innerHeight,
+                        autoKill: false
+                    },
+                    duration: 2,
+                    ease: "power2.inOut"
+                });
+            });
         }
 
         // ── Tab switching — only reinit panel scrollers, never touch hero ──
@@ -884,7 +906,7 @@ const wfSteps = [
                 });
                 tl.to(".iot-hero .content", { opacity: 0, y: -100, duration: 1 })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(".iot-hero .iot-img-wrapper", { y: "20vh", x: "22vw", scale: 0.75, duration: 1 }, "<")
+                    .to(".iot-hero .iot-img-wrapper", { y: "-450px", x: "45vw", scale: 2.2, duration: 1 }, "<")
                     .fromTo(".iot-section-2", { opacity: 0, y: "55vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
             });
 
@@ -1061,6 +1083,18 @@ const wfSteps = [
                     .fromTo(".agri-text-5", { autoAlpha: 0, y: 100 }, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.5")
                     .to(".agri-media-2", { autoAlpha: 0, duration: 0.5 }, "+=0.3")
                     .to(".agri-text-5", { autoAlpha: 0, duration: 0.5 }, "<");
+            }
+
+            // Handle panel parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const panelParam = urlParams.get("panel");
+            if (panelParam === "agri" || panelParam === "ind") {
+                if (panelParam !== activePanel) {
+                    const btn = document.querySelector(
+                        `.iot-global-tabs button[data-panel="${panelParam}"]`,
+                    ) as HTMLButtonElement;
+                    if (btn) btn.click();
+                }
             }
         }
 

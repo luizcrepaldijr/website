@@ -159,7 +159,10 @@ const solucoesData = [
             "Ajudamos empresas a enxergar em tempo real o que acontece na operação, aplicando IoT para transformar sinais físicos em inteligência operacional prática.<br /><br />Possibilitamos antecipar falhas, otimizar recursos, reduzir desperdícios e tomar decisões mais rápidas, seguras e baseadas em dados reais.",
         video: "/videos/iot/iot-hero.webm",
         image: IotImg,
-        buttons: ["IoT para indústria", "IoT para agricultura"],
+        buttons: [
+            { text: "IoT para indústria", link: "/solucoes/iot?panel=ind" },
+            { text: "IoT para agricultura", link: "/solucoes/iot?panel=agri" },
+        ],
     },
     {
         id: "robotica",
@@ -192,7 +195,12 @@ const solucoesData = [
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
         ],
-        buttons: ["Saiba mais sobre este serviço"],
+        buttons: [
+            {
+                text: "Saiba mais sobre este serviço",
+                link: "/solucoes/robotica",
+            },
+        ],
     },
     {
         id: "realidade-digital",
@@ -303,7 +311,10 @@ const solucoesData = [
                                 {solucao.buttons && (
                                     <div class="buttons-wrapper">
                                         {solucao.buttons.map((btn) => (
-                                            <ButtonArrowSquare text={btn} />
+                                            <ButtonArrowSquare
+                                                text={btn.text}
+                                                link={btn.link}
+                                            />
                                         ))}
                                     </div>
                                 )}
@@ -380,7 +391,10 @@ const solucoesData = [
                         {solucao.buttons && (
                             <div class="accordion-wrapper">
                                 {solucao.buttons.map((btn) => (
-                                    <ButtonArrowSquare text={btn} />
+                                    <ButtonArrowSquare
+                                        text={btn.text}
+                                        link={btn.link}
+                                    />
                                 ))}
                             </div>
                         )}

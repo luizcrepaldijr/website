@@ -159,7 +159,10 @@ const solucoesData = [
             "Ayudamos a las empresas a ver en tiempo real lo que ocurre en la operación, aplicando IoT para transformar señales físicas en inteligencia operativa práctica.<br /><br />Hacemos posible anticipar fallas, optimizar recursos, reducir desperdicios y tomar decisiones más rápidas, seguras y basadas en datos reales.",
         video: "/videos/iot/iot-hero.webm",
         image: IotImg,
-        buttons: ["IoT para la industria", "IoT para la agricultura"],
+        buttons: [
+            { text: "IoT para la industria", link: "/es/soluciones/iot?panel=ind" },
+            { text: "IoT para la agricultura", link: "/es/soluciones/iot?panel=agri" },
+        ],
     },
     {
         id: "robotics",
@@ -192,7 +195,12 @@ const solucoesData = [
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
         ],
-        buttons: ["Saber más sobre este servicio"],
+        buttons: [
+            {
+                text: "Saber más sobre este servicio",
+                link: "/es/soluciones/robotica",
+            },
+        ],
     },
     {
         id: "digital-reality",
@@ -303,9 +311,12 @@ const solucoesData = [
                                 {solucao.buttons && (
                                     <div class="buttons-wrapper">
                                         {solucao.buttons.map((btn) => (
-                                            <ButtonArrowSquare text={btn} />
-                                        ))}
-                                    </div>
+                                            <ButtonArrowSquare
+                                                text={btn.text}
+                                                link={btn.link}
+                                            />
+                                         ))}
+                                     </div>
                                 )}
                             </div>
                         ))
@@ -380,7 +391,10 @@ const solucoesData = [
                         {solucao.buttons && (
                             <div class="accordion-wrapper">
                                 {solucao.buttons.map((btn) => (
-                                    <ButtonArrowSquare text={btn} />
+                                    <ButtonArrowSquare
+                                        text={btn.text}
+                                        link={btn.link}
+                                    />
                                 ))}
                             </div>
                         )}

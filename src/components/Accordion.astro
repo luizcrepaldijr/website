@@ -13,8 +13,8 @@ const { title, description } = Astro.props;
 <accordion-item class="accordion">
     <button class="accordion-header">
         <span class="accordion-title">{title}</span>
-        <span class="icon-open"><Plus color="#fff" /></span>
-        <span class="icon-close"><Minus color="#0577ff" /></span>
+        <span class="icon-open"><Plus color="currentColor" /></span>
+        <span class="icon-close"><Minus color="currentColor" /></span>
     </button>
     <div class="accordion-content">
         <div class="accordion-inner">
@@ -37,11 +37,17 @@ const { title, description } = Astro.props;
         background: transparent;
         border: none;
         color: white;
-        padding: 0 0 24px;
+        padding: 24px 0;
         cursor: pointer;
-        font-size: clamp(16px, 1.5vw + 4px, 20px);
-        font-weight: 400;
-        transition: color 0.3s ease;
+        font-size: clamp(16px, 1.2vw + 4px, 20px);
+        font-weight: 300;
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: 1440px) {
+        .accordion-header {
+            font-size: 17px;
+        }
     }
 
     .accordion-title {
@@ -58,8 +64,8 @@ const { title, description } = Astro.props;
 
     .icon-open :global(svg),
     .icon-close :global(svg) {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 
     .icon-close {
@@ -68,6 +74,7 @@ const { title, description } = Astro.props;
 
     .accordion.active .accordion-header {
         color: #0577ff;
+        font-weight: 600;
     }
 
     .accordion.active .icon-open {
@@ -90,14 +97,21 @@ const { title, description } = Astro.props;
 
     .accordion-inner {
         overflow: hidden;
+        padding-left: 18px;
     }
 
     .accordion-inner p {
         color: rgba(255, 255, 255, 0.7);
-        font-size: clamp(14px, 1.2vw + 2px, 16px);
+        font-size: clamp(14px, 1vw + 2px, 16px);
         line-height: 1.5;
         padding-bottom: 24px;
         margin: 0;
+    }
+
+    @media (max-width: 1440px) {
+        .accordion-inner p {
+            font-size: 14px;
+        }
     }
 </style>
 

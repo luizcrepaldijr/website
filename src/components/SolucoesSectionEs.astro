@@ -8,13 +8,17 @@ import Industria40Img from "../images/solucoes/industria-4-0-solucao.webp";
 import EngenhariaImg from "../images/solucoes/engenharia-solucao.webp";
 import Agricultura40Img from "../images/solucoes/agricultura-4-0-solucao.webp";
 import IotImg from "../images/solucoes/iot-solucao.webp";
+import RoboticaImg from "../images/home/servicos/robotica.webp";
+import RealidadeDigitalImg from "../images/home/servicos/realidade-digital.webp";
 
 const solucoesData = [
     {
         id: "transformacion-digital",
         title: "Transformación digital",
         subtitle:
-            "Capacitamos su negocio a través de soluciones inteligentes, conectadas y orientadas por datos.",
+            'Capacitamos su negocio a través de soluciones inteligentes, <span class="br"></span> conectadas y orientadas por datos.',
+        description:
+            "Ayudamos a las organizaciones a desbloquear todo el potencial de sus datos y tecnologías integrando herramientas inteligentes, automatizando procesos y permitiendo insights en tiempo real que impulsan la toma de decisiones estratégicas.",
         video: "/videos/home/transformacao-digital.webm",
         image: TransformacaoDigitalImg,
         accordions: [
@@ -31,12 +35,12 @@ const solucoesData = [
             {
                 title: "Data Analytics & Applied Data Science",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Estructuramos pipelines, modelos analíticos y capas de visualización que transforman datos brutos en insights accionables para la operación y toma de decisiones.",
             },
             {
                 title: "Entrenamiento y Bootcamp",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Capacitación técnica e estratégica para equipos, garantizando autonomía, adopción de las soluciones implementadas y sostenibilidad de la transformación digital.",
             },
         ],
     },
@@ -44,29 +48,31 @@ const solucoesData = [
         id: "industria-40",
         title: "Industria 4.0",
         subtitle:
-            "Conectamos el mundo físico y digital para aumentar la visibilidad, el control y el rendimiento industrial.",
+            'Conectamos el mundo físico y digital para aumentar la <span class="br"></span> visibilidad, el control y el rendimiento industrial.',
+        description:
+            "Actuamos en entornos industriales donde la falta de integración entre máquinas, sistemas y datos limita la eficiencia operativa. Implementamos soluciones de Industria 4.0 que conectan la planta de producción al entorno digital, permitiendo operaciones más predecibles, seguras y basadas en datos.",
         video: "/videos/home/industria-4-0.webm",
         image: Industria40Img,
         accordions: [
             {
                 title: "Infraestructura de datos y redes OT",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Diseño e implementación de arquitecturas robustas para la recolección e integración de datos industriales, conectando sistemas de operación y gestión de forma segura.",
             },
             {
                 title: "Ciberseguridad",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Protección de redes, datos y activos críticos, reduciendo riesgos operativos y garantizando la continuidad de la producción en entornos industriales.",
             },
             {
                 title: "Programación",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Desarrollo y ajustes de programación necesarios para la integración y el correcto funcionamiento de los sistemas industriales.",
             },
             {
                 title: "Soporte en terreno y remoto",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Soporte técnico continuo para garantizar la estabilidad operativa, respuesta rápida a fallas y mantenimiento de los sistemas implementados.",
             },
         ],
     },
@@ -74,34 +80,36 @@ const solucoesData = [
         id: "ingenieria",
         title: "Ingeniería",
         subtitle:
-            "Transformamos ideas complejas en soluciones técnicas viables y eficientes.",
+            'Transformamos ideas complejas en soluciones técnicas <span class="br"></span> viables y eficientes.',
+        description:
+            "Ofrecemos servicios de ingeniería de punta a punta para proyectos que exigen rigor técnico, planificación y ejecución precisa. Actuamos desde la concepción hasta la implementación, conectando ingeniería, tecnología y operación para reducir riesgos y optimizar resultados.",
         video: "/videos/home/engenharia.webm",
         image: EngenhariaImg,
         accordions: [
             {
                 title: "Gestión de proyectos",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Gestión técnica con enfoque en alcance, tiempo, costo y calidad, garantizando la alineación entre equipos y ejecución eficiente.",
             },
             {
                 title: "Estudios conceptuales y de viabilidad",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Análisis técnicos iniciales para orientar decisiones estratégicas y evaluar la viabilidad de proyectos de forma objetiva y aplicada.",
             },
             {
                 title: "Estimaciones de capital y documentación técnica",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Elaboración de estimaciones de costos y documentación necesaria para fundamentar decisiones de inversión y ejecución.",
             },
             {
                 title: "Modelado y simulación",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Modelado y simulaciones avanzadas para probar escenarios, anticipar riesgos y optimizar soluciones antes de la implementación física.",
             },
             {
                 title: "Proyectos eléctricos, mecánicos y de automatización",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Proyectos completos e integrados, alineados a las necesidades de la operación y a las tecnologías involucradas.",
             },
         ],
     },
@@ -109,34 +117,36 @@ const solucoesData = [
         id: "agricultura-40",
         title: "Agricultura 4.0",
         subtitle:
-            "Ayudamos a productores y operaciones agrícolas a tomar mejores decisiones usando datos reales del campo.",
+            'Ayudamos a productores y operaciones agrícolas a tomar mejores decisiones usando datos reales del campo.',
+        description:
+            "Aplicamos tecnología para transformar información del suelo y el clima en inteligencia práctica, permitiendo un mejor riego, reducción de desperdicios, aumento de la productividad y una operación más sostenible y predecible.",
         video: "/videos/home/agricultura-4-0.webm",
         image: Agricultura40Img,
         accordions: [
             {
-                title: "Gestión de proyectos",
+                title: "Monitoreo inteligente del suelo",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Recolección continua de datos como humedad a diferentes profundidades, temperatura y conductividad eléctrica, ofreciendo una visión precisa de las condiciones reales del cultivo.",
             },
             {
-                title: "Estudios conceptuales y de viabilidad",
+                title: "Eficiencia hídrica guiada por datos",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Soporte a las decisiones de riego en el momento exacto y en la cantidad necesaria, reduciendo el desperdicio y generando ahorros significativos en el uso del agua.",
             },
             {
-                title: "Estimaciones de capital y documentación técnica",
+                title: "Plataforma integrada de datos agrícolas",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Visualización en tiempo real, historial de mediciones, alertas y seguimiento del desempeño hidráulico y productivo de la operación.",
             },
             {
-                title: "Modelado y simulación",
+                title: "Conversión de datos técnicos en impacto financiero",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Análisis del uso del agua con conversión en indicadores financieros, facilitando el control de costos y la planificación de la operación.",
             },
             {
-                title: "Proyectos eléctricos, mecánicos y de automatización",
+                title: "Conectividad em áreas remotas",
                 description:
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+                    "Integración con soluciones de conectividad satelital, garantizando el monitoreo continuo incluso en regiones sin infraestructura local.",
             },
         ],
     },
@@ -144,12 +154,85 @@ const solucoesData = [
         id: "iot",
         title: "IoT",
         subtitle:
-            "Conectamos activos, procesos y entornos para generar inteligencia operativa, previsibilidad y eficiencia en tiempo real.",
+            'Conectamos activos, procesos y entornos para generar inteligencia operativa, previsibilidad y eficiencia en <span class="br"></span> tiempo real.',
         description:
             "Ayudamos a las empresas a ver en tiempo real lo que ocurre en la operación, aplicando IoT para transformar señales físicas en inteligencia operativa práctica.<br /><br />Hacemos posible anticipar fallas, optimizar recursos, reducir desperdicios y tomar decisiones más rápidas, seguras y basadas en datos reales.",
         video: "/videos/iot/iot-hero.webm",
         image: IotImg,
-        buttons: ["IoT para industria", "IoT para agricultura"],
+        buttons: [
+            { text: "IoT para la industria", link: "/es/soluciones/iot?panel=ind" },
+            { text: "IoT para la agricultura", link: "/es/soluciones/iot?panel=agri" },
+        ],
+    },
+    {
+        id: "robotics",
+        title: "Robótica",
+        subtitle:
+            'Elevamos la automatización industrial conectando robots,<span class="br"></span> datos y procesos productivos.',
+        description:
+            "Desarrollamos e integramos sistemas robóticos en entornos industriales para aumentar la productividad, seguridad y eficiencia operativa. La robótica actúa como una capa de inteligencia en la operación, conectando máquinas, personas y datos para generar previsibilidad y evolución continua de los procesos.",
+        video: "/videos/home/robotica.webm",
+        image: RoboticaImg,
+        accordions: [
+            {
+                title: "Robots humanoides",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Robots cuadrúpedos",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Robots colaborativos (cobots)",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Integración con sistemas industriales",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+        ],
+        buttons: [
+            {
+                text: "Saber más sobre este servicio",
+                link: "/es/soluciones/robotica",
+            },
+        ],
+    },
+    {
+        id: "digital-reality",
+        title: "Realidad Digital",
+        subtitle:
+            'Entrenamiento y ejecución operativa con entornos <span class="br"></span> inmersivos integrados a la industria.',
+        description:
+            "Aplicamos tecnologías de realidad virtual, aumentada y mixta para crear simulaciones y orientaciones digitales directamente en el contexto de la operación industrial. Esto permite que los equipos aprendan, practiquen y ejecutun tareas con más seguridad, eficiencia y estandarización.",
+        video: "/videos/home/realidade-digital.webm",
+        image: RealidadeDigitalImg,
+        accordions: [
+            {
+                title: "Entrenamiento en realidad virtual",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Orientación en realidad aumentada",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Realidad mixta aplicada a la operación",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Mantenimiento guiado por instrucciones visuales",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+        ],
     },
 ];
 ---
@@ -205,9 +288,10 @@ const solucoesData = [
                         solucoesData.map((solucao, index) => (
                             <div class="solucoes-panel" data-index={index}>
                                 <h2 class="panel-title">{solucao.title}</h2>
-                                <h3 class="panel-subtitle">
-                                    {solucao.subtitle}
-                                </h3>
+                                <h3
+                                    class="panel-subtitle"
+                                    set:html={solucao.subtitle}
+                                />
                                 <p
                                     class="panel-desc"
                                     set:html={solucao.description}
@@ -227,9 +311,12 @@ const solucoesData = [
                                 {solucao.buttons && (
                                     <div class="buttons-wrapper">
                                         {solucao.buttons.map((btn) => (
-                                            <ButtonArrowSquare text={btn} />
-                                        ))}
-                                    </div>
+                                            <ButtonArrowSquare
+                                                text={btn.text}
+                                                link={btn.link}
+                                            />
+                                         ))}
+                                     </div>
                                 )}
                             </div>
                         ))
@@ -287,7 +374,7 @@ const solucoesData = [
                     )}
                     <div class="content">
                         <h2>{solucao.title}</h2>
-                        <h3>{solucao.subtitle}</h3>
+                        <h3 set:html={solucao.subtitle} />
                         <p set:html={solucao.description} />
 
                         {solucao.accordions && (
@@ -304,7 +391,10 @@ const solucoesData = [
                         {solucao.buttons && (
                             <div class="accordion-wrapper">
                                 {solucao.buttons.map((btn) => (
-                                    <ButtonArrowSquare text={btn} />
+                                    <ButtonArrowSquare
+                                        text={btn.text}
+                                        link={btn.link}
+                                    />
                                 ))}
                             </div>
                         )}
@@ -341,9 +431,37 @@ const solucoesData = [
         border-radius: 8px;
         margin-bottom: 24px;
         object-fit: cover;
-        mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-image:
+            linear-gradient(
+                to right,
+                transparent 0%,
+                black 15%,
+                black 85%,
+                transparent 100%
+            ),
+            linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 15%,
+                black 85%,
+                transparent 100%
+            );
         mask-composite: intersect;
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-image:
+            linear-gradient(
+                to right,
+                transparent 0%,
+                black 15%,
+                black 85%,
+                transparent 100%
+            ),
+            linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 15%,
+                black 85%,
+                transparent 100%
+            );
         -webkit-mask-composite: source-in;
     }
 
@@ -356,6 +474,7 @@ const solucoesData = [
     .solucoes-item h2 {
         font-size: 32px;
         color: var(--neutral-white);
+        font-weight: 600;
         margin: 0;
     }
 
@@ -364,6 +483,10 @@ const solucoesData = [
         font-weight: 400;
         color: var(--neutral-light-gray);
         margin: 0;
+    }
+
+    .solucoes-item h3 :global(.br) {
+        display: none;
     }
 
     .solucoes-item p {
@@ -375,8 +498,18 @@ const solucoesData = [
     .accordion-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 0px;
         margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-wrapper accordion-item {
+        transition: all 0.4s ease;
+    }
+
+    /* Efeito de escurecer os outros quando um está aberto */
+    .accordion-wrapper:has(.active) :global(accordion-item:not(.active)) {
+        opacity: 0.6 !important;
     }
 
     @media (min-width: 801px) {
@@ -411,8 +544,8 @@ const solucoesData = [
         .solucoes-bg-layer {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 20%;
+            width: 80%;
             height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -438,7 +571,8 @@ const solucoesData = [
         .solucoes-bg-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
+            background:
+                linear-gradient(
                     to right,
                     var(--neutral-background-dark, #0b0c10) 0%,
                     transparent 15%,
@@ -479,9 +613,10 @@ const solucoesData = [
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding-bottom: 8vh;
-            /* padding-left removido pois o painel central já lida com margens agora */
+            justify-content: center;
+            padding-bottom: 0;
+            padding-top: 20vh;
+            padding-left: 8%; /* Movendo para o centro, mas ainda à esquerda */
         }
 
         .solucoes-nav-list {
@@ -497,7 +632,7 @@ const solucoesData = [
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 20px;
+            font-size: 18px;
             color: rgba(255, 255, 255, 0.4);
             transition: color 0.3s ease;
             position: relative;
@@ -513,7 +648,7 @@ const solucoesData = [
         .solucoes-nav-item.active {
             color: var(--neutral-white);
             font-weight: 500;
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .solucoes-nav-item.active .nav-indicator {
@@ -539,7 +674,9 @@ const solucoesData = [
             transform: translateY(-40%);
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s ease;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -555,6 +692,7 @@ const solucoesData = [
         .panel-title {
             font-size: 40px;
             color: var(--neutral-white);
+            font-weight: 300;
             margin: 0;
             margin-bottom: 8px;
         }
@@ -564,6 +702,11 @@ const solucoesData = [
             font-weight: 300;
             color: var(--neutral-light-gray);
             margin: 0;
+        }
+
+        .panel-subtitle :global(.br) {
+            display: block;
+            content: "";
         }
 
         .panel-desc {
@@ -605,12 +748,12 @@ const solucoesData = [
 
     function initSolucoesGSAP() {
         const desktopContainer = document.querySelector(
-            ".solucoes-desktop-container"
+            ".solucoes-desktop-container",
         );
         if (!desktopContainer || window.innerWidth <= 800) return;
 
         const pinnedSection = document.querySelector(
-            ".solucoes-desktop-pinned"
+            ".solucoes-desktop-pinned",
         );
         const bgLayers = gsap.utils.toArray(".solucoes-bg-layer");
         const navItems = gsap.utils.toArray(".solucoes-nav-item");
@@ -624,12 +767,10 @@ const solucoesData = [
         if (circle) {
             const radius = (circle as SVGCircleElement).r.baseVal.value;
             circumference = radius * 2 * Math.PI;
-            (
-                circle as SVGCircleElement
-            ).style.strokeDasharray = `${circumference} ${circumference}`;
-            (
-                circle as SVGCircleElement
-            ).style.strokeDashoffset = `${circumference}`;
+            (circle as SVGCircleElement).style.strokeDasharray =
+                `${circumference} ${circumference}`;
+            (circle as SVGCircleElement).style.strokeDashoffset =
+                `${circumference}`;
         }
 
         // Primeiro item ativo logo de inicio
@@ -652,9 +793,8 @@ const solucoesData = [
                 // Atualizar o path do Loader
                 if (circle) {
                     const offset = circumference - progress * circumference;
-                    (
-                        circle as SVGCircleElement
-                    ).style.strokeDashoffset = `${offset}`;
+                    (circle as SVGCircleElement).style.strokeDashoffset =
+                        `${offset}`;
                 }
 
                 // Identificar o índice atual baseado no progresso

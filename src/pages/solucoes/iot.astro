@@ -1094,7 +1094,7 @@ const wfSteps = [
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                     .to(
                         ".iot-hero .iot-img-wrapper",
-                        { y: "20vh", x: "22vw", scale: 0.75, duration: 1 },
+                        { y: "-450px", x: "45vw", scale: 2.2, duration: 1 },
                         "<",
                     )
                     .fromTo(
@@ -1119,7 +1119,7 @@ const wfSteps = [
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                     .to(
                         ".iot-hero .iot-img-wrapper",
-                        { y: "0vh", x: "12vw", scale: 0.85, duration: 1 },
+                        { y: "-400px", x: "40vw", scale: 2, duration: 1 },
                         "<",
                     )
                     .fromTo(
@@ -1159,6 +1159,18 @@ const wfSteps = [
                         "-=0.8",
                     );
             });
+
+            // Handle panel parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const panelParam = urlParams.get("panel");
+            if (panelParam === "agri" || panelParam === "ind") {
+                if (panelParam !== activePanel) {
+                    const btn = document.querySelector(
+                        `.iot-global-tabs button[data-panel="${panelParam}"]`,
+                    ) as HTMLButtonElement;
+                    if (btn) btn.click();
+                }
+            }
 
             reinitScrollers();
         }

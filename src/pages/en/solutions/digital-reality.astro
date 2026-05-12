@@ -130,7 +130,10 @@ import { Icon } from "astro-icon/components";
             </div>
             <div class="rd-checklist-item">
                 <Icon name="check" size={24} />
-                <span>Correct and standardized execution</span>
+                <span
+                    >Correct and <span class="br"
+                    ></span>standardized execution</span
+                >
             </div>
             <div class="rd-checklist-item">
                 <Icon name="check" size={24} />
@@ -296,10 +299,6 @@ import { Icon } from "astro-icon/components";
     <div class="rd-pronto-transformar container-boxed">
         <div class="content">
             <h2>Ready to transform how your team learns and executes?</h2>
-            <h3>
-                Bring your operation's challenges. We help transform technical
-                training into real performance in everyday life.
-            </h3>
             <span class="button">
                 <ButtonArrowWhite text="Bring digital reality to my business" />
             </span>
@@ -327,26 +326,6 @@ import { Icon } from "astro-icon/components";
     document.addEventListener("DOMContentLoaded", () => {
         let mm = gsap.matchMedia();
 
-        mm.add("(min-width: 801px)", () => {
-            const cards = gsap.utils.toArray(".rd-op-card") as HTMLElement[];
-
-            cards.forEach((card, index) => {
-                if (index < cards.length - 1) {
-                    gsap.to(card, {
-                        scale: 1 - 0.05 * (cards.length - 1 - index),
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: cards[index + 1],
-                            start: `top bottom-=200`,
-                            end: `top top+=${100 + (index + 1) * 30}`,
-                            scrub: true,
-                            invalidateOnRefresh: true,
-                        },
-                    });
-                }
-            });
-        });
-
         mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -362,14 +341,14 @@ import { Icon } from "astro-icon/components";
                 .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                 .to(
                     ".hero .cubo-img-wrapper",
-                    { y: "10vh", x: "12vw", scale: 0.8, duration: 1 },
-                    "<"
+                    { y: "10vh", x: "20vw", scale: 0.8, duration: 1 },
+                    "<",
                 )
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-50vh", duration: 0.8 },
-                    "-=0.8"
+                    "-=0.8",
                 );
         });
 
@@ -389,13 +368,13 @@ import { Icon } from "astro-icon/components";
                 .to(
                     ".hero .cubo-img-wrapper",
                     { y: "0vh", x: 350, scale: 0.7, duration: 1 },
-                    "<"
+                    "<",
                 )
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-40vh", duration: 0.8 },
-                    "-=0.8"
+                    "-=0.8",
                 );
         });
 
@@ -418,7 +397,7 @@ import { Icon } from "astro-icon/components";
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-20vh", duration: 0.8 },
-                    "-=0.8"
+                    "-=0.8",
                 );
         });
     });

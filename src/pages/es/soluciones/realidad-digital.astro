@@ -131,7 +131,10 @@ import { Icon } from "astro-icon/components";
             </div>
             <div class="rd-checklist-item">
                 <Icon name="check" size={24} />
-                <span>Ejecución correcta y estandarizada</span>
+                <span
+                    >Ejecución correcta y <span class="br"
+                    ></span>estandarizada</span
+                >
             </div>
             <div class="rd-checklist-item">
                 <Icon name="check" size={24} />
@@ -164,7 +167,7 @@ import { Icon } from "astro-icon/components";
                     <h4>Realidad Virtual (VR)</h4>
                     <p>
                         Las simulaciones digitales permiten practicar
-                        procedimientos y flujos de trabajo en entornos
+                        procedimientos y flujos de trabalho en entornos
                         controlados, preparando a los equipos antes de la
                         ejecución real, sin riesgos y sin impacto en la
                         operación.
@@ -304,10 +307,6 @@ import { Icon } from "astro-icon/components";
                 ¿Listo para transformar la forma en que su equipo aprende y
                 ejecuta?
             </h2>
-            <h3>
-                Traiga los desafíos de su operación. Ayudamos a transformar la
-                capacitación técnica en un rendimiento real en el día a día.
-            </h3>
             <span class="button">
                 <ButtonArrowWhite
                     text="Llevar la realidad digital a mi negocio"
@@ -337,26 +336,6 @@ import { Icon } from "astro-icon/components";
     document.addEventListener("DOMContentLoaded", () => {
         let mm = gsap.matchMedia();
 
-        mm.add("(min-width: 801px)", () => {
-            const cards = gsap.utils.toArray(".rd-op-card") as HTMLElement[];
-
-            cards.forEach((card, index) => {
-                if (index < cards.length - 1) {
-                    gsap.to(card, {
-                        scale: 1 - 0.05 * (cards.length - 1 - index),
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: cards[index + 1],
-                            start: `top bottom-=200`,
-                            end: `top top+=${100 + (index + 1) * 30}`,
-                            scrub: true,
-                            invalidateOnRefresh: true,
-                        },
-                    });
-                }
-            });
-        });
-
         mm.add("(min-width: 801px) and (max-width: 2399px)", () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -372,14 +351,14 @@ import { Icon } from "astro-icon/components";
                 .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                 .to(
                     ".hero .cubo-img-wrapper",
-                    { y: "10vh", x: "12vw", scale: 0.8, duration: 1 },
-                    "<"
+                    { y: "10vh", x: "20vw", scale: 0.8, duration: 1 },
+                    "<",
                 )
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-50vh", duration: 0.8 },
-                    "-=0.8"
+                    "-=0.8",
                 );
         });
 
@@ -399,13 +378,13 @@ import { Icon } from "astro-icon/components";
                 .to(
                     ".hero .cubo-img-wrapper",
                     { y: "0vh", x: 350, scale: 0.7, duration: 1 },
-                    "<"
+                    "<",
                 )
                 .fromTo(
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-40vh", duration: 0.8 },
-                    "-=0.8"
+                    "-=0.8",
                 );
         });
 
@@ -428,7 +407,7 @@ import { Icon } from "astro-icon/components";
                     ".ambientes-virtuais",
                     { opacity: 0, marginTop: "5vh" },
                     { opacity: 1, marginTop: "-20vh", duration: 0.8 },
-                    "-=0.8"
+                    "-=0.8",
                 );
         });
     });

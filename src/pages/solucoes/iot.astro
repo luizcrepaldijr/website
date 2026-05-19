@@ -1076,7 +1076,36 @@ const wfSteps = [
 
             heroMm = gsap.matchMedia();
 
-            heroMm.add("(min-width: 801px) and (max-width: 2399px)", () => {
+            heroMm.add("(min-width: 801px) and (max-width: 1536px)", () => {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".iot-hero",
+                        start: "top top",
+                        end: "+=150%",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+                tl.to(".iot-hero .content", {
+                    opacity: 0,
+                    y: -100,
+                    duration: 1,
+                })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(
+                        ".iot-hero .iot-img-wrapper",
+                        { y: "-220px", x: "46vw", scale: 1.45, duration: 1 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".iot-section-2",
+                        { opacity: 0, y: "55vh" },
+                        { opacity: 1, y: "0vh", duration: 0.8 },
+                        "-=0.8",
+                    );
+            });
+
+            heroMm.add("(min-width: 1537px) and (max-width: 2399px)", () => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".iot-hero",

@@ -298,14 +298,25 @@ const solucoesData = [
                                 />
 
                                 {solucao.accordions && (
-                                    <div class="accordion-wrapper">
-                                        {solucao.accordions.map((acc) => (
-                                            <Accordion
-                                                title={acc.title}
-                                                description={acc.description}
-                                            />
-                                        ))}
-                                    </div>
+                                    solucao.id === "robotica" || solucao.id === "realidade-digital" ? (
+                                        <ul class="solucoes-list-items">
+                                            {solucao.accordions.map((acc) => (
+                                                <li class="solucoes-list-item">
+                                                    <span class="arrow">→</span>
+                                                    <span class="text">{acc.title}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <div class="accordion-wrapper">
+                                            {solucao.accordions.map((acc) => (
+                                                <Accordion
+                                                    title={acc.title}
+                                                    description={acc.description}
+                                                />
+                                            ))}
+                                        </div>
+                                    )
                                 )}
 
                                 {solucao.buttons && (
@@ -378,14 +389,25 @@ const solucoesData = [
                         <p set:html={solucao.description} />
 
                         {solucao.accordions && (
-                            <div class="accordion-wrapper">
-                                {solucao.accordions.map((acc) => (
-                                    <Accordion
-                                        title={acc.title}
-                                        description={acc.description}
-                                    />
-                                ))}
-                            </div>
+                            solucao.id === "robotica" || solucao.id === "realidade-digital" ? (
+                                <ul class="solucoes-list-items">
+                                    {solucao.accordions.map((acc) => (
+                                        <li class="solucoes-list-item">
+                                            <span class="arrow">→</span>
+                                            <span class="text">{acc.title}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <div class="accordion-wrapper">
+                                    {solucao.accordions.map((acc) => (
+                                        <Accordion
+                                            title={acc.title}
+                                            description={acc.description}
+                                        />
+                                    ))}
+                                </div>
+                            )
                         )}
 
                         {solucao.buttons && (
@@ -512,6 +534,38 @@ const solucoesData = [
         opacity: 0.6 !important;
     }
 
+    .solucoes-list-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        list-style: none;
+        padding: 0;
+    }
+
+    .solucoes-list-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 24px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: clamp(16px, 1.2vw + 4px, 20px);
+        font-weight: 300;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 1440px) {
+        .solucoes-list-item {
+            font-size: 17px;
+        }
+    }
+
+    .solucoes-list-item .arrow {
+        font-weight: 300;
+    }
+
     @media (min-width: 801px) {
         .solucoes-mobile {
             display: none !important;
@@ -535,8 +589,8 @@ const solucoesData = [
         .solucoes-bg-container {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 45vw; /* Slightly less than half to leave breathing room for text if needed */
+            left: 10vw;
+            width: 30vw;
             height: 100%;
             z-index: 0;
         }
@@ -616,7 +670,7 @@ const solucoesData = [
             justify-content: center;
             padding-bottom: 0;
             padding-top: 20vh;
-            padding-left: 8%; /* Movendo para o centro, mas ainda à esquerda */
+            padding-left: 4%;
         }
 
         .solucoes-nav-list {

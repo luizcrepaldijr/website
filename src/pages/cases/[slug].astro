@@ -30,6 +30,7 @@ import MelhoriaQualidadeIcon from "../../icons/melhoria-qualidade.svg";
 import MaiorEngajamentoIcon from "../../icons/maior-engajamento.svg";
 import BaseEstruturadaIcon from "../../icons/base-estruturada.svg";
 import FaleConosco from "../../components/FaleConosco.astro";
+import CarousselRelatedCases from "../../components/carroussel/CarousselRelatedCases.astro";
 
 export async function getStaticPaths() {
     const ptCases = await getCollection("cases", ({ id }) => {
@@ -43,7 +44,7 @@ export async function getStaticPaths() {
 }
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/images/**/*.{jpeg,jpg,png,gif,webp,svg}"
+    "/src/images/**/*.{jpeg,jpg,png,gif,webp,svg}",
 );
 
 const resolveImage = async (path: any) => {
@@ -59,17 +60,25 @@ const resolveImage = async (path: any) => {
 
 const { entry } = Astro.props;
 
+const allPtCases = await getCollection("cases", ({ id }) => id.startsWith("pt/"));
+const sortedRelatedCases = allPtCases
+    .sort((a, b) => {
+        const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
+        const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
+        return dateB - dateA;
+    });
+
 // Pre-resolve all images in the entry data
 const resolvedImage = await resolveImage(entry.data.banner || entry.data.image);
 const resolvedHeroMockup = await resolveImage(entry.data.heroMockup);
 const resolvedTestimonialPhoto = await resolveImage(
-    entry.data.testimonial?.photo
+    entry.data.testimonial?.photo,
 );
 const resolvedTestimonialLogo = await resolveImage(
-    entry.data.testimonial?.companyLogo
+    entry.data.testimonial?.companyLogo,
 );
 const resolvedSolutionImage = await resolveImage(
-    entry.data.solutionData?.image
+    entry.data.solutionData?.image,
 );
 const resolvedResultsImage = await resolveImage(entry.data.resultsData?.image);
 
@@ -124,7 +133,9 @@ const iconMap: Record<string, any> = {
                         alt={entry.data.title}
                     />
                     <h1>{entry.data.title}</h1>
-                    <h2 class="hero-subtitle">{entry.data.heroSubtitle || entry.data.subtitle}</h2>
+                    <h2 class="hero-subtitle">
+                        {entry.data.heroSubtitle || entry.data.subtitle}
+                    </h2>
                     <p class="hero-description">{entry.data.description}</p>
 
                     {
@@ -348,7 +359,7 @@ const iconMap: Record<string, any> = {
                                                         />
                                                         <span>{item}</span>
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                         </ul>
                                     </div>
@@ -358,7 +369,10 @@ const iconMap: Record<string, any> = {
                                     <div class="challenge-card necessities-card">
                                         <div class="card-header">
                                             <div class="icon-circle blue">
-                                                <Image src={ThumbsUpIcon} alt="" />
+                                                <Image
+                                                    src={ThumbsUpIcon}
+                                                    alt=""
+                                                />
                                             </div>
                                             <h3>Necessidades</h3>
                                         </div>
@@ -373,7 +387,7 @@ const iconMap: Record<string, any> = {
                                                         />
                                                         <span>{item}</span>
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                         </ul>
                                     </div>
@@ -422,7 +436,7 @@ const iconMap: Record<string, any> = {
                                                     {item.text}
                                                 </span>
                                             </li>
-                                        )
+                                        ),
                                     )}
                                 </ul>
                             </div>
@@ -471,7 +485,7 @@ const iconMap: Record<string, any> = {
                                                         />
                                                         <span set:html={item} />
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                         </ul>
                                     </div>
@@ -505,7 +519,7 @@ const iconMap: Record<string, any> = {
                                                         />
                                                         <span>{item}</span>
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                         </ul>
 
@@ -532,7 +546,7 @@ const iconMap: Record<string, any> = {
                                                                     {item}
                                                                 </span>
                                                             </li>
-                                                        )
+                                                        ),
                                                     )}
                                                 </ul>
                                             </div>
@@ -584,7 +598,7 @@ const iconMap: Record<string, any> = {
                                                         />
                                                         <span>{item}</span>
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                         </ul>
 
@@ -613,7 +627,7 @@ const iconMap: Record<string, any> = {
                                                                     {item}
                                                                 </span>
                                                             </li>
-                                                        )
+                                                        ),
                                                     )}
                                                 </ul>
                                             </div>
@@ -663,7 +677,7 @@ const iconMap: Record<string, any> = {
                                                         />
                                                         <span>{item}</span>
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                         </ul>
 
@@ -734,7 +748,7 @@ const iconMap: Record<string, any> = {
                                                     {impact.title}
                                                 </p>
                                             </div>
-                                        )
+                                        ),
                                     )}
                                 </div>
                             </div>
@@ -773,7 +787,7 @@ const iconMap: Record<string, any> = {
                                                 />
                                                 <span>{item}</span>
                                             </li>
-                                        )
+                                        ),
                                     )}
                                 </ul>
 
@@ -826,6 +840,8 @@ const iconMap: Record<string, any> = {
         </div>
     </div>
 
+    <CarousselRelatedCases cases={sortedRelatedCases} lang="pt" />
+
     <FaleConosco />
 
     <script>
@@ -854,7 +870,9 @@ const iconMap: Record<string, any> = {
                 },
                 onUpdate: function () {
                     let current = Math.floor(
-                        parseFloat((this.targets()[0] as HTMLElement).innerText)
+                        parseFloat(
+                            (this.targets()[0] as HTMLElement).innerText,
+                        ),
                     );
                     let formatted = current
                         .toString()

@@ -29,6 +29,7 @@ import MelhoriaQualidadeIcon from "../../../icons/melhoria-qualidade.svg";
 import MaiorEngajamentoIcon from "../../../icons/maior-engajamento.svg";
 import BaseEstruturadaIcon from "../../../icons/base-estruturada.svg";
 import FaleConoscoEn from "../../../components/FaleConoscoEn.astro";
+import CarousselRelatedCases from "../../../components/carroussel/CarousselRelatedCases.astro";
 
 export async function getStaticPaths() {
     const enCases = await getCollection("cases", ({ id }) => {
@@ -57,6 +58,14 @@ const resolveImage = async (path: any) => {
 };
 
 const { entry } = Astro.props;
+
+const allEnCases = await getCollection("cases", ({ id }) => id.startsWith("en/"));
+const sortedRelatedCases = allEnCases
+    .sort((a, b) => {
+        const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
+        const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
+        return dateB - dateA;
+    });
 
 // Pre-resolve all images in the entry data
 const resolvedImage = await resolveImage(entry.data.banner || entry.data.image);
@@ -786,6 +795,8 @@ const iconMap: Record<string, any> = {
             </main>
         </div>
     </div>
+
+    <CarousselRelatedCases cases={sortedRelatedCases} lang="en" />
 
     <FaleConoscoEn />
 

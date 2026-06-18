@@ -1,0 +1,311 @@
+---
+import { Image } from "astro:assets";
+import Badge2 from "../Badge2.astro";
+import ButtonArrowWhite from "../buttons/ButtonArrowWhite.astro";
+
+interface CaseEntry {
+    id: string;
+    data: {
+        title: string;
+        subtitle?: string;
+        image: any;
+        badges: string[];
+        description: string;
+        pubDate?: Date;
+    };
+}
+
+interface Props {
+    cases: CaseEntry[];
+    lang: "pt" | "en" | "es";
+    title?: string;
+}
+
+const { cases, lang, title } = Astro.props;
+
+// Duplicating cases to enable smooth and seamless infinite looping in Embla
+const duplicatedCases = [...cases, ...cases, ...cases];
+
+const linkPrefix =
+    lang === "pt" ? "/cases" : lang === "en" ? "/en/cases" : "/es/casos";
+const langPrefix = lang === "pt" ? "pt/" : lang === "en" ? "en/" : "es/";
+const readMoreText =
+    lang === "pt" ? "Leia mais" : lang === "en" ? "Read more" : "Leer más";
+const defaultTitle =
+    lang === "pt"
+        ? "Conheça mais cases como esse"
+        : lang === "en"
+          ? "Discover more cases like this"
+          : "Descubre más casos como este";
+---
+
+<section class="related-cases-section">
+    <div class="container-boxed">
+        <h2 class="related-title">{title || defaultTitle}</h2>
+        <div class="embla__related">
+            <div class="embla__related__viewport">
+                <div class="embla__related__container">
+                    {
+                        duplicatedCases.map((caseEntry) => {
+                            const slug = caseEntry.id.replace(langPrefix, "");
+                            const link = `${linkPrefix}/${slug}`;
+                            return (
+                                <div class="embla__related__slide">
+                                    <a href={link} class="related-card-link">
+                                        <div class="related-card">
+                                            <div class="related-card-img-wrapper">
+                                                <Image
+                                                    src={caseEntry.data.image}
+                                                    alt={caseEntry.data.title}
+                                                    class="related-card-img"
+                                                />
+                                            </div>
+                                            <div class="related-card-content">
+                                                <div class="related-card-badges">
+                                                    {caseEntry.data.badges.map(
+                                                        (badge: string) => (
+                                                            <Badge2
+                                                                text={badge}
+                                                            />
+                                                        ),
+                                                    )}
+                                                </div>
+                                                <h3>
+                                                    <strong>
+                                                        {caseEntry.data.title}
+                                                    </strong>
+                                                    {caseEntry.data.subtitle &&
+                                                        ` ${caseEntry.data.subtitle}`}
+                                                </h3>
+                                                <p>
+                                                    {caseEntry.data.description}
+                                                </p>
+                                                <span class="related-card-cta">
+                                                    {readMoreText}
+                                                    <svg
+                                                        width="16"
+                                                        height="16"
+                                                        viewBox="0 0 16 16"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            d="M6 12L10 8L6 4"
+                                                            stroke="currentColor"
+                                                            stroke-width="1.5"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            );
+                        })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .related-cases-section {
+        padding: 100px 0 80px;
+        background: #0c111d;
+        overflow: hidden;
+    }
+
+    .related-title {
+        font-size: clamp(28px, 3.5vw, 48px);
+        font-weight: 700;
+        color: white;
+        margin-bottom: 48px;
+        letter-spacing: -0.02em;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .related-cases-section {
+            padding: 60px 0 40px;
+        }
+
+        .related-title {
+            margin-bottom: 32px;
+        }
+    }
+</style>
+
+<style is:global>
+    .embla__related__viewport {
+        overflow: hidden;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin-top: -16px;
+        margin-bottom: -16px;
+    }
+
+    .embla__related__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+    }
+
+    .embla__related__slide {
+        flex: 0 0 32%;
+        margin-right: 24px;
+        min-width: 0;
+    }
+
+    .related-card-link {
+        text-decoration: none;
+        display: block;
+        height: 100%;
+    }
+
+    .related-card {
+        background: rgba(16, 24, 40, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        backdrop-filter: blur(8px);
+        padding: 24px;
+    }
+
+    .related-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        background: rgba(22, 32, 54, 0.8);
+    }
+
+    .related-card-img-wrapper {
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .related-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        transition: transform 0.5s ease;
+    }
+
+    .related-card:hover .related-card-img {
+        transform: scale(1.05);
+    }
+
+    .related-card-content {
+        padding: 28px 0;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .related-card-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .related-card h3 {
+        font-size: 18px;
+        line-height: 1.4;
+        color: white;
+        margin: 0 0 12px 0;
+        font-weight: 500;
+    }
+
+    .related-card h3 strong {
+        font-weight: 700;
+    }
+
+    .related-card p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0 24px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+
+    .related-card-cta {
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: gap 0.3s ease;
+    }
+
+    .related-card:hover .related-card-cta {
+        gap: 12px;
+    }
+
+    .related-card-cta svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .embla__related__slide {
+            flex: 0 0 50%;
+        }
+    }
+
+    @media only screen and (max-width: 640px) {
+        .embla__related__slide {
+            flex: 0 0 85%;
+        }
+        .related-card-content {
+            padding: 24px;
+        }
+        .related-card-img-wrapper {
+            height: 180px;
+        }
+    }
+</style>
+
+<script>
+    import EmblaCarousel from "embla-carousel";
+    import Autoplay from "embla-carousel-autoplay";
+
+    const nodes = document.querySelectorAll(".embla__related");
+
+    nodes.forEach((wrapperNode) => {
+        const viewportNode = wrapperNode.querySelector(
+            ".embla__related__viewport",
+        );
+
+        if (viewportNode) {
+            const autoplayOptions = {
+                delay: 4000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: true,
+            };
+
+            EmblaCarousel(
+                viewportNode as HTMLElement,
+                {
+                    loop: true,
+                    align: "start",
+                },
+                [Autoplay(autoplayOptions)],
+            );
+        }
+    });
+</script>

@@ -59,7 +59,7 @@ const resolveImage = async (path: any) => {
 const { entry } = Astro.props;
 
 // Pre-resolve all images in the entry data
-const resolvedImage = await resolveImage(entry.data.image);
+const resolvedImage = await resolveImage(entry.data.banner || entry.data.image);
 const resolvedHeroMockup = await resolveImage(entry.data.heroMockup);
 const resolvedTestimonialPhoto = await resolveImage(entry.data.testimonial?.photo);
 const resolvedTestimonialLogo = await resolveImage(
@@ -315,54 +315,58 @@ const iconMap: Record<string, any> = {
                     {
                         (entry.data.problems || entry.data.necessities) && (
                             <div class="challenge-cards-grid">
-                                <div class="challenge-card problems-card">
-                                    <div class="card-header">
-                                        <div class="icon-circle red">
-                                            <Image
-                                                src={ThumbsDownIcon}
-                                                alt=""
-                                            />
+                                {entry.data.problems && (
+                                    <div class="challenge-card problems-card">
+                                        <div class="card-header">
+                                            <div class="icon-circle red">
+                                                <Image
+                                                    src={ThumbsDownIcon}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <h3>Problemas</h3>
                                         </div>
-                                        <h3>Problemas</h3>
+                                        <ul class="card-list">
+                                            {entry.data.problems?.map(
+                                                (item: string) => (
+                                                    <li>
+                                                        <Image
+                                                            src={CloseIcon}
+                                                            alt=""
+                                                            class="list-icon"
+                                                        />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
                                     </div>
-                                    <ul class="card-list">
-                                        {entry.data.problems.map(
-                                            (item: string) => (
-                                                <li>
-                                                    <Image
-                                                        src={CloseIcon}
-                                                        alt=""
-                                                        class="list-icon"
-                                                    />
-                                                    <span>{item}</span>
-                                                </li>
-                                            )
-                                        )}
-                                    </ul>
-                                </div>
+                                )}
 
-                                <div class="challenge-card necessities-card">
-                                    <div class="card-header">
-                                        <div class="icon-circle blue">
-                                            <Image src={ThumbsUpIcon} alt="" />
+                                {entry.data.necessities && (
+                                    <div class="challenge-card necessities-card">
+                                        <div class="card-header">
+                                            <div class="icon-circle blue">
+                                                <Image src={ThumbsUpIcon} alt="" />
+                                            </div>
+                                            <h3>Necesidades</h3>
                                         </div>
-                                        <h3>Necesidades</h3>
+                                        <ul class="card-list">
+                                            {entry.data.necessities?.map(
+                                                (item: string) => (
+                                                    <li>
+                                                        <Image
+                                                            src={RightArrowIcon}
+                                                            alt=""
+                                                            class="list-icon"
+                                                        />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
                                     </div>
-                                    <ul class="card-list">
-                                        {entry.data.necessities.map(
-                                            (item: string) => (
-                                                <li>
-                                                    <Image
-                                                        src={RightArrowIcon}
-                                                        alt=""
-                                                        class="list-icon"
-                                                    />
-                                                    <span>{item}</span>
-                                                </li>
-                                            )
-                                        )}
-                                    </ul>
-                                </div>
+                                )}
                             </div>
                         )
                     }

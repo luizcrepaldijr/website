@@ -60,7 +60,7 @@ const resolveImage = async (path: any) => {
 const { entry } = Astro.props;
 
 // Pre-resolve all images in the entry data
-const resolvedImage = await resolveImage(entry.data.image);
+const resolvedImage = await resolveImage(entry.data.banner || entry.data.image);
 const resolvedHeroMockup = await resolveImage(entry.data.heroMockup);
 const resolvedTestimonialPhoto = await resolveImage(
     entry.data.testimonial?.photo

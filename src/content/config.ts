@@ -13,6 +13,7 @@ const casesCollection = defineCollection({
     solution: z.string(),
     result: z.string(),
     image: image(),
+    banner: image().optional(),
     stats: z.array(z.object({
       value: z.string(),
       label: z.string(),

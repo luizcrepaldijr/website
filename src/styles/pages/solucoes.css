@@ -435,3 +435,17 @@
         }
     }
 }
+
+@media only screen and (min-width: 801px) {
+    .hero {
+        height: 75vh;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .marquee {
+        height: 12vh;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

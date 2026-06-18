@@ -1003,23 +1003,43 @@ const wfSteps = [
 
                 // ── Workflow animation ──
                 const WF_STEPS = 5;
-                const WF_DUR   = 1;
-                const WF_DEG   = 360 / WF_STEPS;
+                const WF_DUR = 1;
+                const WF_DEG = 360 / WF_STEPS;
+                const WF_RADIUS = 380;
 
-                gsap.set(".wf-step-0", { y: 0 });
+                function getX(y: number) {
+                    const val = WF_RADIUS ** 2 - y ** 2;
+                    return Math.sqrt(Math.max(0, val)) - WF_RADIUS;
+                }
+
+                function getRot(y: number) {
+                    const ratio = Math.max(-0.99, Math.min(0.99, y / WF_RADIUS));
+                    return Math.asin(ratio) * (180 / Math.PI);
+                }
+
+                gsap.set(".wf-step-0", { y: 0, x: 0, rotation: 0, transformOrigin: "left center" });
                 gsap.set(".wf-step-0 .wf-line", { autoAlpha: 1 });
-                gsap.set(".wf-step-0 .wf-dot",  { opacity: 1 });
-                gsap.set(".wf-step-0 h3",        { opacity: 1 });
-                gsap.set(".wf-step-0 .wf-desc",  { autoAlpha: 1 });
+                gsap.set(".wf-step-0 .wf-dot", { opacity: 1 });
+                gsap.set(".wf-step-0 h3", { opacity: 1 });
+                gsap.set(".wf-step-0 .wf-desc", { autoAlpha: 1 });
 
                 for (let i = 1; i < WF_STEPS; i++) {
-                    const qY  = i * 78;
+                    const qY = i * 78;
+                    const qX = getX(qY);
                     const vis = i <= 2;
                     const hOp = i === 1 ? 0.28 : 0.16;
-                    gsap.set(`.wf-step-${i}`,         { y: qY, autoAlpha: vis ? 1 : 0 });
+                    gsap.set(`.wf-step-${i}`, {
+                        y: qY,
+                        x: qX,
+                        rotation: getRot(qY),
+                        transformOrigin: "left center",
+                        autoAlpha: vis ? 1 : 0,
+                    });
                     gsap.set(`.wf-step-${i} .wf-line`, { autoAlpha: 0 });
-                    gsap.set(`.wf-step-${i} .wf-dot`,  { opacity: vis ? 0.35 : 0 });
-                    gsap.set(`.wf-step-${i} h3`,       { opacity: vis ? hOp : 0 });
+                    gsap.set(`.wf-step-${i} .wf-dot`, {
+                        opacity: vis ? 0.35 : 0,
+                    });
+                    gsap.set(`.wf-step-${i} h3`, { opacity: vis ? hOp : 0 });
                     gsap.set(`.wf-step-${i} .wf-desc`, { autoAlpha: 0 });
                 }
 
@@ -1036,28 +1056,86 @@ const wfSteps = [
 
                 for (let i = 0; i < WF_STEPS - 1; i++) {
                     const t = i * WF_DUR;
-                    wfTl.to(".wf-logo", { rotation: (i + 1) * WF_DEG, ease: "none", duration: WF_DUR }, t);
-                    wfTl
-                        .to(`.wf-step-${i} .wf-desc`, { autoAlpha: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i} .wf-line`,  { autoAlpha: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i} .wf-dot`,   { opacity: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i} h3`,        { opacity: 0, duration: 0.2 }, t)
-                        .to(`.wf-step-${i}`,           { autoAlpha: 0, y: -55, duration: 0.35 }, t + 0.15);
-                    wfTl
-                        .to(`.wf-step-${i + 1}`,           { autoAlpha: 1, y: 0, duration: 0.4 }, t + 0.45)
-                        .to(`.wf-step-${i + 1} .wf-line`,  { autoAlpha: 1, duration: 0.3 }, t + 0.6)
-                        .to(`.wf-step-${i + 1} .wf-dot`,   { opacity: 1, duration: 0.3 }, t + 0.6)
-                        .to(`.wf-step-${i + 1} h3`,        { opacity: 1, duration: 0.3 }, t + 0.6)
-                        .to(`.wf-step-${i + 1} .wf-desc`,  { autoAlpha: 1, duration: 0.3 }, t + 0.7);
+                    wfTl.to(
+                        ".wf-logo",
+                        {
+                            rotation: (i + 1) * WF_DEG,
+                            ease: "none",
+                            duration: WF_DUR,
+                        },
+                        t,
+                    );
+                    wfTl.to(
+                        `.wf-step-${i} .wf-desc`,
+                        { autoAlpha: 0, duration: 0.2 },
+                        t,
+                    )
+                        .to(
+                            `.wf-step-${i} .wf-line`,
+                            { autoAlpha: 0, duration: 0.2 },
+                            t,
+                        )
+                        .to(
+                            `.wf-step-${i} .wf-dot`,
+                            { opacity: 0, duration: 0.2 },
+                            t,
+                        )
+                        .to(
+                            `.wf-step-${i} h3`,
+                            { opacity: 0, duration: 0.2 },
+                            t,
+                        )
+                        .to(
+                            `.wf-step-${i}`,
+                            { autoAlpha: 0, y: -55, x: getX(-55), rotation: getRot(-55), duration: 0.35 },
+                            t + 0.15,
+                        );
+                    wfTl.to(
+                        `.wf-step-${i + 1}`,
+                        { autoAlpha: 1, y: 0, x: 0, rotation: 0, duration: 0.4 },
+                        t + 0.45,
+                    )
+                        .to(
+                            `.wf-step-${i + 1} .wf-line`,
+                            { autoAlpha: 1, duration: 0.3 },
+                            t + 0.6,
+                        )
+                        .to(
+                            `.wf-step-${i + 1} .wf-dot`,
+                            { opacity: 1, duration: 0.3 },
+                            t + 0.6,
+                        )
+                        .to(
+                            `.wf-step-${i + 1} h3`,
+                            { opacity: 1, duration: 0.3 },
+                            t + 0.6,
+                        )
+                        .to(
+                            `.wf-step-${i + 1} .wf-desc`,
+                            { autoAlpha: 1, duration: 0.3 },
+                            t + 0.7,
+                        );
                     for (let j = i + 2; j < WF_STEPS; j++) {
                         const offset = j - (i + 1);
-                        const vis    = offset <= 2;
-                        const hOp   = offset === 1 ? 0.28 : 0.16;
-                        const qY    = offset * 78;
-                        wfTl
-                            .to(`.wf-step-${j}`,         { autoAlpha: vis ? 1 : 0, y: qY, duration: 0.4 }, t + 0.45)
-                            .to(`.wf-step-${j} .wf-dot`, { opacity: vis ? 0.35 : 0, duration: 0.3 }, t + 0.45)
-                            .to(`.wf-step-${j} h3`,      { opacity: vis ? hOp : 0, duration: 0.3 }, t + 0.45);
+                        const vis = offset <= 2;
+                        const hOp = offset === 1 ? 0.28 : 0.16;
+                        const qY = offset * 78;
+                        const qX = getX(qY);
+                        wfTl.to(
+                            `.wf-step-${j}`,
+                            { autoAlpha: vis ? 1 : 0, y: qY, x: qX, rotation: getRot(qY), duration: 0.4 },
+                            t + 0.45,
+                        )
+                            .to(
+                                `.wf-step-${j} .wf-dot`,
+                                { opacity: vis ? 0.35 : 0, duration: 0.3 },
+                                t + 0.45,
+                            )
+                            .to(
+                                `.wf-step-${j} h3`,
+                                { opacity: vis ? hOp : 0, duration: 0.3 },
+                                t + 0.45,
+                            );
                     }
                 }
             }

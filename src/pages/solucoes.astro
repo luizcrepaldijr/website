@@ -198,10 +198,16 @@ const wfSteps = [
                 const WF_RADIUS = 380;
 
                 function getX(y: number) {
-                    return Math.sqrt(WF_RADIUS ** 2 - y ** 2) - WF_RADIUS;
+                    const val = WF_RADIUS ** 2 - y ** 2;
+                    return Math.sqrt(Math.max(0, val)) - WF_RADIUS;
                 }
 
-                gsap.set(".sol-workflow .wf-step-0", { y: 0, x: 0 });
+                function getRot(y: number) {
+                    const ratio = Math.max(-0.99, Math.min(0.99, y / WF_RADIUS));
+                    return Math.asin(ratio) * (180 / Math.PI);
+                }
+
+                gsap.set(".sol-workflow .wf-step-0", { y: 0, x: 0, rotation: 0, transformOrigin: "left center" });
                 gsap.set(".sol-workflow .wf-step-0 .wf-line", { autoAlpha: 1 });
                 gsap.set(".sol-workflow .wf-step-0 .wf-dot", { opacity: 1 });
                 gsap.set(".sol-workflow .wf-step-0 h3", { opacity: 1 });
@@ -215,6 +221,8 @@ const wfSteps = [
                     gsap.set(`.sol-workflow .wf-step-${i}`, {
                         y: qY,
                         x: qX,
+                        rotation: getRot(qY),
+                        transformOrigin: "left center",
                         autoAlpha: vis ? 1 : 0,
                     });
                     gsap.set(`.sol-workflow .wf-step-${i} .wf-line`, {
@@ -281,6 +289,7 @@ const wfSteps = [
                                 autoAlpha: 0,
                                 y: -55,
                                 x: getX(-55),
+                                rotation: getRot(-55),
                                 duration: 0.35,
                             },
                             t + 0.15,
@@ -288,7 +297,7 @@ const wfSteps = [
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i + 1}`,
-                        { autoAlpha: 1, y: 0, x: 0, duration: 0.4 },
+                        { autoAlpha: 1, y: 0, x: 0, rotation: 0, duration: 0.4 },
                         t + 0.45,
                     )
                         .to(
@@ -324,6 +333,7 @@ const wfSteps = [
                                 autoAlpha: vis ? 1 : 0,
                                 y: qY,
                                 x: qX,
+                                rotation: getRot(qY),
                                 duration: 0.4,
                             },
                             t + 0.45,

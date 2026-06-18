@@ -885,3 +885,9 @@
         padding: 32px;
     }
 }
+
+@media only screen and (min-width: 1025px) {
+    .case-hero-section {
+        height: 90vh;
+    }
+}

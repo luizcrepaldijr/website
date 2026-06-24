@@ -1203,6 +1203,11 @@ const wfSteps = [
                         `.iot-global-tabs button[data-panel="${panelParam}"]`,
                     ) as HTMLButtonElement;
                     if (btn) btn.click();
+                } else {
+                    const tabsEl = document.querySelector(".iot-global-tabs");
+                    if (tabsEl) {
+                        tabsEl.scrollIntoView({ behavior: "instant" });
+                    }
                 }
             }
 

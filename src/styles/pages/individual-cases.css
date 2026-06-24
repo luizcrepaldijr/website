@@ -332,6 +332,10 @@
     margin-bottom: 48px;
 }
 
+.section-description-bold {
+    font-weight: bold;
+}
+
 .challenge-cards-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -581,7 +585,7 @@
     color: #f1f5f9;
     font-size: 16px;
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .detail-section p {

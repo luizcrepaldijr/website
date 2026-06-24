@@ -319,7 +319,17 @@ const iconMap: Record<string, any> = {
 
                 <section id="desafio" class="content-section scroll-section">
                     <h2 class="section-title">The challenge</h2>
-                    <p class="section-description">{entry.data.challenge}</p>
+                    {
+                        entry.data.challengeDetailed ? (
+                            entry.data.challengeDetailed
+                                .split("\n\n")
+                                .map((paragraph: string) => (
+                                    <p class="section-description">{paragraph}</p>
+                                ))
+                        ) : (
+                            <p class="section-description">{entry.data.challenge}</p>
+                        )
+                    }
 
                     {
                         (entry.data.problems || entry.data.necessities) && (
@@ -431,7 +441,7 @@ const iconMap: Record<string, any> = {
 
                                 {entry.data.solutionData.features && (
                                     <div class="infrastructure-section">
-                                        <h3>{entry.data.solutionData.features.title}</h3>
+                                        <p class="section-description section-description-bold" style="margin-bottom: 24px;">{entry.data.solutionData.features.title}</p>
                                         <ul class="solution-list">
                                             {entry.data.solutionData.features.items.map(
                                                 (item: string) => (
@@ -446,6 +456,22 @@ const iconMap: Record<string, any> = {
                                                 )
                                             )}
                                         </ul>
+
+                                        {entry.data.solutionData.callout && (
+                                            <div class="solution-callout">
+                                                <Image
+                                                    src={ArrowRight2Icon}
+                                                    alt=""
+                                                    class="solution-list-icon"
+                                                />
+                                                <p
+                                                    set:html={
+                                                        entry.data.solutionData
+                                                            .callout
+                                                    }
+                                                />
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
@@ -481,12 +507,12 @@ const iconMap: Record<string, any> = {
 
                                         {entry.data.solutionData.sensors && (
                                             <div class="sensors-section">
-                                                <h3>
+                                                <p class="section-description section-description-bold" style="margin-bottom: 24px;">
                                                     {
                                                         entry.data.solutionData.sensors
                                                             .title
                                                     }
-                                                </h3>
+                                                </p>
                                                 <ul class="solution-list">
                                                     {entry.data.solutionData.sensors.items.map(
                                                         (item: string) => (
@@ -558,14 +584,14 @@ const iconMap: Record<string, any> = {
                                             {entry.data.solutionData.monitoring
                                                 .additionalTitle && (
                                                 <div class="additional-info">
-                                                    <h3>
+                                                    <p class="section-description section-description-bold" style="margin-bottom: 24px;">
                                                         {
                                                             entry.data
                                                                 .solutionData
                                                                 .monitoring
                                                                 .additionalTitle
                                                         }
-                                                    </h3>
+                                                    </p>
                                                     <ul class="solution-list">
                                                         {entry.data.solutionData.monitoring.additionalItems?.map(
                                                             (item: string) => (

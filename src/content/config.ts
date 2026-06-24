@@ -10,6 +10,7 @@ const casesCollection = defineCollection({
     badges: z.array(z.string()),
     description: z.string(),
     challenge: z.string(),
+    challengeDetailed: z.string().optional(),
     solution: z.string(),
     result: z.string(),
     image: image(),

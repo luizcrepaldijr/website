@@ -2,6 +2,7 @@
 import Image from "astro/components/Image.astro";
 import Accordion from "./Accordion.astro";
 import ButtonArrowSquare from "./buttons/ButtonArrowSquare.astro";
+import { Icon } from "astro-icon/components";
 
 import TransformacaoDigitalImg from "../images/solucoes/transformacao-digital-solucao.webp";
 import Industria40Img from "../images/solucoes/industria-4-0-solucao.webp";
@@ -308,7 +309,7 @@ const solucoesData = [
                                         <ul class="solucoes-list-items">
                                             {solucao.accordions.map((acc) => (
                                                 <li class="solucoes-list-item">
-                                                    <span class="arrow">→</span>
+                                                    <Icon name="arrow-right-2" class="solucoes-list-icon" />
                                                     <span class="text">{acc.title}</span>
                                                 </li>
                                             ))}
@@ -399,7 +400,7 @@ const solucoesData = [
                                 <ul class="solucoes-list-items">
                                     {solucao.accordions.map((acc) => (
                                         <li class="solucoes-list-item">
-                                            <span class="arrow">→</span>
+                                            <Icon name="arrow-right-2" class="solucoes-list-icon" />
                                             <span class="text">{acc.title}</span>
                                         </li>
                                     ))}
@@ -568,8 +569,11 @@ const solucoesData = [
         }
     }
 
-    .solucoes-list-item .arrow {
-        font-weight: 300;
+    .solucoes-list-icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: rgba(255, 255, 255, 0.6);
     }
 
     @media (min-width: 801px) {

@@ -688,8 +688,9 @@ const solucoesData = [
             gap: 12px;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.4);
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, font-size 0.3s ease;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-indicator {
@@ -699,13 +700,15 @@ const solucoesData = [
             transition: width 0.3s ease;
         }
 
-        .solucoes-nav-item.active {
+        .solucoes-nav-item.active,
+        .solucoes-nav-item:hover {
             color: var(--neutral-white);
             font-weight: 500;
             font-size: 20px;
         }
 
-        .solucoes-nav-item.active .nav-indicator {
+        .solucoes-nav-item.active .nav-indicator,
+        .solucoes-nav-item:hover .nav-indicator {
             width: 30px;
         }
 
@@ -835,7 +838,7 @@ const solucoesData = [
         // Cria a distância de scroll baseado no total de itens (ex: 70vh cada para demorar bastante o scroll)
         const scrollDistance = totalItems * 80;
 
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
             trigger: desktopContainer,
             pin: pinnedSection,
             start: "top top",
@@ -857,6 +860,20 @@ const solucoesData = [
 
                 updateActiveItem(activeIndex);
             },
+        });
+
+        navItems.forEach((item, index) => {
+            (item as HTMLElement).addEventListener("click", () => {
+                const start = trigger.start;
+                const end = trigger.end;
+                const progress = (index + 0.1) / totalItems;
+                const targetScroll = start + progress * (end - start);
+
+                window.scrollTo({
+                    top: targetScroll,
+                    behavior: "smooth",
+                });
+            });
         });
 
         function updateActiveItem(index: number) {

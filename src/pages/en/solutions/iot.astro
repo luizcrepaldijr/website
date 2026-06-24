@@ -765,7 +765,7 @@ const wfSteps = [
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        function initLoraWAN() {
             const section = document.querySelector(".lorawan-section");
             if (!section) return;
 
@@ -795,7 +795,10 @@ const wfSteps = [
             );
 
             observer.observe(section);
-        });
+        }
+
+        document.addEventListener("DOMContentLoaded", initLoraWAN);
+        document.addEventListener("astro:page-load", initLoraWAN);
     </script>
 
     <script>
@@ -1181,18 +1184,29 @@ const wfSteps = [
 
             // Handle panel parameter from URL
             const urlParams = new URLSearchParams(window.location.search);
-            const panelParam = urlParams.get("panel");
-            if (panelParam === "agri" || panelParam === "ind") {
-                if (panelParam !== activePanel) {
-                    const btn = document.querySelector(
-                        `.iot-global-tabs button[data-panel="${panelParam}"]`,
-                    ) as HTMLButtonElement;
-                    if (btn) btn.click();
-                }
+            const panelParam = urlParams.get("panel") as "ind" | "agri" | null;
+            const targetPanel = (panelParam === "agri" || panelParam === "ind") ? panelParam : "ind";
+
+            activePanel = targetPanel;
+
+            const activeBtn = document.querySelector(
+                `.iot-global-tabs button[data-panel="${targetPanel}"]`,
+            ) as HTMLButtonElement;
+
+            if (activeBtn) {
+                document.querySelectorAll<HTMLButtonElement>(".iot-global-tabs button").forEach((b) => {
+                    b.classList.toggle("active", b === activeBtn);
+                });
             }
+
+            const panelIndEl = document.getElementById("panel-ind");
+            const panelAgriEl = document.getElementById("panel-agri");
+            if (panelIndEl) panelIndEl.style.display = targetPanel === "ind" ? "block" : "none";
+            if (panelAgriEl) panelAgriEl.style.display = targetPanel === "agri" ? "block" : "none";
         }
 
         // Roda na primeira carga E em cada navegação via View Transitions
         document.addEventListener("DOMContentLoaded", initAnimations);
+        document.addEventListener("astro:page-load", initAnimations);
     </script>
 </Layout>

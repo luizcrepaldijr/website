@@ -974,7 +974,7 @@ const wfSteps = [
         });
     </script>
 
-    <script>
+    <script data-astro-rerun>
         import { gsap } from "gsap";
         import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -1505,7 +1505,21 @@ const wfSteps = [
             }
         }
 
-        // Roda na primeira carga E em cada navegação via View Transitions
-        document.addEventListener("DOMContentLoaded", initAnimations);
+        // Run animations on script execution
+        initAnimations();
+
+        // Clean up ScrollTriggers when navigating away
+        document.addEventListener("astro:before-swap", () => {
+            if (heroMm) {
+                heroMm.kill();
+                heroMm = null;
+            }
+            if (scrollerMm) {
+                scrollerMm.kill();
+                scrollerMm = null;
+            }
+            ScrollTrigger.getAll().forEach((st) => st.kill());
+            gsap.globalTimeline.clear();
+        }, { once: true });
     </script>
 </Layout>

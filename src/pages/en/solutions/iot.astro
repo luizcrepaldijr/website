@@ -16,11 +16,26 @@ import Accordion from "../../../components/Accordion.astro";
 import CarousselWorkflow from "../../../components/carroussel/CarousselWorkflow.astro";
 
 const wfSteps = [
-    { title: "Technical diagnostic of the operation",   desc: "Deep understanding of processes, machines, and real challenges." },
-    { title: "Sensing strategy",       desc: "Definition of sensors, measuring points, and ideal architecture." },
-    { title: "Data architecture",              desc: "Gateways, LoRaWAN networks, dashboards, APIs, and integrations." },
-    { title: "Installation and commissioning",      desc: "Field execution, testing, and performance validation." },
-    { title: "Support and continuous evolution",       desc: "Monitoring, adjustments, maintenance, and expansion as the operation grows." },
+    {
+        title: "Technical diagnostic of the operation",
+        desc: "Deep understanding of processes, machines, and real challenges.",
+    },
+    {
+        title: "Sensing strategy",
+        desc: "Definition of sensors, measuring points, and ideal architecture.",
+    },
+    {
+        title: "Data architecture",
+        desc: "Gateways, LoRaWAN networks, dashboards, APIs, and integrations.",
+    },
+    {
+        title: "Installation and commissioning",
+        desc: "Field execution, testing, and performance validation.",
+    },
+    {
+        title: "Support and continuous evolution",
+        desc: "Monitoring, adjustments, maintenance, and expansion as the operation grows.",
+    },
 ];
 ---
 
@@ -31,8 +46,9 @@ const wfSteps = [
                 <b>IoT:</b> transforming data into real decisions
             </h1>
             <h3>
-                We connect assets, processes, and physical environments to generate
-                operational intelligence, predictability, and efficiency in real time.
+                We connect assets, processes, and physical environments to
+                generate operational intelligence, predictability, and
+                efficiency in real time.
             </h3>
 
             <ButtonArrowAnimation text="I need this service" />
@@ -59,8 +75,9 @@ const wfSteps = [
             </h2>
             <h3>
                 IoT (Internet of Things) allows transforming production
-                processes into intelligent environments, capable of continuously capturing data
-                and generating immediate insights for decision making.
+                processes into intelligent environments, capable of continuously
+                capturing data and generating immediate insights for decision
+                making.
             </h3>
             <p><b>With IoT it is possible to:</b></p>
         </div>
@@ -157,7 +174,8 @@ const wfSteps = [
                 data-delay="2"
             >
                 <div class="lbl-text">
-                    Drastic reduction in<br />cabling and installation<br />costs
+                    Drastic reduction in<br />cabling and installation<br
+                    />costs
                 </div>
                 <svg
                     class="lbl-line line-3"
@@ -180,7 +198,8 @@ const wfSteps = [
                 data-delay="3"
             >
                 <div class="lbl-text">
-                    High reliability even<br />in environments with<br />interference
+                    High reliability even<br />in environments with<br
+                    />interference
                 </div>
                 <svg
                     class="lbl-line line-4"
@@ -214,535 +233,658 @@ const wfSteps = [
 
     <!-- ── PANEL: INDÚSTRIAS ── -->
     <div class="iot-panel" id="panel-ind">
-    <div class="iot-industrias-master-scrollarea">
-        <div class="iot-ind-pinned-master">
-            
-
-            <div class="iot-ind-pinned-content">
-                <!-- Media -->
-                <div class="iot-ind-medias">
-                    <div class="iot-ind-media media-1">
-                        <video
-                            src="/videos/iot/iot-para-industria.webm"
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            poster={IotParaIndustriaFallback.src}></video>
-                    </div>
-                    <!-- Second media uses same video as requested -->
-                    <div class="iot-ind-media media-2">
-                        <video
-                            src="/videos/iot/iot-para-industria-2.webm"
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            poster={IotParaIndustria2Fallback.src}></video>
-                    </div>
-                </div>
-
-                <!-- Texts -->
-                <div class="iot-ind-texts">
-                    <div class="iot-ind-text text-1">
-                        <h2>IoT for industries</h2>
-                        <p>
-                            Allows continuous observation of the operation,
-                            capturing critical data directly from the shop floor.
-                        </p>
-                    </div>
-
-                    <div class="iot-ind-text text-2">
-                        <h2>
-                            Modern industry demands connected,
-                            predictable, and efficient processes.
-                        </h2>
-                        <p>
-                            O IoT industrial Allows continuous observation of the operation,
-                            capturing critical data directly from the shop floor.
-                        </p>
-                    </div>
-
-                    <div class="iot-ind-text text-3">
-                        <h2>What we monitor</h2>
-                        <p>Our main applications in the industry:</p>
-                        <div class="card-checklist">
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Automatic process data collection</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Vibration analysis in motors and
-                                    critical equipment</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Monitoring of packaging lines for
-                                    efficiency calculation (OEE)</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Data integration into
-                                    analytics platforms and internal systems</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Reliable wireless communication via LoRaWAN</span
-                                >
-                            </div>
+        <div class="iot-industrias-master-scrollarea">
+            <div class="iot-ind-pinned-master">
+                <div class="iot-ind-pinned-content">
+                    <!-- Media -->
+                    <div class="iot-ind-medias">
+                        <div class="iot-ind-media media-1">
+                            <video
+                                src="/videos/iot/iot-para-industria.webm"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                poster={IotParaIndustriaFallback.src}></video>
+                        </div>
+                        <!-- Second media uses same video as requested -->
+                        <div class="iot-ind-media media-2">
+                            <video
+                                src="/videos/iot/iot-para-industria-2.webm"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                poster={IotParaIndustria2Fallback.src}></video>
                         </div>
                     </div>
 
-                    <div class="iot-ind-text text-4">
-                        <h2>Results obtained with Industrial IoT</h2>
-                        <p>This data feeds a platform that delivers:</p>
-                        <div class="card-checklist">
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Reduction of failures and unexpected downtimes</span
-                                >
+                    <!-- Texts -->
+                    <div class="iot-ind-texts">
+                        <div class="iot-ind-text text-1">
+                            <h2>IoT for industries</h2>
+                            <p>
+                                Allows continuous observation of the operation,
+                                capturing critical data directly from the shop
+                                floor.
+                            </p>
+                        </div>
+
+                        <div class="iot-ind-text text-2">
+                            <h2>
+                                Modern industry demands connected, predictable,
+                                and efficient processes.
+                            </h2>
+                            <p>
+                                O IoT industrial Allows continuous observation
+                                of the operation, capturing critical data
+                                directly from the shop floor.
+                            </p>
+                        </div>
+
+                        <div class="iot-ind-text text-3">
+                            <h2>What we monitor</h2>
+                            <p>Our main applications in the industry:</p>
+                            <div class="card-checklist">
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Automatic process data collection</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Vibration analysis in motors and
+                                        critical equipment</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Monitoring of packaging lines for
+                                        efficiency calculation (OEE)</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Data integration into analytics
+                                        platforms and internal systems</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Reliable wireless communication via
+                                        LoRaWAN</span
+                                    >
+                                </div>
                             </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span>Significant improvement in OEE</span>
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Increased lifespan of critical assets</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >More control, traceability, and ease
-                                    of auditing</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Decisions based on reliable, real-time
-                                    data</span
-                                >
+                        </div>
+
+                        <div class="iot-ind-text text-4">
+                            <h2>Results obtained with Industrial IoT</h2>
+                            <p>This data feeds a platform that delivers:</p>
+                            <div class="card-checklist">
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Reduction of failures and unexpected
+                                        downtimes</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span>Significant improvement in OEE</span>
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Increased lifespan of critical assets</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >More control, traceability, and ease of
+                                        auditing</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Decisions based on reliable, real-time
+                                        data</span
+                                    >
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ── IOT INDÚSTRIAS MOBILE ── -->
-    <div class="iot-ind-mobile">
-        
-
-        <!-- Block 1 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-industria.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaIndustriaFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>IoT for industries</h2>
-                <p>Allows continuous observation of the operation, capturing critical data straight from the shop floor.</p>
-            </div>
-        </div>
-
-        <!-- Block 2 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-industria.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaIndustriaFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>Modern industry requires connected, predictable, and efficient processes.</h2>
-                <p>O IoT industrial Allows continuous observation of the operation,
-                            capturing critical data directly from the shop floor.</p>
-            </div>
-        </div>
-
-        <!-- Block 3 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-industria-2.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaIndustria2Fallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>What we monitor</h2>
-                <p>Our main applications in the industry:</p>
-                <div class="card-checklist">
-                    <div><Icon name="arrow-right-2" size={24} /><span>Automatic process data collection</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Vibration analysis on motors and critical equipment</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Monitoring of packaging lines for efficiency calculation (OEE)</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Data integration into analytical platforms and internal systems</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Reliable wireless communication via LoRaWAN</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Block 4 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-industria-2.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaIndustria2Fallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>Results obtained with Industrial IoT</h2>
-                <p>This data feeds a platform that delivers:</p>
-                <div class="card-checklist">
-                    <div><Icon name="arrow-right-2" size={24} /><span>Reduction of failures and unexpected downtimes</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Significant improvement in OEE</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Increased lifespan of critical assets</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>More control, traceability, and ease of auditing</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Decisions based on reliable, real-time data</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── IOT WORKFLOW ── -->
-    <div class="iot-workflow-scrollarea">
-        <div class="iot-workflow-pinned">
-            <!-- Decorative rings -->
-            <div class="wf-ring wf-ring-1"></div>
-            <div class="wf-ring wf-ring-2"></div>
-
-            <!-- Rotating logo -->
-            <div class="wf-logo-wrapper">
-                <img src={LogoBigFallback.src} class="wf-logo" alt="" />
-            </div>
-
-            <!-- Right content (desktop) -->
-            <div class="wf-content">
-                <div class="wf-header">
-                    <h2>How we deliver IoT in the Industry</h2>
-                    <span class="wf-subtitle">Our workflow</span>
-                </div>
-
-                <div class="wf-steps-area">
-                    {wfSteps.map((step, i) => (
-                        <div class={`wf-step wf-step-${i}`}>
-                            <div class="wf-line"></div>
-                            <span class="wf-dot"><Icon name="dot" size={8} /></span>
-                            <h3>{step.title}</h3>
-                            <p class="wf-desc">{step.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <!-- Mobile carousel -->
-            <div class="wf-mobile-carousel">
-                <div class="wf-mobile-header">
-                    <h2>How we deliver IoT in the Industry</h2>
-                    <span class="wf-subtitle">OUR WORKFLOW</span>
-                </div>
-                <CarousselWorkflow steps={wfSteps} logoSrc={LogoBigFallback.src} />
-            </div>
-        </div>
-    </div><!-- close iot-workflow-scrollarea -->
-
-<div class="iot-controle container">
-        <div class="container-boxed">
-            <div class="content">
-                <h2>Ready to operate with <b>real-time control?</b></h2>
-                <h3>
-                    Bring the challenges of your industry or field. We
-                    help turn data into control, efficiency, and
-                    predictability.
-                </h3>
-                <span class="button">
-                    <ButtonArrowWhite text="Bring IoT to my business" />
-                </span>
-            </div>
-
-            <div class="parceiros-img-wrapper">
+        <!-- ── IOT INDÚSTRIAS MOBILE ── -->
+        <div class="iot-ind-mobile">
+            <!-- Block 1 -->
+            <div class="iot-ind-mobile-block">
                 <video
-                    src="/videos/iot/iot-hero.webm"
-                    class="parceiros-img"
+                    src="/videos/iot/iot-para-industria.webm"
+                    class="iot-ind-mobile-video"
                     autoplay
                     loop
                     muted
-                    playsinline></video>
+                    playsinline
+                    poster={IotParaIndustriaFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>IoT for industries</h2>
+                    <p>
+                        Allows continuous observation of the operation,
+                        capturing critical data straight from the shop floor.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/iot-para-industria.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IotParaIndustriaFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>
+                        Modern industry requires connected, predictable, and
+                        efficient processes.
+                    </h2>
+                    <p>
+                        O IoT industrial Allows continuous observation of the
+                        operation, capturing critical data directly from the
+                        shop floor.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/iot-para-industria-2.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IotParaIndustria2Fallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>What we monitor</h2>
+                    <p>Our main applications in the industry:</p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Automatic process data collection</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Vibration analysis on motors and critical
+                                equipment</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Monitoring of packaging lines for efficiency
+                                calculation (OEE)</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Data integration into analytical platforms and
+                                internal systems</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Reliable wireless communication via LoRaWAN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 4 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/iot-para-industria-2.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IotParaIndustria2Fallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>Results obtained with Industrial IoT</h2>
+                    <p>This data feeds a platform that delivers:</p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Reduction of failures and unexpected downtimes</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Significant improvement in OEE</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Increased lifespan of critical assets</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >More control, traceability, and ease of
+                                auditing</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Decisions based on reliable, real-time data</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- ── IOT WORKFLOW ── -->
+        <div class="iot-workflow-scrollarea">
+            <div class="iot-workflow-pinned">
+                <!-- Decorative rings -->
+                <div class="wf-ring wf-ring-1"></div>
+                <div class="wf-ring wf-ring-2"></div>
+
+                <!-- Rotating logo -->
+                <div class="wf-logo-wrapper">
+                    <img src={LogoBigFallback.src} class="wf-logo" alt="" />
+                </div>
+
+                <!-- Right content (desktop) -->
+                <div class="wf-content">
+                    <div class="wf-header">
+                        <h2>How we deliver IoT in the Industry</h2>
+                        <span class="wf-subtitle">Our workflow</span>
+                    </div>
+
+                    <div class="wf-steps-area">
+                        {
+                            wfSteps.map((step, i) => (
+                                <div class={`wf-step wf-step-${i}`}>
+                                    <div class="wf-line" />
+                                    <span class="wf-dot">
+                                        <Icon name="dot" size={8} />
+                                    </span>
+                                    <h3>{step.title}</h3>
+                                    <p class="wf-desc">{step.desc}</p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Mobile carousel -->
+                <div class="wf-mobile-carousel">
+                    <div class="wf-mobile-header">
+                        <h2>How we deliver IoT in the Industry</h2>
+                        <span class="wf-subtitle">OUR WORKFLOW</span>
+                    </div>
+                    <CarousselWorkflow
+                        steps={wfSteps}
+                        logoSrc={LogoBigFallback.src}
+                    />
+                </div>
+            </div>
+        </div><!-- close iot-workflow-scrollarea -->
+
+        <div class="iot-controle container">
+            <div class="container-boxed">
+                <div class="content">
+                    <h2>Ready to operate with <b>real-time control?</b></h2>
+                    <h3>
+                        Bring the challenges of your industry or field. We help
+                        turn data into control, efficiency, and predictability.
+                    </h3>
+                    <span class="button">
+                        <ButtonArrowWhite text="Bring IoT to my business" />
+                    </span>
+                </div>
+
+                <div class="parceiros-img-wrapper">
+                    <video
+                        src="/videos/iot/iot-hero.webm"
+                        class="parceiros-img"
+                        autoplay
+                        loop
+                        muted
+                        playsinline></video>
+                </div>
+            </div>
+        </div>
     </div><!-- close #panel-ind -->
 
     <!-- ── PANEL: AGRICULTURA ── -->
     <div class="iot-panel" id="panel-agri">
-
-    <!-- ── IOT AGRICULTURA ── -->
-    <div class="iot-agricultura-master-scrollarea">
-        <div class="iot-agri-pinned-master">
-            
-
-            <div class="iot-agri-pinned-content">
-                <!-- Media -->
-                <div class="iot-agri-medias">
-                    <div class="iot-agri-media agri-media-1">
-                        <video
-                            src="/videos/iot/sensor-agro.webm"
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            poster={SensorAgroFallback.src}></video>
-                    </div>
-                    <div class="iot-agri-media agri-media-2">
-                        <video
-                            src="/videos/iot/iot-para-agricultura.webm"
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            poster={IotParaAgriculturaFallback.src}></video>
-                    </div>
-                </div>
-
-                <!-- Texts -->
-                <div class="iot-agri-texts">
-                    <div class="iot-agri-text agri-text-1">
-                        <h2>IoT for agriculture</h2>
-                        <p>
-                            Water efficiency, productivity, and smart
-                            decisions in the field
-                        </p>
-                    </div>
-
-                    <div class="iot-agri-text agri-text-2">
-                        <h2>
-                            Agribusiness faces the challenge of producing more,
-                            with fewer resources and greater sustainability.
-                        </h2>
-                        <p>
-                            IoT allows the farmer to understand the soil in real time
-                            and make precise decisions, reducing
-                            waste and increasing productivity.
-                        </p>
-                    </div>
-
-                    <div class="iot-agri-text agri-text-3">
-                        <h2>What we monitor</h2>
-                        <p>Strategically distributed sensors capture:</p>
-                        <div class="card-checklist">
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Soil moisture at different depths</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span>Soil and ambient temperature</span>
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Electrical conductivity (fertility and
-                                    salinity)</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Conditions that directly impact
-                                    irrigation</span
-                                >
-                            </div>
+        <!-- ── IOT AGRICULTURA ── -->
+        <div class="iot-agricultura-master-scrollarea">
+            <div class="iot-agri-pinned-master">
+                <div class="iot-agri-pinned-content">
+                    <!-- Media -->
+                    <div class="iot-agri-medias">
+                        <div class="iot-agri-media agri-media-1">
+                            <video
+                                src="/videos/iot/sensor-agro.webm"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                poster={SensorAgroFallback.src}></video>
+                        </div>
+                        <div class="iot-agri-media agri-media-2">
+                            <video
+                                src="/videos/iot/iot-para-agricultura.webm"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                                poster={IotParaAgriculturaFallback.src}></video>
                         </div>
                     </div>
 
-                    <div class="iot-agri-text agri-text-4">
-                        <h2>What we deliver</h2>
-                        <p>This data feeds a platform that delivers:</p>
-                        <div class="card-checklist">
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span>Real-time indicators</span>
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span>Objective irrigation recommendations</span
-                                >
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span>Automatic calculation of applied water</span>
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span>Consumption conversion into USD</span>
-                            </div>
-                            <div>
-                                <Icon name="arrow-right-2" size={24} />
-                                <span
-                                    >Alerts on immediate soil
-                                    needs</span
-                                >
+                    <!-- Texts -->
+                    <div class="iot-agri-texts">
+                        <div class="iot-agri-text agri-text-1">
+                            <h2>IoT for agriculture</h2>
+                            <p>
+                                Water efficiency, productivity, and smart
+                                decisions in the field
+                            </p>
+                        </div>
+
+                        <div class="iot-agri-text agri-text-2">
+                            <h2>
+                                Agribusiness faces the challenge of producing
+                                more, with fewer resources and greater
+                                sustainability.
+                            </h2>
+                            <p>
+                                IoT allows the farmer to understand the soil in
+                                real time and make precise decisions, reducing
+                                waste and increasing productivity.
+                            </p>
+                        </div>
+
+                        <div class="iot-agri-text agri-text-3">
+                            <h2>What we monitor</h2>
+                            <p>Strategically distributed sensors capture:</p>
+                            <div class="card-checklist">
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Soil moisture at different depths</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span>Soil and ambient temperature</span>
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Electrical conductivity (fertility and
+                                        salinity)</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Conditions that directly impact
+                                        irrigation</span
+                                    >
+                                </div>
                             </div>
                         </div>
+
+                        <div class="iot-agri-text agri-text-4">
+                            <h2>What we deliver</h2>
+                            <p>This data feeds a platform that delivers:</p>
+                            <div class="card-checklist">
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span>Real-time indicators</span>
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Objective irrigation recommendations</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span
+                                        >Automatic calculation of applied water</span
+                                    >
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span>Consumption conversion into USD</span>
+                                </div>
+                                <div>
+                                    <Icon name="arrow-right-2" size={24} />
+                                    <span>Alerts on immediate soil needs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="iot-agri-text agri-text-5">
+                            <h2>We offer field and remote support</h2>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="iot-agri-text agri-text-5">
-                        <h2>We offer field and remote support</h2>
+        <!-- ── IOT AGRICULTURA MOBILE ── -->
+        <div class="iot-agri-mobile">
+            <!-- Block 1 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/sensor-agro.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={SensorAgroFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>IoT for agriculture</h2>
+                    <p>
+                        Water efficiency, productivity, and smart decisions in
+                        the field
+                    </p>
+                </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/sensor-agro.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={SensorAgroFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>
+                        Agribusiness faces the challenge of producing more with
+                        fewer resources and greater sustainability.
+                    </h2>
+                    <p>
+                        IoT allows farmers to understand the soil in real time
+                        and make precise decisions, reducing waste and
+                        increasing productivity.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/iot-para-agricultura.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IotParaAgriculturaFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>What we monitor</h2>
+                    <p>Strategically distributed sensors capture:</p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Soil moisture at different depths</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Soil and ambient temperature</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Electrical conductivity (fertility and
+                                salinity)</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Conditions directly impacting irrigation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 4 -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/iot-para-agricultura.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IotParaAgriculturaFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>What we deliver</h2>
+                    <p>This data feeds a platform that delivers:</p>
+                    <div class="card-checklist">
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Real-time indicators</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Objective irrigation recommendations</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Automatic calculation of applied water</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Consumption conversion into USD</span>
+                        </div>
+                        <div>
+                            <Icon name="arrow-right-2" size={24} /><span
+                                >Alerts on immediate soil needs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 5: Suporte + accordion (replaces iot-agri-applications on mobile) -->
+            <div class="iot-ind-mobile-block">
+                <video
+                    src="/videos/iot/iot-para-agricultura.webm"
+                    class="iot-ind-mobile-video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={IotParaAgriculturaFallback.src}></video>
+                <div class="iot-ind-mobile-text">
+                    <h2>We offer field and remote support</h2>
+                    <div class="iot-agri-mobile-accordion">
+                        <Accordion
+                            title="Complete installation"
+                            description="Sensors, gateways, solar panels, and antennas."
+                        />
+                        <Accordion
+                            title="Remote monitoring of sensors"
+                            description="Battery, communication, connectivity, and data quality."
+                        />
+                        <Accordion
+                            title="Continuous maintenance"
+                            description="Adjustments, replacements, and expanding the solution as the farm grows."
+                        />
+                        <Accordion
+                            title="The farmer takes care of the production."
+                            description="Transformatech takes care of the technology."
+                        />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ── IOT AGRICULTURA MOBILE ── -->
-    <div class="iot-agri-mobile">
-        
-
-        <!-- Block 1 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/sensor-agro.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={SensorAgroFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>IoT for agriculture</h2>
-                <p>Water efficiency, productivity, and smart decisions in the field</p>
-            </div>
-        </div>
-
-        <!-- Block 2 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/sensor-agro.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={SensorAgroFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>Agribusiness faces the challenge of producing more with fewer resources and greater sustainability.</h2>
-                <p>IoT allows farmers to understand the soil in real time and make precise decisions, reducing waste and increasing productivity.</p>
-            </div>
-        </div>
-
-        <!-- Block 3 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-agricultura.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaAgriculturaFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>What we monitor</h2>
-                <p>Strategically distributed sensors capture:</p>
-                <div class="card-checklist">
-                    <div><Icon name="arrow-right-2" size={24} /><span>Soil moisture at different depths</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Soil and ambient temperature</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Electrical conductivity (fertility and salinity)</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Conditions directly impacting irrigation</span></div>
+        <div class="iot-agri-applications">
+            <div class="application-item">
+                <div class="title">
+                    <Icon name="arrow-right-2" size={24} />
+                    <span>Complete installation</span>
                 </div>
+                <span class="texto"
+                    >Sensors, gateways, solar panels, and antennas.</span
+                >
             </div>
-        </div>
-
-        <!-- Block 4 -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-agricultura.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaAgriculturaFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>What we deliver</h2>
-                <p>This data feeds a platform that delivers:</p>
-                <div class="card-checklist">
-                    <div><Icon name="arrow-right-2" size={24} /><span>Real-time indicators</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Objective irrigation recommendations</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Automatic calculation of applied water</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Consumption conversion into USD</span></div>
-                    <div><Icon name="arrow-right-2" size={24} /><span>Alerts on immediate soil needs</span></div>
+            <div class="application-item">
+                <div class="title">
+                    <Icon name="arrow-right-2" size={24} />
+                    <span>Remote monitoring of sensors</span>
                 </div>
+                <span class="texto"
+                    >Battery, communication, connectivity, and data quality.</span
+                >
             </div>
-        </div>
-
-        <!-- Block 5: Suporte + accordion (replaces iot-agri-applications on mobile) -->
-        <div class="iot-ind-mobile-block">
-            <video
-                src="/videos/iot/iot-para-agricultura.webm"
-                class="iot-ind-mobile-video"
-                autoplay loop muted playsinline
-                poster={IotParaAgriculturaFallback.src}></video>
-            <div class="iot-ind-mobile-text">
-                <h2>We offer field and remote support</h2>
-                <div class="iot-agri-mobile-accordion">
-                    <Accordion title="Complete installation" description="Sensors, gateways, solar panels, and antennas." />
-                    <Accordion title="Remote monitoring of sensors" description="Battery, communication, connectivity, and data quality." />
-                    <Accordion title="Continuous maintenance" description="Adjustments, replacements, and expanding the solution as the farm grows." />
-                    <Accordion title="The farmer takes care of the production." description="Transformatech takes care of the technology." />
+            <div class="application-item">
+                <div class="title">
+                    <Icon name="arrow-right-2" size={24} />
+                    <span>Continuous maintenance</span>
                 </div>
+                <span class="texto"
+                    >Adjustments, replacements, and expansion of the solution as
+                    the farm grows.</span
+                >
+            </div>
+            <div class="application-item">
+                <div class="title">
+                    <Icon name="arrow-right-2" size={24} />
+                    <span>The farmer takes care of the production.</span>
+                </div>
+                <span class="texto"
+                    >Transformatech takes care of the technology.</span
+                >
             </div>
         </div>
-    </div>
-
-    <div class="iot-agri-applications">
-        <div class="application-item">
-            <div class="title">
-                <Icon name="arrow-right-2" size={24} />
-                <span>Complete installation</span>
-            </div>
-            <span class="texto"
-                >Sensors, gateways, solar panels, and antennas.</span
-            >
-        </div>
-        <div class="application-item">
-            <div class="title">
-                <Icon name="arrow-right-2" size={24} />
-                <span>Remote monitoring of sensors</span>
-            </div>
-            <span class="texto"
-                >Battery, communication, connectivity, and data quality.</span
-            >
-        </div>
-        <div class="application-item">
-            <div class="title">
-                <Icon name="arrow-right-2" size={24} />
-                <span>Continuous maintenance</span>
-            </div>
-            <span class="texto"
-                >Adjustments, replacements, and expansion of the solution as the farm
-                grows.</span
-            >
-        </div>
-        <div class="application-item">
-            <div class="title">
-                <Icon name="arrow-right-2" size={24} />
-                <span>The farmer takes care of the production.</span>
-            </div>
-            <span class="texto">Transformatech takes care of the technology.</span>
-        </div>
-    </div>
-
     </div><!-- close #panel-agri -->
 
     <div class="rd-pronto-transformar container">
         <div class="container-boxed">
             <div class="content">
                 <h2>
-                    Whether in industry or agriculture, IoT transforms data
-                    into decisions, efficiency into results, and complexity
-                    into control.
+                    Whether in industry or agriculture, IoT transforms data into
+                    decisions, efficiency into results, and complexity into
+                    control.
                 </h2>
                 <span class="button">
                     <ButtonArrowWhite
@@ -779,7 +921,7 @@ const wfSteps = [
                                 const delay =
                                     parseInt(
                                         (label as HTMLElement).dataset.delay ??
-                                            "0"
+                                            "0",
                                     ) *
                                         600 +
                                     500;
@@ -791,14 +933,14 @@ const wfSteps = [
                         }
                     });
                 },
-                { threshold: 0.25 }
+                { threshold: 0.25 },
             );
 
             observer.observe(section);
         });
     </script>
 
-    <script data-astro-rerun>
+    <script>
         import { gsap } from "gsap";
         import { ScrollTrigger } from "gsap/ScrollTrigger";
         import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -812,66 +954,84 @@ const wfSteps = [
         let pendingRaf2: number | null = null;
 
         function cancelPendingReinit() {
-            if (pendingRaf1 !== null) { cancelAnimationFrame(pendingRaf1); pendingRaf1 = null; }
-            if (pendingRaf2 !== null) { cancelAnimationFrame(pendingRaf2); pendingRaf2 = null; }
+            if (pendingRaf1 !== null) {
+                cancelAnimationFrame(pendingRaf1);
+                pendingRaf1 = null;
+            }
+            if (pendingRaf2 !== null) {
+                cancelAnimationFrame(pendingRaf2);
+                pendingRaf2 = null;
+            }
         }
-
-        // Initial lock
-        document.body.style.overflow = "hidden";
 
         // Button listener
         const heroBtn = document.querySelector(".iot-hero .content a");
         if (heroBtn) {
             heroBtn.addEventListener("click", (e) => {
                 e.preventDefault();
-                document.body.style.overflow = "auto";
-                
+
                 gsap.to(window, {
                     scrollTo: {
                         y: 1.5 * window.innerHeight,
-                        autoKill: false
+                        autoKill: false,
                     },
                     duration: 2,
-                    ease: "power2.inOut"
+                    ease: "power2.inOut",
                 });
             });
         }
 
         // ── Tab switching — only reinit panel scrollers, never touch hero ──
-        document.querySelectorAll<HTMLButtonElement>(".iot-global-tabs button").forEach((btn) => {
-            btn.addEventListener("click", () => {
-                const panel = btn.dataset.panel as "ind" | "agri";
-                if (panel === activePanel) return;
-                activePanel = panel;
+        document
+            .querySelectorAll<HTMLButtonElement>(".iot-global-tabs button")
+            .forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const panel = btn.dataset.panel as "ind" | "agri";
+                    if (panel === activePanel) return;
+                    activePanel = panel;
 
-                document.querySelectorAll<HTMLButtonElement>(".iot-global-tabs button").forEach((b) => {
-                    b.classList.toggle("active", b === btn);
-                });
+                    document
+                        .querySelectorAll<HTMLButtonElement>(
+                            ".iot-global-tabs button",
+                        )
+                        .forEach((b) => {
+                            b.classList.toggle("active", b === btn);
+                        });
 
-                // Kill scrollers synchronously so pin spacers are removed before layout recalculates
-                cancelPendingReinit();
-                if (scrollerMm) { scrollerMm.kill(); scrollerMm = null; }
+                    // Kill scrollers synchronously so pin spacers are removed before layout recalculates
+                    cancelPendingReinit();
+                    if (scrollerMm) {
+                        scrollerMm.kill();
+                        scrollerMm = null;
+                    }
 
-                document.getElementById("panel-ind")!.style.display = panel === "ind" ? "block" : "none";
-                document.getElementById("panel-agri")!.style.display = panel === "agri" ? "block" : "none";
+                    document.getElementById("panel-ind")!.style.display =
+                        panel === "ind" ? "block" : "none";
+                    document.getElementById("panel-agri")!.style.display =
+                        panel === "agri" ? "block" : "none";
 
-                // scrollIntoView now sees the correct layout (spacers already gone)
-                document.querySelector(".iot-global-tabs")!.scrollIntoView({ behavior: "instant" });
+                    // scrollIntoView now sees the correct layout (spacers already gone)
+                    document
+                        .querySelector(".iot-global-tabs")!
+                        .scrollIntoView({ behavior: "instant" });
 
-                // Re-register scrollers after layout settles
-                pendingRaf1 = requestAnimationFrame(() => {
-                    pendingRaf2 = requestAnimationFrame(() => {
-                        pendingRaf1 = null;
-                        pendingRaf2 = null;
-                        reinitScrollers();
+                    // Re-register scrollers after layout settles
+                    pendingRaf1 = requestAnimationFrame(() => {
+                        pendingRaf2 = requestAnimationFrame(() => {
+                            pendingRaf1 = null;
+                            pendingRaf2 = null;
+                            reinitScrollers();
+                        });
                     });
                 });
             });
-        });
 
         // ── Kill only panel scrollers, recreate for active panel ──
         function reinitScrollers() {
-            if (scrollerMm) { scrollerMm.kill(); scrollerMm = null; }
+            if (scrollerMm) {
+                scrollerMm.kill();
+                scrollerMm = null;
+            }
 
             scrollerMm = gsap.matchMedia();
             scrollerMm.add("(min-width: 801px)", () => {
@@ -887,8 +1047,14 @@ const wfSteps = [
 
         // ── Full init: hero (once) + scrollers ──
         function initAnimations() {
-            if (heroMm) { heroMm.kill(); heroMm = null; }
-            if (scrollerMm) { scrollerMm.kill(); scrollerMm = null; }
+            if (heroMm) {
+                heroMm.kill();
+                heroMm = null;
+            }
+            if (scrollerMm) {
+                scrollerMm.kill();
+                scrollerMm = null;
+            }
             ScrollTrigger.getAll().forEach((st) => st.kill());
             gsap.globalTimeline.clear();
 
@@ -904,10 +1070,28 @@ const wfSteps = [
                         pin: true,
                     },
                 });
-                tl.to(".iot-hero .content", { opacity: 0, y: -100, duration: 1 })
+                tl.to(".iot-hero .content", {
+                    opacity: 0,
+                    y: -100,
+                    duration: 1,
+                })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(".iot-hero .iot-img-wrapper", { y: "-220px", x: "clamp(20vw, 28vw, 34vw)", scale: 1.45, duration: 1 }, "<")
-                    .fromTo(".iot-section-2", { opacity: 0, y: "55vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
+                    .to(
+                        ".iot-hero .iot-img-wrapper",
+                        {
+                            y: "-220px",
+                            x: "clamp(20vw, 28vw, 34vw)",
+                            scale: 1.45,
+                            duration: 1,
+                        },
+                        "<",
+                    )
+                    .fromTo(
+                        ".iot-section-2",
+                        { opacity: 0, y: "55vh" },
+                        { opacity: 1, y: "0vh", duration: 0.8 },
+                        "-=0.8",
+                    );
             });
 
             heroMm.add("(min-width: 1537px) and (max-width: 2399px)", () => {
@@ -920,10 +1104,23 @@ const wfSteps = [
                         pin: true,
                     },
                 });
-                tl.to(".iot-hero .content", { opacity: 0, y: -100, duration: 1 })
+                tl.to(".iot-hero .content", {
+                    opacity: 0,
+                    y: -100,
+                    duration: 1,
+                })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(".iot-hero .iot-img-wrapper", { y: "-450px", x: "45vw", scale: 2.2, duration: 1 }, "<")
-                    .fromTo(".iot-section-2", { opacity: 0, y: "55vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
+                    .to(
+                        ".iot-hero .iot-img-wrapper",
+                        { y: "-450px", x: "45vw", scale: 2.2, duration: 1 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".iot-section-2",
+                        { opacity: 0, y: "55vh" },
+                        { opacity: 1, y: "0vh", duration: 0.8 },
+                        "-=0.8",
+                    );
             });
 
             heroMm.add("(min-width: 2400px)", () => {
@@ -938,8 +1135,17 @@ const wfSteps = [
                 });
                 tl.to(".iot-hero .content", { opacity: 0, y: -80, duration: 1 })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(".iot-hero .iot-img-wrapper", { y: "-400px", x: "40vw", scale: 2, duration: 1 }, "<")
-                    .fromTo(".iot-section-2", { opacity: 0, y: "45vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
+                    .to(
+                        ".iot-hero .iot-img-wrapper",
+                        { y: "-400px", x: "40vw", scale: 2, duration: 1 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".iot-section-2",
+                        { opacity: 0, y: "45vh" },
+                        { opacity: 1, y: "0vh", duration: 0.8 },
+                        "-=0.8",
+                    );
             });
 
             heroMm.add("(max-width: 800px)", () => {
@@ -953,10 +1159,23 @@ const wfSteps = [
                     },
                 });
                 tlMobile
-                    .to(".iot-hero .content", { opacity: 0, y: -50, duration: 1 })
+                    .to(".iot-hero .content", {
+                        opacity: 0,
+                        y: -50,
+                        duration: 1,
+                    })
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
-                    .to(".iot-hero .iot-img-wrapper", { y: "-10vh", duration: 1 }, "<")
-                    .fromTo(".iot-section-2", { opacity: 0, y: "10vh" }, { opacity: 1, y: "0vh", duration: 0.8 }, "-=0.8");
+                    .to(
+                        ".iot-hero .iot-img-wrapper",
+                        { y: "-10vh", duration: 1 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".iot-section-2",
+                        { opacity: 0, y: "10vh" },
+                        { opacity: 1, y: "0vh", duration: 0.8 },
+                        "-=0.8",
+                    );
             });
 
             reinitScrollers();
@@ -965,18 +1184,28 @@ const wfSteps = [
         function _registerScrollers() {
             if (activePanel === "ind") {
                 // ── Clear residual GSAP styles from any previous run ──
-                gsap.set(".media-1, .media-2, .text-1, .text-2, .text-3, .text-4", { clearProps: "all" });
+                gsap.set(
+                    ".media-1, .media-2, .text-1, .text-2, .text-3, .text-4",
+                    { clearProps: "all" },
+                );
                 gsap.set(".wf-logo", { clearProps: "all" });
                 for (let i = 0; i < 5; i++) {
                     gsap.set(
-                        [`.wf-step-${i}`, `.wf-step-${i} .wf-line`, `.wf-step-${i} .wf-dot`,
-                         `.wf-step-${i} h3`, `.wf-step-${i} .wf-desc`],
-                        { clearProps: "all" }
+                        [
+                            `.wf-step-${i}`,
+                            `.wf-step-${i} .wf-line`,
+                            `.wf-step-${i} .wf-dot`,
+                            `.wf-step-${i} h3`,
+                            `.wf-step-${i} .wf-desc`,
+                        ],
+                        { clearProps: "all" },
                     );
                 }
 
                 // ── Indústrias animation ──
-                gsap.set(".text-2, .text-3, .text-4, .media-2", { autoAlpha: 0 });
+                gsap.set(".text-2, .text-3, .text-4, .media-2", {
+                    autoAlpha: 0,
+                });
 
                 const indTl = gsap.timeline({
                     scrollTrigger: {
@@ -991,15 +1220,40 @@ const wfSteps = [
 
                 indTl
                     .to(".media-1", { xPercent: -100, duration: 1 })
-                    .fromTo(".text-1", { autoAlpha: 1, x: 0 }, { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(".text-2", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
+                    .fromTo(
+                        ".text-1",
+                        { autoAlpha: 1, x: 0 },
+                        { autoAlpha: 0, x: -50, duration: 0.5 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".text-2",
+                        { autoAlpha: 0, x: 50 },
+                        { autoAlpha: 1, x: 0, duration: 0.5 },
+                        "<0.5",
+                    )
                     .to(".media-1", { autoAlpha: 0, duration: 0.5 })
                     .to(".text-2", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(".media-2", { autoAlpha: 0, xPercent: 0 }, { autoAlpha: 1, duration: 0.5 }, "<0.5")
-                    .fromTo(".text-3", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
+                    .fromTo(
+                        ".media-2",
+                        { autoAlpha: 0, xPercent: 0 },
+                        { autoAlpha: 1, duration: 0.5 },
+                        "<0.5",
+                    )
+                    .fromTo(
+                        ".text-3",
+                        { autoAlpha: 0, x: 50 },
+                        { autoAlpha: 1, x: 0, duration: 0.5 },
+                        "<0.5",
+                    )
                     .to(".media-2", { xPercent: -100, duration: 1 })
                     .to(".text-3", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(".text-4", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5");
+                    .fromTo(
+                        ".text-4",
+                        { autoAlpha: 0, x: 50 },
+                        { autoAlpha: 1, x: 0, duration: 0.5 },
+                        "<0.5",
+                    );
 
                 // ── Workflow animation ──
                 const WF_STEPS = 5;
@@ -1013,11 +1267,19 @@ const wfSteps = [
                 }
 
                 function getRot(y: number) {
-                    const ratio = Math.max(-0.99, Math.min(0.99, y / WF_RADIUS));
+                    const ratio = Math.max(
+                        -0.99,
+                        Math.min(0.99, y / WF_RADIUS),
+                    );
                     return Math.asin(ratio) * (180 / Math.PI);
                 }
 
-                gsap.set(".wf-step-0", { y: 0, x: 0, rotation: 0, transformOrigin: "left center" });
+                gsap.set(".wf-step-0", {
+                    y: 0,
+                    x: 0,
+                    rotation: 0,
+                    transformOrigin: "left center",
+                });
                 gsap.set(".wf-step-0 .wf-line", { autoAlpha: 1 });
                 gsap.set(".wf-step-0 .wf-dot", { opacity: 1 });
                 gsap.set(".wf-step-0 h3", { opacity: 1 });
@@ -1087,12 +1349,24 @@ const wfSteps = [
                         )
                         .to(
                             `.wf-step-${i}`,
-                            { autoAlpha: 0, y: -55, x: getX(-55), rotation: getRot(-55), duration: 0.35 },
+                            {
+                                autoAlpha: 0,
+                                y: -55,
+                                x: getX(-55),
+                                rotation: getRot(-55),
+                                duration: 0.35,
+                            },
                             t + 0.15,
                         );
                     wfTl.to(
                         `.wf-step-${i + 1}`,
-                        { autoAlpha: 1, y: 0, x: 0, rotation: 0, duration: 0.4 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            x: 0,
+                            rotation: 0,
+                            duration: 0.4,
+                        },
                         t + 0.45,
                     )
                         .to(
@@ -1123,7 +1397,13 @@ const wfSteps = [
                         const qX = getX(qY);
                         wfTl.to(
                             `.wf-step-${j}`,
-                            { autoAlpha: vis ? 1 : 0, y: qY, x: qX, rotation: getRot(qY), duration: 0.4 },
+                            {
+                                autoAlpha: vis ? 1 : 0,
+                                y: qY,
+                                x: qX,
+                                rotation: getRot(qY),
+                                duration: 0.4,
+                            },
                             t + 0.45,
                         )
                             .to(
@@ -1144,11 +1424,14 @@ const wfSteps = [
                 // ── Clear residual GSAP styles from any previous run ──
                 gsap.set(
                     ".agri-media-1, .agri-media-2, .agri-text-1, .agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5",
-                    { clearProps: "all" }
+                    { clearProps: "all" },
                 );
 
                 // ── Agricultura animation ──
-                gsap.set(".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2", { autoAlpha: 0 });
+                gsap.set(
+                    ".agri-text-2, .agri-text-3, .agri-text-4, .agri-text-5, .agri-media-2",
+                    { autoAlpha: 0 },
+                );
 
                 const agriTl = gsap.timeline({
                     scrollTrigger: {
@@ -1163,19 +1446,65 @@ const wfSteps = [
 
                 agriTl
                     .to(".agri-media-1", { xPercent: -100, duration: 1 })
-                    .fromTo(".agri-text-1", { autoAlpha: 1, x: 0 }, { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(".agri-text-2", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
+                    .fromTo(
+                        ".agri-text-1",
+                        { autoAlpha: 1, x: 0 },
+                        { autoAlpha: 0, x: -50, duration: 0.5 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".agri-text-2",
+                        { autoAlpha: 0, x: 50 },
+                        { autoAlpha: 1, x: 0, duration: 0.5 },
+                        "<0.5",
+                    )
                     .to(".agri-media-1", { autoAlpha: 0, duration: 0.5 })
-                    .to(".agri-text-2", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(".agri-media-2", { autoAlpha: 0, xPercent: 0 }, { autoAlpha: 1, duration: 0.5 }, "<0.5")
-                    .fromTo(".agri-text-3", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
+                    .to(
+                        ".agri-text-2",
+                        { autoAlpha: 0, x: -50, duration: 0.5 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".agri-media-2",
+                        { autoAlpha: 0, xPercent: 0 },
+                        { autoAlpha: 1, duration: 0.5 },
+                        "<0.5",
+                    )
+                    .fromTo(
+                        ".agri-text-3",
+                        { autoAlpha: 0, x: 50 },
+                        { autoAlpha: 1, x: 0, duration: 0.5 },
+                        "<0.5",
+                    )
                     .to(".agri-media-2", { xPercent: -100, duration: 1 })
-                    .to(".agri-text-3", { autoAlpha: 0, x: -50, duration: 0.5 }, "<")
-                    .fromTo(".agri-text-4", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, duration: 0.5 }, "<0.5")
+                    .to(
+                        ".agri-text-3",
+                        { autoAlpha: 0, x: -50, duration: 0.5 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".agri-text-4",
+                        { autoAlpha: 0, x: 50 },
+                        { autoAlpha: 1, x: 0, duration: 0.5 },
+                        "<0.5",
+                    )
                     .to(".agri-text-4", { autoAlpha: 0, y: -30, duration: 0.5 })
-                    .to(".agri-media-2", { xPercent: -50, left: "50%", scale: 1.1, duration: 1 }, "<")
-                    .fromTo(".agri-text-5", { autoAlpha: 0, y: 100 }, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.5")
-                    .to(".agri-media-2", { autoAlpha: 0, duration: 0.5 }, "+=0.3")
+                    .to(
+                        ".agri-media-2",
+                        { xPercent: -50, left: "50%", scale: 1.1, duration: 1 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".agri-text-5",
+                        { autoAlpha: 0, y: 100 },
+                        { autoAlpha: 1, y: 0, duration: 0.8 },
+                        "-=0.5",
+                    )
+                    .to(
+                        ".agri-media-2",
+                        { autoAlpha: 0, duration: 0.5 },
+                        "+=0.3",
+                    )
                     .to(".agri-text-5", { autoAlpha: 0, duration: 0.5 }, "<");
             }
 
@@ -1192,21 +1521,7 @@ const wfSteps = [
             }
         }
 
-        // Run animations on script execution
-        initAnimations();
-
-        // Clean up ScrollTriggers when navigating away
-        document.addEventListener("astro:before-swap", () => {
-            if (heroMm) {
-                heroMm.kill();
-                heroMm = null;
-            }
-            if (scrollerMm) {
-                scrollerMm.kill();
-                scrollerMm = null;
-            }
-            ScrollTrigger.getAll().forEach((st) => st.kill());
-            gsap.globalTimeline.clear();
-        }, { once: true });
+        // Roda na primeira carga E em cada navegação via View Transitions
+        document.addEventListener("DOMContentLoaded", initAnimations);
     </script>
 </Layout>

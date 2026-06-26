@@ -21,15 +21,16 @@ import SolucoesSectionEn from "../../components/SolucoesSectionEn.astro";
 import "../../styles/pages/iot.css";
 import LogoBigFallback from "../../images/logo-big.webp";
 import CarousselWorkflow from "../../components/carroussel/CarousselWorkflow.astro";
+import FaleConoscoBigEn from "../../components/FaleConoscoBigEn.astro";
 
 const wfSteps = [
     {
-        title: "Diagnostic",
+        title: "Assessment",
         desc: "We understand the business reality, operational challenges, and opportunities.",
     },
     {
         title: "Strategic Planning",
-        desc: "We define objectives, indicators, and priorities with clarity and alignment.",
+        desc: "We define goals, metrics, and priorities with clarity and alignment.",
     },
     {
         title: "Solution Design",
@@ -55,7 +56,8 @@ const wfSteps = [
         <div class="content">
             <h1>Our solutions</h1>
             <h3>
-                We architect strategy, connect data, and transform real operations.
+                We architect strategy, connect data, and transform real
+                operations.
             </h3>
         </div>
 
@@ -109,8 +111,8 @@ const wfSteps = [
                 <b>co-create</b> solutions
             </h2>
             <h3>
-                Our methodology combines strategy, technology, and agile execution
-                to ensure technically solid projects, aligned with the
+                Our methodology combines strategy, technology, and agile
+                execution to ensure technically solid projects, aligned with the
                 business and focused on real results.
             </h3>
         </div>
@@ -125,7 +127,7 @@ const wfSteps = [
                 playsinline
                 poster={EsferaImg.src}></video>
             <a href="#workflow" class="workflow-link">
-                Discover our workflow
+                Explore our workflow
                 <Icon name="arrow-down" class="workflow-arrow" />
             </a>
         </div>
@@ -144,7 +146,7 @@ const wfSteps = [
             <!-- Desktop -->
             <div class="wf-content">
                 <div class="wf-header">
-                    <h2>Our workflow</h2>
+                    <h2>How we work</h2>
                 </div>
                 <div class="wf-steps-area">
                     {
@@ -165,7 +167,7 @@ const wfSteps = [
             <!-- Mobile carousel -->
             <div class="wf-mobile-carousel">
                 <div class="wf-mobile-header">
-                    <h2>Our workflow</h2>
+                    <h2>How we work</h2>
                 </div>
                 <CarousselWorkflow
                     steps={wfSteps}
@@ -184,7 +186,7 @@ const wfSteps = [
         function initWorkflow() {
             ScrollTrigger.getAll()
                 .filter((st) =>
-                    st.vars?.trigger?.toString?.().includes?.("sol-workflow")
+                    st.vars?.trigger?.toString?.().includes?.("sol-workflow"),
                 )
                 .forEach((st) => st.kill());
 
@@ -202,11 +204,19 @@ const wfSteps = [
                 }
 
                 function getRot(y: number) {
-                    const ratio = Math.max(-0.99, Math.min(0.99, y / WF_RADIUS));
+                    const ratio = Math.max(
+                        -0.99,
+                        Math.min(0.99, y / WF_RADIUS),
+                    );
                     return Math.asin(ratio) * (180 / Math.PI);
                 }
 
-                gsap.set(".sol-workflow .wf-step-0", { y: 0, x: 0, rotation: 0, transformOrigin: "left center" });
+                gsap.set(".sol-workflow .wf-step-0", {
+                    y: 0,
+                    x: 0,
+                    rotation: 0,
+                    transformOrigin: "left center",
+                });
                 gsap.set(".sol-workflow .wf-step-0 .wf-line", { autoAlpha: 1 });
                 gsap.set(".sol-workflow .wf-step-0 .wf-dot", { opacity: 1 });
                 gsap.set(".sol-workflow .wf-step-0 h3", { opacity: 1 });
@@ -296,7 +306,13 @@ const wfSteps = [
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i + 1}`,
-                        { autoAlpha: 1, y: 0, x: 0, rotation: 0, duration: 0.4 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            x: 0,
+                            rotation: 0,
+                            duration: 0.4,
+                        },
                         t + 0.45,
                     )
                         .to(
@@ -384,5 +400,9 @@ const wfSteps = [
         </div>
     </div>
 
-    <FaleConoscoEn />
+    <FaleConoscoBigEn
+        title="Ready to digitize your business?"
+        subtitle="Talk to our team and discover how technology can work for your business."
+        buttonText="Talk to a specialist"
+    />
 </Layout>

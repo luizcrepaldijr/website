@@ -39,7 +39,7 @@ const solucoesData = [
                     "Estructuramos pipelines, modelos analíticos y capas de visualización que transforman datos brutos en insights accionables para la operación y toma de decisiones.",
             },
             {
-                title: "Entrenamiento y Bootcamp",
+                title: "Capacitación y bootcamp",
                 description:
                     "Capacitación técnica e estratégica para equipos, garantizando autonomía, adopción de las soluciones implementadas y sostenibilidad de la transformación digital.",
             },
@@ -108,7 +108,7 @@ const solucoesData = [
                     "Modelado y simulaciones avanzadas para probar escenarios, anticipar riesgos y optimizar soluciones antes de la implementación física.",
             },
             {
-                title: "Proyectos eléctricos, mecánicos y de automatización",
+                title: "Diseño eléctrico, mecánico y de automatización",
                 description:
                     "Proyectos completos e integrados, alineados a las necesidades de la operación y a las tecnologías involucradas.",
             },
@@ -118,7 +118,7 @@ const solucoesData = [
         id: "agricultura-40",
         title: "Agricultura 4.0",
         subtitle:
-            'Ayudamos a productores y operaciones agrícolas a tomar mejores decisiones usando datos reales del campo.',
+            "Ayudamos a productores y operaciones agrícolas a tomar mejores decisiones usando datos reales del campo.",
         description:
             "Aplicamos tecnología para transformar información del suelo y el clima en inteligencia práctica, permitiendo un mejor riego, reducción de desperdicios, aumento de la productividad y una operación más sostenible y predecible.",
         video: "/videos/home/agricultura-4-0.webm",
@@ -161,8 +161,14 @@ const solucoesData = [
         video: "/videos/iot/iot-hero.webm",
         image: IotImg,
         buttons: [
-            { text: "IoT para la industria", link: "/es/soluciones/iot?panel=ind" },
-            { text: "IoT para la agricultura", link: "/es/soluciones/iot?panel=agri" },
+            {
+                text: "IoT para la industria",
+                link: "/es/soluciones/iot?panel=ind",
+            },
+            {
+                text: "IoT para la agricultura",
+                link: "/es/soluciones/iot?panel=agri",
+            },
         ],
     },
     {
@@ -214,12 +220,12 @@ const solucoesData = [
         image: RealidadeDigitalImg,
         accordions: [
             {
-                title: "Entrenamiento en realidad virtual",
+                title: "Capacitación en realidad virtual",
                 description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
             {
-                title: "Orientación en realidad aumentada",
+                title: "Orientación con realidad aumentada",
                 description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
@@ -236,7 +242,7 @@ const solucoesData = [
         ],
         buttons: [
             {
-                text: "Saber más sobre este servicio",
+                text: "Obtén más información sobre este servicio",
                 link: "/es/soluciones/realidad-digital",
             },
         ],
@@ -304,13 +310,19 @@ const solucoesData = [
                                     set:html={solucao.description}
                                 />
 
-                                {solucao.accordions && (
-                                    solucao.id === "robotics" || solucao.id === "digital-reality" ? (
+                                {solucao.accordions &&
+                                    (solucao.id === "robotics" ||
+                                    solucao.id === "digital-reality" ? (
                                         <ul class="solucoes-list-items">
                                             {solucao.accordions.map((acc) => (
                                                 <li class="solucoes-list-item">
-                                                    <Icon name="arrow-right-2" class="solucoes-list-icon" />
-                                                    <span class="text">{acc.title}</span>
+                                                    <Icon
+                                                        name="arrow-right-2"
+                                                        class="solucoes-list-icon"
+                                                    />
+                                                    <span class="text">
+                                                        {acc.title}
+                                                    </span>
                                                 </li>
                                             ))}
                                         </ul>
@@ -319,12 +331,13 @@ const solucoesData = [
                                             {solucao.accordions.map((acc) => (
                                                 <Accordion
                                                     title={acc.title}
-                                                    description={acc.description}
+                                                    description={
+                                                        acc.description
+                                                    }
                                                 />
                                             ))}
                                         </div>
-                                    )
-                                )}
+                                    ))}
 
                                 {solucao.buttons && (
                                     <div class="buttons-wrapper">
@@ -333,8 +346,8 @@ const solucoesData = [
                                                 text={btn.text}
                                                 link={btn.link}
                                             />
-                                         ))}
-                                     </div>
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                         ))
@@ -395,13 +408,19 @@ const solucoesData = [
                         <h3 set:html={solucao.subtitle} />
                         <p set:html={solucao.description} />
 
-                        {solucao.accordions && (
-                            solucao.id === "robotics" || solucao.id === "digital-reality" ? (
+                        {solucao.accordions &&
+                            (solucao.id === "robotics" ||
+                            solucao.id === "digital-reality" ? (
                                 <ul class="solucoes-list-items">
                                     {solucao.accordions.map((acc) => (
                                         <li class="solucoes-list-item">
-                                            <Icon name="arrow-right-2" class="solucoes-list-icon" />
-                                            <span class="text">{acc.title}</span>
+                                            <Icon
+                                                name="arrow-right-2"
+                                                class="solucoes-list-icon"
+                                            />
+                                            <span class="text">
+                                                {acc.title}
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>
@@ -414,8 +433,7 @@ const solucoesData = [
                                         />
                                     ))}
                                 </div>
-                            )
-                        )}
+                            ))}
 
                         {solucao.buttons && (
                             <div class="accordion-wrapper">
@@ -698,7 +716,9 @@ const solucoesData = [
             gap: 12px;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.4);
-            transition: color 0.3s ease, font-size 0.3s ease;
+            transition:
+                color 0.3s ease,
+                font-size 0.3s ease;
             position: relative;
             cursor: pointer;
         }

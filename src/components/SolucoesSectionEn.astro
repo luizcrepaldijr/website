@@ -24,7 +24,7 @@ const solucoesData = [
         image: TransformacaoDigitalImg,
         accordions: [
             {
-                title: "Consulting",
+                title: "Advisory ",
                 description:
                     "We help consumer goods companies drive their digital transformation focusing on real impact. With practical experience in industrial operations, we define projects, technologies, and strategies that generate concrete results, through scalable and business-aligned roadmaps.",
             },
@@ -71,7 +71,7 @@ const solucoesData = [
                     "Development and programming adjustments necessary for integration and proper functioning of industrial systems.",
             },
             {
-                title: "Field and remote support",
+                title: "On-site and remote support",
                 description:
                     "Continuous technical support to ensure operational stability, rapid failure response, and maintenance of implemented systems.",
             },
@@ -88,12 +88,12 @@ const solucoesData = [
         image: EngenhariaImg,
         accordions: [
             {
-                title: "Project Management",
+                title: "Project management",
                 description:
                     "Technical management with focus on scope, time, cost, and quality, ensuring alignment between teams and efficient execution.",
             },
             {
-                title: "Conceptual and feasibility studies",
+                title: "Concept and feasibility studies",
                 description:
                     "Initial technical analyses to guide strategic decisions and evaluate project feasibility in an objective and applied way.",
             },
@@ -108,7 +108,7 @@ const solucoesData = [
                     "Advanced modeling and simulations to test scenarios, anticipate risks, and optimize solutions before physical implementation.",
             },
             {
-                title: "Electrical, mechanical, and automation projects",
+                title: "Electrical, mechanical, and automation design",
                 description:
                     "Complete and integrated projects, aligned with operation needs and the technologies involved.",
             },
@@ -162,7 +162,10 @@ const solucoesData = [
         image: IotImg,
         buttons: [
             { text: "IoT for industry", link: "/en/solutions/iot?panel=ind" },
-            { text: "IoT for agriculture", link: "/en/solutions/iot?panel=agri" },
+            {
+                text: "IoT for agriculture",
+                link: "/en/solutions/iot?panel=agri",
+            },
         ],
     },
     {
@@ -219,7 +222,7 @@ const solucoesData = [
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
             {
-                title: "Augmented reality guidance",
+                title: "Guidance with augmented reality",
                 description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             },
@@ -304,13 +307,19 @@ const solucoesData = [
                                     set:html={solucao.description}
                                 />
 
-                                {solucao.accordions && (
-                                    solucao.id === "robotics" || solucao.id === "digital-reality" ? (
+                                {solucao.accordions &&
+                                    (solucao.id === "robotics" ||
+                                    solucao.id === "digital-reality" ? (
                                         <ul class="solucoes-list-items">
                                             {solucao.accordions.map((acc) => (
                                                 <li class="solucoes-list-item">
-                                                    <Icon name="arrow-right-2" class="solucoes-list-icon" />
-                                                    <span class="text">{acc.title}</span>
+                                                    <Icon
+                                                        name="arrow-right-2"
+                                                        class="solucoes-list-icon"
+                                                    />
+                                                    <span class="text">
+                                                        {acc.title}
+                                                    </span>
                                                 </li>
                                             ))}
                                         </ul>
@@ -319,12 +328,13 @@ const solucoesData = [
                                             {solucao.accordions.map((acc) => (
                                                 <Accordion
                                                     title={acc.title}
-                                                    description={acc.description}
+                                                    description={
+                                                        acc.description
+                                                    }
                                                 />
                                             ))}
                                         </div>
-                                    )
-                                )}
+                                    ))}
 
                                 {solucao.buttons && (
                                     <div class="buttons-wrapper">
@@ -395,13 +405,19 @@ const solucoesData = [
                         <h3 set:html={solucao.subtitle} />
                         <p set:html={solucao.description} />
 
-                        {solucao.accordions && (
-                            solucao.id === "robotics" || solucao.id === "digital-reality" ? (
+                        {solucao.accordions &&
+                            (solucao.id === "robotics" ||
+                            solucao.id === "digital-reality" ? (
                                 <ul class="solucoes-list-items">
                                     {solucao.accordions.map((acc) => (
                                         <li class="solucoes-list-item">
-                                            <Icon name="arrow-right-2" class="solucoes-list-icon" />
-                                            <span class="text">{acc.title}</span>
+                                            <Icon
+                                                name="arrow-right-2"
+                                                class="solucoes-list-icon"
+                                            />
+                                            <span class="text">
+                                                {acc.title}
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>
@@ -414,8 +430,7 @@ const solucoesData = [
                                         />
                                     ))}
                                 </div>
-                            )
-                        )}
+                            ))}
 
                         {solucao.buttons && (
                             <div class="accordion-wrapper">
@@ -698,7 +713,9 @@ const solucoesData = [
             gap: 12px;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.4);
-            transition: color 0.3s ease, font-size 0.3s ease;
+            transition:
+                color 0.3s ease,
+                font-size 0.3s ease;
             position: relative;
             cursor: pointer;
         }

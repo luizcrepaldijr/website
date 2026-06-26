@@ -21,6 +21,7 @@ import SolucoesSection from "../components/SolucoesSection.astro";
 import "../styles/pages/iot.css";
 import LogoBigFallback from "../images/logo-big.webp";
 import CarousselWorkflow from "../components/carroussel/CarousselWorkflow.astro";
+import FaleConoscoBig from "../components/FaleConoscoBig.astro";
 
 const wfSteps = [
     {
@@ -203,11 +204,19 @@ const wfSteps = [
                 }
 
                 function getRot(y: number) {
-                    const ratio = Math.max(-0.99, Math.min(0.99, y / WF_RADIUS));
+                    const ratio = Math.max(
+                        -0.99,
+                        Math.min(0.99, y / WF_RADIUS),
+                    );
                     return Math.asin(ratio) * (180 / Math.PI);
                 }
 
-                gsap.set(".sol-workflow .wf-step-0", { y: 0, x: 0, rotation: 0, transformOrigin: "left center" });
+                gsap.set(".sol-workflow .wf-step-0", {
+                    y: 0,
+                    x: 0,
+                    rotation: 0,
+                    transformOrigin: "left center",
+                });
                 gsap.set(".sol-workflow .wf-step-0 .wf-line", { autoAlpha: 1 });
                 gsap.set(".sol-workflow .wf-step-0 .wf-dot", { opacity: 1 });
                 gsap.set(".sol-workflow .wf-step-0 h3", { opacity: 1 });
@@ -297,7 +306,13 @@ const wfSteps = [
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i + 1}`,
-                        { autoAlpha: 1, y: 0, x: 0, rotation: 0, duration: 0.4 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            x: 0,
+                            rotation: 0,
+                            duration: 0.4,
+                        },
                         t + 0.45,
                     )
                         .to(
@@ -385,5 +400,9 @@ const wfSteps = [
         </div>
     </div>
 
-    <FaleConosco />
+    <FaleConoscoBig
+        title="Pronto para digitalizar o seu negócio?"
+        subtitle="Fale com nossa equipe e descubra como a tecnologia pode trabalhar a favor do seu negócio."
+        buttonText="Falar com um especialista"
+    />
 </Layout>

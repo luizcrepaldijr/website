@@ -21,6 +21,7 @@ import SolucoesSectionEs from "../../components/SolucoesSectionEs.astro";
 import "../../styles/pages/iot.css";
 import LogoBigFallback from "../../images/logo-big.webp";
 import CarousselWorkflow from "../../components/carroussel/CarousselWorkflow.astro";
+import FaleConoscoBigEs from "../../components/FaleConoscoBigEs.astro";
 
 const wfSteps = [
     {
@@ -55,7 +56,8 @@ const wfSteps = [
         <div class="content">
             <h1>Nuestras soluciones</h1>
             <h3>
-                Arquitectamos estrategia, conectamos datos y transformamos operaciones reales.
+                Arquitecturamos la estrategia, conectamos datos y transformamos
+                operaciones reales.
             </h3>
         </div>
 
@@ -109,8 +111,8 @@ const wfSteps = [
                 <b>co-creamos</b> soluciones
             </h2>
             <h3>
-                Nuestra metodología combina estrategia, tecnología y ejecución ágil
-                para asegurar proyectos técnicamente sólidos, alineados al
+                Nuestra metodología combina estrategia, tecnología y ejecución
+                ágil para asegurar proyectos técnicamente sólidos, alineados al
                 negocio y enfocados en resultados reales.
             </h3>
         </div>
@@ -184,7 +186,7 @@ const wfSteps = [
         function initWorkflow() {
             ScrollTrigger.getAll()
                 .filter((st) =>
-                    st.vars?.trigger?.toString?.().includes?.("sol-workflow")
+                    st.vars?.trigger?.toString?.().includes?.("sol-workflow"),
                 )
                 .forEach((st) => st.kill());
 
@@ -202,11 +204,19 @@ const wfSteps = [
                 }
 
                 function getRot(y: number) {
-                    const ratio = Math.max(-0.99, Math.min(0.99, y / WF_RADIUS));
+                    const ratio = Math.max(
+                        -0.99,
+                        Math.min(0.99, y / WF_RADIUS),
+                    );
                     return Math.asin(ratio) * (180 / Math.PI);
                 }
 
-                gsap.set(".sol-workflow .wf-step-0", { y: 0, x: 0, rotation: 0, transformOrigin: "left center" });
+                gsap.set(".sol-workflow .wf-step-0", {
+                    y: 0,
+                    x: 0,
+                    rotation: 0,
+                    transformOrigin: "left center",
+                });
                 gsap.set(".sol-workflow .wf-step-0 .wf-line", { autoAlpha: 1 });
                 gsap.set(".sol-workflow .wf-step-0 .wf-dot", { opacity: 1 });
                 gsap.set(".sol-workflow .wf-step-0 h3", { opacity: 1 });
@@ -296,7 +306,13 @@ const wfSteps = [
 
                     wfTl.to(
                         `.sol-workflow .wf-step-${i + 1}`,
-                        { autoAlpha: 1, y: 0, x: 0, rotation: 0, duration: 0.4 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            x: 0,
+                            rotation: 0,
+                            duration: 0.4,
+                        },
                         t + 0.45,
                     )
                         .to(
@@ -384,5 +400,9 @@ const wfSteps = [
         </div>
     </div>
 
-    <FaleConoscoEs />
+    <FaleConoscoBigEs
+        title="¿Listo para digitalizar tu negocio?"
+        subtitle="Habla con nuestro equipo y descubre cómo la tecnología puede trabajar a favor de tu negocio."
+        buttonText="Hablar con un especialista"
+    />
 </Layout>

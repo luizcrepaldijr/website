@@ -29,7 +29,9 @@ const enCases = await getCollection("cases", ({ id }) => {
                     <Badge text="Success Stories" />
                     <h2>Results that <b>transform businesses</b></h2>
                     <h3>
-                        Real cases demonstrating how we apply technology, intelligence, and data to structure efficiency, governance, and competitive advantage.
+                        Real cases demonstrating how we apply technology,
+                        intelligence, and data to build efficiency, governance,
+                        and competitive advantage.
                     </h3>
                 </div>
 
@@ -59,57 +61,68 @@ const enCases = await getCollection("cases", ({ id }) => {
 
     <!-- CASES LIST -->
     <div class="cases-list container-boxed">
-        <h2>Success Stories</h2>
+        <h2>Success case studies</h2>
         <p>
-            More than just implementing solutions, we build solid foundations for
-            efficiency, scalability, and strategic decision-making.
+            More than just implementing solutions, we build solid foundations
+            for efficiency, scalability, and strategic decision-making.
         </p>
 
-        {enCases.map(entry => (
-            <div class="case-card">
-                <div class="case-card-img-wrapper">
-                    <Image src={entry.data.image} alt={entry.data.title} class="case-card-img" />
-                </div>
-                <div class="case-card-content">
-                    <div class="case-card-badges">
-                        {entry.data.badges.map((badge: string) => (
-                            <Badge2 text={badge} />
-                        ))}
-                    </div>
-                    <h3><b>{entry.data.title}</b>{entry.data.subtitle ? ` ${entry.data.subtitle}` : ""}</h3>
-                    <div class="case-card-detail">
-                        <strong>Challenge</strong>
-                        <p>{entry.data.challenge}</p>
-                    </div>
-                    <div class="case-card-detail">
-                        <strong>Solution</strong>
-                        <p>{entry.data.solution}</p>
-                    </div>
-                    <div class="case-card-detail">
-                        <strong>Result</strong>
-                        <p>{entry.data.result}</p>
-                    </div>
-                    <div class="case-card-btn">
-                        <ButtonArrowWhite 
-                            text="Read more" 
-                            link={`/en/cases/${entry.id.replace('en/', '')}`} 
+        {
+            enCases.map((entry) => (
+                <div class="case-card">
+                    <div class="case-card-img-wrapper">
+                        <Image
+                            src={entry.data.image}
+                            alt={entry.data.title}
+                            class="case-card-img"
                         />
                     </div>
+                    <div class="case-card-content">
+                        <div class="case-card-badges">
+                            {entry.data.badges.map((badge: string) => (
+                                <Badge2 text={badge} />
+                            ))}
+                        </div>
+                        <h3>
+                            <b>{entry.data.title}</b>
+                            {entry.data.subtitle
+                                ? ` ${entry.data.subtitle}`
+                                : ""}
+                        </h3>
+                        <div class="case-card-detail">
+                            <strong>Challenge</strong>
+                            <p>{entry.data.challenge}</p>
+                        </div>
+                        <div class="case-card-detail">
+                            <strong>Solution</strong>
+                            <p>{entry.data.solution}</p>
+                        </div>
+                        <div class="case-card-detail">
+                            <strong>Result</strong>
+                            <p>{entry.data.result}</p>
+                        </div>
+                        <div class="case-card-btn">
+                            <ButtonArrowWhite
+                                text="Read more"
+                                link={`/en/cases/${entry.id.replace("en/", "")}`}
+                            />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        ))}
+            ))
+        }
     </div>
 
     <!-- TECHNOLOGIES -->
     <div class="cases-tecnologias container-boxed">
         <div class="content-desktop">
-            <h3>Specialists in</h3>
+            <h3>Experts in</h3>
             <h2>20+</h2>
             <h4>technologies</h4>
         </div>
 
         <div class="content-mobile">
-            <h3>Specialists in <br /> <span>20+</span> technologies</h3>
+            <h3>Experts in <br /> <span>20+</span> technologies</h3>
         </div>
 
         <div class="tecnologias-img-wrapper">
@@ -128,8 +141,8 @@ const enCases = await getCollection("cases", ({ id }) => {
 
     <!-- CONTACT US -->
     <FaleConosco
-        title="Ready to transform your challenge into real results?"
-        subtitle="Talk to our team and discover how technology can work for your business."
+        title="Ready to turn your challenge into real results?"
+        subtitle="Talk to our team and discover how technology can work in favor of your business."
         buttonText="Discuss my challenge"
     />
 </Layout>

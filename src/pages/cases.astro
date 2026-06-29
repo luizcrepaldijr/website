@@ -30,8 +30,8 @@ const ptCases = await getCollection("cases", ({ id }) => {
                     <h2>Resultados que <b>transformam negócios</b></h2>
                     <h3>
                         Cases reais que demonstram como aplicamos tecnologia,
-                        inteligência e dados para estruturar eficiência, governança
-                        e vantagem competitiva.
+                        inteligência e dados para estruturar eficiência,
+                        governança e vantagem competitiva.
                     </h3>
                 </div>
 
@@ -83,7 +83,12 @@ const ptCases = await getCollection("cases", ({ id }) => {
                                 <Badge2 text={badge} />
                             ))}
                         </div>
-                        <h3><b>{entry.data.title}</b>{entry.data.subtitle ? ` ${entry.data.subtitle}` : ""}</h3>
+                        <h3>
+                            <b>{entry.data.title}</b>
+                            {entry.data.subtitle
+                                ? ` ${entry.data.subtitle}`
+                                : ""}
+                        </h3>
                         <div class="case-card-detail">
                             <strong>Desafio</strong>
                             <p>{entry.data.challenge}</p>

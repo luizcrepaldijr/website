@@ -8,6 +8,9 @@ import "../styles/variables.css";
 import "../styles/global.css";
 import Header from "../components/header/Header.astro";
 import Footer from "../components/Footer.astro";
+import FooterEn from "../components/FooterEn.astro";
+import FooterEs from "../components/FooterEs.astro";
+import { getLangFromUrl } from "../i18n/utils";
 
 interface Props {
   title?: string;
@@ -15,6 +18,7 @@ interface Props {
 
 const { title } = Astro.props;
 const pageTitle = title ? `${title} - Transformatech` : "Transformatech";
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <html lang="pt-br">
@@ -31,7 +35,7 @@ const pageTitle = title ? `${title} - Transformatech` : "Transformatech";
   <body>
     <Header />
     <slot />
-    <Footer />
+    {lang === "en" ? <FooterEn /> : lang === "es" ? <FooterEs /> : <Footer />}
     <script>
       import gsap from "gsap";
       import TextPlugin from "gsap/TextPlugin";

@@ -31,6 +31,11 @@ const localizePath = useTranslatedPath(lang);
       <CaretDown class="caret" color="white" />
     </a>
     <div class="dropdown-menu">
+      <a href={localizePath("/solucoes")}>{t("nav.solutions_all")}</a>
+      <a href={`${localizePath("/solucoes")}${t("hash.transformacao")}`}>{t("nav.solutions_transformacao")}</a>
+      <a href={`${localizePath("/solucoes")}${t("hash.industria")}`}>{t("nav.solutions_industria")}</a>
+      <a href={`${localizePath("/solucoes")}${t("hash.engenharia")}`}>{t("nav.solutions_engenharia")}</a>
+      <a href={`${localizePath("/solucoes")}${t("hash.agricultura")}`}>{t("nav.solutions_agricultura")}</a>
       <a href={localizePath("/solucoes/iot")}>{t("nav.iot")}</a>
       <a href={localizePath("/solucoes/realidade-digital")}>{t("nav.digital_reality")}</a>
       <a href={localizePath("/solucoes/robotica")}>{t("nav.robotics")}</a>

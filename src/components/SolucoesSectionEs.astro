@@ -299,7 +299,7 @@ const solucoesData = [
                 <div class="solucoes-panels">
                     {
                         solucoesData.map((solucao, index) => (
-                            <div class="solucoes-panel" data-index={index}>
+                            <div class="solucoes-panel" data-index={index} data-id={solucao.id}>
                                 <h2 class="panel-title">{solucao.title}</h2>
                                 <h3
                                     class="panel-subtitle"
@@ -386,7 +386,7 @@ const solucoesData = [
     <div class="solucoes-mobile container-boxed">
         {
             solucoesData.map((solucao) => (
-                <div class="solucoes-item">
+                <div class="solucoes-item" id={solucao.id}>
                     {solucao.video ? (
                         <video
                             src={solucao.video}
@@ -921,6 +921,28 @@ const solucoesData = [
                 if (i === index) (el as HTMLElement).classList.add("active");
                 else (el as HTMLElement).classList.remove("active");
             });
+        }
+
+        // Handle initial hash routing
+        const hash = window.location.hash;
+        if (hash) {
+            const targetId = hash.slice(1);
+            const targetPanel = panels.find(
+                (panel) => (panel as HTMLElement).dataset.id === targetId
+            );
+            if (targetPanel) {
+                const index = parseInt((targetPanel as HTMLElement).dataset.index || "0", 10);
+                setTimeout(() => {
+                    const start = trigger.start;
+                    const end = trigger.end;
+                    const progress = (index + 0.1) / totalItems;
+                    const targetScroll = start + progress * (end - start);
+                    window.scrollTo({
+                        top: targetScroll,
+                        behavior: "auto",
+                    });
+                }, 100);
+            }
         }
     }
 

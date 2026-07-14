@@ -7,6 +7,8 @@ const casesCollection = defineCollection({
     title: z.string(),
     subtitle: z.string().optional(),
     heroSubtitle: z.string().optional(),
+    homeTitle: z.string().optional(),
+    featured: z.boolean().optional(),
     badges: z.array(z.string()),
     description: z.string(),
     challenge: z.string(),

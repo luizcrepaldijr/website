@@ -18,13 +18,11 @@ import CarousselTeam from "../../components/carroussel/CarousselTeam.astro";
 import mapPin from "../../images/sobrenos/map-pin.webp";
 
 // Team Images
-import alejandroMoreno from "../../images/sobrenos/equipe/alejandro_moreno.webp";
 import anaLima from "../../images/sobrenos/equipe/ana_lima.webp";
 import caioBeserra from "../../images/sobrenos/equipe/caio_beserra.webp";
 import carlosNogueira from "../../images/sobrenos/equipe/carlos_nogueira.webp";
 import christianCastilho from "../../images/sobrenos/equipe/christian_castilho.webp";
 import dianaOliveira from "../../images/sobrenos/equipe/diana.webp";
-import leonardoReigada from "../../images/sobrenos/equipe/leonardo.webp";
 import luizCrepaldi from "../../images/sobrenos/equipe/luiz_crepaldi.webp";
 import marioOliveira from "../../images/sobrenos/equipe/mario_oliveira.webp";
 import matheusBraz from "../../images/sobrenos/equipe/matheus_braz.webp";
@@ -33,37 +31,10 @@ import pedroNascimento from "../../images/sobrenos/equipe/pedro_nascimento.webp"
 import vitorCarlos from "../../images/sobrenos/equipe/victor_carlos.webp";
 import ParceirosImg from "../../images/sobrenos/parceria.webp";
 
-// Import marquee images
-import m1_1 from "../../images/sobrenos/marquee/marquee-1-img-1.webp";
-import m1_2 from "../../images/sobrenos/marquee/marquee-1-img-2.webp";
-import m1_3 from "../../images/sobrenos/marquee/marquee-1-img-3.webp";
-import m1_4 from "../../images/sobrenos/marquee/marquee-1-img-4.webp";
-import m1_5 from "../../images/sobrenos/marquee/marquee-1-img-5.webp";
-import m1_6 from "../../images/sobrenos/marquee/marquee-1-img-6.webp";
-
-import m2_1 from "../../images/sobrenos/marquee/marquee-2-img-1.webp";
-import m2_2 from "../../images/sobrenos/marquee/marquee-2-img-2.webp";
-import m2_3 from "../../images/sobrenos/marquee/marquee-2-img-3.webp";
-import m2_4 from "../../images/sobrenos/marquee/marquee-2-img-4.webp";
-import m2_5 from "../../images/sobrenos/marquee/marquee-2-img-5.webp";
-import m2_6 from "../../images/sobrenos/marquee/marquee-2-img-6.webp";
 import Badge from "../../components/Badge.astro";
 import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
 
-const column1 = [m1_1, m1_2, m1_3, m1_4, m1_5, m1_6];
-const column2 = [m2_1, m2_2, m2_3, m2_4, m2_5, m2_6];
-
 const teamMembers = [
-    {
-        name: "Alejandro Moreno",
-        role: "XR Developer",
-        description:
-            "Unity developer, passionate about innovation and immersive experiences. Naturally curious, always looking to transform complex ideas into real projects.",
-        image: alejandroMoreno,
-        linkedin: "#",
-        instagram: "#",
-        facebook: "#",
-    },
     {
         name: "Ana Paula Lima",
         role: "Digital Solution Architect",
@@ -110,16 +81,6 @@ const teamMembers = [
         description:
             "Passionate about challenges and finding paths beyond the obvious, she creates innovative solutions and clear, efficient processes that help companies make better decisions.",
         image: dianaOliveira,
-        linkedin: "#",
-        instagram: "#",
-        facebook: "#",
-    },
-    {
-        name: "Leonardo Reigada",
-        role: "Cybersecurity Consultant",
-        description:
-            "Cyber Security Officer with solid experience in OT, IoT, engineering, and digital transformation. Results-driven servant leader, acting regionally as CSO leading strategic projects, risk mitigation, and business continuity, besides building high-performance teams.",
-        image: leonardoReigada,
         linkedin: "#",
         instagram: "#",
         facebook: "#",
@@ -185,6 +146,9 @@ const teamMembers = [
         facebook: "#",
     },
 ];
+
+const column1 = teamMembers.slice(0, Math.ceil(teamMembers.length / 2)).map(member => member.image);
+const column2 = teamMembers.slice(Math.ceil(teamMembers.length / 2)).map(member => member.image);
 ---
 
 <Layout title="About Us">

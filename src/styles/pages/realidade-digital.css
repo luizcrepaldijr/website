@@ -619,23 +619,58 @@ body {
         }
 
         .rd-top-row {
-            flex-direction: column-reverse;
-            gap: 32px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            justify-items: center;
         }
 
         .rd-content {
+            display: contents;
+        }
+
+        .rd-badge {
+            order: 1;
+        }
+
+        .rd-video-wrapper {
+            order: 2;
+        }
+
+        .rd-content h2 {
+            order: 3;
             text-align: center;
-            align-items: center;
+        }
+
+        .rd-content h3 {
+            order: 4;
+            text-align: center;
+        }
+
+        .rd-content p {
+            order: 5;
+            text-align: center;
+        }
+
+        .rd-video {
+            max-width: 180px;
+        }
+
+        .rd-meta-quest-label {
+            display: none;
         }
 
         .rd-checklist {
             grid-template-columns: 1fr;
+            gap: 16px;
         }
 
         .rd-checklist-item {
             flex-direction: row;
             align-items: center;
             gap: 12px;
+            border: 1px solid #FFFFFF40;
+            border-radius: 8px;
 
             span {
                 font-size: 16px;
@@ -644,7 +679,6 @@ body {
 
         .rd-checklist-item+.rd-checklist-item {
             border-left: 1px solid #FFFFFF40;
-            border-top: none;
         }
     }
 

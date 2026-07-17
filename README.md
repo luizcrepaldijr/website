@@ -1,160 +1,194 @@
 # Transformatech
 
-Site institucional da **Transformatech** — empresa de tecnologia especializada em **IoT**, **Robótica** e **Realidade Digital**. Desenvolvido com Astro, com suporte a múltiplos idiomas (PT 🇧🇷 · EN 🇺🇸 · ES 🇦🇷) e animações avançadas via GSAP.
+Site institucional da Transformatech, empresa de tecnologia especializada em Internet das Coisas (IoT), Robotica e Realidade Digital. O projeto foi desenvolvido utilizando o framework Astro, com geracao de site estatico (SSG), animacoes avancadas por meio do GSAP e suporte nativo a multiplos idiomas (PT, EN, ES).
 
 ---
 
-## 🚀 Tecnologias
+## Stack Tecnica
 
-| Tecnologia | Versão | Uso |
-|---|---|---|
-| [Astro](https://astro.build) | ^5.17 | Framework principal (SSG) |
-| [GSAP](https://gsap.com) | ^3.14 | Animações e scroll-triggered effects |
-| [Lenis](https://lenis.darkroom.engineering) | ^1.3 | Smooth scroll |
-| [Embla Carousel](https://www.embla-carousel.com) | ^8.6 | Carrosseis interativos |
-| [astro-icon](https://github.com/natemoo-re/astro-icon) | ^1.1 | Sistema de ícones SVG |
-| [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) | ^4.3 | Conteúdo em Markdown/MDX (cases) |
-| [Raleway](https://fonts.google.com/specimen/Raleway) | ^5.2 | Tipografia principal |
-| Vanilla CSS | — | Estilização (sem frameworks CSS) |
+* **Framework Principal**: Astro (^5.17)
+* **Animacoes**: GSAP (^3.14) com ScrollTrigger
+* **Rolagem Suave**: Lenis (^1.3)
+* **Carrosseis**: Embla Carousel (^8.6)
+* **Iconografia**: astro-icon (^1.1) para renderizacao de SVGs inline
+* **Processamento de Conteudo**: MDX (@astrojs/mdx ^4.3) para publicacao de cases dinamicos
+* **Tipografia**: Raleway via @fontsource
+* **Estilizacao**: Vanilla CSS (sem frameworks adicionais de CSS, com suporte nativo a nesting)
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 transformatech/
-├── public/                   # Arquivos estáticos (vídeos, favicons, etc.)
-│   └── videos/               # Vídeos WebM usados nas animações das páginas
+├── public/                     # Arquivos estaticos expostos diretamente
+│   └── videos/                 # Videos WebM otimizados para animacoes de fundo
 │       ├── iot/
 │       ├── robotica/
 │       └── realidade-digital/
 ├── src/
-│   ├── components/           # Componentes reutilizáveis
-│   │   ├── buttons/          # Botões animados
-│   │   ├── carroussel/       # Carrossel de workflow
-│   │   ├── header/           # Navegação / Header
-│   │   ├── Accordion.astro
+│   ├── components/             # Componentes da aplicacao
+│   │   ├── buttons/            # Botoes customizados com animacoes especificas
+│   │   ├── carroussel/         # Carrosseis de workflow e cases
+│   │   ├── header/             # Barra de navegacao e seletores de idioma
+│   │   ├── Accordion.astro     # Componente generico de sanfona
 │   │   ├── Badge.astro
-│   │   ├── Counter.astro
-│   │   ├── FaleConosco.astro # Formulário de contato (PT/EN/ES)
-│   │   ├── Footer.astro
-│   │   ├── SolucoesSection.astro
-│   │   ├── TeamCard.astro
-│   │   └── TestimonialsMarquee.astro
-│   ├── content/              # Conteúdo MDX (cases / blog)
-│   ├── i18n/                 # Helpers de internacionalização
-│   │   ├── ui.ts             # Strings da UI por idioma
-│   │   └── utils.ts          # Utilitários de rota i18n
-│   ├── images/               # Imagens estáticas (WebP)
-│   ├── icons/                # Ícones SVG customizados
+│   │   ├── Counter.astro       # Contador numerico animado
+│   │   ├── FaleConosco.astro   # Secao de contato em Portugues
+│   │   ├── FaleConoscoEn.astro # Secao de contato em Ingles
+│   │   ├── FaleConoscoEs.astro # Secao de contato em Espanhol
+│   │   ├── Footer.astro        # Rodape em Portugues
+│   │   ├── FooterEn.astro      # Rodape em Ingles
+│   │   ├── FooterEs.astro      # Rodape em Espanhol
+│   │   ├── SolucoesSection.astro    # Seletor interativo de solucoes em Portugues
+│   │   ├── SolucoesSectionEn.astro  # Seletor interativo de solucoes em Ingles
+│   │   ├── SolucoesSectionEs.astro  # Seletor interativo de solucoes em Espanhol
+│   │   ├── TeamCard.astro      # Card de apresentacao de membro do time
+│   │   └── TestimonialsMarquee.astro# Area de depoimentos com efeito marquee
+│   ├── content/                # Arquivos MDX para definicao dos Cases
+│   ├── i18n/                   # Utilitarios e dicionarios de traducao
+│   │   ├── ui.ts               # Dicionarios de termos estaticos da interface
+│   │   └── utils.ts            # Helpers de resolucao de rotas e prefixos
+│   ├── images/                 # Imagens estaticas em formato WebP
+│   ├── icons/                  # Icones SVG customizados utilizados pelo astro-icon
 │   ├── layouts/
-│   │   └── Layout.astro      # Layout base (head, SEO, fontes)
-│   ├── pages/
-│   │   ├── index.astro       # Home (PT)
-│   │   ├── sobre-nos.astro   # Sobre Nós (PT)
-│   │   ├── solucoes.astro    # Soluções hub (PT)
-│   │   ├── cases.astro       # Cases (PT)
-│   │   ├── cases/[slug].astro # Case individual (PT)
-│   │   ├── solucoes/
-│   │   │   ├── iot.astro
-│   │   │   ├── robotica.astro
-│   │   │   └── realidade-digital.astro
-│   │   ├── en/               # Versão em inglês
-│   │   │   ├── index.astro
-│   │   │   ├── about-us.astro
-│   │   │   ├── solutions.astro
-│   │   │   ├── cases.astro
-│   │   │   └── solutions/
-│   │   │       ├── iot.astro
-│   │   │       ├── robotics.astro
-│   │   │       └── digital-reality.astro
-│   │   └── es/               # Versão em espanhol
-│   │       ├── index.astro
-│   │       ├── sobre-nosotros.astro
-│   │       ├── soluciones.astro
-│   │       ├── cases.astro
-│   │       └── soluciones/
-│   │           ├── iot.astro
-│   │           ├── robotica.astro
-│   │           └── realidad-digital.astro
-│   └── styles/
-│       ├── global.css        # Reset e estilos base
-│       ├── variables.css     # Design tokens (cores, espaçamentos)
-│       └── pages/            # CSS por página (iot.css, robotica.css, etc.)
-├── astro.config.mjs
+│   │   └── Layout.astro        # Layout basico e inicializacao de scripts globais
+│   ├── pages/                  # Estrutura de rotas da aplicacao (PT por padrao)
+│   │   ├── en/                 # Rotas com prefixo /en/ (Ingles)
+│   │   ├── es/                 # Rotas com prefixo /es/ (Espanhol)
+│   │   └── solucoes/           # Subpaginas especificas de cada vertical tecnologica
+│   └── styles/                 # Diretório centralizador de estilos CSS
+│       ├── components/         # CSS compartilhado por componentes multilingues (Novo)
+│       │   ├── fale-conosco.css
+│       │   ├── fale-conosco-big.css
+│       │   ├── footer.css
+│       │   └── solucoes-section.css
+│       ├── pages/              # Estilos isolados por pagina (ex: iot.css, home.css)
+│       ├── global.css          # Estilos gerais de reset e tipografia global
+│       └── variables.css       # Tokens de design (paleta de cores, tipografia, breakpoints)
+├── astro.config.mjs            # Configuracoes do Astro e integracoes (MDX, Icon)
 ├── package.json
 └── tsconfig.json
 ```
 
 ---
 
-## 🌐 Rotas e Idiomas
+## Arquitetura de Internacionalizacao (i18n)
 
-O site suporta 3 idiomas com rotas separadas:
+O site adota uma abordagem de rotas estaticas explicitas para lidar com multiplos idiomas. Cada pagina ou estrutura possui seu correspondente dentro de subdiretorios especificos (`src/pages/en/` e `src/pages/es/`).
 
-| Idioma | Prefixo | Exemplo |
+### Roteamento e Idiomas Suportados
+
+| Idioma | Prefixo na URL | Pagina Exemplo |
 |---|---|---|
-| Português (padrão) | `/` | `/solucoes/iot` |
-| Inglês | `/en/` | `/en/solutions/iot` |
+| Portugues (Padrao) | `/` | `/solucoes/iot` |
+| Ingles | `/en/` | `/en/solutions/iot` |
 | Espanhol | `/es/` | `/es/soluciones/iot` |
 
----
+### Dicionarios e Utilitarios de Traducao
 
-## 📄 Páginas
-
-| Página | Descrição |
-|---|---|
-| **Home** | Apresentação da empresa, serviços e CTA |
-| **Soluções** | Hub das 3 soluções principais |
-| **IoT** | Página detalhada de Internet das Coisas com scroll animations |
-| **Robótica** | Página de soluções em robótica |
-| **Realidade Digital** | Página de realidade aumentada/virtual |
-| **Cases** | Portfólio de cases com rotas dinâmicas via MDX |
-| **Sobre Nós** | Apresentação da equipe e valores |
+As definicoes de chaves estaticas estao centralizadas no arquivo `src/i18n/ui.ts`. Os utilitarios em `src/i18n/utils.ts` disponibilizam helpers cruciais para o desenvolvimento:
+* `getLangFromUrl(url)`: Analisa a URL atual e retorna o idioma ativo (`pt-br`, `en`, ou `es`).
+* `useTranslations(lang)`: Retorna uma funcao de traducao estatica baseada na chave fornecida no arquivo `ui.ts`.
+* `useTranslatedPath(lang)`: Gera caminhos de navegacao com os prefixos corretos para manter o usuario no idioma atual ao clicar em links.
 
 ---
 
-## ⚙️ Comandos
+## Gerenciamento de Estilos de Componentes
+
+Para otimizar o fluxo de manutencao e evitar redundancias no codigo, os componentes que possuem arquivos separados por idioma (`Footer.astro`, `FooterEn.astro`, `FooterEs.astro`, etc.) **nao** devem conter blocos `<style>` declarados de forma individual dentro de cada arquivo Astro.
+
+Os estilos sao centralizados na pasta `src/styles/components/` e importados no bloco frontmatter (javascript/typescript) do Astro.
+
+### Como funciona a importacao de estilos
+
+Exemplo de estrutura no topo do componente:
+```astro
+---
+import { Image } from "astro:assets";
+import { useTranslatedPath } from "../i18n/utils";
+import "../styles/components/footer.css"; // Estilo unificado
+
+const translatePath = useTranslatedPath("en");
+---
+<footer class="container">
+    <!-- Estrutura HTML -->
+</footer>
+```
+
+### Regras para Edicao e Criacao de Componentes
+
+Ao realizar manutencao ou criar novos modulos na interface do site:
+
+1. **Alteracoes Visuais**: Modifique apenas o arquivo correspondente em `src/styles/components/`. A alteracao sera propagada automaticamente para as versoes em Portugues, Ingles e Espanhol do componente.
+2. **Diferencas de Idioma na Estrutura**: Caso existam particularidades estruturais de texto ou tags especificas de um idioma no layout, manipule apenas as tags HTML do respectivo arquivo `.astro`, mantendo as mesmas classes CSS para garantir consistencia visual.
+3. **Novos Componentes Multilingues**: Se criar um componente que precise ser duplicado para suportar diferentes estruturas de traducao:
+   * Crie as versoes correspondentes na pasta `src/components/` (ex: `MeuComponente.astro`, `MeuComponenteEn.astro`).
+   * Crie um unico arquivo CSS em `src/styles/components/meu-componente.css`.
+   * Importe este arquivo CSS em todas as declaracoes Astro do componente.
+
+---
+
+## Procedimentos de Desenvolvimento
+
+### Comandos Disponiveis
 
 ```bash
-# Instalar dependências
+# Instalacao das dependencias do projeto
 npm install
 
-# Rodar em desenvolvimento (localhost:4321)
+# Inicializacao do servidor de desenvolvimento local (localhost:4321 por padrao)
 npm run dev
 
-# Gerar build de produção
+# Compilacao do site estatico para ambiente de producao
 npm run build
 
-# Pré-visualizar o build
+# Execucao de um servidor local para testar a pasta dist compilada
 npm run preview
 ```
 
----
+### Requisitos do Sistema
 
-## ✨ Destaques Técnicos
-
-- **Scroll animations:** Animações de parallax e pin com GSAP ScrollTrigger em todas as páginas de solução
-- **Globo IoT animado:** Vídeo WebM com máscara CSS e animação GSAP responsiva por breakpoint (`matchMedia`)
-- **Smooth scroll:** Integração com Lenis para rolagem suave em toda a aplicação
-- **SSG puro:** Sem servidor — todas as páginas são geradas estaticamente
-- **Sem framework CSS:** Estilização 100% em Vanilla CSS com design tokens em `variables.css`
-- **i18n manual:** Sistema de internacionalização próprio sem dependências externas
+* **Node.js**: Versao `>= 18`
+* **npm**: Versao `>= 9`
 
 ---
 
-## 🛠️ Requisitos
+## Deploy
 
-- **Node.js** >= 18
-- **npm** >= 9
+A execucao de `npm run build` cria a pasta `dist/` contendo arquivos estaticos (HTML, CSS, JS e ativos de midia) altamente otimizados. Esta pasta pode ser hospedada em qualquer servico de CDN ou hospedagem estatica como Vercel, Netlify, Cloudflare Pages ou GitHub Pages.
 
 ---
 
-## 📦 Deploy
+## Gerenciamento de Conteudo
 
-O projeto gera arquivos estáticos via `npm run build` (pasta `dist/`), compatível com qualquer CDN ou serviço de hospedagem estática:
+Atualmente, o conteudo dinamico do site (como os cases de sucesso) e gerenciado de forma baseada em arquivos estaticos (File-based CMS) usando Astro Content Collections.
 
-- [Vercel](https://vercel.com)
-- [Netlify](https://netlify.com)
-- [Cloudflare Pages](https://pages.cloudflare.com)
-- [GitHub Pages](https://pages.github.com)
+### Como Editar e Adicionar Novos Cases (Markdown/MDX)
+1. **Localizacao**: Os arquivos de conteudo estao localizados em `src/content/cases/`.
+2. **Formato**: Cada case e um arquivo `.md` ou `.mdx` estruturado com um bloco de metadados no topo (Frontmatter), seguido do conteudo da pagina em Markdown.
+3. **Traducao de Conteudo**: Para manter a paridade com o roteamento i18n, utilize arquivos separados para cada idioma ou configure campos especificos de traducao dentro do frontmatter do arquivo MDX.
+
+---
+
+## Sugestoes para Evolucao (Abordagem No-Code / Headless CMS)
+
+Se houver a necessidade de permitir que pessoas nao tecnicas editem ou publiquem novos cases e paginas sem alterar codigo ou depender de deploys via Git, recomenda-se integrar um **Headless CMS**.
+
+Seguem as alternativas mais indicadas para esta arquitetura Astro:
+
+### 1. Tina CMS / Decap CMS (Baseados em Git)
+* **Como funciona**: Funcionam como uma interface visual que edita diretamente os arquivos Markdown no seu repositorio do GitHub.
+* **Vantagens**: Nao requerem um banco de dados externo ou servidor. O conteudo continua salvo em arquivos no Git, mantendo o site estatico e gratuito.
+* **Recomendacao**: Tina CMS e ideal para edicao visual inline em tempo real no proprio navegador.
+
+### 2. Sanity.io (Cloud-hosted Headless CMS)
+* **Como funciona**: O conteudo fica em uma plataforma cloud gerenciada pela Sanity. Atraves da integracao com o Astro, os dados sao consumidos via API (GraphQL/GROQ) em tempo de build.
+* **Vantagens**: Interface extremamente customizavel, excelente suporte para multiplos idiomas nativos, edicao colaborativa em tempo real e CDN global de midias.
+* **Recomendacao**: Otima escolha caso o volume de conteudo cresca e seja necessario separar completamente o banco de dados de conteudo do codigo fonte.
+
+### 3. Directus / Strapi (Self-hosted ou Cloud)
+* **Como funciona**: CMSs robustos que se conectam diretamente a um banco de dados SQL (PostgreSQL/MySQL) e fornecem APIs REST/GraphQL consumidas pelo Astro.
+* **Vantagens**: Controle total sobre a infraestrutura de dados e banco relacional. Excelente para quando o site institucional necessita integrar-se a outros sistemas internos de TI.
+* **Recomendacao**: Recomendado caso a Transformatech ja possua ou prefira manter a infraestrutura de servidores interna.
+

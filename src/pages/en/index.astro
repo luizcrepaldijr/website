@@ -9,12 +9,16 @@ import Evera from "../../images/home/parceirosglobais/evera.webp";
 import LivingProof from "../../images/home/parceirosglobais/living-proof.webp";
 import SobreNosArk from "../../images/home/sobrenos/sobre-nos-ark.webp";
 import TecnologiaAvancada from "../../images/home/sobrenos/tecnologia-avancada.webp";
-import OperacaoUnilever from "../../images/home/cases/operacao-unilever.webp";
+import { getCollection } from "astro:content";
 import PowerBI from "../../images/home/cases/power-bi.webp";
 import Python from "../../images/home/cases/python.webp";
 import Meta from "../../images/home/cases/meta.webp";
 import Azure from "../../images/home/cases/azure.webp";
 import ReactAdmin from "../../images/home/cases/react-admin.webp";
+
+const enCases = await getCollection("cases", ({ id, data }) => {
+  return id.startsWith("en/") && data.featured === true;
+});
 import CurvaImg from "../../images/home/curva/curva.webp";
 import ButtonArrowAnimation from "../../components/buttons/ButtonArrowAnimation.astro";
 import ButtonArrow from "../../components/buttons/ButtonArrow.astro";
@@ -234,135 +238,54 @@ import TestimonialsMarquee from "../../components/TestimonialsMarquee.astro";
     <h2>Results that <b>transform</b></h2>
     <h3>Real cases demonstrating how our solutions generate business impact</h3>
     <CarousselCases>
-      <div class="embla__cases__slide">
-        <div class="cases-card">
-          <Image
-            src={OperacaoUnilever}
-            alt="Operação Unilever"
-            class="unilever"
-          />
-          <div class="cases-card-content">
-            <div class="badges">
-              <Badge2 text="Digital Transformation" />
-              <Badge2 text="Industry" />
-            </div>
-            <h2>How we helped reduce rework by 42% in Unilever's operations</h2>
-            <p>
-              We digitized critical workflows and activated smart alerts in a
-              Unilever production line, eliminating manual failures and
-              increasing efficiency within just a few weeks.
-            </p>
-            <div class="tecnologias">
-              <h4>Technologies used</h4>
-              <div class="tecnologias-images">
-                <Image
-                  src={PowerBI}
-                  alt="Power BI"
-                  class="powerbi tecnologia-img"
-                />
-                <Image
-                  src={Python}
-                  alt="Python"
-                  class="python tecnologia-img"
-                />
-                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
-                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
-                <Image
-                  src={ReactAdmin}
-                  alt="React Admin"
-                  class="react-admin tecnologia-img"
-                />
+      {
+        enCases.map((entry) => (
+          <div class="embla__cases__slide">
+            <div class="cases-card">
+              <Image
+                src={entry.data.image}
+                alt={entry.data.title}
+                class="unilever"
+              />
+              <div class="cases-card-content">
+                <div class="badges">
+                  {entry.data.badges.map((badge) => (
+                    <Badge2 text={badge} />
+                  ))}
+                </div>
+                <h2>
+                  {entry.data.homeTitle || entry.data.title}
+                </h2>
+                <p>
+                  {entry.data.description}
+                </p>
+                <div class="tecnologias">
+                  <h4>Technologies used</h4>
+                  <div class="tecnologias-images">
+                    <Image
+                      src={PowerBI}
+                      alt="Power BI"
+                      class="powerbi tecnologia-img"
+                    />
+                    <Image
+                      src={Python}
+                      alt="Python"
+                      class="python tecnologia-img"
+                    />
+                    <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
+                    <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
+                    <Image
+                      src={ReactAdmin}
+                      alt="React Admin"
+                      class="react-admin tecnologia-img"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="embla__cases__slide">
-        <div class="cases-card">
-          <Image
-            src={OperacaoUnilever}
-            alt="Operação Unilever"
-            class="unilever"
-          />
-          <div class="cases-card-content">
-            <div class="badges">
-              <Badge2 text="Digital Transformation" />
-              <Badge2 text="Industry" />
-            </div>
-            <h2>How we helped reduce rework by 42% in Unilever's operations</h2>
-            <p>
-              We digitized critical workflows and activated smart alerts in a
-              Unilever production line, eliminating manual failures and
-              increasing efficiency within just a few weeks.
-            </p>
-            <div class="tecnologias">
-              <h4>Technologies used</h4>
-              <div class="tecnologias-images">
-                <Image
-                  src={PowerBI}
-                  alt="Power BI"
-                  class="powerbi tecnologia-img"
-                />
-                <Image
-                  src={Python}
-                  alt="Python"
-                  class="python tecnologia-img"
-                />
-                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
-                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
-                <Image
-                  src={ReactAdmin}
-                  alt="React Admin"
-                  class="react-admin tecnologia-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="embla__cases__slide">
-        <div class="cases-card">
-          <Image
-            src={OperacaoUnilever}
-            alt="Operação Unilever"
-            class="unilever"
-          />
-          <div class="cases-card-content">
-            <div class="badges">
-              <Badge2 text="Digital Transformation" />
-              <Badge2 text="Industry" />
-            </div>
-            <h2>How we helped reduce rework by 42% in Unilever's operations</h2>
-            <p>
-              We digitized critical workflows and activated smart alerts in a
-              Unilever production line, eliminating manual failures and
-              increasing efficiency within just a few weeks.
-            </p>
-            <div class="tecnologias">
-              <h4>Technologies used</h4>
-              <div class="tecnologias-images">
-                <Image
-                  src={PowerBI}
-                  alt="Power BI"
-                  class="powerbi tecnologia-img"
-                />
-                <Image
-                  src={Python}
-                  alt="Python"
-                  class="python tecnologia-img"
-                />
-                <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
-                <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
-                <Image
-                  src={ReactAdmin}
-                  alt="React Admin"
-                  class="react-admin tecnologia-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        ))
+      }
     </CarousselCases>
     <ButtonArrow text="View case studies" link="./cases" />
   </div>

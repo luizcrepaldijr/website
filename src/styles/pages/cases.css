@@ -110,7 +110,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 56px;
     padding: 96px 0;
 }
 
@@ -139,7 +139,7 @@
     overflow: hidden;
     width: 100%;
     max-width: 1248px;
-    padding: 16px;
+    padding: 36px;
     gap: 16px;
 }
 
@@ -308,7 +308,7 @@
     /* CASES LIST */
     .cases-list {
         padding: 48px 20px;
-        gap: 16px;
+        gap: 24px;
     }
 
     .cases-list>h2 {
@@ -317,7 +317,7 @@
 
     .case-card {
         flex-direction: column;
-        padding: 12px;
+        padding: 18px;
     }
 
     .case-card-img-wrapper {

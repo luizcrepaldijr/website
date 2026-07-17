@@ -869,11 +869,24 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 800px) {
     .impacts-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
+    .impact-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 24px;
+    }
+
+    .impact-icon-wrapper {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 640px) {
     .results-macbook-container {
         margin: 2rem auto;
     }

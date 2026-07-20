@@ -5,11 +5,12 @@ interface Props {
 }
 
 const { text, link } = Astro.props;
+const isContactAction = !link || link === "#" || link.includes("contato");
 
 import ArrowRight from "phosphor-astro/ArrowRight.astro";
 ---
 
-<a href={link || "#"}>
+<a href={link || "#"} data-open-contact-modal={isContactAction ? "true" : undefined}>
   <div class="border-mask">
     <div class="border-glow"></div>
   </div>

@@ -11,7 +11,7 @@ interface Props {
 const { link } = Astro.props;
 ---
 
-<a href={link || "#"}>
+<a href={link || "#"} data-open-contact-modal>
   <div class="border-mask">
     <div class="border-glow"></div>
   </div>

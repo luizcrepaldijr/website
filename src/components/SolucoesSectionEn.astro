@@ -548,27 +548,69 @@ const solucoesData = [
             });
         }
 
-        // Handle initial hash routing
-        const hash = window.location.hash;
-        if (hash) {
-            const targetId = hash.slice(1);
-            const targetPanel = panels.find(
-                (panel) => (panel as HTMLElement).dataset.id === targetId
-            );
-            if (targetPanel) {
-                const index = parseInt((targetPanel as HTMLElement).dataset.index || "0", 10);
-                setTimeout(() => {
+        function scrollToHash(hashVal?: string, isSmooth: boolean = true) {
+            const currentHash = hashVal || window.location.hash;
+            if (!currentHash) return;
+            const targetId = currentHash.replace("#", "");
+            if (!targetId) return;
+
+            if (window.innerWidth > 800) {
+                const targetPanel = panels.find(
+                    (panel) => (panel as HTMLElement).dataset.id === targetId
+                );
+                if (targetPanel) {
+                    const index = parseInt((targetPanel as HTMLElement).dataset.index || "0", 10);
                     const start = trigger.start;
                     const end = trigger.end;
                     const progress = (index + 0.1) / totalItems;
                     const targetScroll = start + progress * (end - start);
                     window.scrollTo({
                         top: targetScroll,
-                        behavior: "auto",
+                        behavior: isSmooth ? "smooth" : "auto",
                     });
-                }, 100);
+                }
+            } else {
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    const yOffset = -90;
+                    const y = targetEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: isSmooth ? "smooth" : "auto" });
+                }
             }
         }
+
+        // Handle initial hash routing
+        if (window.location.hash) {
+            setTimeout(() => scrollToHash(undefined, false), 150);
+        }
+
+        // Listen for hashchange events
+        window.addEventListener("hashchange", () => scrollToHash(undefined, true));
+
+        // Click listener for same-page hash links
+        document.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement | null;
+            const link = target?.closest("a");
+            if (!link) return;
+
+            const href = link.getAttribute("href");
+            if (!href || !href.includes("#")) return;
+
+            const hashPos = href.indexOf("#");
+            const hash = href.slice(hashPos);
+            const path = href.slice(0, hashPos);
+            const currentPath = window.location.pathname;
+
+            const isSamePage = !path || currentPath.endsWith(path) || path.endsWith(currentPath) || path === currentPath;
+
+            if (isSamePage) {
+                e.preventDefault();
+                if (window.location.hash !== hash) {
+                    history.pushState(null, "", hash);
+                }
+                scrollToHash(hash, true);
+            }
+        });
     }
 
     document.addEventListener("DOMContentLoaded", initSolucoesGSAP);

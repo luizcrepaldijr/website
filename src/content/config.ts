@@ -30,9 +30,9 @@ const casesCollection = defineCollection({
     testimonial: z.object({
       author: z.string(),
       job: z.string(),
-      text: z.string(),
-      photo: image(),
-      companyLogo: image(),
+      text: z.string().optional(),
+      photo: image().optional(),
+      companyLogo: image().optional(),
     }).optional(),
     readingTime: z.string().optional(),
     problems: z.array(z.string()).optional(),

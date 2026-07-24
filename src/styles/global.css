@@ -1,5 +1,7 @@
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 *,
@@ -13,6 +15,7 @@ body {
     font-family: var(--font-main);
     background: var(--neutral-background);
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 h1,
@@ -41,12 +44,14 @@ button {
 
 .container {
     width: 100%;
+    max-width: 100%;
     margin-inline: auto;
     padding-inline: clamp(15px, 4vw, 40px);
 }
 
 .container-boxed {
-    width: clamp(1100px, 90%, 1620px);
+    width: clamp(300px, 90%, 1620px);
+    max-width: 100%;
     margin-inline: auto;
     padding-inline: clamp(15px, 4vw, 40px);
 }

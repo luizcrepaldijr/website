@@ -27,6 +27,7 @@ const casesCollection = defineCollection({
     location: z.string().optional(),
     segment: z.string().optional(),
     stack: z.string().optional(),
+    technologies: z.array(z.string()).optional(),
     testimonial: z.object({
       author: z.string(),
       job: z.string(),

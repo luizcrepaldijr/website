@@ -16,6 +16,7 @@ import Python from "../images/home/cases/python.webp";
 import Meta from "../images/home/cases/meta.webp";
 import Azure from "../images/home/cases/azure.webp";
 import ReactAdmin from "../images/home/cases/react-admin.webp";
+import TechIcon from "../components/TechIcon.astro";
 
 const ptCases = await getCollection("cases", ({ id, data }) => {
   return id.startsWith("pt/") && data.featured === true;
@@ -270,23 +271,11 @@ import Counter from "../components/Counter.astro";
                 <div class="tecnologias">
                   <h4>Tecnologias utilizadas</h4>
                   <div class="tecnologias-images">
-                    <Image
-                      src={PowerBI}
-                      alt="Power BI"
-                      class="powerbi tecnologia-img"
-                    />
-                    <Image
-                      src={Python}
-                      alt="Python"
-                      class="python tecnologia-img"
-                    />
-                    <Image src={Meta} alt="Meta" class="meta tecnologia-img" />
-                    <Image src={Azure} alt="Azure" class="azure tecnologia-img" />
-                    <Image
-                      src={ReactAdmin}
-                      alt="React Admin"
-                      class="react-admin tecnologia-img"
-                    />
+                    {
+                      (entry.data.technologies || ["power-bi", "python", "meta", "azure", "react-admin"]).map((tech) => (
+                        <TechIcon name={tech} />
+                      ))
+                    }
                   </div>
                 </div>
               </div>

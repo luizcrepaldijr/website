@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import PowerBI from "../images/home/cases/power-bi.webp";
+import Python from "../images/home/cases/python.webp";
+import Meta from "../images/home/cases/meta.webp";
+import Azure from "../images/home/cases/azure.webp";
+import ReactAdmin from "../images/home/cases/react-admin.webp";
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+const imageMap: Record<string, { src: any; alt: string; class: string }> = {
+  "power-bi": { src: PowerBI, alt: "Power BI", class: "powerbi tecnologia-img" },
+  "python": { src: Python, alt: "Python", class: "python tecnologia-img" },
+  "meta": { src: Meta, alt: "Meta", class: "meta tecnologia-img" },
+  "azure": { src: Azure, alt: "Azure", class: "azure tecnologia-img" },
+  "react-admin": { src: ReactAdmin, alt: "React Admin", class: "react-admin tecnologia-img" },
+};
+
+const iconMap: Record<string, { iconName: string; alt: string }> = {
+  "power-apps": { iconName: "power-apps", alt: "Power Apps" },
+  "power-automate": { iconName: "power-automate", alt: "Power Automate" },
+  "share-point": { iconName: "share-point", alt: "SharePoint" },
+  "sql": { iconName: "sql", alt: "SQL" },
+};
+
+const imageTech = imageMap[name];
+const iconTech = iconMap[name];
+---
+
+{
+  imageTech ? (
+    <Image src={imageTech.src} alt={imageTech.alt} class={imageTech.class} />
+  ) : iconTech ? (
+    <Icon name={iconTech.iconName} class="tecnologia-img" title={iconTech.alt} />
+  ) : (
+    <Icon name={name} class="tecnologia-img" title={name} />
+  )
+}

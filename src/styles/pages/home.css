@@ -416,6 +416,8 @@ h4 {
                     .tecnologia-img {
                         width: auto;
                         height: 56px;
+                        max-width: 56px;
+                        object-fit: contain;
                     }
                 }
             }

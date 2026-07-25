@@ -1,0 +1,156 @@
+---
+import { Image } from "astro:assets";
+
+import EveraIcon from "../icons/clientes/logo-evera.svg";
+import HaleonIcon from "../icons/clientes/logo-haleon.svg";
+import HyundaiIcon from "../icons/clientes/logo-hyundai.svg";
+import LivingProofIcon from "../icons/clientes/logo-livingproof.svg";
+import MftIcon from "../icons/clientes/logo-mft.svg";
+import PegIcon from "../icons/clientes/logo-peg.svg";
+import RedfoxIcon from "../icons/clientes/logo-redfox.svg";
+import StellantisIcon from "../icons/clientes/logo-stellantis.svg";
+import UnileverIcon from "../icons/clientes/logo-unilever.svg";
+
+interface Props {
+  lang?: "pt" | "en" | "es";
+  class?: string;
+}
+
+const { lang = "pt", class: className = "" } = Astro.props;
+
+const titles = {
+  pt: "<b>Parceiros globais</b> que confiam na Transformatech",
+  en: "<b>Global partners</b> that trust Transformatech",
+  es: "<b>Socios globales</b> que confían en Transformatech",
+};
+
+const title = titles[lang] || titles.pt;
+
+const logos = [
+  { name: "Unilever", src: UnileverIcon },
+  { name: "Evera", src: EveraIcon },
+  { name: "Living Proof", src: LivingProofIcon },
+  { name: "Hyundai", src: HyundaiIcon },
+  { name: "Stellantis", src: StellantisIcon },
+  { name: "Haleon", src: HaleonIcon },
+  { name: "P&G", src: PegIcon },
+  { name: "MFT", src: MftIcon },
+  { name: "Redfox", src: RedfoxIcon },
+];
+
+const marqueeLogos = [...logos, ...logos, ...logos, ...logos];
+---
+
+<div class={`parceiros-marquee-section ${className}`.trim()}>
+  <h4 set:html={title}></h4>
+  
+  <div class="parceiros-marquee-wrapper">
+    <div class="parceiros-marquee-track">
+      {marqueeLogos.map((item) => (
+        <div class="parceiros-marquee-item" title={item.name}>
+          <Image src={item.src} alt={item.name} class="parceiros-logo" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .parceiros-marquee-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 53px 0;
+    gap: 30px;
+  }
+
+  .parceiros-marquee-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .parceiros-marquee-section h4 {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .parceiros-marquee-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
+  }
+
+  .parceiros-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: max-content;
+    will-change: transform;
+    animation: scroll-parceiros 40s linear infinite;
+  }
+
+  .parceiros-marquee-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+  }
+
+  .parceiros-logo {
+    max-width: 140px;
+    height: auto;
+    max-height: 50px;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .parceiros-marquee-item:hover .parceiros-logo {
+    opacity: 1;
+  }
+
+  @keyframes scroll-parceiros {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .parceiros-marquee-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .parceiros-marquee-section h4 {
+      white-space: normal;
+    }
+
+    .parceiros-marquee-wrapper {
+      width: 100%;
+    }
+    
+    .parceiros-marquee-track {
+      gap: 40px;
+    }
+
+    .parceiros-logo {
+      max-width: 100px;
+      max-height: 40px;
+    }
+  }
+</style>

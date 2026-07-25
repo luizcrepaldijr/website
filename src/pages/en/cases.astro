@@ -9,9 +9,7 @@ import ButtonArrowWhite from "../../components/buttons/ButtonArrowWhite.astro";
 import FaleConosco from "../../components/FaleConoscoBigEn.astro";
 
 import ParceirosImg from "../../images/sobrenos/parceria.webp";
-import Unilever from "../../images/home/parceirosglobais/unilever.webp";
-import Evera from "../../images/home/parceirosglobais/evera.webp";
-import LivingProof from "../../images/home/parceirosglobais/living-proof.webp";
+import ParceirosMarquee from "../../components/ParceirosMarquee.astro";
 import TecnologiasDesktop from "../../images/solucoes/tecnologias-desktop.webp";
 import TecnologiasMobile from "../../images/solucoes/tecnologias-mobile.webp";
 import TecnologiasMarquee from "../../components/TecnologiasMarquee.astro";
@@ -48,15 +46,8 @@ const enCases = await getCollection("cases", ({ id }) => {
                 </div>
             </div>
 
-            <!-- GLOBAL PARTNERS (primeira dobra) -->
-            <div class="parceiros">
-                <h4><b>Global partners</b> who trust Transformatech</h4>
-                <div class="parceiros-logos">
-                    <Image src={Unilever} class="img" alt="Unilever" />
-                    <Image src={Evera} class="img" alt="Evera" />
-                    <Image src={LivingProof} class="img" alt="Living Proof" />
-                </div>
-            </div>
+            <!-- PARCEIROS GLOBAIS (primeira dobra) -->
+            <ParceirosMarquee lang="en" />
         </div>
     </div>
 

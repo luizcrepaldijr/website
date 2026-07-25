@@ -4,9 +4,7 @@ import "../../styles/pages/home.css";
 import FaleConosco from "../../components/FaleConosco.astro";
 import { Image } from "astro:assets";
 import CuboImg from "../../images/home/hero/cubo.webp";
-import Unilever from "../../images/home/parceirosglobais/unilever.webp";
-import Evera from "../../images/home/parceirosglobais/evera.webp";
-import LivingProof from "../../images/home/parceirosglobais/living-proof.webp";
+import ParceirosMarquee from "../../components/ParceirosMarquee.astro";
 import SobreNosArk from "../../images/home/sobrenos/sobre-nos-ark.webp";
 import TecnologiaAvancada from "../../images/home/sobrenos/tecnologia-avancada.webp";
 import { getCollection } from "astro:content";
@@ -58,14 +56,7 @@ import Counter from "../../components/Counter.astro";
   </div>
 
   <!-- PARCEIROS GLOBAIS -->
-  <div class="parceiros container-boxed">
-    <h4><b>Global partners</b> who trust Transformatech</h4>
-    <div>
-      <Image src={Unilever} class="img" alt="Unilever" />
-      <Image src={Evera} class="img" alt="Evera" />
-      <Image src={LivingProof} class="img" alt="Living Proof" />
-    </div>
-  </div>
+  <ParceirosMarquee lang="en" class="container-boxed" />
 
   <!-- SERVIÇOS -->
   <div class="servicos container">

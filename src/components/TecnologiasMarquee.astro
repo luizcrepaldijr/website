@@ -1,0 +1,214 @@
+---
+import { Image } from "astro:assets";
+
+import PythonIcon from "../icons/marquee/python.svg";
+import MetaIcon from "../icons/marquee/meta.svg";
+import UniversalRobotsIcon from "../icons/marquee/universal-robots.svg";
+import SpringIcon from "../icons/marquee/spring.svg";
+import GptIcon from "../icons/marquee/gpt.svg";
+import AzureIcon from "../icons/marquee/azure.svg";
+
+import PowerBiIcon from "../icons/marquee/power-bi.svg";
+import TeamsIcon from "../icons/marquee/teams.svg";
+import Azure2Icon from "../icons/marquee/azure-2.svg";
+import SqlIcon from "../icons/marquee/sql.svg";
+import GeminiIcon from "../icons/marquee/gemini.svg";
+
+import MilesightIcon from "../icons/marquee/milesight.svg";
+import AdvantechIcon from "../icons/marquee/advantech.svg";
+import NvidiaIcon from "../icons/marquee/nvidia.svg";
+import UnityIcon from "../icons/marquee/unity.svg";
+import ThingworxIcon from "../icons/marquee/thingworx.svg";
+import LoraIcon from "../icons/marquee/lora.svg";
+import RockwellIcon from "../icons/marquee/rockwell-automation.svg";
+
+const row1 = [
+  { name: "Python", src: PythonIcon },
+  { name: "Meta", src: MetaIcon },
+  { name: "Universal Robots", src: UniversalRobotsIcon },
+  { name: "Spring", src: SpringIcon },
+  { name: "ChatGPT", src: GptIcon },
+  { name: "Azure", src: AzureIcon },
+];
+
+const row2 = [
+  { name: "Power BI", src: PowerBiIcon },
+  { name: "Teams", src: TeamsIcon },
+  { name: "Azure", src: Azure2Icon },
+  { name: "SQL", src: SqlIcon },
+  { name: "Gemini", src: GeminiIcon },
+  { name: "Python", src: PythonIcon },
+];
+
+const row3 = [
+  { name: "Milesight", src: MilesightIcon },
+  { name: "Advantech", src: AdvantechIcon },
+  { name: "NVIDIA", src: NvidiaIcon },
+  { name: "Unity", src: UnityIcon },
+  { name: "Thingworx", src: ThingworxIcon },
+  { name: "LoRaWAN", src: LoraIcon },
+  { name: "Rockwell Automation", src: RockwellIcon },
+];
+---
+
+<div class="tecnologias-marquee-wrapper">
+  <div class="marquee-rows">
+    <!-- Row 1: Top (Left direction) -->
+    <div class="marquee-row">
+      <div class="marquee-track track-top">
+        {[...row1, ...row1, ...row1, ...row1].map((item) => (
+          <div class="marquee-badge" title={item.name}>
+            <Image src={item.src} alt={item.name} class="badge-icon" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 2: Middle (Right direction) -->
+    <div class="marquee-row">
+      <div class="marquee-track track-middle">
+        {[...row2, ...row2, ...row2, ...row2].map((item) => (
+          <div class="marquee-badge" title={item.name}>
+            <Image src={item.src} alt={item.name} class="badge-icon" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 3: Bottom (Left direction) -->
+    <div class="marquee-row">
+      <div class="marquee-track track-bottom">
+        {[...row3, ...row3, ...row3, ...row3].map((item) => (
+          <div class="marquee-badge" title={item.name}>
+            <Image src={item.src} alt={item.name} class="badge-icon" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tecnologias-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 12px 0;
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 82%, transparent 100%);
+  }
+
+  .marquee-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .marquee-row {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 28px;
+    width: max-content;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .track-top {
+    animation: marquee-scroll-top 36s linear infinite;
+  }
+
+  .track-middle {
+    animation: marquee-scroll-middle 36s linear infinite;
+  }
+
+  .track-bottom {
+    animation: marquee-scroll-bottom 36s linear infinite;
+  }
+
+  .marquee-badge {
+    width: clamp(68px, 6.5vw, 120px);
+    height: clamp(68px, 6.5vw, 120px);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .badge-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+    filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.5));
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Row 1 (Top): Left direction, standard start */
+  @keyframes marquee-scroll-top {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Row 2 (Middle): Right direction, starting offset */
+  @keyframes marquee-scroll-middle {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Row 3 (Bottom): Left direction, shifted further left start */
+  @keyframes marquee-scroll-bottom {
+    0% {
+      transform: translateX(-140px);
+    }
+    100% {
+      transform: translateX(calc(-50% - 140px));
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .marquee-rows {
+      gap: 16px;
+    }
+
+    .marquee-track {
+      gap: 16px;
+    }
+
+    .marquee-badge {
+      width: 64px;
+      height: 64px;
+    }
+
+    @keyframes marquee-scroll-bottom {
+      0% {
+        transform: translateX(-70px);
+      }
+      100% {
+        transform: translateX(calc(-50% - 70px));
+      }
+    }
+  }
+</style>

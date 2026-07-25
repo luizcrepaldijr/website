@@ -14,6 +14,7 @@ import Evera from "../images/home/parceirosglobais/evera.webp";
 import LivingProof from "../images/home/parceirosglobais/living-proof.webp";
 import TecnologiasDesktop from "../images/solucoes/tecnologias-desktop.webp";
 import TecnologiasMobile from "../images/solucoes/tecnologias-mobile.webp";
+import TecnologiasMarquee from "../components/TecnologiasMarquee.astro";
 
 const ptCases = await getCollection("cases", ({ id }) => {
     return id.startsWith("pt/");
@@ -125,18 +126,7 @@ const ptCases = await getCollection("cases", ({ id }) => {
             <h3>Especialistas em <br /> <span>20+</span> tecnologias</h3>
         </div>
 
-        <div class="tecnologias-img-wrapper">
-            <Image
-                src={TecnologiasDesktop}
-                alt="Tecnologias Desktop"
-                class="tecnologias-img-desktop"
-            />
-            <Image
-                src={TecnologiasMobile}
-                alt="Tecnologias Mobile"
-                class="tecnologias-img-mobile"
-            />
-        </div>
+        <TecnologiasMarquee />
     </div>
 
     <!-- FALE CONOSCO -->

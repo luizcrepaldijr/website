@@ -12,6 +12,7 @@ import IotImg from "../../images/solucoes/iot-solucao.webp";
 import EsferaImg from "../../images/solucoes/esfera.webp";
 import TecnologiasDesktop from "../../images/solucoes/tecnologias-desktop.webp";
 import TecnologiasMobile from "../../images/solucoes/tecnologias-mobile.webp";
+import TecnologiasMarquee from "../../components/TecnologiasMarquee.astro";
 import Image from "astro/components/Image.astro";
 import Accordion from "../../components/Accordion.astro";
 import ButtonArrowSquare from "../../components/buttons/ButtonArrowSquare.astro";
@@ -386,18 +387,7 @@ const wfSteps = [
             <h3>Especialistas en <br /> <span>20+</span> tecnologías</h3>
         </div>
 
-        <div class="tecnologias-img-wrapper">
-            <Image
-                src={TecnologiasDesktop}
-                alt="Tecnologias Desktop"
-                class="tecnologias-img-desktop"
-            />
-            <Image
-                src={TecnologiasMobile}
-                alt="Tecnologias Mobile"
-                class="tecnologias-img-mobile"
-            />
-        </div>
+        <TecnologiasMarquee />
     </div>
 
     <FaleConoscoBigEs

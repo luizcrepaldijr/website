@@ -77,7 +77,7 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
   
   <div class="contact-modal-container">
     <button type="button" class="contact-modal-close" id="contact-modal-close-btn" aria-label={t.closeBtn}>
-      <CloseIcon size={24} color="white" />
+      <CloseIcon width={24} height={24} color="white" />
     </button>
 
     <div class="contact-modal-header">
@@ -122,14 +122,14 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
       <div class="form-actions">
         <button type="submit" id="contact-submit-btn" class="submit-btn">
           <span class="btn-text" data-original-text={t.submitBtn}>{t.submitBtn}</span>
-          <ArrowRight size={20} class="btn-icon" />
+          <ArrowRight width={20} height={20} class="btn-icon" />
         </button>
       </div>
     </form>
 
     <div id="contact-modal-success" class="contact-modal-success" hidden>
       <div class="success-icon-wrapper">
-        <CheckCircle size={56} color="#0066FF" />
+        <CheckCircle width={56} height={56} color="#0066FF" />
       </div>
       <h3>{t.successTitle}</h3>
       <p>{t.successSubtitle}</p>

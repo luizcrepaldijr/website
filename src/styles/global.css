@@ -1,6 +1,6 @@
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 
@@ -14,7 +14,7 @@ body {
     margin: 0;
     font-family: var(--font-main);
     background: var(--neutral-background);
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 

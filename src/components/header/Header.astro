@@ -28,6 +28,7 @@ const localizePath = useTranslatedPath(lang);
     </span>
   </div>
 </header>
+<div class="header-spacer"></div>
 <div class="overlay"></div>
 
 <style>
@@ -40,10 +41,20 @@ const localizePath = useTranslatedPath(lang);
     box-shadow: 6.75px 7.5px 18.75px 0 rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px);
     background-color: rgba(12, 17, 29, 0.85);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 99999;
     transition: transform 0.3s ease-in-out;
+  }
+
+  .header-spacer {
+    height: 14vh;
+    max-height: 90px;
+    width: 100%;
+    pointer-events: none;
+    visibility: hidden;
   }
 
   header.header-hidden {
@@ -227,35 +238,34 @@ const localizePath = useTranslatedPath(lang);
   overlay?.addEventListener("click", toggleMenu);
 
   // Scroll Hide/Show Logic
-  let lastScrollY = window.scrollY;
+  let lastScrollY = window.scrollY || document.documentElement.scrollTop;
   const header = document.querySelector("header");
-  const scrollThreshold = 10; // Avoid jitter with a small threshold
+  const scrollThreshold = 5;
 
-  window.addEventListener("scroll", () => {
-    // Prevent hiding when mobile navigation sidebar is active
+  function updateHeaderVisibility() {
+    if (!header) return;
     if (menuContainer?.classList.contains("active")) {
-      header?.classList.remove("header-hidden");
+      header.classList.remove("header-hidden");
       return;
     }
 
-    const currentScrollY = window.scrollY;
+    const currentScrollY = Math.max(0, window.scrollY || document.documentElement.scrollTop);
     const scrollDelta = currentScrollY - lastScrollY;
 
     if (Math.abs(scrollDelta) < scrollThreshold) {
       return;
     }
 
-    if (currentScrollY <= 0) {
-      // Show header at the top of the page
-      header?.classList.remove("header-hidden");
+    if (currentScrollY <= 50) {
+      header.classList.remove("header-hidden");
     } else if (scrollDelta > 0 && currentScrollY > 100) {
-      // Scrolling down & passed threshold height -> hide header
-      header?.classList.add("header-hidden");
+      header.classList.add("header-hidden");
     } else if (scrollDelta < 0) {
-      // Scrolling up -> show header
-      header?.classList.remove("header-hidden");
+      header.classList.remove("header-hidden");
     }
 
     lastScrollY = currentScrollY;
-  }, { passive: true });
+  }
+
+  window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
 </script>

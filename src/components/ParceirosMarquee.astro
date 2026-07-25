@@ -48,7 +48,7 @@ const marqueeLogos = [...logos, ...logos, ...logos, ...logos];
     <div class="parceiros-marquee-track">
       {marqueeLogos.map((item) => (
         <div class="parceiros-marquee-item" title={item.name}>
-          <Image src={item.src} alt={item.name} class="parceiros-logo" />
+          <img src={item.src.src} alt={item.name} class="parceiros-logo" />
         </div>
       ))}
     </div>

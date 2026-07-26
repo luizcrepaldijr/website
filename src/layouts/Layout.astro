@@ -58,6 +58,9 @@ const lang = getLangFromUrl(Astro.url);
         infinite: false,
       });
 
+      // Expose to window for external scripts (like iot.astro tabs)
+      (window as any).lenis = lenis;
+
       // Synchronize Lenis with ScrollTrigger
       lenis.on("scroll", ScrollTrigger.update);
 

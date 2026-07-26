@@ -213,6 +213,7 @@ const wfSteps = [
     </div>
 
 <!-- ── GLOBAL TABS ── -->
+<div id="iot-tabs-anchor"></div>
 <div class="iot-global-tabs">
     <button class="active" data-panel="ind">IoT for industries</button>
     <button data-panel="agri">IoT for agriculture</button>
@@ -973,17 +974,24 @@ const wfSteps = [
                 document.getElementById("panel-agri")!.style.display =
                     panel === "agri" ? "block" : "none";
 
-                // scrollIntoView now sees the correct layout (spacers already gone)
-                document
-                    .querySelector(".iot-global-tabs")!
-                    .scrollIntoView({ behavior: "instant" });
-
                 // Re-register scrollers after layout settles
                 pendingRaf1 = requestAnimationFrame(() => {
                     pendingRaf2 = requestAnimationFrame(() => {
                         pendingRaf1 = null;
                         pendingRaf2 = null;
                         reinitScrollers();
+
+                        // Scroll AFTER pins are recalculated
+                        setTimeout(() => {
+                            const tabsEl = document.getElementById("iot-tabs-anchor") as HTMLElement;
+                            if (tabsEl) {
+                                if ((window as any).lenis) {
+                                    (window as any).lenis.scrollTo(tabsEl, { offset: -100, immediate: true });
+                                } else {
+                                    tabsEl.scrollIntoView({ behavior: "instant" });
+                                }
+                            }
+                        }, 50);
                     });
                 });
             });

@@ -91,7 +91,7 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
       Adicione a URL do endpoint no atributo 'action' abaixo, ex: action="https://api.web3forms.com/submit"
       ou configure a variável ENDPOINT_URL no script no final deste arquivo.
     -->
-    <form id="contact-modal-form" class="contact-modal-form" method="POST" action="">
+    <form id="contact-modal-form" class="contact-modal-form" method="POST" action="/api/contact">
       <div class="form-grid">
         <div class="form-group">
           <label for="contact-name">{t.nameLabel} <span class="required">*</span></label>
@@ -575,7 +575,8 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
           });
 
           if (!response.ok) {
-            throw new Error("Erro no envio");
+            const resData = await response.json().catch(() => ({}));
+            throw new Error(resData.error || "Erro no envio");
           }
         } else {
           // Simulação de envio com feedback visual impecável caso não haja servidor configurado
@@ -587,8 +588,8 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
         if (successBox) {
           successBox.removeAttribute("hidden");
         }
-      } catch (err) {
-        alert("Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.");
+      } catch (err: any) {
+        alert(err?.message || "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.");
       } finally {
         if (btnTextSpan) {
           btnTextSpan.textContent = originalText;

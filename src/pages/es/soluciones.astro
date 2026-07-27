@@ -21,6 +21,9 @@ import FaleConoscoEs from "../../components/FaleConoscoEs.astro";
 import SolucoesSectionEs from "../../components/SolucoesSectionEs.astro";
 import "../../styles/pages/iot.css";
 import LogoBigFallback from "../../images/logo-big.webp";
+import LogoAbreviadaTT from "../../icons/logo-abreviada-tt.svg";
+import Ellipse1 from "../../icons/ellipse-1.svg";
+import Ellipse2 from "../../icons/ellipse-2.svg";
 import CarousselWorkflow from "../../components/carroussel/CarousselWorkflow.astro";
 import FaleConoscoBigEs from "../../components/FaleConoscoBigEs.astro";
 
@@ -137,11 +140,13 @@ const wfSteps = [
     <!-- ── WORKFLOW ── -->
     <div id="workflow" class="iot-workflow-scrollarea sol-workflow">
         <div class="iot-workflow-pinned">
-            <div class="wf-ring wf-ring-1"></div>
-            <div class="wf-ring wf-ring-2"></div>
+            <div class="wf-ellipse-wrapper">
+                <img src={Ellipse1.src} class="wf-ellipse-1" alt="" />
+                <img src={Ellipse2.src} class="wf-ellipse-2" alt="" />
+            </div>
 
             <div class="wf-logo-wrapper">
-                <img src={LogoBigFallback.src} class="wf-logo" alt="" />
+                <img src={LogoAbreviadaTT.src} class="wf-logo" alt="" />
             </div>
 
             <!-- Desktop -->

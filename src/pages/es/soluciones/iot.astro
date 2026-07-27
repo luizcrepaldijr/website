@@ -12,6 +12,9 @@ import ButtonArrowWhite from "../../../components/buttons/ButtonArrowWhite.astro
 import Badge from "../../../components/Badge.astro";
 import { Icon } from "astro-icon/components";
 import LogoBigFallback from "../../../images/logo-big.webp";
+import LogoAbreviadaTT from "../../../icons/logo-abreviada-tt.svg";
+import Ellipse1 from "../../../icons/ellipse-1.svg";
+import Ellipse2 from "../../../icons/ellipse-2.svg";
 import Accordion from "../../../components/Accordion.astro";
 import CarousselWorkflow from "../../../components/carroussel/CarousselWorkflow.astro";
 
@@ -514,13 +517,15 @@ const wfSteps = [
         <!-- ── IOT WORKFLOW ── -->
         <div class="iot-workflow-scrollarea">
             <div class="iot-workflow-pinned">
-                <!-- Decorative rings -->
-                <div class="wf-ring wf-ring-1"></div>
-                <div class="wf-ring wf-ring-2"></div>
+                <!-- Ellipse rings -->
+                <div class="wf-ellipse-wrapper">
+                    <img src={Ellipse1.src} class="wf-ellipse-1" alt="" />
+                    <img src={Ellipse2.src} class="wf-ellipse-2" alt="" />
+                </div>
 
                 <!-- Rotating logo -->
                 <div class="wf-logo-wrapper">
-                    <img src={LogoBigFallback.src} class="wf-logo" alt="" />
+                    <img src={LogoAbreviadaTT.src} class="wf-logo" alt="" />
                 </div>
 
                 <!-- Right content (desktop) -->

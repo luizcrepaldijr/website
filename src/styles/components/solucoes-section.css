@@ -193,6 +193,10 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28%, black 72%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image: linear-gradient(to right, transparent 0%, black 28%, black 72%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-composite: intersect;
     }
 
     .solucoes-bg-overlay {
@@ -202,17 +206,20 @@
             linear-gradient(
                 to right,
                 var(--neutral-background-dark, #0b0c10) 0%,
-                transparent 15%,
+                var(--neutral-background-dark, #0b0c10) 5%,
+                transparent 30%,
                 transparent 70%,
+                var(--neutral-background-dark, #0b0c10) 95%,
                 var(--neutral-background-dark, #0b0c10) 100%
             ),
             linear-gradient(
                 to bottom,
                 var(--neutral-background-dark, #0b0c10) 0%,
                 transparent 15%,
-                transparent 70%,
+                transparent 85%,
                 var(--neutral-background-dark, #0b0c10) 100%
             );
+        pointer-events: none;
     }
 
     .solucoes-desktop-content {

@@ -1008,12 +1008,19 @@ const wfSteps = [
 
                             // Scroll AFTER pins are recalculated
                             setTimeout(() => {
-                                const tabsEl = document.getElementById("iot-tabs-anchor") as HTMLElement;
+                                const tabsEl = document.getElementById(
+                                    "iot-tabs-anchor",
+                                ) as HTMLElement;
                                 if (tabsEl) {
                                     if ((window as any).lenis) {
-                                        (window as any).lenis.scrollTo(tabsEl, { offset: -100, immediate: true });
+                                        (window as any).lenis.scrollTo(tabsEl, {
+                                            offset: -100,
+                                            immediate: true,
+                                        });
                                     } else {
-                                        tabsEl.scrollIntoView({ behavior: "instant" });
+                                        tabsEl.scrollIntoView({
+                                            behavior: "instant",
+                                        });
                                     }
                                 }
                             }, 50);

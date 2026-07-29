@@ -1,1 +1,0 @@
-import{E as t}from"./embla-carousel.esm.CMPFBS9o.js";import{A as a}from"./embla-carousel-autoplay.esm.CjDxzJE7.js";const r=document.querySelectorAll(".embla__related");r.forEach(e=>{const o=e.querySelector(".embla__related__viewport");o&&t(o,{loop:!0,align:"start"},[a({delay:4e3,stopOnInteraction:!1,stopOnMouseEnter:!0})])});

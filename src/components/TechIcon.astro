@@ -7,6 +7,8 @@ import Python from "../images/home/cases/python.webp";
 import Meta from "../images/home/cases/meta.webp";
 import Azure from "../images/home/cases/azure.webp";
 import ReactAdmin from "../images/home/cases/react-admin.webp";
+import PowerAutomate from "../images/home/cases/power-automate.webp";
+import Sql from "../images/home/cases/sql.webp";
 
 interface Props {
   name: string;
@@ -20,13 +22,13 @@ const imageMap: Record<string, { src: any; alt: string; class: string }> = {
   "meta": { src: Meta, alt: "Meta", class: "meta tecnologia-img" },
   "azure": { src: Azure, alt: "Azure", class: "azure tecnologia-img" },
   "react-admin": { src: ReactAdmin, alt: "React Admin", class: "react-admin tecnologia-img" },
+  "power-automate": { src: PowerAutomate, alt: "Power Automate", class: "power-automate tecnologia-img" },
+  "sql": { src: Sql, alt: "SQL", class: "sql tecnologia-img" },
 };
 
 const iconMap: Record<string, { iconName: string; alt: string }> = {
   "power-apps": { iconName: "power-apps", alt: "Power Apps" },
-  "power-automate": { iconName: "power-automate", alt: "Power Automate" },
   "share-point": { iconName: "share-point", alt: "SharePoint" },
-  "sql": { iconName: "sql", alt: "SQL" },
 };
 
 const imageTech = imageMap[name];

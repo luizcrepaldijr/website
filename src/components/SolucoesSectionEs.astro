@@ -258,7 +258,7 @@ const solucoesData = [
             <div class="solucoes-bg-container">
                 {
                     solucoesData.map((solucao, index) => (
-                        <div class="solucoes-bg-layer" data-index={index}>
+                        <div class="solucoes-bg-layer" data-index={index} data-id={solucao.id}>
                             {solucao.video ? (
                                 <video
                                     src={solucao.video}
@@ -393,6 +393,7 @@ const solucoesData = [
                         <video
                             src={solucao.video}
                             class="solucoes-item-video"
+                            data-id={solucao.id}
                             autoplay
                             muted
                             loop

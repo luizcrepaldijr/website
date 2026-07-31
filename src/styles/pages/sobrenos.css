@@ -10,8 +10,9 @@ h3 {
     line-height: 1.4;
 }
 
+html,
 body {
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .hero {

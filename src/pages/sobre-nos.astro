@@ -32,15 +32,31 @@ import pedroNascimento from "../images/sobrenos/equipe/pedro_nascimento.webp";
 import vitorCarlos from "../images/sobrenos/equipe/victor_carlos.webp";
 import ParceirosImg from "../images/sobrenos/parceria.webp";
 
+// Marquee Images - Column 1 (Left)
+import marquee1_1 from "../images/sobrenos/marquee/marquee-1-img-1.webp";
+import marquee1_2 from "../images/sobrenos/marquee/marquee-1-img-2.webp";
+import marquee1_3 from "../images/sobrenos/marquee/marquee-1-img-3.webp";
+import marquee1_4 from "../images/sobrenos/marquee/marquee-1-img-4.webp";
+import marquee1_5 from "../images/sobrenos/marquee/marquee-1-img-5.webp";
+import marquee1_6 from "../images/sobrenos/marquee/marquee-1-img-6.webp";
+
+// Marquee Images - Column 2 (Right)
+import marquee2_1 from "../images/sobrenos/marquee/marquee-2-img-1.webp";
+import marquee2_2 from "../images/sobrenos/marquee/marquee-2-img-2.webp";
+import marquee2_3 from "../images/sobrenos/marquee/marquee-2-img-3.webp";
+import marquee2_4 from "../images/sobrenos/marquee/marquee-2-img-4.webp";
+import marquee2_5 from "../images/sobrenos/marquee/marquee-2-img-5.webp";
+import marquee2_6 from "../images/sobrenos/marquee/marquee-2-img-6.webp";
+
 import Badge from "../components/Badge.astro";
 import ButtonArrowWhite from "../components/buttons/ButtonArrowWhite.astro";
 
 const teamMembers = [
     {
-        name: "Ana Paula Lima",
+        name: "Ana Lima",
         role: "Digital Solution Architect",
         description:
-            "Cientista contábil com MBA em Engenharia de Software pela UTFPR, atua há mais de 5 anos no ecossistema Microsoft como arquiteta de soluções e desenvolvedora Power Platform, criando aplicações seguras e escaláveis com foco no negócio e na experiência do usuário.",
+            "Sou formada em Ciências Contábeis com MBA em Engenharia de Software pela UTFPR. Meu propósito é transformar processos em soluções digitais seguras, escaláveis e focadas no usuário e no negócio.",
         image: anaLima,
         linkedin: "#",
         instagram: "#",
@@ -48,9 +64,9 @@ const teamMembers = [
     },
     {
         name: "Caio Beserra",
-        role: "Data & BI Specialist",
+        role: "AI & Data Engineer",
         description:
-            "Profissional de dados e BI com mais de 10 anos de experiência, especializado em Power Platform. Atua em projetos de dados corporativos e inteligência artificial, com forte domínio em SQL, Azure, Python e Machine Learning.",
+            "Tenho mais de 10 anos de experiência em dados, BI e soluções corporativas. Atuo com Power Platform, SQL, Azure, Python e Machine Learning para criar dashboards, aplicações e automações que transformam dados em decisões e eficiência operacional.",
         image: caioBeserra,
         linkedin: "#",
         instagram: "#",
@@ -60,7 +76,7 @@ const teamMembers = [
         name: "Carlos Nogueira",
         role: "Founder & CEO",
         description:
-            "Engenheiro de Comunicações, empreendedor e fundador da Transformatech, com mais de 25 anos de experiência (17 na P&G). Apaixonado por tecnologia, inovação e por resolver problemas complexos, criando soluções que transformam empresas e a vida das pessoas.",
+            "Sou engenheiro de Comunicações, com MBA em Tecnologia para Negócios pela PUCRS, empreendedor e fundador da Transformatech. Uno tecnologia, estratégia e pessoas para transformar desafios em soluções inovadoras com impacto real.",
         image: carlosNogueira,
         linkedin: "#",
         instagram: "#",
@@ -70,7 +86,7 @@ const teamMembers = [
         name: "Christian Castilho",
         role: "AI Developer",
         description:
-            "Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas.",
+            "Curso Engenharia de Computação no Inatel e atuo com IA aplicada ao negócio. Desenvolvo soluções que automatizam processos, extraem valor dos dados e usam modelos locais para apoiar decisões e proteger conhecimento privado.",
         image: christianCastilho,
         linkedin: "#",
         instagram: "#",
@@ -80,7 +96,7 @@ const teamMembers = [
         name: "Diana Oliveira",
         role: "Product Owner & Data Scientist",
         description:
-            "Apaixonada por desafios e por encontrar caminhos além do óbvio, cria soluções inovadoras e processos claros e eficientes que ajudam empresas a tomar melhores decisões.",
+            "Sou engenheira formada pela UFRJ e movida por desafios. Atuo conectando estratégia, dados e operação, com foco em definição de requisitos, priorização de backlog e entrega de soluções claras, eficientes e de alto valor para o negócio.",
         image: dianaOliveira,
         linkedin: "#",
         instagram: "#",
@@ -90,7 +106,7 @@ const teamMembers = [
         name: "Luiz Crepaldi",
         role: "AI & Data Scientist",
         description:
-            "Engenheiro em formação, atua com Inteligência Artificial aplicada no desenvolvimento de soluções que automatizam processos, extraem valor de dados e impulsionam a inovação dentro das empresas.",
+            "Sou bacharel em Ciência da Computação e atuo conectando dados, IA e IoT industrial à tomada de decisão. Desenvolvo modelos preditivos, dashboards, integrações e automações que reduzem perdas, ampliam produtividade e geram valor ao negócio.",
         image: luizCrepaldi,
         linkedin: "#",
         instagram: "#",
@@ -110,7 +126,7 @@ const teamMembers = [
         name: "Mario Oliveira",
         role: "Business Developer",
         description:
-            "Executivo C-level e fundador, com mais de 30 anos de experiência em manufatura, life sciences e tecnologia. Atua na liderança de transformações complexas, conectando inovação, operação e crescimento em ambientes altamente regulados.",
+            "Sou executivo C-level e fundador, com mais de 30 anos de experiência em manufatura, life sciences e tecnologia. Lidero transformações complexas, conectando inovação, operação e crescimento em ambientes altamente regulados.",
         image: marioOliveira,
         linkedin: "#",
         instagram: "#",
@@ -120,7 +136,7 @@ const teamMembers = [
         name: "Matheus Braz",
         role: "Software Developer",
         description:
-            "Estudante de Engenharia de Software e Desenvolvedor Web na Transformatech Advisors. Apaixonado por programação, tecnologia e inovação, com foco em criar interfaces modernas, funcionais e intuitivas.",
+            "Sou técnico em Eletrônica com ênfase em Desenvolvimento de Sistemas pela ETE FMC e graduando em Engenharia de Software no Inatel. Atuo no desenvolvimento front-end, criando interfaces modernas e intuitivas para soluções digitais voltadas à inovação.",
         image: matheusBraz,
         linkedin: "#",
         instagram: "#",
@@ -130,7 +146,7 @@ const teamMembers = [
         name: "Matheus Santana",
         role: "XR Developer",
         description:
-            "Desenvolvedor de XR apaixonado por aprender, todos os dias, o que ainda não sei e criar coisas que realmente importam e impactam a vida das pessoas.",
+            "Sou formado em Jogos Digitais e bacharel em Ciência da Computação pela Anhanguera. Atuo no desenvolvimento de aplicações imersivas em RA, RV e RM, utilizando Unity, Unreal, C# e C++ para criar experiências interativas aplicadas a problemas reais.",
         image: matheusSantana,
         linkedin: "#",
         instagram: "#",
@@ -140,7 +156,7 @@ const teamMembers = [
         name: "Pedro Nascimento",
         role: "Automation and Controls Specialist",
         description:
-            "Especialista em Controle e Automação na Transformatech, atuando de forma colaborativa para entregar soluções tecnológicas eficientes aos nossos clientes.",
+            "Tenho formação em Sistemas de Informação, MBA em Gerenciamento de Projetos e base técnica em elétrica e eletrônica. Atuo em automação industrial, integrando CLPs Rockwell/Siemens, sistemas de visão e redes industriais com foco em soluções confiáveis.",
         image: pedroNascimento,
         linkedin: "#",
         instagram: "#",
@@ -157,8 +173,9 @@ const teamMembers = [
         facebook: "#",
     },
 ];
-const column1 = teamMembers.slice(0, Math.ceil(teamMembers.length / 2)).map(member => member.image);
-const column2 = teamMembers.slice(Math.ceil(teamMembers.length / 2)).map(member => member.image);
+
+const marqueeColumn1 = [marquee1_1, marquee1_2, marquee1_3, marquee1_4, marquee1_5, marquee1_6];
+const marqueeColumn2 = [marquee2_1, marquee2_2, marquee2_3, marquee2_4, marquee2_5, marquee2_6];
 ---
 
 <Layout title="Sobre Nós">
@@ -251,13 +268,8 @@ const column2 = teamMembers.slice(Math.ceil(teamMembers.length / 2)).map(member 
                 <div class="marquee-column">
                     <div class="marquee-track-1">
                         {
-                            column1.map((img) => (
-                                <Image src={img} alt="Equipe Transformatech" />
-                            ))
-                        }
-                        {
-                            column1.map((img) => (
-                                <Image src={img} alt="Equipe Transformatech" />
+                            [...marqueeColumn1, ...marqueeColumn1, ...marqueeColumn1, ...marqueeColumn1].map((img) => (
+                                <Image src={img} alt="Jeito Transformatech" />
                             ))
                         }
                     </div>
@@ -265,13 +277,8 @@ const column2 = teamMembers.slice(Math.ceil(teamMembers.length / 2)).map(member 
                 <div class="marquee-column" style="margin-top: -60px;">
                     <div class="marquee-track-2">
                         {
-                            column2.map((img) => (
-                                <Image src={img} alt="Equipe Transformatech" />
-                            ))
-                        }
-                        {
-                            column2.map((img) => (
-                                <Image src={img} alt="Equipe Transformatech" />
+                            [...marqueeColumn2, ...marqueeColumn2, ...marqueeColumn2, ...marqueeColumn2].map((img) => (
+                                <Image src={img} alt="Jeito Transformatech" />
                             ))
                         }
                     </div>

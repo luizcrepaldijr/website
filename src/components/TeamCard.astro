@@ -308,7 +308,7 @@ const { name, role, description, image, linkedin, instagram, facebook } =
     .footer {
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         margin-top: auto;
         padding-top: 24px;
         position: relative;
@@ -318,17 +318,25 @@ const { name, role, description, image, linkedin, instagram, facebook } =
     .social-links {
         display: flex;
         gap: 12px;
+        align-items: center;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .social-icon {
-        width: 20px;
-        height: 20px;
+        width: 32px;
+        height: 32px;
         color: #fcfcfd;
-        transition: opacity 0.3s;
+        transition: opacity 0.3s, transform 0.2s;
     }
 
     .social-icon:hover {
-        opacity: 0.8;
+        opacity: 0.85;
+        transform: scale(1.05);
     }
 
     .body::-webkit-scrollbar {

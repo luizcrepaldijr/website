@@ -436,24 +436,34 @@ h4 {
     justify-content: center;
     gap: 48px;
     position: relative;
+    overflow: hidden;
 
     .curva-img {
         display: block;
         position: absolute;
-        right: 0;
-        top: 50%;
+        right: -8%;
+        top: 30%;
         transform: translateY(-50%);
-        height: 100%;
-        width: 50%;
+        height: 180%;
+        width: 80%;
         object-fit: contain;
-        z-index: -1;
-        -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
-        mask-image: radial-gradient(circle, black 30%, transparent 70%);
+        object-position: right center;
+        z-index: 0;
+        pointer-events: none;
+        -webkit-mask-image: radial-gradient(ellipse 75% 70% at 75% 30%, black 45%, transparent 95%);
+        mask-image: radial-gradient(ellipse 75% 70% at 75% 30%, black 45%, transparent 95%);
     }
 
     h2 {
         max-width: 60%;
         font-size: clamp(24px, 3vw, 48px);
+        position: relative;
+        z-index: 2;
+    }
+
+    :global(a), :global(button) {
+        position: relative;
+        z-index: 2;
     }
 }
 

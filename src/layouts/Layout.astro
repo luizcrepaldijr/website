@@ -93,6 +93,63 @@ const lang = getLangFromUrl(Astro.url);
           },
         });
       });
+
+      // 🚀 Performance Optimizer for Videos (IntersectionObserver & VisibilityState)
+      const setupVideoPerformance = () => {
+        const videos = document.querySelectorAll<HTMLVideoElement>("video");
+        if (!videos.length) return;
+
+        const videoObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const video = entry.target as HTMLVideoElement;
+              if (entry.isIntersecting) {
+                if (video.paused) {
+                  video.play().catch(() => {});
+                }
+              } else {
+                if (!video.paused) {
+                  video.pause();
+                }
+              }
+            });
+          },
+          {
+            rootMargin: "200px 0px 200px 0px", // Inicia o play 200px antes de entrar na tela
+            threshold: 0.01,
+          }
+        );
+
+        videos.forEach((video) => {
+          // Pausa inicial caso o vídeo não esteja visível
+          const rect = video.getBoundingClientRect();
+          const isVisible = rect.bottom >= -200 && rect.top <= window.innerHeight + 200;
+          if (!isVisible) {
+            video.pause();
+          }
+          videoObserver.observe(video);
+        });
+
+        // Pausa vídeos quando a aba do navegador estiver inativa (economiza CPU/bateria)
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            videos.forEach((v) => v.pause());
+          } else {
+            videos.forEach((v) => {
+              const rect = v.getBoundingClientRect();
+              if (rect.bottom >= -200 && rect.top <= window.innerHeight + 200) {
+                v.play().catch(() => {});
+              }
+            });
+          }
+        });
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupVideoPerformance);
+      } else {
+        setupVideoPerformance();
+      }
     </script>
   </body>
 </html>

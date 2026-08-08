@@ -420,6 +420,11 @@ h4 {
                         height: 56px;
                         max-width: 56px;
                         object-fit: contain;
+
+                        &.tecnologia-img-horizontal {
+                            max-width: 140px;
+                            height: 38px;
+                        }
                     }
                 }
             }
@@ -655,6 +660,11 @@ h4 {
 
                         .tecnologia-img {
                             height: 32px;
+
+                            &.tecnologia-img-horizontal {
+                                max-width: 100px;
+                                height: 24px;
+                            }
                         }
                     }
                 }

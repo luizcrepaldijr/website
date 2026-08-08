@@ -9,6 +9,7 @@ import Azure from "../images/home/cases/azure.webp";
 import ReactAdmin from "../images/home/cases/react-admin.webp";
 import PowerAutomate from "../images/home/cases/power-automate.webp";
 import Sql from "../images/home/cases/sql.webp";
+import Milesight from "../images/logo-milesight.png";
 
 interface Props {
   name: string;
@@ -24,11 +25,15 @@ const imageMap: Record<string, { src: any; alt: string; class: string }> = {
   "react-admin": { src: ReactAdmin, alt: "React Admin", class: "react-admin tecnologia-img" },
   "power-automate": { src: PowerAutomate, alt: "Power Automate", class: "power-automate tecnologia-img" },
   "sql": { src: Sql, alt: "SQL", class: "sql tecnologia-img" },
+  "milesight": { src: Milesight, alt: "Milesight", class: "milesight tecnologia-img tecnologia-img-horizontal" },
+  "logo-milesight": { src: Milesight, alt: "Milesight", class: "milesight tecnologia-img tecnologia-img-horizontal" },
 };
 
-const iconMap: Record<string, { iconName: string; alt: string }> = {
+const iconMap: Record<string, { iconName: string; alt: string; class?: string }> = {
   "power-apps": { iconName: "power-apps", alt: "Power Apps" },
   "share-point": { iconName: "share-point", alt: "SharePoint" },
+  "logo-agritech": { iconName: "logo-agritech", alt: "AgriTech", class: "tecnologia-img-horizontal" },
+  "logo-starlink": { iconName: "logo-starlink", alt: "Starlink", class: "tecnologia-img-horizontal" },
 };
 
 const imageTech = imageMap[name];
@@ -39,7 +44,7 @@ const iconTech = iconMap[name];
   imageTech ? (
     <Image src={imageTech.src} alt={imageTech.alt} class={imageTech.class} />
   ) : iconTech ? (
-    <Icon name={iconTech.iconName} class="tecnologia-img" title={iconTech.alt} />
+    <Icon name={iconTech.iconName} class={`tecnologia-img ${iconTech.class || ""}`} title={iconTech.alt} />
   ) : (
     <Icon name={name} class="tecnologia-img" title={name} />
   )

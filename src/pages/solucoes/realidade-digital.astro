@@ -349,7 +349,7 @@ import { Icon } from "astro-icon/components";
                 return w * 0.28;
             };
 
-            mm.add("(min-width: 1400px)", () => {
+            mm.add("(min-width: 1500px)", () => {
                 const targetX = getCubeTargetX();
 
                 const tl = gsap.timeline({
@@ -372,7 +372,7 @@ import { Icon } from "astro-icon/components";
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                     .to(
                         ".hero .cubo-img-wrapper",
-                        { xPercent: -50, y: "22vh", x: targetX, scale: 0.85, duration: 1 },
+                        { xPercent: -50, y: "25px", x: targetX, scale: 0.85, duration: 1 },
                         "<",
                     )
                     .fromTo(
@@ -383,7 +383,7 @@ import { Icon } from "astro-icon/components";
                     );
             });
 
-            mm.add("(min-width: 801px) and (max-width: 1399px)", () => {
+            mm.add("(min-width: 801px) and (max-width: 1499px)", () => {
                 const targetX = getCubeTargetX();
 
                 const tl = gsap.timeline({

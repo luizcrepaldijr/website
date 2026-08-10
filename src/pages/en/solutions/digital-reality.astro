@@ -341,7 +341,8 @@ import { Icon } from "astro-icon/components";
                 return w * 0.28;
             };
 
-            mm.add("(min-width: 1400px)", () => {
+            // 1. Ultra-large screens (> 2000px)
+            mm.add("(min-width: 2000px)", () => {
                 const targetX = getCubeTargetX();
 
                 const tl = gsap.timeline({
@@ -364,7 +365,7 @@ import { Icon } from "astro-icon/components";
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                     .to(
                         ".hero .cubo-img-wrapper",
-                        { xPercent: -50, y: "22vh", x: targetX, scale: 0.85, duration: 1 },
+                        { xPercent: -50, y: "-95px", x: targetX, scale: 0.8, duration: 1 },
                         "<",
                     )
                     .fromTo(
@@ -375,7 +376,8 @@ import { Icon } from "astro-icon/components";
                     );
             });
 
-            mm.add("(min-width: 801px) and (max-width: 1399px)", () => {
+            // 2. Standard Desktop (1350px - 1999px)
+            mm.add("(min-width: 1350px) and (max-width: 1999px)", () => {
                 const targetX = getCubeTargetX();
 
                 const tl = gsap.timeline({
@@ -398,7 +400,7 @@ import { Icon } from "astro-icon/components";
                     .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
                     .to(
                         ".hero .cubo-img-wrapper",
-                        { xPercent: -50, y: "14vh", x: targetX, scale: 0.85, duration: 1 },
+                        { xPercent: -50, y: "115px", x: targetX, scale: 0.85, duration: 1 },
                         "<",
                     )
                     .fromTo(
@@ -409,6 +411,42 @@ import { Icon } from "astro-icon/components";
                     );
             });
 
+            // 3. Smaller Desktop / Laptops (801px - 1349px)
+            mm.add("(min-width: 801px) and (max-width: 1349px)", () => {
+                const targetX = getCubeTargetX() * 0.65;
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=60%",
+                        scrub: 0.5,
+                        pin: true,
+                        snap: {
+                            snapTo: [0, 1],
+                            duration: { min: 0.2, max: 0.4 },
+                            delay: 0.02,
+                            ease: "power1.inOut",
+                        },
+                    },
+                });
+
+                tl.to(".hero .content", { opacity: 0, y: -100, duration: 1 })
+                    .to(".arrow-down", { opacity: 0, duration: 0.2 }, "<")
+                    .to(
+                        ".hero .cubo-img-wrapper",
+                        { xPercent: -50, y: "115px", x: targetX, scale: 0.72, duration: 1 },
+                        "<",
+                    )
+                    .fromTo(
+                        ".ambientes-virtuais",
+                        { opacity: 0, marginTop: "5vh" },
+                        { opacity: 1, marginTop: "-45vh", duration: 0.8 },
+                        "-=0.8",
+                    );
+            });
+
+            // 4. Mobile (<= 800px)
             mm.add("(max-width: 800px)", () => {
                 const tlMobile = gsap.timeline({
                     scrollTrigger: {

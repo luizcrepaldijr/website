@@ -48,7 +48,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const recipients = ['jhoncs.004@gmail.com'];
+    const recipients = ['admin@transforma.tech'];
 
     // Envio via Resend
     // Remetente de testes onboarding@resend.dev (alterar quando o domínio próprio estiver verificado no Resend)

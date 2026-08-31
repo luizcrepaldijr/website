@@ -12,7 +12,6 @@ import ContactModal from "../components/ContactModal.astro";
 import Footer from "../components/Footer.astro";
 import FooterEn from "../components/FooterEn.astro";
 import FooterEs from "../components/FooterEs.astro";
-import defaultSocialImage from "../images/home/hero/cubo.webp";
 import brandLogo from "../images/logo.webp";
 import {
   getLangFromUrl,
@@ -94,7 +93,7 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
 const ptUrl = new URL(translatePath(canonicalRoute, "pt"), Astro.site);
 const enUrl = new URL(translatePath(canonicalRoute, "en"), Astro.site);
 const esUrl = new URL(translatePath(canonicalRoute, "es"), Astro.site);
-const socialImageUrl = new URL(image || defaultSocialImage.src, Astro.site);
+const socialImageUrl = new URL(image || "/meta-tag-seo.png", Astro.site);
 
 const organization = {
   "@type": "Organization",
@@ -179,11 +178,8 @@ const structuredData = {
     <meta name="twitter:image:alt" content={title || "Transformatech"} />
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <!-- Favicon: dark theme (default) -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" media="(prefers-color-scheme: dark)" />
-    <!-- Favicon: light theme -->
-    <link rel="icon" type="image/x-icon" href="/favicon-light.ico" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
   </head>
   <body>
     <ScrollProgressBar />

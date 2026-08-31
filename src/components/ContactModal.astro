@@ -663,6 +663,9 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
 
             const formData = new FormData(form);
             const actionUrl = form.action || ENDPOINT_URL;
+            const submissionId =
+                form.dataset.submissionId || crypto.randomUUID();
+            form.dataset.submissionId = submissionId;
 
             try {
                 if (actionUrl && actionUrl.trim() !== "") {
@@ -671,6 +674,7 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
                         body: formData,
                         headers: {
                             Accept: "application/json",
+                            "X-Submission-Id": submissionId,
                         },
                     });
 
@@ -682,6 +686,8 @@ const t = translations[lang as keyof typeof translations] || translations.pt;
                     // Simulação de envio com feedback visual caso não haja servidor configurado
                     await new Promise((resolve) => setTimeout(resolve, 800));
                 }
+
+                delete form.dataset.submissionId;
 
                 // Mostrar tela de sucesso
                 form.style.display = "none";

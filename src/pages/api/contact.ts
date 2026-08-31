@@ -16,6 +16,14 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const resend = new Resend(resendApiKey);
+    const submissionId = request.headers.get('x-submission-id');
+
+    if (!submissionId || !/^[a-zA-Z0-9_-]{1,200}$/.test(submissionId)) {
+      return new Response(
+        JSON.stringify({ error: 'Identificador da submissão inválido.' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
     let name = '';
     let email = '';
@@ -52,12 +60,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Envio via Resend
     // Remetente de testes onboarding@resend.dev (alterar quando o domínio próprio estiver verificado no Resend)
-    const { data, error } = await resend.emails.send({
-      from: 'Transforma Tech Leads <onboarding@resend.dev>',
-      to: recipients,
-      subject: `Novo Lead do Site: ${name} (${company || 'Sem empresa'})`,
-      replyTo: email,
-      html: `
+    const { data, error } = await resend.emails.send(
+      {
+        from: 'Transforma Tech Leads <onboarding@resend.dev>',
+        to: recipients,
+        subject: `Novo Lead do Site: ${name} (${company || 'Sem empresa'})`,
+        replyTo: email,
+        html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #ffffff;">
           <h2 style="color: #0066FF; margin-top: 0;">🚀 Novo Lead Recebido via Popup</h2>
           <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;" />
@@ -76,7 +85,11 @@ export const POST: APIRoute = async ({ request }) => {
           <p style="font-size: 12px; color: #94a3b8; margin: 0;">Mensagem enviada automaticamente pelo site Transforma Tech.</p>
         </div>
       `,
-    });
+      },
+      {
+        idempotencyKey: `contact-lead/${submissionId}`,
+      }
+    );
 
     if (error) {
       console.error('Erro ao enviar e-mail via Resend:', error);

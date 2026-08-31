@@ -37,7 +37,9 @@ export function useTranslatedPath(lang: keyof typeof ui) {
       }
     }
 
-    return !l || l === defaultLang ? `/${pathName}` : `/${l}/${pathName}`;
+    return !l || l === defaultLang
+      ? (pathName ? `/${pathName}` : "/")
+      : (pathName ? `/${l}/${pathName}` : `/${l}`);
   };
 }
 

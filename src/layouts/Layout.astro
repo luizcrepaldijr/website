@@ -12,22 +12,173 @@ import ContactModal from "../components/ContactModal.astro";
 import Footer from "../components/Footer.astro";
 import FooterEn from "../components/FooterEn.astro";
 import FooterEs from "../components/FooterEs.astro";
-import { getLangFromUrl } from "../i18n/utils";
+import defaultSocialImage from "../images/home/hero/cubo.webp";
+import brandLogo from "../images/logo.webp";
+import {
+  getLangFromUrl,
+  getRouteFromUrl,
+  useTranslatedPath,
+} from "../i18n/utils";
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
-const pageTitle = title ? `${title} - Transformatech` : "Transformatech";
+const {
+  title,
+  description,
+  image,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+} = Astro.props;
+
 const lang = getLangFromUrl(Astro.url);
+const htmlLang = lang === "pt" ? "pt-BR" : lang;
+const canonicalRoute = getRouteFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+
+const seoByLocale = {
+  pt: {
+    homeTitle: "Transformatech | Tecnologia para transformação digital",
+    defaultDescription: "Soluções de transformação digital, IoT, realidade digital, robótica, dados e automação para tornar operações mais eficientes, conectadas e inteligentes.",
+    paths: {
+      "/solucoes": { title: "Soluções para transformação digital", description: "Conheça as soluções da Transformatech em transformação digital, Indústria 4.0, engenharia, agricultura, IoT, realidade digital e robótica." },
+      "/solucoes/iot": { title: "IoT para indústria e agricultura", description: "Soluções IoT sob medida para indústria e agricultura, com sensores, conectividade, monitoramento remoto e inteligência de dados em tempo real." },
+      "/solucoes/realidade-digital": { title: "Realidade digital para empresas", description: "Realidade aumentada, virtual e mista para treinamento, manutenção, suporte remoto, segurança e eficiência operacional." },
+      "/solucoes/robotica": { title: "Robótica industrial e automação", description: "Robótica industrial conectada a dados com robôs colaborativos, humanoides e quadrúpedes integrados aos processos produtivos." },
+      "/sobre-nos": { title: "Sobre a Transformatech", description: "Conheça a Transformatech, sua equipe multidisciplinar e a atuação global em tecnologia, engenharia, dados, automação e inovação." },
+      "/cases": { title: "Cases de transformação digital", description: "Cases reais de transformação digital, IoT, dados e automação que geraram eficiência, governança e resultados mensuráveis." },
+    },
+  },
+  en: {
+    homeTitle: "Transformatech | Technology for digital transformation",
+    defaultDescription: "Digital transformation, IoT, digital reality, robotics, data and automation solutions for more efficient, connected and intelligent operations.",
+    paths: {
+      "/solucoes": { title: "Digital transformation solutions", description: "Explore Transformatech solutions for digital transformation, Industry 4.0, engineering, agriculture, IoT, digital reality and robotics." },
+      "/solucoes/iot": { title: "IoT for industry and agriculture", description: "Tailored IoT solutions for industry and agriculture with sensors, connectivity, remote monitoring and real-time data intelligence." },
+      "/solucoes/realidade-digital": { title: "Digital reality for business", description: "Augmented, virtual and mixed reality for training, maintenance, remote support, safety and operational efficiency." },
+      "/solucoes/robotica": { title: "Industrial robotics and automation", description: "Data-connected industrial robotics with collaborative, humanoid and quadruped robots integrated into production processes." },
+      "/sobre-nos": { title: "About Transformatech", description: "Meet Transformatech, our multidisciplinary team and global expertise in technology, engineering, data, automation and innovation." },
+      "/cases": { title: "Digital transformation case studies", description: "Real digital transformation, IoT, data and automation cases that delivered efficiency, governance and measurable results." },
+    },
+  },
+  es: {
+    homeTitle: "Transformatech | Tecnología para la transformación digital",
+    defaultDescription: "Soluciones de transformación digital, IoT, realidad digital, robótica, datos y automatización para operaciones más eficientes, conectadas e inteligentes.",
+    paths: {
+      "/solucoes": { title: "Soluciones de transformación digital", description: "Conoce las soluciones de Transformatech para transformación digital, Industria 4.0, ingeniería, agricultura, IoT, realidad digital y robótica." },
+      "/solucoes/iot": { title: "IoT para industria y agricultura", description: "Soluciones IoT a medida para industria y agricultura con sensores, conectividad, monitoreo remoto e inteligencia de datos en tiempo real." },
+      "/solucoes/realidade-digital": { title: "Realidad digital para empresas", description: "Realidad aumentada, virtual y mixta para capacitación, mantenimiento, soporte remoto, seguridad y eficiencia operativa." },
+      "/solucoes/robotica": { title: "Robótica industrial y automatización", description: "Robótica industrial conectada a datos con robots colaborativos, humanoides y cuadrúpedos integrados en los procesos productivos." },
+      "/sobre-nos": { title: "Sobre Transformatech", description: "Conoce Transformatech, su equipo multidisciplinario y su actuación global en tecnología, ingeniería, datos, automatización e innovación." },
+      "/cases": { title: "Casos de transformación digital", description: "Casos reales de transformación digital, IoT, datos y automatización que generaron eficiencia, gobernanza y resultados medibles." },
+    },
+  },
+} as const;
+
+const localeSeo = seoByLocale[lang];
+const routeSeo = localeSeo.paths[canonicalRoute as keyof typeof localeSeo.paths];
+const metaDescription = description || routeSeo?.description || localeSeo.defaultDescription;
+const pageTitle = title ? `${title} | Transformatech` : routeSeo?.title ? `${routeSeo.title} | Transformatech` : localeSeo.homeTitle;
+
+const canonicalPath = translatePath(canonicalRoute, lang);
+const canonicalUrl = new URL(canonicalPath, Astro.site);
+const ptUrl = new URL(translatePath(canonicalRoute, "pt"), Astro.site);
+const enUrl = new URL(translatePath(canonicalRoute, "en"), Astro.site);
+const esUrl = new URL(translatePath(canonicalRoute, "es"), Astro.site);
+const socialImageUrl = new URL(image || defaultSocialImage.src, Astro.site);
+
+const organization = {
+  "@type": "Organization",
+  "@id": new URL("/#organization", Astro.site).href,
+  name: "Transformatech",
+  url: new URL("/", Astro.site).href,
+  logo: new URL(brandLogo.src, Astro.site).href,
+  email: "contact@transforma.tech",
+  sameAs: [
+    "https://www.instagram.com/transformatechadvisors/",
+    "https://www.linkedin.com/company/transformatech-advisors",
+  ],
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organization,
+    {
+      "@type": type === "article" ? "Article" : "WebPage",
+      "@id": `${canonicalUrl.href}#webpage`,
+      url: canonicalUrl.href,
+      name: pageTitle,
+      description: metaDescription,
+      inLanguage: htmlLang,
+      image: socialImageUrl.href,
+      ...(type === "article" && {
+        headline: title,
+        datePublished: publishedTime,
+        dateModified: modifiedTime || publishedTime,
+        author: { "@id": organization["@id"] },
+        publisher: { "@id": organization["@id"] },
+      }),
+    },
+    ...(canonicalRoute === "/" ? [{
+      "@type": "WebSite",
+      "@id": new URL("/#website", Astro.site).href,
+      url: new URL("/", Astro.site).href,
+      name: "Transformatech",
+      alternateName: "Transformatech Advisors",
+      inLanguage: ["pt-BR", "en", "es"],
+      publisher: { "@id": organization["@id"] },
+    }] : []),
+  ],
+};
 ---
 
-<html lang="pt-br">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="theme-color" content="#0c111d" />
+    <meta name="author" content="Transformatech" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="pt-BR" href={ptUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={ptUrl} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Transformatech" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content={title || "Transformatech"} />
+    <meta property="og:locale" content={lang === "pt" ? "pt_BR" : lang === "en" ? "en_US" : "es_ES"} />
+    {lang !== "pt" && <meta property="og:locale:alternate" content="pt_BR" />}
+    {lang !== "en" && <meta property="og:locale:alternate" content="en_US" />}
+    {lang !== "es" && <meta property="og:locale:alternate" content="es_ES" />}
+    {type === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {type === "article" && (modifiedTime || publishedTime) && <meta property="article:modified_time" content={modifiedTime || publishedTime} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={title || "Transformatech"} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <!-- Favicon: dark theme (default) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" media="(prefers-color-scheme: dark)" />

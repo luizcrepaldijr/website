@@ -114,7 +114,13 @@ const iconMap: Record<string, any> = {
 };
 ---
 
-<Layout title={entry.data.title}>
+<Layout
+    title={`${entry.data.title} ${entry.data.heroSubtitle || entry.data.subtitle || ""}`.trim()}
+    description={entry.data.description}
+    image={optimizedBackground.src}
+    type="article"
+    publishedTime={entry.data.pubDate?.toISOString()}
+>
     <div
         class="case-hero-section"
         style={`background-image: url(${optimizedBackground.src})`}

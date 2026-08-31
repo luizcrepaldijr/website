@@ -7,599 +7,705 @@ import { getLangFromUrl } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 
 const translations = {
-  pt: {
-    badge: "Contato",
-    title: "Fale com um <b>especialista</b>",
-    subtitle: "Preencha o formulário abaixo e nosso time entrará em contato com você em breve.",
-    nameLabel: "Nome completo",
-    namePlaceholder: "Seu nome",
-    emailLabel: "E-mail corporativo",
-    emailPlaceholder: "seu.email@empresa.com",
-    phoneLabel: "Telefone / WhatsApp",
-    phonePlaceholder: "(00) 90000-0000",
-    companyLabel: "Empresa",
-    companyPlaceholder: "Nome da sua empresa",
-    messageLabel: "Mensagem",
-    messagePlaceholder: "Conte-nos sobre o seu projeto ou desafio...",
-    submitBtn: "Enviar mensagem",
-    sendingBtn: "Enviando...",
-    successTitle: "Mensagem enviada!",
-    successSubtitle: "Obrigado pelo contato. Nossa equipe retornará em breve.",
-    closeBtn: "Fechar",
-  },
-  en: {
-    badge: "Contact",
-    title: "Talk to an <b>expert</b>",
-    subtitle: "Fill out the form below and our team will get back to you shortly.",
-    nameLabel: "Full Name",
-    namePlaceholder: "Your name",
-    emailLabel: "Business Email",
-    emailPlaceholder: "your.email@company.com",
-    phoneLabel: "Phone / WhatsApp",
-    phonePlaceholder: "+1 (000) 000-0000",
-    companyLabel: "Company",
-    companyPlaceholder: "Your company name",
-    messageLabel: "Message",
-    messagePlaceholder: "Tell us about your project or challenge...",
-    submitBtn: "Send message",
-    sendingBtn: "Sending...",
-    successTitle: "Message Sent!",
-    successSubtitle: "Thank you for reaching out. Our team will get back to you soon.",
-    closeBtn: "Close",
-  },
-  es: {
-    badge: "Contacto",
-    title: "Hablar con un <b>experto</b>",
-    subtitle: "Complete el formulario a continuación y nuestro equipo se pondrá en contacto pronto.",
-    nameLabel: "Nombre completo",
-    namePlaceholder: "Su nombre",
-    emailLabel: "Correo corporativo",
-    emailPlaceholder: "su.correo@empresa.com",
-    phoneLabel: "Teléfono / WhatsApp",
-    phonePlaceholder: "+34 000 000 000",
-    companyLabel: "Empresa",
-    companyPlaceholder: "Nombre de su empresa",
-    messageLabel: "Mensaje",
-    messagePlaceholder: "Cuéntenos sobre su proyecto o desafío...",
-    submitBtn: "Enviar mensaje",
-    sendingBtn: "Enviando...",
-    successTitle: "¡Mensaje enviado!",
-    successSubtitle: "Gracias por contactarnos. Nuestro equipo se comunicará en breve.",
-    closeBtn: "Cerrar",
-  },
+    pt: {
+        badge: "Contato",
+        title: "Fale com um <b>especialista</b>",
+        subtitle:
+            "Preencha o formulário abaixo e nosso time entrará em contato com você em breve.",
+        nameLabel: "Nome completo",
+        namePlaceholder: "Seu nome",
+        emailLabel: "E-mail corporativo",
+        emailPlaceholder: "seu.email@empresa.com",
+        phoneLabel: "Telefone / WhatsApp",
+        phonePlaceholder: "(00) 90000-0000",
+        companyLabel: "Empresa",
+        companyPlaceholder: "Nome da sua empresa",
+        messageLabel: "Mensagem",
+        messagePlaceholder: "Conte-nos sobre o seu projeto ou desafio...",
+        submitBtn: "Enviar mensagem",
+        sendingBtn: "Enviando...",
+        successTitle: "Mensagem enviada!",
+        successSubtitle:
+            "Obrigado pelo contato. Nossa equipe retornará em breve.",
+        closeBtn: "Fechar",
+    },
+    en: {
+        badge: "Contact",
+        title: "Talk to an <b>expert</b>",
+        subtitle:
+            "Fill out the form below and our team will get back to you shortly.",
+        nameLabel: "Full Name",
+        namePlaceholder: "Your name",
+        emailLabel: "Business Email",
+        emailPlaceholder: "your.email@company.com",
+        phoneLabel: "Phone / WhatsApp",
+        phonePlaceholder: "+1 (000) 000-0000",
+        companyLabel: "Company",
+        companyPlaceholder: "Your company name",
+        messageLabel: "Message",
+        messagePlaceholder: "Tell us about your project or challenge...",
+        submitBtn: "Send message",
+        sendingBtn: "Sending...",
+        successTitle: "Message Sent!",
+        successSubtitle:
+            "Thank you for reaching out. Our team will get back to you soon.",
+        closeBtn: "Close",
+    },
+    es: {
+        badge: "Contacto",
+        title: "Hablar con un <b>experto</b>",
+        subtitle:
+            "Complete el formulario a continuación y nuestro equipo se pondrá en contacto pronto.",
+        nameLabel: "Nombre completo",
+        namePlaceholder: "Su nombre",
+        emailLabel: "Correo corporativo",
+        emailPlaceholder: "su.correo@empresa.com",
+        phoneLabel: "Teléfono / WhatsApp",
+        phonePlaceholder: "+34 000 000 000",
+        companyLabel: "Empresa",
+        companyPlaceholder: "Nombre de su empresa",
+        messageLabel: "Mensaje",
+        messagePlaceholder: "Cuéntenos sobre su proyecto o desafío...",
+        submitBtn: "Enviar mensaje",
+        sendingBtn: "Enviando...",
+        successTitle: "¡Mensaje enviado!",
+        successSubtitle:
+            "Gracias por contactarnos. Nuestro equipo se comunicará en breve.",
+        closeBtn: "Cerrar",
+    },
 };
 
 const t = translations[lang as keyof typeof translations] || translations.pt;
 ---
 
-<div id="contact-modal" class="contact-modal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="contact-modal-overlay" id="contact-modal-overlay"></div>
-  
-  <div class="contact-modal-container">
-    <button type="button" class="contact-modal-close" id="contact-modal-close-btn" aria-label={t.closeBtn}>
-      <CloseIcon width={24} height={24} color="white" />
-    </button>
+<div
+    id="contact-modal"
+    class="contact-modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+>
+    <div class="contact-modal-overlay" id="contact-modal-overlay"></div>
 
-    <div class="contact-modal-header">
-      <h2 set:html={t.title} />
-      <p>{t.subtitle}</p>
-    </div>
+    <div class="contact-modal-container">
+        <button
+            type="button"
+            class="contact-modal-close"
+            id="contact-modal-close-btn"
+            aria-label={t.closeBtn}
+        >
+            <CloseIcon width={24} height={24} color="white" />
+        </button>
 
-    <!-- 
+        <div class="contact-modal-header">
+            <h2 set:html={t.title} />
+            <p>{t.subtitle}</p>
+        </div>
+
+        <!--
       CONFIGURAÇÃO PARA ENVIO POR E-MAIL:
       Para integrar com serviços de envio por e-mail (ex: Formspree, Web3Forms, Resend, API própria):
       Adicione a URL do endpoint no atributo 'action' abaixo, ex: action="https://api.web3forms.com/submit"
       ou configure a variável ENDPOINT_URL no script no final deste arquivo.
     -->
-    <form id="contact-modal-form" class="contact-modal-form" method="POST" action="/api/contact">
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="contact-name">{t.nameLabel} <span class="required">*</span></label>
-          <input type="text" id="contact-name" name="name" placeholder={t.namePlaceholder} required />
+        <form
+            id="contact-modal-form"
+            class="contact-modal-form"
+            method="POST"
+            action="/api/contact"
+        >
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="contact-name"
+                        >{t.nameLabel} <span class="required">*</span></label
+                    >
+                    <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        placeholder={t.namePlaceholder}
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email"
+                        >{t.emailLabel} <span class="required">*</span></label
+                    >
+                    <input
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        placeholder={t.emailPlaceholder}
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-phone"
+                        >{t.phoneLabel} <span class="required">*</span></label
+                    >
+                    <input
+                        type="tel"
+                        id="contact-phone"
+                        name="phone"
+                        placeholder={t.phonePlaceholder}
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-company"
+                        >{t.companyLabel} <span class="required">*</span></label
+                    >
+                    <input
+                        type="text"
+                        id="contact-company"
+                        name="company"
+                        placeholder={t.companyPlaceholder}
+                        required
+                    />
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="contact-message"
+                        >{t.messageLabel} <span class="required">*</span></label
+                    >
+                    <textarea
+                        id="contact-message"
+                        name="message"
+                        rows="4"
+                        placeholder={t.messagePlaceholder}
+                        required></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button
+                    type="submit"
+                    id="contact-submit-btn"
+                    class="submit-btn"
+                >
+                    <span class="btn-text" data-original-text={t.submitBtn}
+                        >{t.submitBtn}</span
+                    >
+                    <ArrowRight width={20} height={20} class="btn-icon" />
+                </button>
+            </div>
+        </form>
+
+        <div id="contact-modal-success" class="contact-modal-success" hidden>
+            <div class="success-icon-wrapper">
+                <CheckCircle width={56} height={56} color="#0066FF" />
+            </div>
+            <h3>{t.successTitle}</h3>
+            <p>{t.successSubtitle}</p>
+            <button
+                type="button"
+                id="contact-success-close-btn"
+                class="success-btn"
+            >
+                {t.closeBtn}
+            </button>
         </div>
-
-        <div class="form-group">
-          <label for="contact-email">{t.emailLabel} <span class="required">*</span></label>
-          <input type="email" id="contact-email" name="email" placeholder={t.emailPlaceholder} required />
-        </div>
-
-        <div class="form-group">
-          <label for="contact-phone">{t.phoneLabel} <span class="required">*</span></label>
-          <input type="tel" id="contact-phone" name="phone" placeholder={t.phonePlaceholder} required />
-        </div>
-
-        <div class="form-group">
-          <label for="contact-company">{t.companyLabel} <span class="required">*</span></label>
-          <input type="text" id="contact-company" name="company" placeholder={t.companyPlaceholder} required />
-        </div>
-
-        <div class="form-group full-width">
-          <label for="contact-message">{t.messageLabel} <span class="required">*</span></label>
-          <textarea id="contact-message" name="message" rows="4" placeholder={t.messagePlaceholder} required></textarea>
-        </div>
-      </div>
-
-      <div class="form-actions">
-        <button type="submit" id="contact-submit-btn" class="submit-btn">
-          <span class="btn-text" data-original-text={t.submitBtn}>{t.submitBtn}</span>
-          <ArrowRight width={20} height={20} class="btn-icon" />
-        </button>
-      </div>
-    </form>
-
-    <div id="contact-modal-success" class="contact-modal-success" hidden>
-      <div class="success-icon-wrapper">
-        <CheckCircle width={56} height={56} color="#0066FF" />
-      </div>
-      <h3>{t.successTitle}</h3>
-      <p>{t.successSubtitle}</p>
-      <button type="button" id="contact-success-close-btn" class="success-btn">
-        {t.closeBtn}
-      </button>
     </div>
-  </div>
 </div>
 
 <style>
-  .contact-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    height: 100vh;
-    z-index: 100001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    padding: 20px;
-  }
+    .contact-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        z-index: 100001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+        padding: 20px;
+    }
 
-  .contact-modal.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
+    .contact-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 
-  .contact-modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(4, 7, 13, 0.82);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
+    .contact-modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(4, 7, 13, 0.82);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
 
-  .contact-modal-container {
-    position: relative;
-    width: 100%;
-    max-width: 620px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: rgba(12, 17, 29, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 102, 255, 0.2);
-    border-radius: 24px;
-    padding: 40px 36px;
-    transform: scale(0.92) translateY(20px);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-  }
-
-  .contact-modal.is-open .contact-modal-container {
-    transform: scale(1) translateY(0);
-  }
-
-  .contact-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .contact-modal-close:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-  }
-
-  .contact-modal-header {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-
-  .contact-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 999px;
-    background: rgba(0, 102, 255, 0.15);
-    border: 1px solid rgba(0, 102, 255, 0.4);
-    color: #4da6ff;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-  }
-
-  .contact-modal-header h2 {
-    font-size: clamp(22px, 2.2vw, 32px);
-    font-weight: 500;
-    color: var(--neutral-white, #ffffff);
-    margin-bottom: 10px;
-    line-height: 1.25;
-  }
-
-  .contact-modal-header h2 b {
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  .contact-modal-header p {
-    font-size: clamp(14px, 1vw, 16px);
-    color: var(--neutral-light-gray, #b6becd);
-    line-height: 1.5;
-  }
-
-  .contact-modal-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-group.full-width {
-    grid-column: span 2;
-  }
-
-  .form-group label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--neutral-white, #ffffff);
-  }
-
-  .form-group label .required {
-    color: #ff4d4d;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    font-family: var(--font-main, sans-serif);
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  }
-
-  .form-group input::placeholder,
-  .form-group textarea::placeholder {
-    color: rgba(182, 190, 205, 0.5);
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: #0066FF;
-    box-shadow: 0 0 12px rgba(0, 102, 255, 0.3);
-  }
-
-  .form-actions {
-    margin-top: 8px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 14px 28px;
-    border-radius: 999px;
-    background: #0066FF;
-    color: #ffffff;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
-  }
-
-  .submit-btn svg,
-  .btn-icon {
-    width: 20px !important;
-    height: 20px !important;
-    max-width: 20px !important;
-    max-height: 20px !important;
-    flex-shrink: 0;
-  }
-
-  .contact-modal-close svg {
-    width: 24px !important;
-    height: 24px !important;
-    max-width: 24px !important;
-    max-height: 24px !important;
-    flex-shrink: 0;
-  }
-
-  .submit-btn:hover {
-    background: #0052cc;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 102, 255, 0.6);
-  }
-
-  .submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .contact-modal-success {
-    text-align: center;
-    padding: 30px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .contact-modal-success[hidden] {
-    display: none !important;
-  }
-
-  .success-icon-wrapper {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(0, 102, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-  }
-
-  .success-icon-wrapper svg {
-    width: 56px !important;
-    height: 56px !important;
-    max-width: 56px !important;
-    max-height: 56px !important;
-    flex-shrink: 0;
-  }
-
-  .contact-modal-success h3 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  .contact-modal-success p {
-    font-size: 16px;
-    color: var(--neutral-light-gray, #b6becd);
-    max-width: 400px;
-  }
-
-  .success-btn {
-    margin-top: 12px;
-    padding: 12px 32px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-
-  .success-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  @media only screen and (max-width: 640px) {
     .contact-modal-container {
-      padding: 30px 20px;
+        position: relative;
+        width: 100%;
+        max-width: 620px;
+        max-height: 90vh;
+        overflow-y: auto;
+        background: rgba(12, 17, 29, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow:
+            0 24px 60px rgba(0, 0, 0, 0.5),
+            0 0 30px rgba(0, 102, 255, 0.2);
+        border-radius: 24px;
+        padding: 40px 36px;
+        transform: scale(0.92) translateY(20px);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    }
+
+    .contact-modal.is-open .contact-modal-container {
+        transform: scale(1) translateY(0);
+    }
+
+    .contact-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .contact-modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+
+    .contact-modal-header {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .contact-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 999px;
+        background: rgba(0, 102, 255, 0.15);
+        border: 1px solid rgba(0, 102, 255, 0.4);
+        color: #4da6ff;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+    }
+
+    .contact-modal-header h2 {
+        font-size: clamp(22px, 2.2vw, 32px);
+        font-weight: 500;
+        color: var(--neutral-white, #ffffff);
+        margin-bottom: 10px;
+        line-height: 1.25;
+    }
+
+    .contact-modal-header h2 b {
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .contact-modal-header p {
+        font-size: clamp(14px, 1vw, 16px);
+        color: var(--neutral-light-gray, #b6becd);
+        line-height: 1.5;
+    }
+
+    .contact-modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .form-grid {
-      grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
     }
 
     .form-group.full-width {
-      grid-column: span 1;
+        grid-column: span 2;
     }
-  }
+
+    .form-group label {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--neutral-white, #ffffff);
+    }
+
+    .form-group label .required {
+        color: #ff4d4d;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        font-family: var(--font-main, sans-serif);
+        font-size: 14px;
+        outline: none;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: rgba(182, 190, 205, 0.5);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: #0066ff;
+        box-shadow: 0 0 12px rgba(0, 102, 255, 0.3);
+    }
+
+    .form-actions {
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 14px 28px;
+        border-radius: 999px;
+        background: #0066ff;
+        color: #ffffff;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
+    }
+
+    .submit-btn svg,
+    .btn-icon {
+        width: 20px !important;
+        height: 20px !important;
+        max-width: 20px !important;
+        max-height: 20px !important;
+        flex-shrink: 0;
+    }
+
+    .contact-modal-close svg {
+        width: 24px !important;
+        height: 24px !important;
+        max-width: 24px !important;
+        max-height: 24px !important;
+        flex-shrink: 0;
+    }
+
+    .submit-btn:hover {
+        background: #0052cc;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(0, 102, 255, 0.6);
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .contact-modal-success {
+        text-align: center;
+        padding: 30px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .contact-modal-success[hidden] {
+        display: none !important;
+    }
+
+    .success-icon-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(0, 102, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .success-icon-wrapper svg {
+        width: 56px !important;
+        height: 56px !important;
+        max-width: 56px !important;
+        max-height: 56px !important;
+        flex-shrink: 0;
+    }
+
+    .contact-modal-success h3 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .contact-modal-success p {
+        font-size: 16px;
+        color: var(--neutral-light-gray, #b6becd);
+        max-width: 400px;
+    }
+
+    .success-btn {
+        margin-top: 12px;
+        padding: 12px 32px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .success-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media only screen and (max-width: 640px) {
+        \n .contact-modal-container {
+            padding: 30px 20px;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full-width {
+            grid-column: span 1;
+        }
+    }
 </style>
 
 <script>
-  // Script global para controle do Popup Modal de Contato
-  // Permite configurar a URL de envio (ex: Web3Forms, Formspree ou backend)
-  const ENDPOINT_URL = ""; // Insira o endpoint de envio por e-mail aqui se desejado
+    // Script global para controle do Popup Modal de Contato
+    const ENDPOINT_URL = "";
 
-  function initContactModal() {
-    const modal = document.getElementById("contact-modal");
-    const overlay = document.getElementById("contact-modal-overlay");
-    const closeBtn = document.getElementById("contact-modal-close-btn");
-    const successCloseBtn = document.getElementById("contact-success-close-btn");
-    const form = document.getElementById("contact-modal-form") as HTMLFormElement | null;
-    const successBox = document.getElementById("contact-modal-success");
-    const submitBtn = document.getElementById("contact-submit-btn") as HTMLButtonElement | null;
+    function initContactModal() {
+        const modal = document.getElementById("contact-modal");
+        if (!modal || modal.dataset.initialized === "true") return;
+        modal.dataset.initialized = "true";
 
-    if (!modal) return;
+        const overlay = document.getElementById("contact-modal-overlay");
+        const closeBtn = document.getElementById("contact-modal-close-btn");
+        const successCloseBtn = document.getElementById(
+            "contact-success-close-btn",
+        );
+        const form = document.getElementById(
+            "contact-modal-form",
+        ) as HTMLFormElement | null;
+        const successBox = document.getElementById("contact-modal-success");
+        const submitBtn = document.getElementById(
+            "contact-submit-btn",
+        ) as HTMLButtonElement | null;
 
-    function openModal(e?: Event) {
-      if (e) {
-        e.preventDefault();
-      }
-      modal?.classList.add("is-open");
-      modal?.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal() {
-      modal?.classList.remove("is-open");
-      modal?.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-
-      // Reset form view after animation
-      setTimeout(() => {
-        if (form && successBox) {
-          form.style.display = "flex";
-          form.reset();
-          successBox.setAttribute("hidden", "");
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            const btnTextSpan = submitBtn.querySelector(".btn-text");
-            if (btnTextSpan) {
-              const originalText = btnTextSpan.getAttribute("data-original-text");
-              if (originalText) {
-                btnTextSpan.textContent = originalText;
-              }
+        function openModal(e?: Event) {
+            if (e) {
+                e.preventDefault();
             }
-          }
+            modal?.classList.add("is-open");
+            modal?.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
         }
-      }, 300);
+
+        function closeModal() {
+            modal?.classList.remove("is-open");
+            modal?.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+
+            // Reset form view after animation
+            setTimeout(() => {
+                if (form && successBox) {
+                    form.style.display = "flex";
+                    form.reset();
+                    successBox.setAttribute("hidden", "");
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        const btnTextSpan =
+                            submitBtn.querySelector(".btn-text");
+                        if (btnTextSpan) {
+                            const originalText =
+                                btnTextSpan.getAttribute("data-original-text");
+                            if (originalText) {
+                                btnTextSpan.textContent = originalText;
+                            }
+                        }
+                    }
+                }
+            }, 300);
+        }
+
+        // Event Delegation: Ouvir cliques em qualquer botão de contato da página
+        document.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement | null;
+            if (!target) return;
+
+            const trigger = target.closest(
+                '[data-open-contact-modal], .open-contact-modal, a[href="/contato"], a[href="#contato"], a[href="./contato"], a[href="/en/contato"], a[href="/es/contato"]',
+            );
+
+            if (trigger) {
+                openModal(e);
+                return;
+            }
+
+            // Verificação por texto em links/botões que tenham intenção de contato
+            const buttonLink = target.closest("a, button");
+            if (buttonLink) {
+                const href = buttonLink.getAttribute("href");
+                const text = (buttonLink.textContent || "")
+                    .toLowerCase()
+                    .trim();
+                const contactKeywords = [
+                    "falar com um especialista",
+                    "talk to an expert",
+                    "talk to a specialist",
+                    "hablar con un experto",
+                    "hablar con un especialista",
+                    "entrar em contato",
+                    "get in touch",
+                    "contactar",
+                    "preciso desse serviço",
+                    "i need this service",
+                    "necesito este servicio",
+                    "quero começar",
+                    "get started",
+                    "quiero empezar",
+                    "empezar",
+                ];
+
+                // Se o link for '#' ou nulo e contiver texto de contato
+                if (
+                    (!href || href === "#" || href.includes("contato")) &&
+                    contactKeywords.some((k) => text.includes(k))
+                ) {
+                    openModal(e);
+                }
+            }
+        });
+
+        overlay?.addEventListener("click", closeModal);
+        closeBtn?.addEventListener("click", closeModal);
+        successCloseBtn?.addEventListener("click", closeModal);
+
+        // Fechar ao pressionar ESC
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal.classList.contains("is-open")) {
+                closeModal();
+            }
+        });
+
+        // Envio do formulário
+        form?.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (!submitBtn || form.dataset.submitting === "true") return;
+            form.dataset.submitting = "true";
+
+            submitBtn.disabled = true;
+            const btnTextSpan = submitBtn.querySelector(".btn-text");
+            const originalText =
+                btnTextSpan?.getAttribute("data-original-text") ||
+                btnTextSpan?.textContent ||
+                "";
+
+            if (btnTextSpan) {
+                btnTextSpan.textContent = "...";
+            }
+
+            const formData = new FormData(form);
+            const actionUrl = form.action || ENDPOINT_URL;
+
+            try {
+                if (actionUrl && actionUrl.trim() !== "") {
+                    const response = await fetch(actionUrl, {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    });
+
+                    if (!response.ok) {
+                        const resData = await response.json().catch(() => ({}));
+                        throw new Error(resData.error || "Erro no envio");
+                    }
+                } else {
+                    // Simulação de envio com feedback visual caso não haja servidor configurado
+                    await new Promise((resolve) => setTimeout(resolve, 800));
+                }
+
+                // Mostrar tela de sucesso
+                form.style.display = "none";
+                if (successBox) {
+                    successBox.removeAttribute("hidden");
+                }
+            } catch (err: any) {
+                alert(
+                    err?.message ||
+                        "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.",
+                );
+            } finally {
+                form.dataset.submitting = "false";
+                if (btnTextSpan) {
+                    btnTextSpan.textContent = originalText;
+                }
+                submitBtn.disabled = false;
+            }
+        });
     }
 
-    // Event Delegation: Ouvir cliques em qualquer botão de contato da página
-    document.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-
-      const trigger = target.closest(
-        '[data-open-contact-modal], .open-contact-modal, a[href="/contato"], a[href="#contato"], a[href="./contato"], a[href="/en/contato"], a[href="/es/contato"]'
-      );
-
-      if (trigger) {
-        openModal(e);
-        return;
-      }
-
-      // Verificação por texto em links/botões que tenham intenção de contato
-      const buttonLink = target.closest("a, button");
-      if (buttonLink) {
-        const href = buttonLink.getAttribute("href");
-        const text = (buttonLink.textContent || "").toLowerCase().trim();
-        const contactKeywords = [
-          "falar com um especialista",
-          "talk to an expert",
-          "talk to a specialist",
-          "hablar con un experto",
-          "hablar con un especialista",
-          "entrar em contato",
-          "get in touch",
-          "contactar",
-          "preciso desse serviço",
-          "i need this service",
-          "necesito este servicio",
-          "quero começar",
-          "get started",
-          "quiero empezar",
-          "empezar"
-        ];
-
-        // Se o link for '#' ou nulo e contiver texto de contato
-        if ((!href || href === "#" || href.includes("contato")) && contactKeywords.some(k => text.includes(k))) {
-          openModal(e);
-        }
-      }
-    });
-
-    overlay?.addEventListener("click", closeModal);
-    closeBtn?.addEventListener("click", closeModal);
-    successCloseBtn?.addEventListener("click", closeModal);
-
-    // Fechar ao pressionar ESC
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("is-open")) {
-        closeModal();
-      }
-    });
-
-    // Envio do formulário
-    form?.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (!submitBtn) return;
-
-      submitBtn.disabled = true;
-      const btnTextSpan = submitBtn.querySelector(".btn-text");
-      const originalText = btnTextSpan?.getAttribute("data-original-text") || btnTextSpan?.textContent || "";
-      
-      if (btnTextSpan) {
-        btnTextSpan.textContent = "...";
-      }
-
-      const formData = new FormData(form);
-      const actionUrl = form.action || ENDPOINT_URL;
-
-      try {
-        if (actionUrl && actionUrl.trim() !== "") {
-          const response = await fetch(actionUrl, {
-            method: "POST",
-            body: formData,
-            headers: {
-              Accept: "application/json",
-            },
-          });
-
-          if (!response.ok) {
-            const resData = await response.json().catch(() => ({}));
-            throw new Error(resData.error || "Erro no envio");
-          }
-        } else {
-          // Simulação de envio com feedback visual impecável caso não haja servidor configurado
-          await new Promise((resolve) => setTimeout(resolve, 800));
-        }
-
-        // Mostrar tela de sucesso
-        form.style.display = "none";
-        if (successBox) {
-          successBox.removeAttribute("hidden");
-        }
-      } catch (err: any) {
-        alert(err?.message || "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.");
-      } finally {
-        if (btnTextSpan) {
-          btnTextSpan.textContent = originalText;
-        }
-        submitBtn.disabled = false;
-      }
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", initContactModal);
-  window.addEventListener("load", initContactModal);
-  initContactModal();
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initContactModal);
+    } else {
+        initContactModal();
+    }
 </script>

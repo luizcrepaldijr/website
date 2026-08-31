@@ -6,7 +6,6 @@ import {
   getRouteFromUrl,
 } from "../../i18n/utils";
 
-const pathname = Astro.url.pathname;
 const currentLang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(currentLang);
 
@@ -23,9 +22,9 @@ const route = getRouteFromUrl(Astro.url);
     <CaretDown class="caret" color="white" />
   </div>
   <div class="lang-dropdown">
-    <a href={translatePath(route, "pt")} class={isPt ? "active" : ""}>PT</a>
-    <a href={translatePath(route, "en")} class={isEn ? "active" : ""}>EN</a>
-    <a href={translatePath(route, "es")} class={isEs ? "active" : ""}>ES</a>
+    <a href={translatePath(route, "pt")} data-locale="pt" class={isPt ? "active" : ""}>PT</a>
+    <a href={translatePath(route, "en")} data-locale="en" class={isEn ? "active" : ""}>EN</a>
+    <a href={translatePath(route, "es")} data-locale="es" class={isEs ? "active" : ""}>ES</a>
   </div>
 </div>
 
@@ -148,3 +147,14 @@ const route = getRouteFromUrl(Astro.url);
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>("[data-locale]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const locale = link.dataset.locale;
+      if (!locale) return;
+
+      document.cookie = `preferred_locale=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    });
+  });
+</script>

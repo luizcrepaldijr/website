@@ -1,0 +1,44 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/", "destination": "/en", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/", "destination": "/es", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/", "destination": "/en", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/", "destination": "/es", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/sobre-nos", "destination": "/en/about-us", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/sobre-nos", "destination": "/es/sobre-nosotros", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/sobre-nos", "destination": "/en/about-us", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/sobre-nos", "destination": "/es/sobre-nosotros", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/solucoes", "destination": "/en/solutions", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/solucoes", "destination": "/es/soluciones", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/solucoes", "destination": "/en/solutions", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/solucoes", "destination": "/es/soluciones", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/solucoes/iot", "destination": "/en/solutions/iot", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/solucoes/iot", "destination": "/es/soluciones/iot", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/solucoes/iot", "destination": "/en/solutions/iot", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/solucoes/iot", "destination": "/es/soluciones/iot", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/solucoes/realidade-digital", "destination": "/en/solutions/digital-reality", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/solucoes/realidade-digital", "destination": "/es/soluciones/realidad-digital", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/solucoes/realidade-digital", "destination": "/en/solutions/digital-reality", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/solucoes/realidade-digital", "destination": "/es/soluciones/realidad-digital", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/solucoes/robotica", "destination": "/en/solutions/robotics", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/solucoes/robotica", "destination": "/es/soluciones/robotica", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/solucoes/robotica", "destination": "/en/solutions/robotics", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/solucoes/robotica", "destination": "/es/soluciones/robotica", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/cases", "destination": "/en/cases", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/cases", "destination": "/es/casos", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/cases", "destination": "/en/cases", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/cases", "destination": "/es/casos", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+
+    { "source": "/cases/:slug", "destination": "/en/cases/:slug", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "en" }] },
+    { "source": "/cases/:slug", "destination": "/es/casos/:slug", "permanent": false, "has": [{ "type": "cookie", "key": "preferred_locale", "value": "es" }] },
+    { "source": "/cases/:slug", "destination": "/en/cases/:slug", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][nN](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] },
+    { "source": "/cases/:slug", "destination": "/es/casos/:slug", "permanent": false, "has": [{ "type": "header", "key": "accept-language", "value": "^[eE][sS](?:[-_][A-Za-z]{2})?(?:;q=[0-9.]+)?(?:,|$).*" }], "missing": [{ "type": "cookie", "key": "preferred_locale" }] }
+  ]
+}
